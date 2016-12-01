@@ -1,0 +1,2 @@
+# patent_manage_system
+一个基于spring_MVC的专利管理系统
