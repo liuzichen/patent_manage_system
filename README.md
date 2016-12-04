@@ -1,2 +1,2 @@
 # patent_manage_system
-一个基于spring_MVC的专利管理系统
+一个基于spring_MVC以及mybatis的专利管理系统
