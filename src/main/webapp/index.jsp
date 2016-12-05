@@ -13,6 +13,8 @@ pageEncoding="UTF-8"%>
         <h3>
             <a href="test/hello?name=Liuzichen">请点这里</a>
         </h3>
+        <%=request.getContextPath()%>
+        <img alt="" src="<%=request.getContextPath() %>/src/main/webapp/image/05.jpg" style="float:left; margin-left:20px; margin-top:-1px" height="20px" width="20px"><a  >退出系统</a></li>			
     </center>
 </body>
 </html>
