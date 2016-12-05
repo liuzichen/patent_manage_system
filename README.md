@@ -1,2 +1,0 @@
-# patent_manage_system
-基于spring_MVC和mybatis的web系统
