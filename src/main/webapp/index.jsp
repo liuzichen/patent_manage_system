@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
     <center>
         <h2>Hello World</h2>
         <h3>
-            <a href="test/hello?name=Liuzichen">点击跳转</a>
+            <a href="test/hello?name=Liuzichen">请点这里</a>
         </h3>
     </center>
 </body>
