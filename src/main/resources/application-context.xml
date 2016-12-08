@@ -60,4 +60,11 @@
 	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
 		<property name="dataSource" ref="dataSource" />  
 	</bean>  
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 </beans>
