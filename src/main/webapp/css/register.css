@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+body{margin:0;padding:0; font:12px "宋体", arial,sans-serif;}
+a {color:#333333; text-decoration:none;}	
+a:visited{text-decoration:none;}
+a:hover{color:#ff6600;text-decoration:underline;}
+a:active{color:#333333;}
+.header{width:1200px;height:300px;margin:0px auto;clear:both;position:relative; background-color:red;}
+.header_left{height:200px; width:400px; position:absolute; bottom:0px; left:50px;}
+.header_right{height:100px; width:265px;position:absolute;text-align:center;margin:0px auto;right:50px;}
+.link{font:14px "宋体", arial,sans-serif;}

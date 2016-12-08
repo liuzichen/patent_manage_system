@@ -1,0 +1,109 @@
+<style type="text/css">
+    body {margin:0;padding:15px 15px 0px 15px; font:12px "宋体", arial,sans-serif;}
+    div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,p{padding:0; margin:0;}
+    table,td,tr,th{font-size:12px;}
+    li{list-style-type:none;}
+    img{border:0;}
+    ol,ul {list-style:none;}
+    input{margin:0;padding:0}
+    input,img{line-height:normal}
+    em{font-style:normal;}
+    .clear{clear:both;}
+    a{color:#252525; text-decoration:none;}
+    a:visited{text-decoration:none;}
+    a:hover{color:#ff6600;text-decoration:underline;}
+    a:active{color:#252525;}
+    
+    /*栏目导航*/
+    .maintitlebg{
+	    line-height:30px;
+	    height:30px;background:url(<%=request.getContextPath()%>/image/35.jpg) repeat-x ; 
+	    color:#0060ae; font-weight:bold; font-size:14px;
+     }
+   .maintitlebg span{
+	    float:right; 
+	    margin-right:5px; color:#c3c3c3;
+	    font-size:12px;
+	    font-weight:normal
+    }
+    
+    
+   .maintitlebg b{
+	    background:url(images/dataicon.png); 
+	    width:17px; 
+	    height:20px; 
+	    display:block;
+	    margin-left:5px;
+     }
+     
+     
+     
+   .title1icon{
+	    background:url(<%=request.getContextPath()%>/image/31.jpg) no-repeat;
+	    width:30px; 
+	    height:30px; 
+	    margin-right:5px;
+	    margin-left:5px;
+	    float:left;
+     }
+     
+     
+    .title2icon{
+	    background:url(<%=request.getContextPath()%>/image/32.jpg) no-repeat;
+	    width:30px;
+	    height:30px; 
+	    margin-right:5px;
+	    margin-left:5px; 
+	    float:left;
+     }
+     
+    .title3icon{
+	    background:url(<%=request.getContextPath()%>/image/33.jpg) no-repeat;
+	    width:30px; 
+	    height:30px; 
+	    margin-right:5px;
+	    margin-left:5px; 
+	    float:left;
+    }
+    
+    .title4icon{
+	    background:url(<%=request.getContextPath()%>/image/31.jpg) no-repeat;
+	    width:30px;
+	    height:30px;
+	    margin-right:5px;
+	    margin-left:5px; 
+	    float:left;
+      }
+    
+    .title1icon{background-position:0px 0px;}
+    .title2icon{background-position:0px -30px;}
+    .title3icon{background-position:0px -60px;}
+    .title4icon{background-position:0px -90px;}
+    .title5icon{background-position:0px -120px;}
+    
+    
+    /*列表*/
+    .titlebox{margin:auto; height:156px; margin-top:5px}
+    .titlebox li{background:url(images/mainliicon.png) no-repeat 0px 0px;border-bottom:1px dashed #e2e2e2;LINE-HEIGHT: 26px; HEIGHT: 26px;padding-left:12px; font-size:12px;}
+    .titlebox li:hover{background:url(images/mainliicon.png) no-repeat 0px -26px;}
+    .titlebox li span{float:right;color:#b7b7b7;font-size:12px;}
+    /*快捷菜单*/
+    .srortcut4box{padding:10px}
+    .srortcut4box li{text-align:center; width:15%; height:45px; float:left;margin-left:80px;position:relative;}
+    .srortcut4box img{margin-bottom:8px;}
+    /*右边外框*/
+    .rigbox{background:#eff4f7;border:1px solid #d5e4f0; border-top:0px; min-height:420px;}
+    
+   
+    /*我的课表*/
+    .bookexcel{padding: 0 10px 0 10px;color:#5a5a5a;}
+    .bookexcel ul{border-bottom:1px solid #d5e4f0; padding-bottom:5px; padding-top:5px;}
+    .bookexcel li{line-height:18px;}
+    .bookexcel li strong{ color:#474747; font-weight:bold; padding-right:10px;}
+    /*预警图标*/
+    #yjicon0{background: url(images/yjicon1.png) no-repeat 0px 8px;display:block;width:9px; height:26px;text-indent:-999em;vertical-align:middle;overflow: hidden; float:right; margin-right:5px;_margin-right:3px;}
+    #yjicon1{background: url(images/yjicon2.png) no-repeat 0px 8px;display:block;width:9px; height:26px;text-indent:-999em;vertical-align:middle;overflow: hidden; float:right;margin-right:5px;_margin-right:3px;}
+    #yjicon2{background: url(images/yjicon3.png) no-repeat 0px 8px;display:block;width:9px; height:26px;text-indent:-999em;vertical-align:middle;overflow: hidden; float:right;margin-right:5px;_margin-right:3px;}
+    #yjicon3{background: url(images/yjicon4.png) no-repeat 0px 8px;display:block;width:9px; height:26px;text-indent:-999em;vertical-align:middle;overflow: hidden; float:right;margin-right:5px;_margin-right:3px;}
+    #yjicon4{background: url(images/yjicon5.png) no-repeat 0px 8px;display:block;width:9px; height:26px;text-indent:-999em;vertical-align:middle;overflow: hidden; float:right;margin-right:5px;_margin-right:3px;}
+  </style>
