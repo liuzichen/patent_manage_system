@@ -48,9 +48,9 @@ $(function () {
 				{field : 'company', title : '单位',width :100,align:'center'},
 				{field : 'title', title : '职称',width :100,align:'center'},
 				{field : 'major',title : '专业领域',width : 100,align:'center',sortable:true},	
-				 { field: 'opt', title: '详情了解', width: 100, align: 'center',
+				{field: 'opt', title: '详情了解', width: 100, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/expert/newsview.jsp' >查看详情</a>";  
+                    	return "<a href='expert/detail?id=1'>查看详情</a>";  
                     }
                 }              
           		]],          	

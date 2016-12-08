@@ -18,4 +18,8 @@ public class ExpertInfoService {
 		return expertInfoDao.getExpertList();
 	}
 	
+	public ExpertInfo getInfoById(int id){
+		return expertInfoDao.getInfoById(id);
+	}
+	
 }
