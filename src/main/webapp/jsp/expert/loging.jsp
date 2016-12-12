@@ -223,10 +223,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul>
                             <li><a href="<%=request.getContextPath()%>/jsp/expert/pmakeroverview.jsp">
                                 <img src="<%=request.getContextPath()%>/image/21.jpg" style="position:relative;float:left; margin-left:35px;  margin-bottom:auto;margin-top:-15px;" height="50px" width="50px" />创客项目作品评审</a></li>
-                            <li><a href="<%=request.getContextPath()%>/jsp/expert/enteroverview.jsp">
+                            <li><a href="<%=request.getContextPath()%>/expert/toEnterpriseProject">
                                 <img src="<%=request.getContextPath()%>/image/22.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >企业科技项目评审</a></li>
                             
-                            <li><a href="<%=request.getContextPath()%>/jsp/expert/personalityPage.jsp">
+                            <li><a href="<%=request.getContextPath()%>/expert/detail?id=1">
                                 <img src="<%=request.getContextPath()%>/image/23.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >基本信息维护</a></li>
                         </ul>
                         <div class="clear">

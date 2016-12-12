@@ -1,0 +1,40 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head><style type="text/css">
+body{margin:0px; padding:0px;}
+</style>
+<script language="javascript">
+		<!--
+		var iniCols, noCols, o_mf, o_ms, s;
+		function ini() {
+			o_mf = parent.document.getElementById("centerFrame");
+			o_ms = document.getElementById("menuSwitch");
+			noCols = iniCols = o_mf.cols;
+			if ((pos = noCols.indexOf(",")) != -1) {
+				noCols = "0" + noCols.substring(pos);
+			}
+			s = false;
+		}
+		function changeLeft(){
+			s = !s;
+			//alert(s)
+			//alert(o_mf.cols)
+			o_mf.cols = s ? noCols : iniCols;
+			if (s)
+				o_ms.src="../image/6.jpg";
+			else
+			  	o_ms.src="../image/5.jpg"
+		}
+		//-->
+	</script>
+	</head>
+<body onload="ini()">
+<table height="100%" cellSpacing=0 cellPadding=0 border=0 width=10px>
+  <tr>
+   <td style=" background-color: #FFF">
+    <a href="javascript:changeLeft();"><img src="../image/5.jpg" name="menuSwitch" border=0 id="menuSwitch" height="60px" width="10px"></a></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -9,4 +9,6 @@ public interface ExpertInfoDao {
 	public ArrayList<ExpertInfo> getExpertList();
 	
 	public ExpertInfo getInfoById(int id);
+	
+	public void updateExpertInfo(int id);
 }

@@ -117,8 +117,6 @@ public class QuestionVo {
 		}else{
 			this.setAnswerTime("");
 		}
-	
-		
 		return this;
 	}
 }

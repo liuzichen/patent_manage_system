@@ -19,6 +19,19 @@
 		<result column="roleid" property="roleId" jdbcType="INTEGER" />
 	</resultMap>
 	<select id="getExpertList"  resultMap="expertInfoMap">        
-              select * from expert   	       
-	</select>         
+        select * from expert   	       
+	</select>        
+	<select id="getInfoById" resultMap="expertInfoMap"> 
+		select * from expert
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	<update id="updateExpertInfo" >
+		update expert
+		<set>			
+			achievement=#{1},
+		</set>
+		where id=#{0}
+	</update>
 </mapper>

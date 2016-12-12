@@ -22,4 +22,8 @@ public class ExpertInfoService {
 		return expertInfoDao.getInfoById(id);
 	}
 	
+	public void updateExpertInfo(int id,String achievement) {
+		expertInfoDao.updateExpertInfo(id);
+	}
+	
 }

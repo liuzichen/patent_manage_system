@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.EnterpriseProjectDao">	 
+	<resultMap id="enterpriseProjectMap" type="com.web.project.model.enterprise.EnterpriseProject" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="EnterpriseID" property="enterpriseId" jdbcType="VARCHAR" />		
+		<result column="title" property="title" jdbcType="VARCHAR" />	
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="techfield" property="field" jdbcType="VARCHAR" />
+		<result column="contractor" property="contractor" jdbcType="VARCHAR" />
+		<result column="management" property="management" jdbcType="VARCHAR" />	
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="year" property="year" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="VARCHAR" />	
+	</resultMap>
+	
+	<select id="getEnterpriseProjectsByState"  resultMap="enterpriseProjectMap">        
+        select * from enterpriseproject 
+        <where>
+		state=#{state}
+		</where> 	       
+	</select>   
+	    
+	 <select id="getEnterpriseProjectDetail" resultMap="enterpriseProjectMap">
+	 	select * from enterpriseproject
+	 	<where>
+	 		id=#{id} 
+	 	</where>
+	 </select>
+</mapper>
