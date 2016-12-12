@@ -32,12 +32,13 @@ $(document).ready(function(){
      </div>
      <div class="context" style="width:90%">
      	<div style="margin:0px auto;width:100%">
-     	<h2 style="margin:0px auto;text-align:center;font-size:30px">1233455</h2>
-     	<div style="margin:0px auto;text-align:center;color:#C1C1C1;">210201</div>
+     	<h2 style="margin:0px auto;text-align:center;font-size:30px">${detail.title}</h2>
+     	<br>
+     	<div style="margin:0px auto;text-align:center;color:#C1C1C1;">分类：${detail.type}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.time}</div>
      	</div>
      	<div style="height:30px">&nbsp;</div>
-     	<div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:100%;">
-	     	<pre style="width:100%;white-space:pre-wrap; font-size:16px"><%=a %></pre>
+     	<div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:100%;" >
+	     	<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.content}</pre>
 	     </div>
 	     <div style="height:30px">&nbsp;</div>
 	     <div><a href="javascript:void(document.Form1.submit())" id="attach" name="attach" style="height:25px;width:150px;font-size:14px;" class="easyui-linkbutton" onclick="return sub();">相&nbsp;关&nbsp;附&nbsp;件&nbsp;下&nbsp;载</a></div>

@@ -44,7 +44,7 @@ $(function () {
 				{field : 'time',title : '发布时间',width : 160,align:'center',sortable:true},	
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/expert/newsview.jsp' >查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/news/detail?id="+ row.id +"' >查看详情</a>";  
                     }
                 }
               
@@ -98,14 +98,12 @@ $(function () {
         	var order=opts.sortOrder;
         	var state=1;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
+                url:'<%=request.getContextPath()%>/news/list',
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state,"type":"系统公告"},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {
-	       			alert(XMLHttpRequest.status);
-	       			alert(XMLHttpRequest.readyState);
-	       			alert(textStatus);
+	       			alert("加载信息失败");
 	       		},
        			   
                 success: function (msg) {

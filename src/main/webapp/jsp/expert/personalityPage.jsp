@@ -66,7 +66,7 @@
     <div class="context">
        <div class="titlebox" style="width:80%; margin:0 auto;"><span class="title">专家简介</span></div>
 	   <div >
-	   	<form action="" name="Form1" id="Form1" method="post">
+	   	<form action="<%=request.getContextPath()%>/expert/updateInfo?id=1" name="Form1" id="Form1" method="post">
 	   	<table class="persional" align="center" border="0"  cellpadding="0" cellspacing="0" bordercolor="white">
 	   	 <tr><th style="height:30px;background-color:#CDE8F9;color:#2C3E4B;font-weight:bolder;">专家基本信息</th></tr>
 	   	 <tr><td style="height:320px;">

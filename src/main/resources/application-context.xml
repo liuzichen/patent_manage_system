@@ -15,7 +15,7 @@
 	<!-- 视图页面配置 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
-			<value>/WEB-INF/jsp/</value>
+			<value>/jsp/</value>
 		</property>
 		<property name="suffix">
 			<value>.jsp</value>

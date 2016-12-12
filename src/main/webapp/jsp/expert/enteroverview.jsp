@@ -27,8 +27,8 @@ $(function () {
                 striped: true,
                 collapsible: true,
                	
-                pageList: [10, 20,30,50],
-                pageSize: 10,
+                pageList: [1, 2,3,5],
+                pageSize: 1,
                 sortName: 'DATE',
                 sortOrder: 'asc',
                 remoteSort: true,
@@ -41,13 +41,13 @@ $(function () {
 				]],
 				columns: [[
 				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '科技项目名称',width :336,align:'center'},
-				{field : 'PROJECT',title : '计划类别',width : 208,align:'center',sortable:true},
-				{field : 'FIELD',title : '技术领域',width : 160,align:'center'},  
-				{field : 'YEAR',title : '计划年度',width : 160,align:'center',sortable:true},
+				{field : 'title', title : '科技项目名称',width :336,align:'center'},
+				{field : 'type',title : '计划类别',width : 208,align:'center',sortable:true},
+				{field : 'field',title : '技术领域',width : 160,align:'center'},  
+				{field : 'year',title : '计划年度',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='javascript:void(document.Form1.submit())' onclick='return sub("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/expert/enterpriseProjectDetail?id="+ row.id +"&state="+row.state+"' onclick='return sub("+index+")'>查看详情</a>";  
                     }
                 }
               
@@ -72,7 +72,7 @@ $(function () {
                 	var size=opts.pageSize;
                 	var state=document.getElementById("state").value;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test10.json',
+                        url:'<%=request.getContextPath()%>/expert/enterpriseProject',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                         type: 'post',
                         dataType : "text",
@@ -106,7 +106,7 @@ $(function () {
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/expert/enterpriseProject',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
@@ -127,8 +127,8 @@ $(function () {
                 }
             });
         	$('#roleList').datagrid('getPager').pagination( {
-        		pageList: [10, 20,30,50],
-                pageSize: 10,
+        		pageList: [1, 2,3,5],
+                pageSize: 1,
 				beforePageText : '第',
 				afterPageText : '页    共 {pages} 页',
 				displayMsg : '当前显示从{from}到{to}共{total}记录',
@@ -161,7 +161,7 @@ function sear(){
 	var order=opts.sortOrder;
 	var state=document.getElementById("state").value;
     $.ajax({
-        url:'<%=request.getContextPath()%>/test/test10.json',
+        url:'<%=request.getContextPath()%>/expert/enterpriseProject',
         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
         type: 'post',
         dataType : "text",
@@ -189,7 +189,7 @@ function getDataUpdate(pageNum, pageSize){
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/expert/enterpriseProject',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
