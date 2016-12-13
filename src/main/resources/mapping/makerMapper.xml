@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.MakerWorksDao">	 
+    <resultMap id="makerWorkMap" type="com.web.project.model.maker.MakerWorks" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="makerprojectid" property="MakerProjectID" jdbcType="VARCHAR" />
+		<result column="makerId" property="makerId" jdbcType="INTEGER" />
+		<result column="Team" property="team" jdbcType="VARCHAR" />
+		<result column="contack" property="contack" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="field" property="field" jdbcType="VARCHAR" />
+		<result column="submitTime" property="submitTime" jdbcType="VARCHAR" />
+		<result column="fujian" property="fujian" jdbcType="VARCHAR" />
+		<result column="fujiantype" property="fujianType" jdbcType="VARCHAR" />
+		<result column="fujianname" property="fujianname" jdbcType="VARCHAR" />		
+	</resultMap>    
+	  
+	<select id="getMakerWorksList" resultMap="makerWorkMap"> 
+		select * from makerworks order by submittime DESC;
+	</select>
+	
+	<select id="getMakerWorksDetailById" resultMap="makerWorkMap"> 
+		select * from makerworks
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	
+	<update id="updateMakerWorkInfo" >
+		update makerworks
+		<set>			
+			problems=#{0},
+			evaluation=#{1},
+			evaluatetime=#{2},
+			isevaluated=#{3},
+		</set>
+		where id=#{4}
+	</update>
+</mapper>
