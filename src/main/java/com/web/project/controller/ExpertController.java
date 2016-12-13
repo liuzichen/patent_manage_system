@@ -187,7 +187,6 @@ public class ExpertController {
 		achievement = new String(achievement.getBytes("iso-8859-1"), "utf-8");
 		expertInfoService.updateExpertInfo(id, achievement);
 		ExpertInfo expertInfo = expertInfoService.getInfoById(id);
-
 		model.put("detailInfo", expertInfo);
 		return "expert/personalityPage";
 	}

@@ -40,13 +40,13 @@ $(function () {
 				]],
 				columns: [[
 				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '作品名称',width :336,align:'center'},
-				{field : 'PROJECT',title : '创客项目',width : 208,align:'center'},
-				{field : 'FIELD',title : '技术领域',width : 160,align:'center'}, 
-				{field : 'time',title : '提交时间',width : 160,align:'center',sortable:true},
+				{field : 'title', title : '作品名称',width :336,align:'center'},
+				{field : 'makerProjectID',title : '创客项目',width : 208,align:'center'},
+				{field : 'field',title : '技术领域',width : 160,align:'center'}, 
+				{field : 'submitTime',title : '提交时间',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/expert/pmakerreview.jsp' >查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/maker/makerWorkDetail?id="+row.id+"' >查看详情</a>";  
                     }
                 }
               
@@ -58,7 +58,7 @@ $(function () {
                 	var page=opts.pageNumber;
                 	var size=opts.pageSize;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
+                        url:'<%=request.getContextPath()%>/maker/workList',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                         type: 'post',
                         dataType : "text",
@@ -91,7 +91,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/maker/workList',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
@@ -145,7 +145,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/maker/workList',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",

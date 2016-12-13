@@ -58,7 +58,6 @@ function sub(){
 </head>
 
 <body>
-<%String a="      11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"; %>
  <div class="commonPage">
  
      <div class="topnav"  >
@@ -67,37 +66,39 @@ function sub(){
 	      <span ><font >项目评审&nbsp;&nbsp; &gt;&nbsp;&nbsp; 创客项目作品评审</font></span>
 	   </div>
      </div> 
-		 
+		 <% String urlString=request.getContextPath()+"/maker/evaluate?id="+request.getParameter("id"); %>
+		  <% String address=" confirmResponse?id="+request.getParameter("questionId"); %>
     <div class="context">
        <div class="titlebox"><span class="title">创客项目作品评审</span></div>
-	   <div>
-	   	<form action="" name="Form1" id="Form1">
+	   <div><%=urlString%>
+	   	<form method="post" action=<%=urlString%> name="Form1" id="Form1">
 	   	<input type="hidden" name="sort" id="sort">
-	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
+	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA" width="90%">
                 <tr >
                     <td class="tdname">创新成果名称：</td>                    
                     <td class="tdcontent1">
-                      <%=request.getAttribute("name")%>
+                      ${detail.title}
                     </td>
                     <td class="tdname">团队名称：</td>
                     <td class="tdcontent2">
-                       <%=request.getAttribute("age")%>
+                       ${detail.id}
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">所属创新项目：</td>
                     <td class="tdcontent1">
-                       <%=request.getAttribute("age")%>
+                        ${detail.makerProjectID}
                     </td>
                     <td class="tdname">技术领域：</td>
                     <td class="tdcontent2">
-                       <%=request.getAttribute("company")%>
+                        ${detail.field}
                     </td>                    
                 </tr>
+                
                 <tr>
-                    <td class="tdname">评审日期：</td>
+                    <td class="tdname">提交日期：</td>
                     <td class="tdcontent1">
-                      <input class="easyui-datebox mydatebox" type="text" name="ctime" id="ctime" editable="false" panelHeight="260" panelWidth="200" >
+                       ${detail.submitTime}
                     </td>
                     <td style="background-color:#F2F2F2;width:15%"colspan="2" >
                    	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>                    
@@ -107,7 +108,7 @@ function sub(){
             	 <td    colspan="3">
 	            	 <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"><%=a %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"> ${detail.description}</pre>
 	    				 </div>
 		             </div>
              </tr>
@@ -115,7 +116,7 @@ function sub(){
              	 <td  class="tdname"  align="center" height="100px" >专家意见与评述</td>
             	 <td  align="center" height="100px" colspan="3">
 	            	 <div class="tdcontent3">
-		               <textarea id="presention" name="presention" cols="40" rows="12" style="width:90%;height:100%;"></textarea>
+		               <textarea id="presention" name="presention" cols="40" rows="12" style="width:90%;height:100%;"> ${detail.evaluation}</textarea>
 		             </div>
              </tr>
              
@@ -123,19 +124,19 @@ function sub(){
              	 <td  class="tdname" align="center" >主要问题及建议</td>
             	 <td  align="center" height="400px" colspan="3">
 	            	 <div class="tdcontent3">
-		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;"></textarea>
+		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;">${detail.problems}</textarea>
 		             </div> 
              </td>
              </tr>
              
              <tr>
 	             <td align="center" colspan="4">
-	             	<div style="margin-top:20px;margin-left:auto;margin-right:auto; margin-bottom:20px" ><a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
+	             	<div style="margin-top:20px;margin-left:auto;margin-right:auto; margin-bottom:20px" >
+	             	<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
 	             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		            <a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px" class="easyui-linkbutton button" onclick="return save();">保&nbsp;&nbsp;存</a></div>
 		        </td>
 	        </tr>
-	        
            </table>
           </form>
 	   	</div>
