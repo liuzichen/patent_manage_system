@@ -41,13 +41,12 @@ $(function () {
 				]],
 				columns: [[
 				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '项目名称',width :336,align:'center'},
-				{field : 'FIELD',title : '技术领域',width : 208,align:'center'},
-				{field : 'YEAR',title : '计划年度',width : 160,align:'center',sortable:true},
-				
+				{field : 'title', title : '项目名称',width :336,align:'center'},
+				{field : 'techField',title : '技术领域',width : 160,align:'center'},			
+				{field : 'submitTime',title : '提交时间',width : 160,align:'center'},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/expert/setproord.jsp' >查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/expert/enterpriseCommonProjectDetail?id="+row.id+"' >查看详情</a>";  
                     }
                 }
               
@@ -59,7 +58,7 @@ $(function () {
                 	var page=opts.pageNumber;
                 	var size=opts.pageSize;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
+                        url:'<%=request.getContextPath()%>/expert/enterpriseCommonProject',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                         type: 'post',
                         dataType : "text",
@@ -92,7 +91,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/expert/enterpriseCommonProject',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
@@ -146,7 +145,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/expert/enterpriseCommonProject',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
