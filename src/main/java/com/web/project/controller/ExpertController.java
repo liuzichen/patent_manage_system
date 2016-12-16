@@ -3,6 +3,7 @@ package com.web.project.controller;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Param;
@@ -17,8 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import net.sf.json.JSONArray;
 
 import com.web.project.model.Question;
+import com.web.project.model.enterprise.Enterprise;
+import com.web.project.model.enterprise.EnterpriseCommonProject;
+import com.web.project.model.enterprise.EnterpriseExcuPerson;
+import com.web.project.model.enterprise.EnterpriseFinance;
+import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
 import com.web.project.model.enterprise.EnterpriseProject;
 import com.web.project.model.expert.ExpertInfo;
+import com.web.project.service.enterprise.EnterpriseInfoService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
 import com.web.project.service.expertService.ExpertInfoService;
 import com.web.project.service.relationship.QuestionService;
@@ -37,6 +44,9 @@ public class ExpertController {
 
 	@Autowired
 	EnterpriseProjectService enterpriseProjectService;
+	
+	@Autowired
+	EnterpriseInfoService enterpriseInfoService;
 
 	/**
 	 * 获取专家列表
@@ -204,7 +214,29 @@ public class ExpertController {
 		state = new String(state.getBytes("iso-8859-1"), "utf-8");
 		EnterpriseProject enterpriseProject = enterpriseProjectService
 				.getEnterpriseProjectDetail(id);
+		int enterpriseId = enterpriseProject.getEnterpriseId();
+		Date date = new Date();
+		int year=date.getYear()+1900;		
+		Enterprise enterprise = enterpriseInfoService.getEnterpriseInfoById(enterpriseId);
+		EnterpriseFinance lastYear = enterpriseInfoService.getEnterpriseFinanceByIdAndYear(enterpriseId, year-1);
+		EnterpriseFinance yearBeforeLastYear = enterpriseInfoService.getEnterpriseFinanceByIdAndYear(enterpriseId, year-2);		
+		EnterpriseProInvestmentBudget fromGov = enterpriseInfoService.getEnterpriseProInvestmentBudgetByProIdAndType(id, 0);
+		EnterpriseProInvestmentBudget fromSelf = enterpriseInfoService.getEnterpriseProInvestmentBudgetByProIdAndType(id, 1);
+		EnterpriseExcuPerson leader = enterpriseInfoService.getProjectLeader(id);
+		model.put("leader", leader);
+		System.out.println(fromSelf.getTotal());
 		model.put("detail", enterpriseProject);
+		model.put("enterpriseInfo", enterprise);		
+		model.put("fromGov", fromGov);
+		model.put("fromSelf", fromSelf);
+		if(yearBeforeLastYear==null){
+			yearBeforeLastYear=EnterpriseFinance.fillEmptyObject(id, enterpriseId, year-2);
+		}
+		if(lastYear==null){
+			lastYear = EnterpriseFinance.fillEmptyObject(id, enterpriseId, year-1);
+		}
+		model.put("lastyear", lastYear);
+		model.put("yearBeforeLastYear", yearBeforeLastYear);
 		String page = "";
 		switch (state) {
 		case "项目立项评审":
@@ -212,7 +244,7 @@ public class ExpertController {
 			break;
 		case "项目中期评审":
 			page = "expert/midpro";
-            break;
+			break;
 		case "项目结题评审":
 			page = "expert/endpro";
 			break;
@@ -220,5 +252,66 @@ public class ExpertController {
 			break;
 		}
 		return page;
+	}
+
+	/**
+	 * 根据状态获得相应的企业一般项目列表
+	 */
+	@RequestMapping("enterpriseCommonProject")
+	@ResponseBody
+	public String getEnterpriseCommonProjects(
+			@RequestParam(value = "pageNum") final int pageId,
+			@RequestParam(value = "pageSize") final int pageSize) {
+		ArrayList<EnterpriseCommonProject> enterpriseCommonProjects = enterpriseProjectService
+				.getEnterpriseCommonProjectLists();
+		int start = 0;
+		int end = 0;
+		if (enterpriseCommonProjects.size() > 0)
+			start = (pageId - 1) * pageSize;
+		end = Math.min(enterpriseCommonProjects.size(), start + pageSize);
+
+		HashMap hashMap = new HashMap();
+		hashMap.put("total", enterpriseCommonProjects.size());
+		hashMap.put("rows", enterpriseCommonProjects.subList(start, end));
+		String result1 = JSONArray.fromObject(hashMap).toString();
+		String result = result1.substring(1, result1.length() - 1);
+		return result;
+	}
+
+	/**
+	 * 专家查看企业一般项目详情
+	 * 
+	 */
+	@RequestMapping("enterpriseCommonProjectDetail")
+	public String getEnterpriseCommomProjectDetail(
+			@RequestParam(value = "id") final int id, ModelMap model) {
+		EnterpriseCommonProject enterpriseCommomProject = enterpriseProjectService
+				.getEnterpriseCommonProjectById(id);
+		model.put("detail", enterpriseCommomProject);
+		return "expert/setproord";
+	}
+
+	/**
+	 * 专家查看企业一般项目详情
+	 * 
+	 * @throws UnsupportedEncodingException
+	 * 
+	 */
+	@RequestMapping("updateEnterpriseCommonProject")
+	public String updateEnterpriseCommomProjectDetail(
+			@RequestParam(value = "id") final int id,
+			@RequestParam(value = "advice") String evaluation,
+			@RequestParam(value = "sort") String flag, ModelMap model)
+			throws UnsupportedEncodingException {
+		evaluation = new String(evaluation.getBytes("iso-8859-1"), "utf-8");
+		Long time = System.currentTimeMillis() / 1000;
+		if (flag.equals("save"))
+			enterpriseProjectService.updateEnterpriseCommonProject(id, false,
+					evaluation, time);
+		else {
+			enterpriseProjectService.updateEnterpriseCommonProject(id, true,
+					evaluation, time);
+		}
+		return "expert/setproord";
 	}
 }

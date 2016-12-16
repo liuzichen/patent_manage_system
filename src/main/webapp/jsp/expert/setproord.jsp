@@ -16,8 +16,8 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	var k1="123";
-	var k2="456";
+	var k1="";
+	var k2="";
 	var k3="2100-1-1";
 	$("#k1").textbox("setValue", k1);
 	$("#k2").textbox("setValue", k2);
@@ -74,7 +74,6 @@ function sub(){
 </head>
 
 <body>
-<%String a="      11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"; %>
  <div class="commonPage">
  
      <div class="topnav"  >
@@ -87,17 +86,17 @@ function sub(){
     <div class="context">
        <div class="titlebox"><span class="title">一般项目立项评审</span></div>
 	   <div>
-	   	<form action="" name="Form1" id="Form1">
+	   	<form method="post" action="<%=request.getContextPath()%>/expert/updateEnterpriseCommonProject?id=1" name="Form1" id="Form1">
 	   	<input type="hidden" name="sort" id="sort">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1">
-                      <%=request.getAttribute("name")%>
+                      ${detail.title}
                     </td>
                     <td class="tdname">运营单位：</td>
                     <td class="tdcontent2">
-                       <%=request.getAttribute("age")%>
+                       ${detail.enterpriseId}
                     </td>
                 </tr>         
                 <tr >
@@ -111,9 +110,9 @@ function sub(){
                     </td>                    
                 </tr>
                 <tr>
-                    <td class="tdname">评审日期：</td>
+                    <td class="tdname">提交日期：</td>
                     <td class="tdcontent1">
-                      <input class="easyui-datebox mydatebox" type="text" name="k3" id="k3" editable="false" panelHeight="260" panelWidth="200" >
+                        ${detail.enterpriseId}
                     </td>
                     <td style="background-color:#F2F2F2;width:15%"colspan="2" >
                    	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>                    

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.EnterpriseInfoDao">	 
+	<resultMap id="enterpriseMap" type="com.web.project.model.enterprise.Enterprise" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="companyCode" property="companyCode" jdbcType="INTEGER" />
+		<result column="legalPerson" property="legalPerson" jdbcType="VARCHAR" />
+		<result column="loginName" property="loginName" jdbcType="VARCHAR" />
+		<result column="passWord" property="passWord" jdbcType="VARCHAR" />
+		<result column="registrationTime" property="registrationTime" jdbcType="DATE" />
+		<result column="registeredCapital" property="registeredCapital" jdbcType="VARCHAR" />	
+		<result column="registrationMoney" property="registrationMoney" jdbcType="VARCHAR" />	
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="postcode" property="postcode" jdbcType="VARCHAR" />
+		<result column="channel1" property="channel1" jdbcType="VARCHAR" />
+		<result column="channel2" property="channel2" jdbcType="VARCHAR" />		
+		<result column="mobilePhone" property="mobilePhone" jdbcType="VARCHAR" />
+		<result column="cellPhone" property="cellPhone" jdbcType="VARCHAR" />
+		<result column="fax" property="fax" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="bank" property="bank" jdbcType="VARCHAR" />
+		<result column="creditRating" property="creditRating" jdbcType="VARCHAR" />	
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="property" property="property" jdbcType="VARCHAR" />
+		<result column="size" property="size" jdbcType="VARCHAR" />
+		<result column="patents" property="patents" jdbcType="INTEGER" />
+		<result column="utilityModel" property="utilityModel" jdbcType="INTEGER" />
+		<result column="softwareCopyright" property="softwareCopyright" jdbcType="INTEGER" />
+		<result column="pCTpatent" property="pCTpatent" jdbcType="INTEGER" />
+		<result column="others" property="others" jdbcType="INTEGER" />
+		<result column="innovationBaseConstruction" property="innovationBaseConstruction" jdbcType="VARCHAR" />
+		<result column="supportedByST" property="supportedByST" jdbcType="VARCHAR" />
+		<result column="techAward" property="techAward" jdbcType="VARCHAR" />	
+		<result column="roleID" property="roleID" jdbcType="INTEGER" />
+	</resultMap>    
+
+	<resultMap id="enterpriseFinanceMap" type="com.web.project.model.enterprise.EnterpriseFinance" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 		
+		<result column="companyCode" property="companyCode" jdbcType="INTEGER" />
+		<result column="enterpriseid" property="enterpriseid" jdbcType="INTEGER" />
+		<result column="year" property="year" jdbcType="INTEGER" />
+		<result column="totalProduction" property="totalProduction" jdbcType="INTEGER" />
+		<result column="totalSales" property="totalSales" jdbcType="INTEGER" />
+		<result column="profit" property="profit" jdbcType="INTEGER" />
+		<result column="totalTaxPayment" property="totalTaxPayment" jdbcType="INTEGER" />
+		<result column="corporateTax" property="corporateTax" jdbcType="INTEGER" />
+		<result column="valueAddedTax" property="valueAddedTax" jdbcType="INTEGER" />
+		<result column="salesTax" property="salesTax" jdbcType="INTEGER" />
+		<result column="personalIncomeTax" property="personalIncomeTax" jdbcType="INTEGER" />
+		<result column="RDexpense" property="RDexpense" jdbcType="INTEGER" />
+		<result column="totalExpenditure" property="totalExpenditure" jdbcType="INTEGER" />
+		<result column="foreignExchangeEarnings" property="foreignExchangeEarnings" jdbcType="INTEGER" />
+		<result column="fixedAssert" property="fixedAssert" jdbcType="INTEGER" />
+		<result column="totalAssert" property="totalAssert" jdbcType="INTEGER" />
+		<result column="totalLiabilities" property="totalLiabilities" jdbcType="INTEGER" />
+		<result column="netAssert" property="netAssert" jdbcType="INTEGER" />
+	</resultMap> 
+	   
+	<resultMap id="enterpriseProInvesBudgetMap" type="com.web.project.model.enterprise.EnterpriseProInvestmentBudget" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 		
+		<result column="projectId" property="projectId" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="total" property="total" jdbcType="DOUBLE" />
+		<result column="totalRDequimentFee" property="totalRDequimentFee" jdbcType="DOUBLE" />
+		<result column="equimentBuyFee" property="equimentBuyFee" jdbcType="DOUBLE" />
+		<result column="equimentMakeFee" property="equimentMakeFee" jdbcType="DOUBLE" />
+		<result column="softwareMakeFee" property="softwareMakeFee" jdbcType="DOUBLE" />
+		<result column="corRDFee" property="corRDFee" jdbcType="DOUBLE" />
+		<result column="peopleTeamFee" property="peopleTeamFee" jdbcType="DOUBLE" />
+		<result column="techPatentResBuyFee" property="techPatentResBuyFee" jdbcType="DOUBLE" />
+		<result column="fuelPowerCost" property="fuelPowerCost" jdbcType="DOUBLE" />
+		<result column="travelFee" property="travelFee" jdbcType="DOUBLE" />
+		<result column="conferenceFee" property="conferenceFee" jdbcType="DOUBLE" />
+		<result column="cooperationAndExchangeFee" property="cooperationAndExchangeFee" jdbcType="DOUBLE" />
+		<result column="publicationFee" property="publicationFee" jdbcType="DOUBLE" />
+		<result column="serviceFee" property="serviceFee" jdbcType="DOUBLE" />
+		<result column="expertConsultationFee" property="expertConsultationFee" jdbcType="DOUBLE" />
+		<result column="managementFee" property="managementFee" jdbcType="DOUBLE" />
+		<result column="totalSourcesFunds" property="totalSourcesFunds" jdbcType="DOUBLE" />
+		<result column="applyFromGov" property="applyFromGov" jdbcType="DOUBLE" />
+		<result column="selfFounding" property="selfFounding" jdbcType="DOUBLE" />
+		<result column="otherFinancialAllocations" property="otherFinancialAllocations" jdbcType="DOUBLE" />
+		<result column="ownFound" property="ownFound" jdbcType="DOUBLE" />
+		<result column="otherFound" property="otherFound" jdbcType="DOUBLE" />
+	</resultMap>    
+
+	<resultMap id="enterpriseExcuPersonMap" type="com.web.project.model.enterprise.EnterpriseExcuPerson" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="projectId" property="projectId" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="DATE" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="cardType" property="cardType" jdbcType="VARCHAR" />
+		<result column="cardnumber" property="cardnumber" jdbcType="VARCHAR" />
+		<result column="position" property="position" jdbcType="VARCHAR" />	
+		<result column="degree" property="degree" jdbcType="VARCHAR" />	
+		<result column="qualifications" property="qualifications" jdbcType="VARCHAR" />
+		<result column="major" property="major" jdbcType="VARCHAR" />
+		<result column="mobilePhone" property="mobilePhone" jdbcType="VARCHAR" />
+		<result column="cellPhone" property="cellPhone" jdbcType="VARCHAR" />
+		<result column="fax" property="fax" jdbcType="VARCHAR" />		
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="task" property="task" jdbcType="VARCHAR" />
+		<result column="isLeader" property="isLeader" jdbcType="VARCHAR" />
+	</resultMap>    
+	<select id="getEnterpriseInfoById" resultMap="enterpriseMap"> 
+		select * from enterprise
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	
+	<select id="getEnterpriseNameById" resultType="String"> 
+		select name from enterprise
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	
+	<select id="getEnterpriseFinanceByIdAndYear" resultMap="enterpriseFinanceMap"> 
+		select * from enterpriseFinance
+		<where>
+		enterpriseId=#{0} and year=#{1}
+		</where>
+	</select>
+	
+	<select id="getEnterpriseProInvestmentBudgetByProIdAndType" resultMap="enterpriseProInvesBudgetMap"> 
+		select * from enterpriseProInvestmentBudget
+		<where>
+		projectId=#{0} and type=#{1}
+		</where>
+	</select>
+	
+	<select id="getProjectLeader" resultMap="enterpriseExcuPersonMap"> 
+		select * from enterpriseprojectpeople
+		<where>
+		projectId=#{0} and isLeader = true;
+		</where>
+	</select>
+	
+	<select id="getProjectMembers" resultMap="enterpriseExcuPersonMap"> 
+		select * from enterpriseprojectpeople
+		<where>
+		projectId=#{0} and isLeader = false;
+		</where>
+	</select>
+	
+</mapper>

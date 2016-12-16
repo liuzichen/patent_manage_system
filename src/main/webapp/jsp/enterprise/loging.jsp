@@ -161,11 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     国家科技政策</div>
                                 <div class="titlebox">
                                     <ul>
-                                    <%List  list1= (ArrayList)request.getAttribute("n_policy");
-    								for(int i=0;i<list1.size();i++){
-    									Field fd = (Field)list1.get(i); %>
-										<li><span><%=fd.getNewsTime() %></span><a href="javascript:void(document.form1.submit())" onclick="return setId(this.id);" id="<%=fd.getNewsId()%>"><%=fd.getNewsTitle()%></a></li><!-- href填servlet -->
-										<%}%>
+                                 
                                     </ul>
                                 </div>
                                 <!--国家科技政策End-->
@@ -180,11 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                      系统公告</div>
                                 <div class="titlebox">
                                     <ul>
-                                 	   <%List  list2= (ArrayList)request.getAttribute("announcement");
-    								for(int i=0;i<list2.size();i++){
-    									Field fd = (Field)list2.get(i); %>
-										<li><span><%=fd.getNewsTime() %></span><a href="javascript:void(document.form1.submit())" onclick="return setId(this.id);" id="<%=fd.getNewsId()%>"><%=fd.getNewsTitle()%></a></li><!-- href填servlet -->
-										<%}%>
+                                 	  
                                     </ul>
                                 </div>
                                 <!--系统公告 End-->
@@ -200,11 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     专项与基金</div>
                                 <div class="titlebox">
                                     <ul>
-                                      <%List  list3= (ArrayList)request.getAttribute("foundation");
-    								for(int i=0;i<list3.size();i++){
-    									Field fd = (Field)list3.get(i); %>
-										<li><span><%=fd.getNewsTime() %></span><a href="javascript:void(document.form1.submit())" onclick="return setId(this.id);" id="<%=fd.getNewsId()%>"><%=fd.getNewsTitle()%></a></li><!-- href填servlet -->
-										<%}%>
+                                     
                                     </ul>
                                 </div>
                                 <!-- 专项与基金End-->

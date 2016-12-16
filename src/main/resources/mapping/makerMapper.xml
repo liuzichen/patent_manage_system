@@ -20,7 +20,11 @@
 	</resultMap>    
 	  
 	<select id="getMakerWorksList" resultMap="makerWorkMap"> 
-		select * from makerworks order by submittime DESC;
+		select * from makerworks
+		<where>
+			isevaluated=0
+		</where>
+		 order by submittime DESC;
 	</select>
 	
 	<select id="getMakerWorksDetailById" resultMap="makerWorkMap"> 
