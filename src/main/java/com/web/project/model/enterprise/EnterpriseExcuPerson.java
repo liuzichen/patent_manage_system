@@ -26,6 +26,7 @@ public class EnterpriseExcuPerson {
 	String fax;
 	String email;
 	String task;
+	String company;
 	boolean isLeader;
 
 	public int getId() {
@@ -162,6 +163,14 @@ public class EnterpriseExcuPerson {
 
 	public void setTask(String task) {
 		this.task = task;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 	public boolean isLeader() {

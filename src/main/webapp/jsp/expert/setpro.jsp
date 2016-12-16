@@ -772,143 +772,143 @@ function sub(){
 	        </tr>
 	        <tr>
 	             <td class="tdname">
-	             <%=request.getAttribute("C17")%>
+	             ${members[0].name}
 	             </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C18")%>
+                 ${members[0].gender}
                  </td>
          
                  <td class="tdname">
-                 <%=request.getAttribute("C19")%>
+                 ${members[0].birthday}
                  </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C20")%>
+                 ${members[0].position}
 				 </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C21")%>
+                 ${members[0].major}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C22")%>
+                  ${members[0].task}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C23")%>
+                  ${members[0].company}
                  </td>
                  
 	        </tr>
 	          
 	        <tr>
 	             <td class="tdname">
-	             <%=request.getAttribute("C24")%>
+	             ${members[1].name}
 	             </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C25")%>
+                 ${members[1].gender}
                  </td>
          
                  <td class="tdname">
-                 <%=request.getAttribute("C26")%>
+                 ${members[1].birthday}
                  </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C27")%>
+                 ${members[1].position}
 				 </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C28")%>
+                 ${members[1].major}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C29")%>
+                  ${members[1].task}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C30")%>
+                  ${members[1].company}
                  </td>
                  
 	        </tr>
 	        
-	        <tr>
+	       <tr>
 	             <td class="tdname">
-	             <%=request.getAttribute("C31")%>
+	             ${members[2].name}
 	             </td>
                  
                  <td class="tdname">
-                 	<%=request.getAttribute("C32")%>
+                 ${members[2].gender}
                  </td>
          
                  <td class="tdname">
-                 		<%=request.getAttribute("C33")%>
+                 ${members[2].birthday}
                  </td>
                  
                  <td class="tdname">
-                 		<%=request.getAttribute("C34")%>
+                 ${members[2].position}
+				 </td>
+                 <td class="tdname">
+                 ${members[2].major}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C35")%>
+                  ${members[2].task}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C36")%>
-                 </td>
-                 <td class="tdname">
-                 		<%=request.getAttribute("C37")%>
+                  ${members[2].company}
                  </td>
                  
 	        </tr>
 	        
 	        <tr>
 	             <td class="tdname">
-	             	<%=request.getAttribute("C38")%>
-                 </td>
+	             ${members[3].name}
+	             </td>
                  
                  <td class="tdname">
-                 		<%=request.getAttribute("C39")%>
+                 ${members[3].gender}
                  </td>
          
                  <td class="tdname">
-                 		<%=request.getAttribute("C40")%>
+                 ${members[3].birthday}
                  </td>
                  
                  <td class="tdname">
-                 	<%=request.getAttribute("C41")%>
+                 ${members[3].position}
+				 </td>
+                 <td class="tdname">
+                 ${members[3].major}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C42")%>
+                  ${members[3].task}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C43")%>
-                 </td>
-                 <td class="tdname">
-                 	<%=request.getAttribute("C44")%>
+                  ${members[3].company}
                  </td>
                  
 	        </tr>
 	        
 	        <tr>
 	             <td class="tdname">
-	             	<%=request.getAttribute("C45")%>
-                 </td>
+	             ${members[4].name}
+	             </td>
+                 
                  <td class="tdname">
-                 	<%=request.getAttribute("C46")%>
+                 ${members[4].gender}
                  </td>
          
                  <td class="tdname">
-                 	<%=request.getAttribute("C47")%>
+                 ${members[4].birthday}
                  </td>
                  
                  <td class="tdname">
-                 	<%=request.getAttribute("C48")%>
+                 ${members[4].position}
+				 </td>
+                 <td class="tdname">
+                 ${members[4].major}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C49")%>
+                  ${members[4].task}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C50")%>
+                  ${members[4].company}
                  </td>
-                 <td class="tdname">
-                 	<%=request.getAttribute("C51")%>
-                 </td>
-	        
                  
-	        </tr>          
+	        </tr>  
 	        
            </table>
            
@@ -998,23 +998,23 @@ function sub(){
               <tr>
                <td class="tdname">合作单位1</td>
            	   <td colspan="2" class="tdname">
-           	     ${detail.projectOrigin}
+           	     ${corporators[0].name}
              </td>
              
                <td class="tdname">组织机构代码</td>
                <td colspan="2" class="tdname">
-                ${detail.projectOrigin}
+                 ${corporators[0].companyCode}
              </td>
             </tr>
             
              <tr>
                <td class="tdname">负责人</td>
            		<td colspan="2" class="tdname">
-           		 ${detail.projectOrigin}
+           		 ${corporators[0].peopleInCharge}
              
                <td class="tdname">联系电话</td>
                 <td colspan="2" class="tdname">
-           		  ${detail.projectOrigin}
+           		  ${corporators[0].phone}
              </td>
              </tr>
              
@@ -1022,22 +1022,22 @@ function sub(){
              <tr>
                <td class="tdname">合作单位2</td>
            		<td colspan="2" class="tdname">
-           		  ${detail.projectOrigin}
+           		 ${corporators[1].name}
              </td>
              
                <td class="tdname">组织机构代码</td>
           		 <td colspan="2" class="tdname">
-          		 ${detail.projectOrigin}
+          		  ${corporators[1].companyCode}
           		 </td>
              <tr>
                <td class="tdname">负责人</td>
           		 <td colspan="2" class="tdname">
-          		 ${detail.projectOrigin}
+          		${corporators[1].peopleInCharge}
           		</td>
              
                <td class="tdname">联系电话</td>
            		<td colspan="2" class="tdname">
-           		 ${detail.projectOrigin}
+           		${corporators[1].phone}
           		</td>
              </tr>
             

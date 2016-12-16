@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.project.dao.EnterpriseInfoDao;
 import com.web.project.model.enterprise.Enterprise;
+import com.web.project.model.enterprise.EnterpriseCorporator;
 import com.web.project.model.enterprise.EnterpriseExcuPerson;
 import com.web.project.model.enterprise.EnterpriseFinance;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
@@ -46,6 +47,10 @@ public class EnterpriseInfoService {
 	
 	public ArrayList<EnterpriseExcuPerson> getProjectMembers(int projectId){
 		return enterpriseInfoDao.getProjectMembers(projectId);
+	}
+	
+	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int enterpriseId){
+		return enterpriseInfoDao.getEnterpriseCorporators(enterpriseId);
 	}
 
 }

@@ -105,8 +105,19 @@
 		<result column="fax" property="fax" jdbcType="VARCHAR" />		
 		<result column="email" property="email" jdbcType="VARCHAR" />
 		<result column="task" property="task" jdbcType="VARCHAR" />
-		<result column="isLeader" property="isLeader" jdbcType="VARCHAR" />
+		<result column="company" property="company" jdbcType="VARCHAR" />
+		<result column="isLeader" property="isLeader" jdbcType="TINYINT" />
 	</resultMap>    
+	
+	<resultMap id="enterpriseCorporatorMap" type="com.web.project.model.enterprise.EnterpriseCorporator" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="enterpriseId" property="enterpriseId" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="companyCode" property="companyCode" jdbcType="VARCHAR" />
+		<result column="peopleInCharge" property="peopleInCharge" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+	</resultMap>    
+	
 	<select id="getEnterpriseInfoById" resultMap="enterpriseMap"> 
 		select * from enterprise
 		<where>
@@ -145,8 +156,17 @@
 	<select id="getProjectMembers" resultMap="enterpriseExcuPersonMap"> 
 		select * from enterpriseprojectpeople
 		<where>
-		projectId=#{0} and isLeader = false;
+		projectId=#{0} and isLeader = false
 		</where>
+		limit 5;
+	</select>
+	
+	<select id="getEnterpriseCorporators" resultMap="enterpriseCorporatorMap">
+		select * from enterpriseCorporator
+		<where>
+		enterpriseId=#{0}
+		</where>
+		limit 2;
 	</select>
 	
 </mapper>
