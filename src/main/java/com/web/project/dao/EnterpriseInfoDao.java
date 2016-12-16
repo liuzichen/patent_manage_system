@@ -6,6 +6,7 @@ package com.web.project.dao;
 import java.util.ArrayList;
 
 import com.web.project.model.enterprise.Enterprise;
+import com.web.project.model.enterprise.EnterpriseCorporator;
 import com.web.project.model.enterprise.EnterpriseExcuPerson;
 import com.web.project.model.enterprise.EnterpriseFinance;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
@@ -27,4 +28,6 @@ public interface EnterpriseInfoDao {
 	public EnterpriseExcuPerson getProjectLeader(int projectId);
 	
 	public ArrayList<EnterpriseExcuPerson> getProjectMembers(int projectId);
+	
+	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int enterpriseId);
 }

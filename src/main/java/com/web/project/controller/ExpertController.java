@@ -20,6 +20,7 @@ import net.sf.json.JSONArray;
 import com.web.project.model.Question;
 import com.web.project.model.enterprise.Enterprise;
 import com.web.project.model.enterprise.EnterpriseCommonProject;
+import com.web.project.model.enterprise.EnterpriseCorporator;
 import com.web.project.model.enterprise.EnterpriseExcuPerson;
 import com.web.project.model.enterprise.EnterpriseFinance;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
@@ -223,8 +224,19 @@ public class ExpertController {
 		EnterpriseProInvestmentBudget fromGov = enterpriseInfoService.getEnterpriseProInvestmentBudgetByProIdAndType(id, 0);
 		EnterpriseProInvestmentBudget fromSelf = enterpriseInfoService.getEnterpriseProInvestmentBudgetByProIdAndType(id, 1);
 		EnterpriseExcuPerson leader = enterpriseInfoService.getProjectLeader(id);
+		ArrayList<EnterpriseExcuPerson> members = enterpriseInfoService.getProjectMembers(id);
+		if(members.size()<5){
+			for(int i=members.size();i<5;i++)
+				members.add(new EnterpriseExcuPerson());
+		}
+		ArrayList<EnterpriseCorporator> corporators = enterpriseInfoService.getEnterpriseCorporators(enterpriseId);
+		if(corporators.size()<2){
+			for(int i=corporators.size();i<2;i++)
+				corporators.add(new EnterpriseCorporator());
+		}
+		model.put("corporators", corporators);
+		model.put("members", members);
 		model.put("leader", leader);
-		System.out.println(fromSelf.getTotal());
 		model.put("detail", enterpriseProject);
 		model.put("enterpriseInfo", enterprise);		
 		model.put("fromGov", fromGov);
