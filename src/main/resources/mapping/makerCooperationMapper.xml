@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.MakerCooperationDao">
+	<resultMap id="makerCooperationMap" type="com.web.project.model.maker.MakerCooperation" >
+		<id column="cooperationid" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="makerid" property="makerId" jdbcType="INTEGER" />
+		<result column="team" property="team" jdbcType="VARCHAR" />
+		<result column="field" property="field" jdbcType="VARCHAR" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="teamintro" property="teamIntro" jdbcType="VARCHAR" />
+		<result column="detail" property="detail" jdbcType="VARCHAR" />
+		<result column="subtime" property="subTime" jdbcType="DATE" />
+	</resultMap>
+	<select id="getCooperationById"  resultMap="makerCooperationMap">        
+              select * from cooperation
+              <where>  
+              cooperationid=#{id} 	
+              </where>       
+	</select> 
+	
+	<select id="getCooperationList"  resultMap="makerCooperationMap">        
+              select * from cooperation 
+              order by ${param1} ${param2}    
+	</select>      
+</mapper>

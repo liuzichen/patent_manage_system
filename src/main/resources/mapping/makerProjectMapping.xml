@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.MakerProjectDao">	 
+	<resultMap id="makerProjectMap" type="com.web.project.model.maker.MakerProject" >
+		<id column="makerprojectid" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="starttime" property="startTime" jdbcType="DATE" />
+		<result column="endtime" property="endTime" jdbcType="DATE" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="fujian" property="attachment" jdbcType="BLOB" />
+		<result column="fujianname" property="attachmentName" jdbcType="VARCHAR" />
+		<result column="fujiantype" property="attachmentType" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getProjectById"  resultMap="makerProjectMap">        
+              select * from makerproject
+              <where>  
+              makerprojectid=#{id} 	
+              </where>       
+	</select> 
+	
+	<select id="getProjectList"  resultMap="makerProjectMap">        
+              select * from makerproject  
+              order by starttime DESC    
+	</select>        
+</mapper>

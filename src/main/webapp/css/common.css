@@ -20,19 +20,17 @@
 		}
 		
 		.path{
-			width: 494px; position: relative; top: 6px; visibility: visible;color:#00B2EE;
-			
+			width: 494px; position: relative; top: 6px; visibility: visible; color:#00B2EE;
 		}
 		
 		.context{
 			  width:80%; 
 			  height:100%; 
-			  top: 80px; 
-			  left: 10%;  
+			  top: 80px;   
 			  visibility: visible; 
-			  overflow: auto;
+
 			  position: relative;
-			  
+			  margin:0px auto;
 			
 		}
 		
@@ -66,4 +64,17 @@
 			margin-left:20px;
 			margin-top:50px;
 		}
-		
+		.tdname{height:35px;text-align:center;background-color:#F2F2F2;width:15%;}
+	.tdcontent1{width:35%;text-align:center;}
+	.tdcontent2{width:35%;text-align:center;}
+	.mydatebox{width:30%;}
+	.tdcontent3{padding-top:20px;height:100%;padding-bottom:20px;}
+	.tdtitle{height:35px;font-weight:bold;}
+	.persional{
+		width:100%;
+		position:relative;
+		background-color:#F7F7F7;
+		border-collapse:collapse;
+		border-color:#DEE5EA;
+		color:#5F6467;
+	}

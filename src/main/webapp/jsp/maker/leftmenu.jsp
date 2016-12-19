@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "213",
 			"menuname" : "创客项目报名",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/mprojectoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "创客项目作品管理",
