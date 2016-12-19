@@ -12,17 +12,18 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
-<%int b=1; %>
 $(document).ready(function(){
-	var hid="<%=b%>";
-	if(hid=="0"){
+	if("${detail.attachment}"==""){
+		hid=1;
+	}
+	if(hid==1){
 		$('#attach').hide();
 	}
+	$("#attend").attr("href","<%=request.getContextPath()%>/maker/makerProjectDetail?projectId="+"<%=request.getParameter("projectId")%>");
 });
 </script>
 </head>
 <body>
-<%String a="      1111111111\n1\n1\n1\n1\n\n\n\n\n\n1111111\n11111111111111 11111111\n111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"; %>
 	<div>
      <div class="topnav" >
 	   <div  class="path" >
@@ -32,17 +33,17 @@ $(document).ready(function(){
      </div>
      <div class="context" style="width:90%">
      	<div style="margin:0px auto;width:100%">
-     	<h2 style="margin:0px auto;text-align:center;font-size:30px">1233455</h2>
-     	<div style="margin:0px auto;text-align:center;color:#C1C1C1;">210201</div>
+     	<h2 style="margin:0px auto;text-align:center;font-size:30px">${detail.title}</h2>
+     	<div style="margin:0px auto;text-align:center;color:#C1C1C1;">${detail.startTime}至${detail.endTime }</div>
      	</div>
      	<div style="height:30px">&nbsp;</div>
      	<div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:100%;">
-	     	<pre style="width:100%;white-space:pre-wrap; font-size:16px"><%=a %></pre>
+	     	<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.description}</pre>
 	     </div>
 	     <div style="height:30px">&nbsp;</div>
-	     <div><a href="javascript:void(document.Form1.submit())" id="attach" name="attach" style="height:25px;width:150px;font-size:14px;" >相&nbsp;关&nbsp;附&nbsp;件&nbsp;下&nbsp;载</a></div>
+	     <div><a href="" id="attach" name="attach" style="height:25px;width:150px;font-size:14px;" >相&nbsp;关&nbsp;附&nbsp;件&nbsp;下&nbsp;载</a></div>
 	      <div style="height:30px">&nbsp;</div>
-	     <div align="center"><a href="javascript:void(document.Form1.submit())" id="attend" name="attend" style="height:30px;width:150px;font-size:20px;font-weight:bold; " class="easyui-linkbutton" >报&nbsp;名&nbsp;参&nbsp;加</a></div>
+	     <div align="center"><a id="attend" name="attend" style="height:30px;width:150px;font-size:20px;font-weight:bold; " class="easyui-linkbutton" >报&nbsp;名&nbsp;参&nbsp;加</a></div>
      </div> 
     </div>
 </body>

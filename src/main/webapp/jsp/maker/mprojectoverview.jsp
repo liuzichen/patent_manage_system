@@ -29,23 +29,22 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
-                sortOrder: 'asc',
+                
                 remoteSort: true,
-                idField: 'RoleCode',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'title', title : '活动名称',width :336,align:'center'},
-				{field : 'startTime',title : '开始时间',width : 160,align:'center',sortable:true},
-				{field : 'endTime',title : '结束时间',width : 160,align:'center',sortable:true},
+				{field : 'startTime',title : '开始时间',width : 160,align:'center'},
+				{field : 'endTime',title : '结束时间',width : 160,align:'center'},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/maker/makerProjectDetail?projectId="+ row.id +"' >查看详情</a>";  
                     }
                 }
               
@@ -98,14 +97,12 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/maker/makerProjectList',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {
-	       			alert(XMLHttpRequest.status);
-	       			alert(XMLHttpRequest.readyState);
-	       			alert(textStatus);
+	       			alert(textStatus+":"+XMLHttpRequest.status+" "+XMLHttpRequest.readyState);
 	       		},
        			   
                 success: function (msg) {

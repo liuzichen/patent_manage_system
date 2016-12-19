@@ -29,23 +29,23 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
-                sortOrder: 'asc',
+                sortName: 'subTime',
+                sortOrder: 'desc',
                 remoteSort: true,
-                idField: 'RoleCode',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'title', title : '合作标题',width :336,align:'center'},
-				{field : 'time',title : '发布时间',width : 160,align:'center',sortable:true},
-				{field : 'field',title : '合作领域',width : 160,align:'center'},
+				{field : 'subTime',title : '发布时间',width : 160,align:'center',sortable:true},
+				{field : 'field',title : '合作领域',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='#'>查看详情</a>";  
                     }
                 }
               
@@ -98,14 +98,12 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
+                url:'<%=request.getContextPath()%>/maker/makerCooperationList',
+                data:{"pageNum":page,"pageSize":size,"pageSort":sort,"pageOrder":order},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {
-	       			alert(XMLHttpRequest.status);
-	       			alert(XMLHttpRequest.readyState);
-	       			alert(textStatus);
+            		alert(textStatus+":"+XMLHttpRequest.status+" "+XMLHttpRequest.readyState);
 	       		},
        			   
                 success: function (msg) {
