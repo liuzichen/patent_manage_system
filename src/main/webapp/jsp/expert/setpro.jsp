@@ -175,7 +175,7 @@ function sub(){
                 <tr >
                     <td class="tdname">申报渠道：</td>
                     <td class="tdcontent1">
-                  
+                      ${detail.applyType}
                     </td>
                     <td class="tdname">所在地区：</td>
                     <td class="tdcontent2">
@@ -257,37 +257,37 @@ function sub(){
                 </tr>
                 <tr >
                 	<td class="tdname">
-                	<%=request.getAttribute("B17")%>
+                	${shareHolers[0].investType}
                 	</td>
                     <td class="tdname">
-                    <%=request.getAttribute("B18")%>
+                    ${shareHolers[0].name}
                     </td>                    
                     <td class="tdcontent2" >
-                    <%=request.getAttribute("B19")%>
+                    ${shareHolers[0].percentage}
                     </td>
                     
                 </tr>
-                <tr >
+                 <tr >
                 	<td class="tdname">
-                	<%=request.getAttribute("B20")%>
+                	${shareHolers[1].investType}
                 	</td>
                     <td class="tdname">
-                    <%=request.getAttribute("B21")%>
+                    ${shareHolers[1].name}
                     </td>                    
                     <td class="tdcontent2" >
-                    <%=request.getAttribute("B22")%>
+                    ${shareHolers[1].percentage}
                     </td>
                     
                 </tr>
-                <tr >
+                 <tr >
                 	<td class="tdname">
-                	<%=request.getAttribute("B23")%>
+                	${shareHolers[2].investType}
                 	</td>
                     <td class="tdname">
-                    <%=request.getAttribute("B24")%>
+                    ${shareHolers[2].name}
                     </td>                    
                     <td class="tdcontent2" >
-                    <%=request.getAttribute("B25")%>
+                    ${shareHolers[2].percentage}
                     </td>
                     
                 </tr>
@@ -319,63 +319,63 @@ function sub(){
                     
                 </tr>
                 
-                 <tr >
+                 <tr align="center">
                     <td class="tdname1" >
-                    <%=request.getAttribute("B28")%>
+                      ${peopleInCharge.name}
                     </td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B29")%>
+                      ${peopleInCharge.gender}
                     </td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B30")%>
+                      ${peopleInCharge.birthday}
 					</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B31")%>
+                      ${peopleInCharge.education}
                     </td>                    
                     <td class="tdname1">
-	                    <%=request.getAttribute("B32")%>
+	                    ${peopleInCharge.idCard}
 	                </td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B33")%>
+                      ${peopleInCharge.cellPhone}
                     </td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B34")%>
+                      ${peopleInCharge.mobilePhone}
                     </td>
                     
  				</tr>
  				
-                <tr >
+                <tr align="center">
                 	<td class="tdname1" rowspan="2">单位人员</td>
                     <td class="tdname1" rowspan="2">
-                    <%=request.getAttribute("B35")%>
+                    ${enterpriseInfo.peoleNumber}
                     </td>                    
                     <td class="tdname1">大专以上技术人员</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B36")%>
+                     ${enterpriseInfo.juniorCollege}
 					</td>
                     <td class="tdname1">博士</td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B37")%>
+                     ${enterpriseInfo.doctor}
                     </td>
                     <td class="tdname1">硕士</td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B38")%>
+                     ${enterpriseInfo.master}
                     </td>
                     
                 </tr>
-                <tr >
+                <tr align="center">
                 	
                     <td class="tdname1" >高级职称</td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B39")%>
+                     ${enterpriseInfo.highPosition}
 					</td>
                     <td class="tdname1">中级职称</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B40")%>
+                     ${enterpriseInfo.midPostion}
 					</td>                    
                     <td class="tdname1">留学人员</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B41")%>
+                     ${enterpriseInfo.overseas}
 					</td>                    
  
                 </tr>
@@ -1506,274 +1506,274 @@ function sub(){
                 </tr>
                 <tr>
                  <td class="tdname">
-                       <%=request.getAttribute("E1")%>
+                       ${equipments[0].name}
           			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E2")%>
+                       ${equipments[0].singlePrice}
           			</td> 
                   <td class="tdname">
-                      <%=request.getAttribute("E3")%>
+                       ${equipments[0].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E4")%>
+                      ${equipments[0].totalPrice}
           			</td> 
                  <td class="tdname">
-                     <%=request.getAttribute("E5")%>
+                     ${equipments[0].location}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E6")%>
+                      ${equipments[0].relationship}
           			</td> 
                 </tr>
                 
-                <tr>
-                
+               <tr>
                  <td class="tdname">
-                   <%=request.getAttribute("E7")%>
+                       ${equipments[1].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[1].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[1].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E8")%>
+                      ${equipments[1].totalPrice}
           			</td> 
-                  <td class="tdname">
-                      <%=request.getAttribute("E9")%>
+                 <td class="tdname">
+                     ${equipments[1].location}
           			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E10")%>
+                      ${equipments[1].relationship}
           			</td> 
+                </tr>
+               <tr>
                  <td class="tdname">
-                      <%=request.getAttribute("E11")%>
+                       ${equipments[2].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[2].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[2].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E12")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                       <%=request.getAttribute("E13")%>
-          			</td>    
-                 <td class="tdname">
-                      <%=request.getAttribute("E14")%>
-          			</td> 
-                  <td class="tdname">
-                       <%=request.getAttribute("E15")%>
-          			</td>     
-                 <td class="tdname">
-                     <%=request.getAttribute("E16")%>
+                      ${equipments[2].totalPrice}
           			</td> 
                  <td class="tdname">
-                       <%=request.getAttribute("E17")%>
-          			</td>     
-                 <td class="tdname">
-                      <%=request.getAttribute("E18")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                      <%=request.getAttribute("E19")%>
-          			</td>  
-                 <td class="tdname">
-                      <%=request.getAttribute("E20")%>
-          			</td> 
-                  <td class="tdname">
-                       <%=request.getAttribute("E21")%>
-          			</td>    
-                 <td class="tdname">
-                       <%=request.getAttribute("E22")%>
-          			</td> 
-                 <td class="tdname">
-                      <%=request.getAttribute("E23")%>
-          			</td>     
-                 <td class="tdname">
-                     <%=request.getAttribute("E24")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                    <%=request.getAttribute("E25")%>
+                     ${equipments[2].location}
           			</td>   
                  <td class="tdname">
-                       <%=request.getAttribute("E26")%>
+                      ${equipments[2].relationship}
+          			</td> 
+                </tr>
+                
+                <tr>
+                 <td class="tdname">
+                       ${equipments[3].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[3].singlePrice}
           			</td> 
                   <td class="tdname">
-                      <%=request.getAttribute("E27")%>
+                       ${equipments[3].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E28")%>
+                      ${equipments[3].totalPrice}
           			</td> 
                  <td class="tdname">
-                       <%=request.getAttribute("E29")%>
+                     ${equipments[3].location}
           			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E30")%>
+                      ${equipments[3].relationship}
           			</td> 
                 </tr>
                 
-                <tr>
+               <tr>
                  <td class="tdname">
-                     <%=request.getAttribute("E31")%>
+                       ${equipments[4].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[4].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[4].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E32")%>
-          			</td> 
-                  <td class="tdname">
-                      <%=request.getAttribute("E33")%>
-          			</td>     
-                 <td class="tdname">
-                      <%=request.getAttribute("E34")%>
+                      ${equipments[4].totalPrice}
           			</td> 
                  <td class="tdname">
-                      <%=request.getAttribute("E35")%>
-          			</td>    
-                 <td class="tdname">
-                      <%=request.getAttribute("E36")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                      <%=request.getAttribute("E37")%>
-          			</td>    
-                 <td class="tdname">
-                     <%=request.getAttribute("E38")%>
-          			</td> 
-                  <td class="tdname">
-                      <%=request.getAttribute("E39")%>
-          			</td>     
-                 <td class="tdname">
-                     <%=request.getAttribute("E40")%>
-          			</td> 
-                 <td class="tdname">
-                     <%=request.getAttribute("E41")%>
-          			</td>    
-                 <td class="tdname">
-                     <%=request.getAttribute("E42")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                     <%=request.getAttribute("E43")%>
-          			</td>    
-                 <td class="tdname">
-                      <%=request.getAttribute("E44")%>
-          			</td>    
-                  <td class="tdname">
-                       <%=request.getAttribute("E45")%>
-          			</td>       
-                 <td class="tdname">
-                        <%=request.getAttribute("E46")%>
-          			</td>    
-                 <td class="tdname">
-                       <%=request.getAttribute("E47")%>
-          			</td>       
-                 <td class="tdname">
-                      <%=request.getAttribute("E48")%>
-          			</td>    
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                      <%=request.getAttribute("E49")%>
-          			</td>      
-                 <td class="tdname">
-                        <%=request.getAttribute("E50")%>
-          			</td>    
-                  <td class="tdname">
-                      <%=request.getAttribute("E51")%>
-          			</td>      
-                 <td class="tdname">
-                     <%=request.getAttribute("E52")%>
-          			</td>  
-                 <td class="tdname">
-                      <%=request.getAttribute("E53")%>
-          			</td>      
-                 <td class="tdname">
-                      <%=request.getAttribute("E54")%>
-          			</td>  
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                    <%=request.getAttribute("E55")%>
+                     ${equipments[4].location}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E56")%>
-          			</td>  
-                  <td class="tdname">
-                      <%=request.getAttribute("E57")%>
+                      ${equipments[4].relationship}
+          			</td> 
+                </tr>
+                
+                <tr>
+                 <td class="tdname">
+                       ${equipments[5].name}
           			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E58")%>
-          			</td>  
+                       ${equipments[5].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[5].number}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E59")%>
-          			</td>      
+                      ${equipments[5].totalPrice}
+          			</td> 
                  <td class="tdname">
-                    <%=request.getAttribute("E60")%>
-          			</td>  
+                     ${equipments[5].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[5].relationship}
+          			</td> 
+                </tr>
+                
+               <tr>
+                 <td class="tdname">
+                       ${equipments[6].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[6].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[6].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[6].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[6].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[6].relationship}
+          			</td> 
                 </tr>
                 
                 <tr>
                  <td class="tdname">
-                      <%=request.getAttribute("E61")%>
-          			</td>     
+                       ${equipments[7].name}
+          			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E62")%>
-          			</td>  
+                       ${equipments[7].singlePrice}
+          			</td> 
                   <td class="tdname">
-                     <%=request.getAttribute("E63")%>
-          			</td>     
+                       ${equipments[7].number}
+          			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E64")%>
-          			</td>  
+                      ${equipments[7].totalPrice}
+          			</td> 
                  <td class="tdname">
-                     <%=request.getAttribute("E65")%>
-          			</td>     
+                     ${equipments[7].location}
+          			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E66")%>
-          			</td>  
+                      ${equipments[7].relationship}
+          			</td> 
                 </tr>
                 
                 <tr>
                  <td class="tdname">
-                      <%=request.getAttribute("E67")%>
-          			</td>      
+                       ${equipments[8].name}
+          			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E68")%>
-          			</td>  
+                       ${equipments[8].singlePrice}
+          			</td> 
                   <td class="tdname">
-                      <%=request.getAttribute("E69")%>
-          			</td>      
+                       ${equipments[8].number}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E70")%>
-          			</td>  
+                      ${equipments[8].totalPrice}
+          			</td> 
                  <td class="tdname">
-                     <%=request.getAttribute("E71")%>
-          			</td>     
+                     ${equipments[8].location}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E72")%>
-          			</td>  
+                      ${equipments[8].relationship}
+          			</td> 
+                </tr>
+                
+                 <tr>
+                 <td class="tdname">
+                       ${equipments[9].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[9].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[9].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[9].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[9].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[9].relationship}
+          			</td> 
+                </tr>
+                
+               <tr>
+                 <td class="tdname">
+                       ${equipments[10].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[10].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[10].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[10].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[10].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[10].relationship}
+          			</td> 
                 </tr>
                 
                 <tr>
-                 <td class="tdname">累计：</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E73")%>
-          			</td>  
+                       ${equipments[11].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[11].singlePrice}
+          			</td> 
                   <td class="tdname">
-                     <%=request.getAttribute("E74")%>
-          			</td>     
+                       ${equipments[11].number}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E75")%>
-          			</td>  
+                      ${equipments[11].totalPrice}
+          			</td> 
                  <td class="tdname">
-                      <%=request.getAttribute("E76")%>
-          			</td>     
+                     ${equipments[11].location}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E77")%>
-          			</td>  
+                      ${equipments[11].relationship}
+          			</td> 
+                </tr>
+                
+               <tr>
+                 <td class="tdname">
+                       ${equipments[12].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[12].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[12].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[12].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[12].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[12].relationship}
+          			</td> 
                 </tr>
            </table>
          
@@ -1805,21 +1805,21 @@ function sub(){
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1">
-                      <%=request.getAttribute("name")%>
+                       ${detail.title}
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2">
-                       <%=request.getAttribute("age")%>
+                       ${enterpriseInfo.name}
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">计划文号：</td>
                     <td class="tdcontent1">
-                       <%=request.getAttribute("age")%>
+                                                                                                         还没写！！！
                     </td>
                     <td class="tdname">项目编号：</td>
                     <td class="tdcontent2">
-                       <%=request.getAttribute("company")%>
+                       ${detail.dealNumber}
                     </td>                    
                 </tr>
                 <tr >

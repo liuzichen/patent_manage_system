@@ -17,11 +17,11 @@ public class EnterpriseProject {
 	String type;
 	String field;
 	String contractor;
-	String management;
 	String contack;
 	String contactPhoneNumber;
 	String year;
 	String state;
+	String applyType;
 	Long applyTime;
 
 	int dealNumber;
@@ -101,14 +101,6 @@ public class EnterpriseProject {
 
 	public void setContractor(String contractor) {
 		this.contractor = contractor;
-	}
-
-	public String getManagement() {
-		return management;
-	}
-
-	public void setManagement(String management) {
-		this.management = management;
 	}
 
 	public String getContack() {
@@ -384,6 +376,14 @@ public class EnterpriseProject {
 
 	public void setApplyTime(Long applyTime) {
 		this.applyTime = applyTime;
+	}
+
+	public String getApplyType() {
+		return applyType;
+	}
+
+	public void setApplyType(String applyType) {
+		this.applyType = applyType;
 	}
 	
 }
