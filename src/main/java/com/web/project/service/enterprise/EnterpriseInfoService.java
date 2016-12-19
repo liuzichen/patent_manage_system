@@ -13,7 +13,10 @@ import com.web.project.model.enterprise.Enterprise;
 import com.web.project.model.enterprise.EnterpriseCorporator;
 import com.web.project.model.enterprise.EnterpriseExcuPerson;
 import com.web.project.model.enterprise.EnterpriseFinance;
+import com.web.project.model.enterprise.EnterprisePeopleInCharge;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
+import com.web.project.model.enterprise.EnterpriseProjectEquipment;
+import com.web.project.model.enterprise.EnterpriseShareholder;
 
 /**
  * @author 子晨
@@ -52,5 +55,18 @@ public class EnterpriseInfoService {
 	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int enterpriseId){
 		return enterpriseInfoDao.getEnterpriseCorporators(enterpriseId);
 	}
+	
+	public ArrayList<EnterpriseProjectEquipment> getProjectEquipments(int projectId){
+		return enterpriseInfoDao.getProjectEquipments(projectId);
+	}
+	
+	public ArrayList<EnterpriseShareholder> getShareholders(int enterpriseId){
+		return enterpriseInfoDao.getShareholders(enterpriseId);
+	}
+
+	public EnterprisePeopleInCharge getEnterprisePeopleInCharge(int enterpriseId){
+		return enterpriseInfoDao.getEnterprisePeopleInCharge(enterpriseId);
+	}
+
 
 }

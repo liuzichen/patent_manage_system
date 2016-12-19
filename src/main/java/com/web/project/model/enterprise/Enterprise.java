@@ -41,6 +41,13 @@ public class Enterprise {
 	String supportedByST;
 	String techAward;
 	int roleID;
+	String peoleNumber;
+	String juniorCollege;
+	String doctor;
+	String master;
+	String highPosition;
+	String midPostion;
+	String overseas;
 
 	public int getId() {
 		return id;
@@ -298,4 +305,61 @@ public class Enterprise {
 		this.others = others;
 	}
 
+	public String getPeoleNumber() {
+		return peoleNumber;
+	}
+
+	public void setPeoleNumber(String peoleNumber) {
+		this.peoleNumber = peoleNumber;
+	}
+
+	public String getJuniorCollege() {
+		return juniorCollege;
+	}
+
+	public void setJuniorCollege(String juniorCollege) {
+		this.juniorCollege = juniorCollege;
+	}
+
+	public String getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
+	}
+
+	public String getMaster() {
+		return master;
+	}
+
+	public void setMaster(String master) {
+		this.master = master;
+	}
+
+	public String getHighPosition() {
+		return highPosition;
+	}
+
+	public void setHighPosition(String highPosition) {
+		this.highPosition = highPosition;
+	}
+
+	public String getMidPostion() {
+		return midPostion;
+	}
+
+	public void setMidPostion(String midPostion) {
+		this.midPostion = midPostion;
+	}
+
+	public String getOverseas() {
+		return overseas;
+	}
+
+	public void setOverseas(String overseas) {
+		this.overseas = overseas;
+	}
+
+	
 }

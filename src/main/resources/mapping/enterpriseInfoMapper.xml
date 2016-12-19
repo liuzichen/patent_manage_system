@@ -33,7 +33,14 @@
 		<result column="others" property="others" jdbcType="INTEGER" />
 		<result column="innovationBaseConstruction" property="innovationBaseConstruction" jdbcType="VARCHAR" />
 		<result column="supportedByST" property="supportedByST" jdbcType="VARCHAR" />
-		<result column="techAward" property="techAward" jdbcType="VARCHAR" />	
+		<result column="techAward" property="techAward" jdbcType="VARCHAR" />
+	    <result column="peoleNumber" property="peoleNumber" jdbcType="VARCHAR" />
+		<result column="juniorCollege" property="juniorCollege" jdbcType="VARCHAR" />
+		<result column="doctor" property="doctor" jdbcType="VARCHAR" />
+		<result column="master" property="master" jdbcType="VARCHAR" />
+		<result column="highPosition" property="highPosition" jdbcType="VARCHAR" />
+		<result column="midPostion" property="midPostion" jdbcType="VARCHAR" />
+		<result column="overseas" property="overseas" jdbcType="VARCHAR" />
 		<result column="roleID" property="roleID" jdbcType="INTEGER" />
 	</resultMap>    
 
@@ -116,7 +123,38 @@
 		<result column="companyCode" property="companyCode" jdbcType="VARCHAR" />
 		<result column="peopleInCharge" property="peopleInCharge" jdbcType="VARCHAR" />
 		<result column="phone" property="phone" jdbcType="VARCHAR" />
-	</resultMap>    
+	</resultMap>  
+
+	<resultMap id="enterpriseProjectEquipmentMap" type="com.web.project.model.enterprise.EnterpriseProjectEquipment" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="projectId" property="projectId" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="singlePrice" property="singlePrice" jdbcType="DOUBLE" />
+		<result column="number" property="number" jdbcType="INTEGER" />
+		<result column="totalPrice" property="totalPrice" jdbcType="DOUBLE" />
+		<result column="location" property="location" jdbcType="VARCHAR" />
+		<result column="relationship" property="relationship" jdbcType="VARCHAR" />
+	</resultMap>   
+	
+	<resultMap id="enterpriseShareHolderMap" type="com.web.project.model.enterprise.EnterpriseShareholder" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="EnterpriseID" property="enterpriseId" jdbcType="VARCHAR" />		
+		<result column="investType" property="investType" jdbcType="VARCHAR" />	
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="percentage" property="percentage" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="enterprisePeopleInChargeMap" type="com.web.project.model.enterprise.EnterprisePeopleInCharge" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="EnterpriseID" property="enterpriseId" jdbcType="VARCHAR" />				
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="VARCHAR" />	
+		<result column="education" property="education" jdbcType="VARCHAR" />
+		<result column="idCard" property="idCard" jdbcType="VARCHAR" />
+		<result column="cellPhone" property="cellPhone" jdbcType="VARCHAR" />	
+		<result column="mobilePhone" property="mobilePhone" jdbcType="VARCHAR" />
+	</resultMap>
 	
 	<select id="getEnterpriseInfoById" resultMap="enterpriseMap"> 
 		select * from enterprise
@@ -167,6 +205,29 @@
 		enterpriseId=#{0}
 		</where>
 		limit 2;
+	</select>
+	
+	<select id="getProjectEquipments" resultMap="enterpriseProjectEquipmentMap">
+		select * from enterpriseProjectEquipment
+		<where>
+			projectId=#{projectId}
+		</where>
+		limit 12;
+	</select>
+	
+	<select id="getShareholders" resultMap="enterpriseShareHolderMap">
+		select * from enterpriseShareholder
+		<where>
+			enterpriseId=#{0}
+		</where>
+        order by percentage DESC;
+	</select>
+	
+	<select id="getEnterprisePeopleInCharge" resultMap="enterprisePeopleInChargeMap">
+		select * from enterprisePeopleInCharge
+		<where>
+			enterpriseId=#{0}
+		</where>
 	</select>
 	
 </mapper>

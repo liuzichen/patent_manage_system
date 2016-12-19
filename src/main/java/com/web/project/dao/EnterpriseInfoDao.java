@@ -9,7 +9,10 @@ import com.web.project.model.enterprise.Enterprise;
 import com.web.project.model.enterprise.EnterpriseCorporator;
 import com.web.project.model.enterprise.EnterpriseExcuPerson;
 import com.web.project.model.enterprise.EnterpriseFinance;
+import com.web.project.model.enterprise.EnterprisePeopleInCharge;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
+import com.web.project.model.enterprise.EnterpriseProjectEquipment;
+import com.web.project.model.enterprise.EnterpriseShareholder;
 
 /**
  * @author 子晨
@@ -30,4 +33,10 @@ public interface EnterpriseInfoDao {
 	public ArrayList<EnterpriseExcuPerson> getProjectMembers(int projectId);
 	
 	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int enterpriseId);
+	
+	public ArrayList<EnterpriseProjectEquipment> getProjectEquipments(int projectId);
+	
+	public ArrayList<EnterpriseShareholder> getShareholders(int enterpriseId);
+	
+	public EnterprisePeopleInCharge getEnterprisePeopleInCharge(int enterpriseId);
 }

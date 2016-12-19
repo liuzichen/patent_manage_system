@@ -23,8 +23,11 @@ import com.web.project.model.enterprise.EnterpriseCommonProject;
 import com.web.project.model.enterprise.EnterpriseCorporator;
 import com.web.project.model.enterprise.EnterpriseExcuPerson;
 import com.web.project.model.enterprise.EnterpriseFinance;
+import com.web.project.model.enterprise.EnterprisePeopleInCharge;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
 import com.web.project.model.enterprise.EnterpriseProject;
+import com.web.project.model.enterprise.EnterpriseProjectEquipment;
+import com.web.project.model.enterprise.EnterpriseShareholder;
 import com.web.project.model.expert.ExpertInfo;
 import com.web.project.service.enterprise.EnterpriseInfoService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
@@ -234,6 +237,12 @@ public class ExpertController {
 			for(int i=corporators.size();i<2;i++)
 				corporators.add(new EnterpriseCorporator());
 		}
+		ArrayList<EnterpriseProjectEquipment> equipments = enterpriseInfoService.getProjectEquipments(id);
+		ArrayList<EnterpriseShareholder> shareholders = enterpriseInfoService.getShareholders(enterpriseId);
+		EnterprisePeopleInCharge peopleInCharge = enterpriseInfoService.getEnterprisePeopleInCharge(enterpriseId);
+		model.put("peopleInCharge", peopleInCharge);
+		model.put("shareHolers", shareholders);
+		model.put("equipments", equipments);
 		model.put("corporators", corporators);
 		model.put("members", members);
 		model.put("leader", leader);
