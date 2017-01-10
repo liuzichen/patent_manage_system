@@ -47,8 +47,8 @@ $(function () {
 				{field : 'STATE',title : '状态',width : 160,align:'center'}, 
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
-                    }
+                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/endprojectreview.jsp'>查看详情</a>";  
+                    }//编辑、待修改状态进填表页面
                 }
               
           		]],
@@ -56,7 +56,7 @@ $(function () {
               	  text: "提交项目验收申请",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		window.location.href=""; 
+              		window.location.href="<%=request.getContextPath()%>/jsp/enterprise/endproject.jsp"; 
               	  }
                 },'-',
                 ],

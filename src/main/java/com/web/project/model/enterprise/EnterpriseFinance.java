@@ -12,23 +12,23 @@ public class EnterpriseFinance {
 	int id;
 	int enterpriseid;
 	int year;
-	int totalProduction;
-	int totalSales;
-	int profit;
-	int totalTaxPayment;
-	int corporateTax;
-	int valueAddedTax;
-	int salesTax;
-	int personalIncomeTax;
-	int RDexpense;
-	int totalExpenditure;
-	int foreignExchangeEarnings;
-	int fixedAssert;
-	int totalAssert;
-	int totalLiabilities;
-	int netAssert;
+	double totalProduction;
+	double totalSales;
+	double profit;
+	double totalTaxPayment;
+	double corporateTax;
+	double valueAddedTax;
+	double salesTax;
+	double personalIncomeTax;
+	double RDexpense;
+	double totalExpenditure;
+	double foreignExchangeEarnings;
+	double fixedAssert;
+	double totalAssert;
+	double totalLiabilities;
+	double netAssert;
 
-	public int getId() {
+	public double getId() {
 		return id;
 	}
 
@@ -52,123 +52,123 @@ public class EnterpriseFinance {
 		this.year = year;
 	}
 
-	public int getTotalProduction() {
+	public double getTotalProduction() {
 		return totalProduction;
 	}
 
-	public void setTotalProduction(int totalProduction) {
+	public void setTotalProduction(double totalProduction) {
 		this.totalProduction = totalProduction;
 	}
 
-	public int getTotalSales() {
+	public double getTotalSales() {
 		return totalSales;
 	}
 
-	public void setTotalSales(int totalSales) {
+	public void setTotalSales(double totalSales) {
 		this.totalSales = totalSales;
 	}
 
-	public int getProfit() {
+	public double getProfit() {
 		return profit;
 	}
 
-	public void setProfit(int profit) {
+	public void setProfit(double profit) {
 		this.profit = profit;
 	}
 
-	public int getTotalTaxPayment() {
+	public double getTotalTaxPayment() {
 		return totalTaxPayment;
 	}
 
-	public void setTotalTaxPayment(int totalTaxPayment) {
+	public void setTotalTaxPayment(double totalTaxPayment) {
 		this.totalTaxPayment = totalTaxPayment;
 	}
 
-	public int getCorporateTax() {
+	public double getCorporateTax() {
 		return corporateTax;
 	}
 
-	public void setCorporateTax(int corporateTax) {
+	public void setCorporateTax(double corporateTax) {
 		this.corporateTax = corporateTax;
 	}
 
-	public int getValueAddedTax() {
+	public double getValueAddedTax() {
 		return valueAddedTax;
 	}
 
-	public void setValueAddedTax(int valueAddedTax) {
+	public void setValueAddedTax(double valueAddedTax) {
 		this.valueAddedTax = valueAddedTax;
 	}
 
-	public int getSalesTax() {
+	public double getSalesTax() {
 		return salesTax;
 	}
 
-	public void setSalesTax(int salesTax) {
+	public void setSalesTax(double salesTax) {
 		this.salesTax = salesTax;
 	}
 
-	public int getPersonalIncomeTax() {
+	public double getPersonalIncomeTax() {
 		return personalIncomeTax;
 	}
 
-	public void setPersonalIncomeTax(int personalIncomeTax) {
+	public void setPersonalIncomeTax(double personalIncomeTax) {
 		this.personalIncomeTax = personalIncomeTax;
 	}
 
-	public int getRDexpense() {
+	public double getRDexpense() {
 		return RDexpense;
 	}
 
-	public void setRDexpense(int rDexpense) {
+	public void setRDexpense(double rDexpense) {
 		RDexpense = rDexpense;
 	}
 
-	public int getTotalExpenditure() {
+	public double getTotalExpenditure() {
 		return totalExpenditure;
 	}
 
-	public void setTotalExpenditure(int totalExpenditure) {
+	public void setTotalExpenditure(double totalExpenditure) {
 		this.totalExpenditure = totalExpenditure;
 	}
 
-	public int getForeignExchangeEarnings() {
+	public double getForeignExchangeEarnings() {
 		return foreignExchangeEarnings;
 	}
 
-	public void setForeignExchangeEarnings(int foreignExchangeEarnings) {
+	public void setForeignExchangeEarnings(double foreignExchangeEarnings) {
 		this.foreignExchangeEarnings = foreignExchangeEarnings;
 	}
 
-	public int getFixedAssert() {
+	public double getFixedAssert() {
 		return fixedAssert;
 	}
 
-	public void setFixedAssert(int fixedAssert) {
+	public void setFixedAssert(double fixedAssert) {
 		this.fixedAssert = fixedAssert;
 	}
 
-	public int getTotalAssert() {
+	public double getTotalAssert() {
 		return totalAssert;
 	}
 
-	public void setTotalAssert(int totalAssert) {
+	public void setTotalAssert(double totalAssert) {
 		this.totalAssert = totalAssert;
 	}
 
-	public int getTotalLiabilities() {
+	public double getTotalLiabilities() {
 		return totalLiabilities;
 	}
 
-	public void setTotalLiabilities(int totalLiabilities) {
+	public void setTotalLiabilities(double totalLiabilities) {
 		this.totalLiabilities = totalLiabilities;
 	}
 
-	public int getNetAssert() {
+	public double getNetAssert() {
 		return netAssert;
 	}
 
-	public void setNetAssert(int netAssert) {
+	public void setNetAssert(double netAssert) {
 		this.netAssert = netAssert;
 	}
 	

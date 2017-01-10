@@ -12,7 +12,12 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
-
+$(document).ready(function(){
+	if("${detail.state}"!="待修改"){
+	var ctab = $('#mytabs').tabs('getTab', '评审结果').panel('options').tab;
+	 ctab.hide();
+	}
+});
 
 function check(){
 	if(confirm("导出前须保存表单内容\n\n是否现在导出？")){
@@ -39,44 +44,44 @@ function check(){
        <div class="titlebox"><span class="title">项目执行情况报表（中期）</span></div>
        <form action="" name="Form1" id="Form1">
        <input type="hidden" name="sort" id="sort">
-       <div class="easyui-tabs" style="width:100%">
+       <div class="easyui-tabs" style="width:100%" id="mytabs">
        <div title="报告扉页" style="width:100%">
        	<div style="width:100%">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getJ1()%>
+                     
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2">
-                       <%=ii.getJ3()%>
+                      
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">计划类别：</td>
                     <td class="tdcontent1">
-                       <%=ii.getJ2()%>
+                      
                     </td>
                     <td class="tdname">单位负责人：</td>
                     <td class="tdcontent2">
-                       <%=ii.getJ4()%>
+                      
                     </td>                    
                 </tr>
                 <tr>
                     <td class="tdname">填报人：</td>
                     <td class="tdcontent1">
-                       <%=ii.getJ5()%>
+                     
                     </td>
                     <td class="tdname">填报日期：</td>
                     <td class="tdcontent2">
-                       <%=ii.getJ789()%>
+                      
                     </td>
                 </tr>
                 <tr>
                 	<td class="tdname">联系电话：</td>
                 	<td class="tdcontent2" colspan="3">
-                		 <%=ii.getJ6()%>
+                		
                 	</td>
                 </tr>
              </table>
@@ -91,21 +96,21 @@ function check(){
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK1()%>
+                    
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK2()%>
+                     
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">计划文号：</td>
                     <td class="tdcontent1">
-                       <%=ii.getK3()%>
+                     
                     </td>
                     <td class="tdname">项目编号：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK4()%>
+                    
                     </td>                    
                 </tr>
                 </table>
@@ -117,7 +122,7 @@ function check(){
 	   			 <tr >
                     <td class="tdname">进展情况：</td>                    
                     <td class="tdcontent2" >
-                       <%=ii.getK5()%>
+                     
                     </td>
                     
                 </tr>
@@ -134,33 +139,33 @@ function check(){
                 </tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">单位自筹：</td>
-                	<td style="text-align:center;"> <%=ii.getK6()%></td>
-                	<td style="text-align:center;"> <%=ii.getK7()%></td>
-                	<td style="text-align:center;"> <%=ii.getK8()%></td>
+                	<td style="text-align:center;"> </td>
+                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;"> </td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">市财政拨款：</td>
-                	<td style="text-align:center;"> <%=ii.getK9()%></td>
-                	<td style="text-align:center;"> <%=ii.getK10()%></td>
-                	<td style="text-align:center;"> <%=ii.getK11()%></td>
+                	<td style="text-align:center;"> </td>
+                	<td style="text-align:center;"> </td>
+                	<td style="text-align:center;"> </td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">国家、省财政拨款：</td>
-                	<td style="text-align:center;"> <%=ii.getK12()%></td>
-                	<td style="text-align:center;"> <%=ii.getK13()%></td>
-                	<td style="text-align:center;"><%=ii.getK14()%></td>
+                	<td style="text-align:center;"> </td>
+                	<td style="text-align:center;"> </td>
+                	<td style="text-align:center;"></td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">其他：</td>
-                	<td style="text-align:center;"><%=ii.getK15()%></td>
-                	<td style="text-align:center;"><%=ii.getK16()%></td>
-                	<td style="text-align:center;"><%=ii.getK17()%></td>
+                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;"></td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">合计：</td>
-                	<td style="text-align:center;"><%=ii.getK18()%></td>
-                	<td style="text-align:center;"><%=ii.getK19()%></td>
-                	<td style="text-align:center;"><%=ii.getK20()%></td>
+                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;"></td>
                 <tr>
              </table>
               <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
@@ -170,153 +175,153 @@ function check(){
 	   			 <tr >
                     <td class="tdname">总投入：</td>                    
                     <td class="tdcontent1">
-                       <%=ii.getK21()%>万元
+                       万元
                     </td>
                     <td class="tdname">总产值：</td>
                     <td class="tdcontent2">
-                        <%=ii.getK22()%>万元
+                       万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">产品销售收入：</td>                    
                     <td class="tdcontent1">
-                       <%=ii.getK23()%>万元
+                       万元
                     </td>
                     <td class="tdname">工业增加值：</td>
                     <td class="tdcontent2">
-                        <%=ii.getK24()%>万元
+                        万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">净利润：</td>                    
                     <td class="tdcontent1">
-                       <%=ii.getK25()%>万元
+                       万元
                     </td>
                     <td class="tdname">缴税总额：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK26()%>万元
+                       万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">创汇：</td>                    
                     <td class="tdcontent1">
-                       <%=ii.getK27()%>万美元
+                       万美元
                     </td>
                     <td class="tdname">新增就业人数：</td>
                     <td class="tdcontent2">
-                        <%=ii.getK28()%>人
+                        人
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">专利申请：</td>                    
                     <td class="tdcontent1" colspan="3">
-                       <%=ii.getK29()%>项
+                       项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中发明专利：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK30()%>项
+                      项
                     </td>
                     <td class="tdname">其中PCT专利：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK31()%>项
+                      项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">专利授权：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <%=ii.getK32()%>项
+                     项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中发明专利：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK33()%>项
+                      项
                     </td>
                     <td class="tdname">其中PCT专利：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK34()%>项
+                       项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">软件产品登记：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK35()%>项
+                      项
                     </td>
                     <td class="tdname">软件著作权登记：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK36()%>项
+                      项
                     </td>
                 </tr>
                  <tr >
                     <td class="tdname">发表科技论文：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK37()%>篇
+                      篇
                     </td>
                     <td class="tdname">出版专著：</td>
                     <td class="tdcontent2">
-                      <%=ii.getK38()%>万字
+                     万字
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">形成新产品、新工艺等：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK39()%>项
+                      项
                     </td>
                     <td class="tdname">其中国家重点新产品：</td>
                     <td class="tdcontent2">
-                      <%=ii.getK40()%>项
+                      项
                     </td>
                 </tr>
                  <tr >
                     <td class="tdname">科技奖励：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <%=ii.getK41()%>项
+                     项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中国家级：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK42()%>项
+                     项
                     </td>
                     <td class="tdname">其中省、市级：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK43()%>项
+                       项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">制定标准：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <%=ii.getK44()%>项
+                      项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中国家：</td>                    
                     <td class="tdcontent1">
-                     <%=ii.getK45()%>项
+                     项
                     </td>
                     <td class="tdname">其中行业：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK46()%>项
+                       项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">建立示范基地、中试平台：</td>                    
                     <td class="tdcontent1" colspan="2">
-                      <%=ii.getK47()%>个
+                      个
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">建立实验室、工程技术研究中心：</td>                    
                     <td class="tdcontent1" colspan="2">
-                      <%=ii.getK48()%>个
+                     个
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">市级以上科技人才与创新团队：</td>                    
                     <td class="tdcontent1" colspan="2">
-                      <%=ii.getK49()%>个
+                      个
                     </td>                
                 </tr>
                 <tr>
@@ -329,6 +334,31 @@ function check(){
               </table>
            </div>
        </div>
+       <div title="评审结果" style="width:100%" id="reviewresult">
+       			<div style="width:100%">
+       			<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA"> 
+       			<tr>
+             	 <td  class="tdname" align="center" >评审结果</td>
+            	 <td  align="center" height="100px" colspan="3">
+	            	 <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"></pre>
+	    				 </div>
+		              
+             </td>
+             </tr>           
+       			 <tr>
+             	 <td  class="tdname" align="center" >主要问题评述</td>
+            	 <td  align="center" height="400px" colspan="3">
+	            	 <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"></pre>
+	    				 </div>
+		             
+             </td>
+             </tr>
+               
+             </table>
+       			</div>
+       	</div>
 	</div>
 	 </form>
    </div>   

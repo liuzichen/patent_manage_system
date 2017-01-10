@@ -61,9 +61,7 @@ function sub(){
                     <td class="tdcontent2" >
                       <select id="field"  name="field" style="width:80%">
                       			<option value="">--请选择--</option>               
-								<%List  list= (ArrayList)request.getAttribute("field");
-								for(int i=0;i<list.size();i++){
-									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
+								
 							</select>
                     </td>
                 </tr>

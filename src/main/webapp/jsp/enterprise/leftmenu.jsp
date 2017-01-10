@@ -45,12 +45,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "111",
 			"menuname" : "我的问题咨询",
 			"icon" : "icon-nav",
-			"url" : "https://www.baidu.com/"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/consultoverview.jsp"
 		}, {
 			"menuid" : "113",
 			"menuname" : "咨询问题提交",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/consult.jsp"
 		}]
 	}, {
 		"menuid" : "20",
@@ -60,12 +60,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "企业基本信息维护",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/personalinfo.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "登录密码修改",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/repassword.jsp"
 		} ]
 	}, {
 		"menuid" : "20",
@@ -75,27 +75,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "项目总览",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/projectoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "立项管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/setoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "阶段管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/stageoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "成果管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/productionoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "结题管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/endoverview.jsp"
 		} ]
 	}, {
 		"menuid" : "20",
@@ -105,12 +105,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "项目总览",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/proordoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "项目提交",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/proord.jsp"
 		} ]
 	}, {
 		"menuid" : "20",
@@ -120,17 +120,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "国家科技政策",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/news.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "专项与基金",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/news.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "系统公告",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/news.jsp"
 		} ]
 	}]
 };

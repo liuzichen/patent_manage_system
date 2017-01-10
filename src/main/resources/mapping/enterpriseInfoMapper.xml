@@ -5,7 +5,8 @@
 	<resultMap id="enterpriseMap" type="com.web.project.model.enterprise.Enterprise" >
 		<id column="id" property="id" jdbcType="INTEGER" /> 
 		<result column="name" property="name" jdbcType="VARCHAR" />
-		<result column="companyCode" property="companyCode" jdbcType="INTEGER" />
+		<result column="companyCode" property="companyCode" jdbcType="VARCHAR" />
+		<result column="applyType" property="applyType" jdbcType="VARCHAR" />
 		<result column="legalPerson" property="legalPerson" jdbcType="VARCHAR" />
 		<result column="loginName" property="loginName" jdbcType="VARCHAR" />
 		<result column="passWord" property="passWord" jdbcType="VARCHAR" />
@@ -19,13 +20,14 @@
 		<result column="channel2" property="channel2" jdbcType="VARCHAR" />		
 		<result column="mobilePhone" property="mobilePhone" jdbcType="VARCHAR" />
 		<result column="cellPhone" property="cellPhone" jdbcType="VARCHAR" />
-		<result column="fax" property="fax" jdbcType="VARCHAR" />
+		<result column="fax"  property="fax" jdbcType="VARCHAR" />
 		<result column="email" property="email" jdbcType="VARCHAR" />
 		<result column="bank" property="bank" jdbcType="VARCHAR" />
 		<result column="creditRating" property="creditRating" jdbcType="VARCHAR" />	
 		<result column="account" property="account" jdbcType="VARCHAR" />
 		<result column="property" property="property" jdbcType="VARCHAR" />
 		<result column="size" property="size" jdbcType="VARCHAR" />
+		<result column="productAndService" property="productAndService" jdbcType="VARCHAR" />
 		<result column="patents" property="patents" jdbcType="INTEGER" />
 		<result column="utilityModel" property="utilityModel" jdbcType="INTEGER" />
 		<result column="softwareCopyright" property="softwareCopyright" jdbcType="INTEGER" />
@@ -40,30 +42,29 @@
 		<result column="master" property="master" jdbcType="VARCHAR" />
 		<result column="highPosition" property="highPosition" jdbcType="VARCHAR" />
 		<result column="midPostion" property="midPostion" jdbcType="VARCHAR" />
-		<result column="overseas" property="overseas" jdbcType="VARCHAR" />
+		<result column="overseas" property="overseas" jdbcType="VARCHAR" />		
 		<result column="roleID" property="roleID" jdbcType="INTEGER" />
 	</resultMap>    
 
 	<resultMap id="enterpriseFinanceMap" type="com.web.project.model.enterprise.EnterpriseFinance" >
 		<id column="id" property="id" jdbcType="INTEGER" /> 		
-		<result column="companyCode" property="companyCode" jdbcType="INTEGER" />
 		<result column="enterpriseid" property="enterpriseid" jdbcType="INTEGER" />
 		<result column="year" property="year" jdbcType="INTEGER" />
-		<result column="totalProduction" property="totalProduction" jdbcType="INTEGER" />
-		<result column="totalSales" property="totalSales" jdbcType="INTEGER" />
-		<result column="profit" property="profit" jdbcType="INTEGER" />
-		<result column="totalTaxPayment" property="totalTaxPayment" jdbcType="INTEGER" />
-		<result column="corporateTax" property="corporateTax" jdbcType="INTEGER" />
-		<result column="valueAddedTax" property="valueAddedTax" jdbcType="INTEGER" />
-		<result column="salesTax" property="salesTax" jdbcType="INTEGER" />
-		<result column="personalIncomeTax" property="personalIncomeTax" jdbcType="INTEGER" />
-		<result column="RDexpense" property="RDexpense" jdbcType="INTEGER" />
-		<result column="totalExpenditure" property="totalExpenditure" jdbcType="INTEGER" />
-		<result column="foreignExchangeEarnings" property="foreignExchangeEarnings" jdbcType="INTEGER" />
-		<result column="fixedAssert" property="fixedAssert" jdbcType="INTEGER" />
-		<result column="totalAssert" property="totalAssert" jdbcType="INTEGER" />
-		<result column="totalLiabilities" property="totalLiabilities" jdbcType="INTEGER" />
-		<result column="netAssert" property="netAssert" jdbcType="INTEGER" />
+		<result column="totalProduction" property="totalProduction" jdbcType="DOUBLE" />
+		<result column="totalSales" property="totalSales" jdbcType="DOUBLE" />
+		<result column="profit" property="profit" jdbcType="DOUBLE" />
+		<result column="totalTaxPayment" property="totalTaxPayment" jdbcType="DOUBLE" />
+		<result column="corporateTax" property="corporateTax" jdbcType="DOUBLE" />
+		<result column="valueAddedTax" property="valueAddedTax" jdbcType="DOUBLE" />
+		<result column="salesTax" property="salesTax" jdbcType="DOUBLE" />
+		<result column="personalIncomeTax" property="personalIncomeTax" jdbcType="DOUBLE" />
+		<result column="RDexpense" property="RDexpense" jdbcType="DOUBLE" />
+		<result column="totalExpenditure" property="totalExpenditure" jdbcType="DOUBLE" />
+		<result column="foreignExchangeEarnings" property="foreignExchangeEarnings" jdbcType="DOUBLE" />
+		<result column="fixedAssert" property="fixedAssert" jdbcType="DOUBLE" />
+		<result column="totalAssert" property="totalAssert" jdbcType="DOUBLE" />
+		<result column="totalLiabilities" property="totalLiabilities" jdbcType="DOUBLE" />
+		<result column="netAssert" property="netAssert" jdbcType="DOUBLE" />
 	</resultMap> 
 	   
 	<resultMap id="enterpriseProInvesBudgetMap" type="com.web.project.model.enterprise.EnterpriseProInvestmentBudget" >
@@ -78,6 +79,9 @@
 		<result column="corRDFee" property="corRDFee" jdbcType="DOUBLE" />
 		<result column="peopleTeamFee" property="peopleTeamFee" jdbcType="DOUBLE" />
 		<result column="techPatentResBuyFee" property="techPatentResBuyFee" jdbcType="DOUBLE" />
+		<result column="ResearchCooperationFee" property="ResearchCooperationFee" jdbcType="DOUBLE" />
+		<result column="materialFee" property="materialFee" jdbcType="DOUBLE" />
+		<result column="testLabProcessingFee" property="testLabProcessingFee" jdbcType="DOUBLE" />
 		<result column="fuelPowerCost" property="fuelPowerCost" jdbcType="DOUBLE" />
 		<result column="travelFee" property="travelFee" jdbcType="DOUBLE" />
 		<result column="conferenceFee" property="conferenceFee" jdbcType="DOUBLE" />
@@ -94,12 +98,14 @@
 		<result column="otherFound" property="otherFound" jdbcType="DOUBLE" />
 	</resultMap>    
 
+
 	<resultMap id="enterpriseExcuPersonMap" type="com.web.project.model.enterprise.EnterpriseExcuPerson" >
 		<id column="id" property="id" jdbcType="INTEGER" /> 
 		<result column="projectId" property="projectId" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="gender" property="gender" jdbcType="VARCHAR" />
 		<result column="birthday" property="birthday" jdbcType="DATE" />
+		<result column="age" property="age" jdbcType="VARCHAR" />
 		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="cardType" property="cardType" jdbcType="VARCHAR" />
 		<result column="cardnumber" property="cardnumber" jdbcType="VARCHAR" />
@@ -118,7 +124,7 @@
 	
 	<resultMap id="enterpriseCorporatorMap" type="com.web.project.model.enterprise.EnterpriseCorporator" >
 		<id column="id" property="id" jdbcType="INTEGER" /> 
-		<result column="enterpriseId" property="enterpriseId" jdbcType="INTEGER" />
+		<result column="projectId" property="projectId" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="companyCode" property="companyCode" jdbcType="VARCHAR" />
 		<result column="peopleInCharge" property="peopleInCharge" jdbcType="VARCHAR" />
@@ -202,7 +208,7 @@
 	<select id="getEnterpriseCorporators" resultMap="enterpriseCorporatorMap">
 		select * from enterpriseCorporator
 		<where>
-		enterpriseId=#{0}
+		projectId=#{0}
 		</where>
 		limit 2;
 	</select>
@@ -230,4 +236,157 @@
 		</where>
 	</select>
 	
+	<insert id="insertEnterprisePeopleinCharge">
+		insert into enterprisePeopleInCharge(enterpriseId,name,gender,birthday,education,idCard,cellPhone,mobilePhone)
+		VALUES
+				(#{enterpriseId},#{name},#{gender},#{birthday},#{education},#{idCard},#{cellPhone},#{mobilePhone})		
+	</insert>
+	
+	<delete id="deleteEnterprisePeopleinChargeByEnterpriseId" parameterType="int">
+		delete from enterprisePeopleInCharge
+		<where>
+			enterpriseId=#{id}
+		</where>
+	</delete>
+	
+	<!--<update id="updateEnterpriseInfoById" parameterType="com.web.project.model.enterprise.Enterprise">
+  		update  enterprise(name,companyCode,applyType,legalPerson,registrationTime,registeredCapital,registrationMoney,address,contact,
+  				postcode,mobilePhone,cellPhone,fax,email,bank,creditRating,account,property,size
+  				)
+		VALUES (#{name},#{companyCode},#{applyType},#{legalPerson},#{registrationTime},#{registeredCapital},#{registrationMoney},#{address},#{contact},
+				#{postcode},#{mobilePhone},#{cellPhone},#{fax},#{email},#{bank},#{creditRating},#{property},#{size}
+				)
+				<where>
+					id=#{id}
+				</where>
+	</update>-->
+	
+	<update id="updateEnterpriseInfoById" parameterType="com.web.project.model.enterprise.Enterprise">
+  		update  enterprise
+  		<set>
+  			name=#{name},companyCode=#{companyCode},applyType=#{applyType},legalPerson=#{legalPerson},
+  			registrationTime=#{registrationTime},registeredCapital=#{registeredCapital},registrationMoney=#{registrationMoney},
+  			address=#{address},contact=#{contact},postcode=#{postcode},mobilePhone=#{mobilePhone},cellPhone=#{cellPhone},
+  			fax=#{fax},email=#{email},bank=#{bank},creditRating=#{creditRating},account=#{account},property=#{property},
+  			productAndService=#{productAndService},patents=#{patents},utilityModel=#{utilityModel},softwareCopyright=#{softwareCopyright},
+  			pCTpatent=#{pCTpatent},others=#{others},innovationBaseConstruction=#{innovationBaseConstruction},supportedByST=#{supportedByST},
+  			techAward=#{techAward},peoleNumber=#{peoleNumber},juniorCollege=#{juniorCollege},doctor=#{doctor},master=#{master},
+  			highPosition=#{highPosition},midPostion=#{midPostion},overseas=#{overseas}			
+  		</set>
+		<where>
+					id=#{id}
+		</where>
+	</update>
+	
+	<insert id="insertEnterpriseShareholderByEnterpriseId" parameterType="java.util.List">
+		insert into enterpriseShareholder(EnterpriseID,investType,name,percentage)
+		VALUES 
+		<foreach collection="shareholders" item="item" index="index" separator="," >  
+        	(#{item.enterpriseId},#{item.investType},#{item.name},#{item.percentage})  
+        </foreach> 
+	</insert>
+	
+	<delete id="deleteEnterpriseShareholderByEnterpriseId" parameterType="int">
+		delete from enterpriseShareholder
+		<where>
+			enterpriseId=#{id}
+		</where>
+	</delete>
+	
+	<select id="getEnterprisePeopleInChargeNumber" resultType="int">
+		select count(*) from enterprisePeopleInCharge
+		where enterpriseid=#{id}
+	</select>
+	
+	<insert id="insertEnterpriseFinanceById" parameterType="java.util.List">
+		insert into enterprisefinance(enterpriseid,year,totalProduction,totalSales,profit,totalTaxPayment,
+			corporateTax,valueAddedTax,salesTax,personalIncomeTax,RDexpense,totalExpenditure,
+			foreignExchangeEarnings,fixedAssert,totalAssert,totalLiabilities,netAssert)
+		VALUES 
+		<foreach collection="financemap" item="item" index="index" separator="," >  
+        	(#{item.enterpriseid},#{item.year},#{item.totalProduction},#{item.totalSales},#{item.profit},#{item.totalTaxPayment},
+        	#{item.corporateTax},#{item.valueAddedTax},#{item.salesTax},#{item.personalIncomeTax},#{item.RDexpense},#{item.totalExpenditure},
+        	#{item.foreignExchangeEarnings},#{item.fixedAssert},#{item.totalAssert},#{item.totalLiabilities},#{item.netAssert})  
+        </foreach> 
+	</insert>
+	
+	<delete id="deleteEnterpriseFinanceById" parameterType="int">
+		delete from enterprisefinance
+		<where>
+			enterpriseId=#{id}
+		</where>
+	</delete>
+	
+	<select id="getEnterpriseFinanceNumber" resultType="int">
+		select count(*) from enterprisefinance
+		where enterpriseid=#{id}
+	</select>
+
+	<insert id="insertEnterpriseProjectExuPeople" parameterType="java.util.List">
+		insert into enterpriseprojectpeople(projectId,name,gender,birthday,age,title,cardType,cardnumber,position,degree,
+			qualifications,major,mobilePhone,cellPhone,fax,email,task,company,isLeader)
+		VALUES 
+		<foreach collection="exuPersonMap" item="item" index="index" separator="," >  
+        	(#{item.projectId},#{item.name},#{item.gender},#{item.birthday},#{item.age},#{item.title},#{item.cardType},#{item.cardnumber},#{item.position},#{item.degree},
+        	#{item.qualifications},#{item.major},#{item.mobilePhone},#{item.cellPhone},#{item.fax},#{item.email},#{item.task},#{item.company},#{item.isLeader})  
+        </foreach> 
+	</insert>
+
+	<delete id="deleteEnterpriseExcuPersonById" parameterType="int">
+		delete from enterpriseprojectpeople
+		<where>
+			projectId=#{id}
+		</where>
+	</delete>
+
+	<insert id="insertEnterpriseProInvestBudget" parameterType="java.util.List">
+		insert into enterpriseproinvestmentbudget(projectId,type,total,totalRDequimentFee,equimentBuyFee,equimentMakeFee,softwareMakeFee,
+							corRDFee,peopleTeamFee,techPatentResBuyFee,ResearchCooperationFee,materialFee,testLabProcessingFee,fuelPowerCost,
+							travelFee,conferenceFee,cooperationAndExchangeFee,publicationFee,serviceFee,expertConsultationFee,managementFee,
+							totalSourcesFunds,applyFromGov,selfFounding,otherFinancialAllocations,ownFound,otherFound)
+		VALUES 
+		<foreach collection="budgetMap" item="item" index="index" separator="," >  
+        	(#{item.projectId},#{item.type},#{item.total},#{item.totalRDequimentFee},#{item.equimentBuyFee},#{item.equimentMakeFee},#{item.softwareMakeFee},
+        	#{item.corRDFee},#{item.peopleTeamFee},#{item.techPatentResBuyFee},#{item.ResearchCooperationFee},#{item.materialFee},#{item.testLabProcessingFee},#{item.fuelPowerCost},
+        	#{item.travelFee},#{item.conferenceFee},#{item.cooperationAndExchangeFee},#{item.publicationFee},#{item.serviceFee},#{item.expertConsultationFee},#{item.managementFee},
+        	#{item.totalSourcesFunds},#{item.applyFromGov},#{item.selfFounding},#{item.otherFinancialAllocations},#{item.ownFound},#{item.otherFound})  
+        </foreach> 
+	</insert>
+
+	<delete id="deleteEnterpriseProInvestBudgetByProjectId" parameterType="int">
+		delete from enterpriseproinvestmentbudget
+		<where>
+			projectId=#{id}
+		</where>
+	</delete>
+
+	<insert id="insertEnterpriseEquipment" parameterType="java.util.List">
+		insert into enterpriseprojectequipment(projectId,name,singlePrice,number,totalPrice,location,relationship)
+		VALUES 
+		<foreach collection="equipmentMap" item="item" index="index" separator="," >  
+        	(#{item.projectId},#{item.name},#{item.singlePrice},#{item.number},#{item.totalPrice},#{item.location},#{item.relationship})  
+        </foreach> 
+	</insert>
+
+	<delete id="deleteEnterpriseProjectEquipmentByProjectId" parameterType="int">
+		delete from enterpriseprojectequipment
+		<where>
+			projectId=#{id}
+		</where>
+	</delete>
+	
+	<insert id="insertEnterpriseCorporator" parameterType="java.util.List">
+		insert into enterpriseCorporator(projectId,name,companyCode,peopleInCharge,phone)
+		VALUES
+		<foreach collection="corporatorMap" item="item" index="index" separator="," >  
+        	(#{item.projectId},#{item.name},#{item.companyCode},#{item.peopleInCharge},#{item.phone})  
+        </foreach> 
+	</insert>
+	
+	<delete id="deleteEnterpriseCorporators" parameterType="int">
+		delete from enterpriseCorporator
+		<where>
+			projectId=#{id}
+		</where>
+	</delete>
 </mapper>

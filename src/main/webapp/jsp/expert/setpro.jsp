@@ -74,7 +74,6 @@ function sub(){
 </head>
 
 <body>
-<%String a="      11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"; %>
  <div class="commonPage">
  
      <div class="topnav"  >
@@ -119,7 +118,7 @@ function sub(){
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2">
-                     ${detail.enterpriseId}
+                      ${enterpriseInfo.name}
                     </td>                    
                 </tr>
                 <tr >
@@ -129,13 +128,13 @@ function sub(){
                     </td>
                     <td class="tdname">单位负责人：</td>
                     <td class="tdcontent2">
-                      ${detail.peopleInCharge}
+                      ${detail.contractor}
                     </td>                    
                 </tr>
                 <tr>
                     <td class="tdname">填报人：</td>
                     <td class="tdcontent1">
-                       ${detail.contack}
+                       ${detail.contact}
                     </td>
                      <td class="tdname">联系电话：</td>
                     <td class="tdcontent1">
@@ -146,10 +145,10 @@ function sub(){
                 <tr>
                  <td class="tdname">填报日期：</td>
                     <td class="tdcontent1">
-                       ${detail.applyTime}
+                       ${applyDate}
                     </td>
                     <td class="tdname" colspan="2" >
-                   	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
+                   	 <div align="center" ><a href="<%=request.getContextPath()%>/expert/enterpriseProjectSetProDownload?id=${detail.id}" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
                 </tr>
              </table>
              </div>
@@ -175,7 +174,7 @@ function sub(){
                 <tr >
                     <td class="tdname">申报渠道：</td>
                     <td class="tdcontent1">
-                      ${detail.applyType}
+                      ${enterpriseInfo.applyType}
                     </td>
                     <td class="tdname">所在地区：</td>
                     <td class="tdcontent2">
@@ -400,10 +399,10 @@ function sub(){
 					</div>
 				</th>
                     <th class="tdname2"> 前 年:&nbsp;&nbsp;
-                    
+                    ${yearBeforeLastYear.year}
                     </th>
                     <th class="tdname2">上 一 年度:&nbsp;&nbsp;
-                  
+                    ${lastyear.year}
                 </tr>
                 
                 
@@ -579,7 +578,7 @@ function sub(){
 	   			 <tr>
 	   			 <td class="tdname3" >主营业务、主要产品与服务</td>                    
                     <td class="tdname" colspan="5">
-                   ${enterpriseInfo.registrationMoney}
+                   ${enterpriseInfo.productAndService}
                     </td> 
                  </tr> 
                  
@@ -780,7 +779,7 @@ function sub(){
                  </td>
          
                  <td class="tdname">
-                 ${members[0].birthday}
+                 ${members[0].age}
                  </td>
                  
                  <td class="tdname">
@@ -808,7 +807,7 @@ function sub(){
                  </td>
          
                  <td class="tdname">
-                 ${members[1].birthday}
+                 ${members[1].age}
                  </td>
                  
                  <td class="tdname">
@@ -836,7 +835,7 @@ function sub(){
                  </td>
          
                  <td class="tdname">
-                 ${members[2].birthday}
+                 ${members[2].age}
                  </td>
                  
                  <td class="tdname">
@@ -864,7 +863,7 @@ function sub(){
                  </td>
          
                  <td class="tdname">
-                 ${members[3].birthday}
+                 ${members[3].age}
                  </td>
                  
                  <td class="tdname">
@@ -892,7 +891,7 @@ function sub(){
                  </td>
          
                  <td class="tdname">
-                 ${members[4].birthday}
+                 ${members[4].age}
                  </td>
                  
                  <td class="tdname">
@@ -1261,7 +1260,7 @@ function sub(){
                       ${fromGov.techPatentResBuyFee}
           			</td>
                    <td class="tdname">
-                      ${fromGov.techPatentResBuyFee}
+                      ${fromSelf.techPatentResBuyFee}
           			</td>           
                 </tr>
 	        
@@ -1377,7 +1376,7 @@ function sub(){
                         ${fromGov.serviceFee}
           			</td>
                    <td class="tdname">
-                         ${fromGov.serviceFee}
+                         ${fromSelf.serviceFee}
           			</td>          
                 </tr>
                 
@@ -1390,9 +1389,9 @@ function sub(){
                         ${fromGov.expertConsultationFee}
           			</td>
                    <td class="tdname">
-                         ${fromGov.expertConsultationFee}
+                         ${fromSelf.expertConsultationFee}
           			</td>                  
-                </tr>
+                </tr>            
                 
                  <tr>
                     <td class="tdname">12、管理费</td>
@@ -1403,7 +1402,7 @@ function sub(){
                         ${fromGov.managementFee}
           			</td>
                    <td class="tdname">
-                         ${fromGov.managementFee}
+                         ${fromSelf.managementFee}
           			</td>             
                 </tr>
                 
@@ -1417,7 +1416,7 @@ function sub(){
                         ${fromGov.totalSourcesFunds}
           			</td>
                    <td class="tdname">
-                         ${fromGov.totalSourcesFunds}
+                         ${fromSelf.totalSourcesFunds}
           			</td>                   
                 </tr>
                 
@@ -1430,7 +1429,7 @@ function sub(){
                         ${fromGov.applyFromGov}
           			</td>
                    <td class="tdname">
-                         ${fromGov.applyFromGov}
+                         ${fromSelf.applyFromGov}
           			</td>              
                 </tr>
                  <tr>
@@ -1442,7 +1441,7 @@ function sub(){
                         ${fromGov.selfFounding}
           			</td>
                    <td class="tdname">
-                         ${fromGov.selfFounding}
+                         ${fromSelf.selfFounding}
           			</td>                
                 </tr>
                 
@@ -1455,7 +1454,7 @@ function sub(){
                         ${fromGov.otherFinancialAllocations}
           			</td>
                    <td class="tdname">
-                         ${fromGov.otherFinancialAllocations}
+                         ${fromSelf.otherFinancialAllocations}
           			</td>             
                 </tr>
                 
@@ -1469,7 +1468,7 @@ function sub(){
                         ${fromGov.ownFound}
           			</td>
                    <td class="tdname">
-                         ${fromGov.ownFound}
+                         ${fromSelf.ownFound}
           			</td>               
                 </tr>
                  <tr>
@@ -1481,7 +1480,7 @@ function sub(){
                         ${fromGov.otherFound}
           			</td>
                    <td class="tdname">
-                         ${fromGov.otherFound}
+                         ${fromSelf.otherFound}
           			</td>              
                 </tr>  
            
@@ -1790,7 +1789,7 @@ function sub(){
              <tr>             
             	 <td  align="center" height="400px" >
 	            	 <div class="tdcontent4">
-		               <%=request.getAttribute("F1")%>
+		                ${detail.fujianDescription}
           			
 		             </div>
 		         </td>
