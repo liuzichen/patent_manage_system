@@ -23,4 +23,14 @@ public interface EnterpriseProjectDao {
 	public EnterpriseCommonProject getEnterpriseCommonProjectById(int id);
 	
 	public void updateEnterpriseCommonProject(int id,boolean isEvaluated,String evaluation,Long time);
+	
+	public void insertEnterpriseProject(EnterpriseProject project);
+	
+	public EnterpriseProject getUnSubmitEnterpriseProjectById(int id);
+	
+	public int getUnSubmitEnterpriseProjectNumber(int enterpriseId);
+	
+	public EnterpriseProject getUnSubmitEnterpriseProject(int id);
+	
+	public void  updateEnterpriseProjectById(EnterpriseProject project);
 }

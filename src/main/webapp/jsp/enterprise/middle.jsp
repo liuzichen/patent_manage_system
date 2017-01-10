@@ -13,6 +13,10 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	if("${detail.state}"!="待修改"){
+		var ctab = $('#mytabs').tabs('getTab', '评审结果').panel('options').tab;
+		 ctab.hide();
+	}
 	var j5="<%=ii.getJ5() %>";
 	var j6="<%=ii.getJ6() %>";
 	var j789="<%=ii.getJ789() %>";
@@ -127,7 +131,7 @@ function sub(){
        <div class="titlebox"><span class="title">项目执行情况报表（中期）</span></div>
        <form action="" name="Form1" id="Form1">
        <input type="hidden" name="sort" id="sort">
-       <div class="easyui-tabs" style="width:100%">
+       <div class="easyui-tabs" style="width:100%" id="mytabs">
        <div title="报告扉页" style="width:100%">
        	<div style="width:100%">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
@@ -424,6 +428,31 @@ function sub(){
               </table>
            </div>
        </div>
+       <div title="评审结果" style="width:100%" id="reviewresult">
+       			<div style="width:100%">
+       			<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA"> 
+       			<tr>
+             	 <td  class="tdname" align="center" >评审结果</td>
+            	 <td  align="center" height="100px" colspan="3">
+	            	 <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"></pre>
+	    				 </div>
+		              
+             </td>
+             </tr>           
+       			 <tr>
+             	 <td  class="tdname" align="center" >主要问题评述</td>
+            	 <td  align="center" height="400px" colspan="3">
+	            	 <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"></pre>
+	    				 </div>
+		             
+             </td>
+             </tr>
+               
+             </table>
+       			</div>
+       	</div>
 	</div>
 	 </form>
    </div>   

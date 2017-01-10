@@ -17,11 +17,10 @@ public class EnterpriseProject {
 	String type;
 	String field;
 	String contractor;
-	String contack;
+	String contact;
 	String contactPhoneNumber;
 	String year;
 	String state;
-	String applyType;
 	Long applyTime;
 
 	int dealNumber;
@@ -29,7 +28,7 @@ public class EnterpriseProject {
 	String competentDepartment;
 	String peopleInCharge;
 	String industryField;
-	int subjectCode;
+	String subjectCode;
 	String projectOrigin;
 	String techOrigin;
 	String developType;
@@ -53,7 +52,10 @@ public class EnterpriseProject {
 	int numberToserve;
 	String servicetypeorplatform;
 	String planServicetypeorplatform;
-
+	byte [] fujian;
+	String fujianName;
+	String fujianDescription;
+    boolean isSubmit;
 
 	public int getId() {
 		return id;
@@ -103,12 +105,13 @@ public class EnterpriseProject {
 		this.contractor = contractor;
 	}
 
-	public String getContack() {
-		return contack;
+	
+	public String getContact() {
+		return contact;
 	}
 
-	public void setContack(String contack) {
-		this.contack = contack;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	public String getYear() {
@@ -145,11 +148,11 @@ public class EnterpriseProject {
 		this.industryField = industryField;
 	}
 
-	public int getSubjectCode() {
+	public String getSubjectCode() {
 		return subjectCode;
 	}
 
-	public void setSubjectCode(int subjectCode) {
+	public void setSubjectCode(String subjectCode) {
 		this.subjectCode = subjectCode;
 	}
 
@@ -378,12 +381,36 @@ public class EnterpriseProject {
 		this.applyTime = applyTime;
 	}
 
-	public String getApplyType() {
-		return applyType;
+	public byte[] getFujian() {
+		return fujian;
 	}
 
-	public void setApplyType(String applyType) {
-		this.applyType = applyType;
+	public void setFujian(byte[] fujian) {
+		this.fujian = fujian;
+	}
+
+	public String getFujianName() {
+		return fujianName;
+	}
+
+	public void setFujianName(String fujianName) {
+		this.fujianName = fujianName;
+	}
+
+	public String getFujianDescription() {
+		return fujianDescription;
+	}
+
+	public void setFujianDescription(String fujianDescription) {
+		this.fujianDescription = fujianDescription;
+	}
+
+	public boolean isSubmit() {
+		return isSubmit;
+	}
+
+	public void setSubmit(boolean isSubmit) {
+		this.isSubmit = isSubmit;
 	}
 	
 }

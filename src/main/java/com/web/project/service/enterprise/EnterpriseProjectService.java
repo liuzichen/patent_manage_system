@@ -41,4 +41,25 @@ public class EnterpriseProjectService {
 	public void updateEnterpriseCommonProject(int id,boolean isEvaluated,String evaluation,Long time){
 		enterpriseProjectDao.updateEnterpriseCommonProject(id, isEvaluated, evaluation, time);
 	}
+	
+	public void insertEnterpriseProject(EnterpriseProject project){
+		enterpriseProjectDao.insertEnterpriseProject(project);
+	}
+	
+	public EnterpriseProject getUnSubmitEnterpriseProjectById(int id){
+		return enterpriseProjectDao.getUnSubmitEnterpriseProjectById(id);
+	}
+	
+	public int getUnSubmitEnterpriseProjectNumber(int enterpriseId){
+		return enterpriseProjectDao.getUnSubmitEnterpriseProjectNumber(enterpriseId);
+	}
+	
+	public EnterpriseProject getUnSubmitEnterpriseProject(int id){
+		return enterpriseProjectDao.getUnSubmitEnterpriseProject(id);
+	}
+	
+	public void  updateEnterpriseProjectById(EnterpriseProject project){
+		enterpriseProjectDao.updateEnterpriseProjectById(project);
+	}
+	
 }

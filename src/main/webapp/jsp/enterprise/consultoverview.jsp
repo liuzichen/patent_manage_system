@@ -47,7 +47,7 @@ $(function () {
 				
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/consultview.jsp' >查看详情</a>";  
                     }
                 }
               

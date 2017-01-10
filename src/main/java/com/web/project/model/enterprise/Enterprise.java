@@ -11,7 +11,8 @@ public class Enterprise {
 	
 	int id;
 	String name;
-	int companyCode;
+	String companyCode;
+	String applyType;
 	String legalPerson;
 	String loginName;
 	String passWord;
@@ -32,6 +33,7 @@ public class Enterprise {
 	String account;
 	String property;
 	String size;
+	String productAndService;
 	int patents;
 	int utilityModel;
 	int softwareCopyright;
@@ -65,12 +67,20 @@ public class Enterprise {
 		this.name = name;
 	}
 
-	public int getCompanyCode() {
+	public String getCompanyCode() {
 		return companyCode;
 	}
 
-	public void setCompanyCode(int companyCode) {
+	public void setCompanyCode(String companyCode) {
 		this.companyCode = companyCode;
+	}
+
+	public String getApplyType() {
+		return applyType;
+	}
+
+	public void setApplyType(String applyType) {
+		this.applyType = applyType;
 	}
 
 	public String getLegalPerson() {
@@ -359,6 +369,14 @@ public class Enterprise {
 
 	public void setOverseas(String overseas) {
 		this.overseas = overseas;
+	}
+
+	public String getProductAndService() {
+		return productAndService;
+	}
+
+	public void setProductAndService(String productAndService) {
+		this.productAndService = productAndService;
 	}
 
 	

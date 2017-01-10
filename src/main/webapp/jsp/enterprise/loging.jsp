@@ -161,7 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     国家科技政策</div>
                                 <div class="titlebox">
                                     <ul>
-                                 
+                                   
                                     </ul>
                                 </div>
                                 <!--国家科技政策End-->
@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                      系统公告</div>
                                 <div class="titlebox">
                                     <ul>
-                                 	  
+                                 	
                                     </ul>
                                 </div>
                                 <!--系统公告 End-->

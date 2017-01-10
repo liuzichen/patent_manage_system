@@ -3,7 +3,9 @@
  */
 package com.web.project.service.enterprise;
 
+import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,8 +54,8 @@ public class EnterpriseInfoService {
 		return enterpriseInfoDao.getProjectMembers(projectId);
 	}
 	
-	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int enterpriseId){
-		return enterpriseInfoDao.getEnterpriseCorporators(enterpriseId);
+	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int projectId){
+		return enterpriseInfoDao.getEnterpriseCorporators(projectId);
 	}
 	
 	public ArrayList<EnterpriseProjectEquipment> getProjectEquipments(int projectId){
@@ -68,5 +70,73 @@ public class EnterpriseInfoService {
 		return enterpriseInfoDao.getEnterprisePeopleInCharge(enterpriseId);
 	}
 
+	public void updateEnterpriseInfoById(Enterprise enterprise){
+		enterpriseInfoDao.updateEnterpriseInfoById(enterprise);
+	}
+	
+	public void insertEnterpriseShareholderByEnterpriseId(HashMap<String, List<EnterpriseShareholder>> enterpriseShareholder){
+		enterpriseInfoDao.insertEnterpriseShareholderByEnterpriseId(enterpriseShareholder);
+	}
+	
+	public void deleteEnterpriseShareholderByEnterpriseId(int id){
+		enterpriseInfoDao.deleteEnterpriseShareholderByEnterpriseId(id);
+	}
+	
+	public void insertEnterprisePeopleinCharge(EnterprisePeopleInCharge enterprisePeopleInCharge){
+		enterpriseInfoDao.insertEnterprisePeopleinCharge(enterprisePeopleInCharge);
+	}
+	
+	public void deleteEnterprisePeopleinChargeByEnterpriseId(int id){
+		enterpriseInfoDao.deleteEnterprisePeopleinChargeByEnterpriseId(id);
+	} 
+
+	public int getEnterprisePeopleInChargeNumber(int id){
+		return enterpriseInfoDao.getEnterprisePeopleInChargeNumber(id);
+	}
+	
+	public void insertEnterpriseFinanceById(HashMap<String, List<EnterpriseFinance>> enterpriseFinance){
+		enterpriseInfoDao.insertEnterpriseFinanceById(enterpriseFinance);
+	}
+	
+	public int getEnterpriseFinanceNumber(int id){
+		return enterpriseInfoDao.getEnterpriseFinanceNumber(id);
+	}
+	
+	public void deleteEnterpriseFinanceById(int id){
+		enterpriseInfoDao.deleteEnterpriseFinanceById(id);
+	}
+	
+	public void insertEnterpriseProjectExuPeople(HashMap<String, List<EnterpriseExcuPerson>> exuPersonMap){
+		enterpriseInfoDao.insertEnterpriseProjectExuPeople(exuPersonMap);
+	}
+	
+	public void deleteEnterpriseExcuPersonById(int id){
+		enterpriseInfoDao.deleteEnterpriseExcuPersonById(id);
+	}
+	
+	public void insertEnterpriseProBudget(HashMap<String, List<EnterpriseProInvestmentBudget>> budgetMap){
+		enterpriseInfoDao.insertEnterpriseProInvestBudget(budgetMap);
+	}
+	
+	public void deleteEnterpriseProInvestBudgetByProjectId(int id){
+		enterpriseInfoDao.deleteEnterpriseProInvestBudgetByProjectId(id);
+	}
+
+	public void insertEnterpriseEquipment(HashMap<String, List<EnterpriseProjectEquipment>> equipmentMap){
+		enterpriseInfoDao.insertEnterpriseEquipment(equipmentMap);
+	}
+	
+	public void deleteEnterpriseProjectEquipmentByProjectId(int id){
+		enterpriseInfoDao.deleteEnterpriseProjectEquipmentByProjectId(id);
+	}
+	
+	public void insertEnterpriseCorporator(HashMap<String, List<EnterpriseCorporator>> corporatorMap){
+		enterpriseInfoDao.insertEnterpriseCorporator(corporatorMap);
+	}
+	
+	public void deleteEnterpriseCorporators(int id){
+		enterpriseInfoDao.deleteEnterpriseCorporators(id);
+	}
+	
 
 }

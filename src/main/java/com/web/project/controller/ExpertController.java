@@ -1,5 +1,9 @@
 package com.web.project.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,16 +45,16 @@ import com.web.project.vo.QuestionVo;
 public class ExpertController {
 
 	@Autowired
-	ExpertInfoService expertInfoService;
+	private ExpertInfoService expertInfoService;
 
 	@Autowired
-	QuestionService questionService;
+	private QuestionService questionService;
 
 	@Autowired
-	EnterpriseProjectService enterpriseProjectService;
+	private EnterpriseProjectService enterpriseProjectService;
 	
 	@Autowired
-	EnterpriseInfoService enterpriseInfoService;
+	private EnterpriseInfoService enterpriseInfoService;
 
 	/**
 	 * 获取专家列表
@@ -219,6 +223,9 @@ public class ExpertController {
 		EnterpriseProject enterpriseProject = enterpriseProjectService
 				.getEnterpriseProjectDetail(id);
 		int enterpriseId = enterpriseProject.getEnterpriseId();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String applyDate = sdf.format(enterpriseProject.getApplyTime()*1000);
+		model.put("applyDate", applyDate);
 		Date date = new Date();
 		int year=date.getYear()+1900;		
 		Enterprise enterprise = enterpriseInfoService.getEnterpriseInfoById(enterpriseId);
@@ -232,7 +239,7 @@ public class ExpertController {
 			for(int i=members.size();i<5;i++)
 				members.add(new EnterpriseExcuPerson());
 		}
-		ArrayList<EnterpriseCorporator> corporators = enterpriseInfoService.getEnterpriseCorporators(enterpriseId);
+		ArrayList<EnterpriseCorporator> corporators = enterpriseInfoService.getEnterpriseCorporators(id);
 		if(corporators.size()<2){
 			for(int i=corporators.size();i<2;i++)
 				corporators.add(new EnterpriseCorporator());
@@ -240,6 +247,7 @@ public class ExpertController {
 		ArrayList<EnterpriseProjectEquipment> equipments = enterpriseInfoService.getProjectEquipments(id);
 		ArrayList<EnterpriseShareholder> shareholders = enterpriseInfoService.getShareholders(enterpriseId);
 		EnterprisePeopleInCharge peopleInCharge = enterpriseInfoService.getEnterprisePeopleInCharge(enterpriseId);
+		
 		model.put("peopleInCharge", peopleInCharge);
 		model.put("shareHolers", shareholders);
 		model.put("equipments", equipments);
@@ -275,6 +283,51 @@ public class ExpertController {
 		return page;
 	}
 
+	/**
+	 * 专家下载企业科技项目立项评审阶段附件
+	 * 
+	 * 
+	 */
+	@RequestMapping("enterpriseProjectSetProDownload")
+	@ResponseBody
+	public String SetProDownload(@RequestParam(value = "id") final int id){
+		EnterpriseProject enterpriseProject = enterpriseProjectService
+				.getEnterpriseProjectDetail(id);
+		byte [] fujian= enterpriseProject.getFujian();
+		BufferedOutputStream bos = null;  
+        FileOutputStream fos = null;  
+        File file = null;  
+        String filePath ="C:"+File.separator+"Users"+File.separator+"子晨"+File.separator+"Desktop";
+        try {  
+            File dir = new File(filePath);  
+            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
+                dir.mkdirs();  
+            }  
+            file = new File(filePath+File.separator+File.separator+enterpriseProject.getFujianName());  
+            fos = new FileOutputStream(file);  
+            bos = new BufferedOutputStream(fos);  
+            bos.write(fujian);  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        } finally {  
+            if (bos != null) {  
+                try {  
+                    bos.close();  
+                } catch (IOException e1) {  
+                    e1.printStackTrace();  
+                }  
+            }  
+            if (fos != null) {  
+                try {  
+                    fos.close();  
+                } catch (IOException e1) {  
+                    e1.printStackTrace();  
+                }  
+            }  
+        } 
+		return null;
+	}
+	
 	/**
 	 * 根据状态获得相应的企业一般项目列表
 	 */

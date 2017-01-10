@@ -14,6 +14,7 @@ public class EnterpriseExcuPerson {
 	String name;
 	String gender;
 	String birthday;
+	String age;
 	String title;
 	String cardType;
 	String cardnumber;
@@ -67,6 +68,14 @@ public class EnterpriseExcuPerson {
 
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 	public String getTitle() {

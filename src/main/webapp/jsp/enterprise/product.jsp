@@ -63,9 +63,7 @@ function sub(){
 	     	 		<td class="tdname">成果类别：</td>
 	     	 		<td class="tdcontent1"><select id="sort"  name="sort" class="mydatebox">
 								<option value="">--请选择--</option> 
-								<%List  list= (ArrayList)request.getAttribute("field");
-								for(int i=0;i<list.size();i++){
-									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
+								
 							</select></td>	     	 		
 	     	 		<td class="tdname">授权或发表时间：</td>
 	     	 		<td class="tdcontent2"> <input class="easyui-datebox mydatebox" type="text" name="time" id="time" editable="false" panelHeight="260" panelWidth="200" ></td>

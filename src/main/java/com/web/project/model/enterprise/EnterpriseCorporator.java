@@ -9,7 +9,7 @@ package com.web.project.model.enterprise;
  */
 public class EnterpriseCorporator {
 	int id;
-	int enterpriseId;
+	int projectId;
 	String name;
 	String companyCode;
 	String peopleInCharge;
@@ -23,12 +23,12 @@ public class EnterpriseCorporator {
 		this.id = id;
 	}
 
-	public int getEnterpriseId() {
-		return enterpriseId;
+	public int getProjectId() {
+		return projectId;
 	}
 
-	public void setEnterpriseId(int enterpriseId) {
-		this.enterpriseId = enterpriseId;
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
 	}
 
 	public String getName() {

@@ -4,6 +4,8 @@
 package com.web.project.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import com.web.project.model.enterprise.Enterprise;
 import com.web.project.model.enterprise.EnterpriseCorporator;
@@ -32,11 +34,45 @@ public interface EnterpriseInfoDao {
 	
 	public ArrayList<EnterpriseExcuPerson> getProjectMembers(int projectId);
 	
-	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int enterpriseId);
+	public ArrayList<EnterpriseCorporator> getEnterpriseCorporators(int projectId);
 	
 	public ArrayList<EnterpriseProjectEquipment> getProjectEquipments(int projectId);
 	
 	public ArrayList<EnterpriseShareholder> getShareholders(int enterpriseId);
 	
 	public EnterprisePeopleInCharge getEnterprisePeopleInCharge(int enterpriseId);
+	
+	public void updateEnterpriseInfoById(Enterprise enterprise);
+	
+	public void insertEnterpriseShareholderByEnterpriseId(HashMap<String, List<EnterpriseShareholder>> enterpriseShareholder); 
+	
+	public void deleteEnterpriseShareholderByEnterpriseId(int id); 
+	
+	public void insertEnterprisePeopleinCharge(EnterprisePeopleInCharge enterprisePeopleInCharge);
+	
+	public void deleteEnterprisePeopleinChargeByEnterpriseId(int id);
+	
+	public int getEnterprisePeopleInChargeNumber(int id);
+	
+	public void insertEnterpriseFinanceById(HashMap<String, List<EnterpriseFinance>> enterpriseFinance);
+	
+	public int getEnterpriseFinanceNumber(int id);
+	
+	public void deleteEnterpriseFinanceById(int id);
+	
+	public void insertEnterpriseProjectExuPeople(HashMap<String, List<EnterpriseExcuPerson>> exuPersonMap);
+	
+	public void deleteEnterpriseExcuPersonById(int id);
+	
+	public void insertEnterpriseProInvestBudget(HashMap<String, List<EnterpriseProInvestmentBudget>> budgetMap);
+	
+	public void deleteEnterpriseProInvestBudgetByProjectId(int id);
+	
+	public void insertEnterpriseEquipment(HashMap<String, List<EnterpriseProjectEquipment>> equipmentMap);
+	
+	public void deleteEnterpriseProjectEquipmentByProjectId(int id);
+	
+	public void insertEnterpriseCorporator(HashMap<String, List<EnterpriseCorporator>> corporatorMap);
+	
+	public void deleteEnterpriseCorporators(int id);
 }
