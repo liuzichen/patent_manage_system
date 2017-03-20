@@ -12,9 +12,7 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
-
 </script>
-<%String a="      111111111111111111111111111111111111111111111111\n\n\n\n\n11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"; %>
 </head>
 <body>
 <div >
@@ -31,27 +29,27 @@
 	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
 	     	 		<td class="tdname">标题：</td>
-	     	 		<td class="tdcontent1" colspan="3"></td>
+	     	 		<td class="tdcontent1" colspan="3">${detail.title }</td>
 	     	 		
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">发布团队：</td>
-	     	 		<td class="tdcontent1"></td>
+	     	 		<td class="tdcontent1">${detail.team }</td>
 	     	 		<td class="tdname">合作领域：</td>
-	     	 		<td class="tdcontent2"></td>
+	     	 		<td class="tdcontent2">${detail.field }</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">联系人：</td>
-	     	 		<td class="tdcontent1"></td>
+	     	 		<td class="tdcontent1">${detail.contact }</td>
 	     	 		<td class="tdname">联系电话：</td>
-	     	 		<td class="tdcontent2"></td>
+	     	 		<td class="tdcontent2">${detail.phone }</td>
 	     	 	</tr>
 	     	 	<tr>             
              	 <td  class="tdname"  align="center" >团队简介</td>
             	 <td    colspan="3">
 	            	 <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"><%=a %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.teamIntro }</pre>
 	    				 </div>
 		             </div>
              </tr>	     	 	
@@ -60,7 +58,7 @@
             	 <td    colspan="3">
 	            	 <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"><%=a %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.detail }</pre>
 	    				 </div>
 		             </div>
              </tr>

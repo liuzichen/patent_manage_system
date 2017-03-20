@@ -47,8 +47,8 @@ $(function () {
 				{field : 'STATE',title : '状态',width : 160,align:'center'}, 
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
-                    }
+                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/setprojectview.jsp'>查看详情</a>";  
+                    }//根据状态不同不一样，待修改状态和编辑状态进setproject。jsp
                 }
               
           		]],
@@ -56,7 +56,7 @@ $(function () {
               	  text: "申报科技项目",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		window.location.href=""; 
+              		window.location.href="<%=request.getContextPath()%>/jsp/enterprise/setproject.jsp"; 
               	  }
                 },'-',
                 ],

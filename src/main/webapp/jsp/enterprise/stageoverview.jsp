@@ -47,13 +47,13 @@ $(function () {
 				{field : 'TIME',title : '提交时间',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' >查看详情</a>";  
-                    }
+                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/halfyearview.jsp' >查看详情</a>";  
+                    }//半年halfyearview，全年wholeyearview，中期middleview，编辑和待修改状态进对应的填表页面
                 }
               
           		]],
           		toolbar: [ {
-            		text: '<select style="width:230px;" id="sort"  name="sort"><option value="提交项目执行情况报表（半年）">提交项目执行情况报表（半年）</option><option value="提交项目执行情况报表（全年）">提交项目执行情况报表（全年）</option><option value="提交项目执行情况报表（中期）">提交项目执行情况报表（中期）</option></select>',
+            		text: '<select style="width:230px;" id="sort"  name="sort"><option value="项目执行情况报表（半年）">项目执行情况报表（半年）</option><option value="项目执行情况报表（全年）">项目执行情况报表（全年）</option><option value="项目执行情况报表（中期）">项目执行情况报表（中期）</option></select>',
           	  },{
           		text: "搜索",
             	  iconCls: "icon-search",
@@ -65,8 +65,8 @@ $(function () {
               	  iconCls: "icon-add",
               	  handler: function () {
               		var sort=$("#sort").val();
-              		  window.location.href="";           		  	
-              	  }
+              		  window.location.href="<%=request.getContextPath()%>/jsp/enterprise/halfyear.jsp";           		  	
+              	  }//不同表进对应的填表页面
                 }
                 ],
                 pagination: true,

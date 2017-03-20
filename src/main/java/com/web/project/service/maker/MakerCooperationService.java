@@ -29,4 +29,20 @@ public class MakerCooperationService {
 	public MakerCooperation getCooperationById(int id) {
 		return makerCooperationDao.getCooperationById(id);
 	}
+	
+	public ArrayList<MakerCooperation> getCooperationListByUser(int id){
+		return makerCooperationDao.getCooperationListByUser(id);
+	}
+	
+	public void deleteCooperationById(ArrayList<Integer> id){
+		makerCooperationDao.deleteCooperationById(id);
+	}
+	
+	public void updateCooperationById(MakerCooperation makerCooperation){
+		makerCooperationDao.updateCooperationById(makerCooperation);
+	}
+	
+	public void insertCooperation(MakerCooperation makerCooperation){
+		makerCooperationDao.insertCooperation(makerCooperation);
+	}
 }

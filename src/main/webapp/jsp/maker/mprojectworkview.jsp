@@ -14,7 +14,6 @@
 <script type="text/javascript">
 
 </script>
-<%String a="      111111111111111111111111111111111111111111111111\n\n\n\n\n11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"; %>
 </head>
 <body>
 <div >
@@ -31,25 +30,25 @@
 	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
 	     	 		<td class="tdname">作品名称：</td>
-	     	 		<td class="tdcontent1"></td>
+	     	 		<td class="tdcontent1">${detail.title }</td>
 	     	 		<td class="tdname">创客项目：</td>
-	     	 		<td class="tdcontent2"></td>
+	     	 		<td class="tdcontent2">${detail.project }</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">团队名称：</td>
-	     	 		<td class="tdcontent1"></td>	     	 		
+	     	 		<td class="tdcontent1">${detail.team }</td>	     	 		
 	     	 		<td class="tdname">技术领域：</td>
-	     	 		<td class="tdcontent2"></td>
+	     	 		<td class="tdcontent2">${detail.field }</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">联系人：</td>
-	     	 		<td class="tdcontent1"></td>
+	     	 		<td class="tdcontent1">${detail.contact }</td>
 	     	 		<td class="tdname">联系电话：</td>
-	     	 		<td class="tdcontent2"></td>
+	     	 		<td class="tdcontent2">${detail.phone }</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">电子邮箱：</td>
-	     	 		<td class="tdcontent1"></td>
+	     	 		<td class="tdcontent1">${detail.email }</td>
 	     	 		<td class="tdname" colspan="2" >
                    	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
 	     	 		
@@ -59,7 +58,7 @@
             	 <td  align="center"   colspan="3">
 	            	 <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"><%=a %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.description }</pre>
 	    				 </div>
 		             </div>
              </tr>          

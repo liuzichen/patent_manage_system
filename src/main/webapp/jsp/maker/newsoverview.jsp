@@ -29,22 +29,21 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
-                sortOrder: 'asc',
+                
                 remoteSort: true,
-                idField: 'RoleCode',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'title', title : '标题',width :336,align:'center'},
 				{field : 'time',title : '发布时间',width : 160,align:'center'}, 				
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/news/makerNewsDetail?id="+ row.id +"'>查看详情</a>";  
                     }
                 }
               
@@ -96,10 +95,9 @@ $(function () {
         	var size=opts.pageSize;
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
-        	var state=1;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
+                url:'<%=request.getContextPath()%>/news/list',
+                data:{"pageNum":page,"pageSize":size,"type":"${type}"},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -131,7 +129,7 @@ $(function () {
      <div class="topnav"  >
 	   <div  class="path" >
 	      <span ><font>当前位置:</font></span>
-	      <span ><font >信息与公告&nbsp;&nbsp; &gt;&nbsp;&nbsp;</font></span>
+	      <span ><font >信息与公告&nbsp;&nbsp; &gt;&nbsp;&nbsp;${type}</font></span>
 	   </div>
      </div> 
 		 

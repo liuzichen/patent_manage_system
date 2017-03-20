@@ -18,4 +18,6 @@ public interface MakerWorksDao {
 	public MakerWorks getMakerWorksDetailById(int id);
 	
 	public void updateMakerWorkInfo(String problems,String evaluation,Long time,boolean flag,int id);
+	
+	public ArrayList<MakerWorks> getMakerWorksListByUser(int id);
 }

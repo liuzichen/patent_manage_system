@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 
 
-    <script type="text/javascript">
+    <script type="text/javascript">  
 	var _menus = {
 	basic : [ {
 		"menuid" : "10",
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "团队基本信息维护",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/maker/personalInfo?id="+"3"
 		}, {
 			"menuid" : "213",
 			"menuname" : "登录密码修改",
@@ -110,22 +110,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "国家科技政策",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/maker/loginNewsList?type=1"
 		}, {
 			"menuid" : "213",
 			"menuname" : "政府培训通知",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/maker/loginNewsList?type=2"
 		}, {
 			"menuid" : "213",
 			"menuname" : "银行资金援助项目",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/maker/loginNewsList?type=3"
 		}, {
 			"menuid" : "213",
 			"menuname" : "系统公告",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/maker/loginNewsList?type=4"
 		} ]
 	}]
 };

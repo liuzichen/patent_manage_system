@@ -29,23 +29,22 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
-                sortOrder: 'asc',
+             
                 remoteSort: true,
-                idField: 'CODE',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'title', title : '合作标题',width :336,align:'center'},
-				{field : 'time',title : '发布时间',width : 160,align:'center',sortable:true},
+				{field : 'subTime',title : '发布时间',width : 160,align:'center'},
 				{field : 'field',title : '合作领域',width : 160,align:'center'},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/maker/myCooperationDetail?id="+ row.id +"'>查看详情</a>";  
                     }
                 }
               
@@ -54,7 +53,8 @@ $(function () {
               	  text: "申请合作",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		window.location.href=""; 
+              		var id="3";
+              		window.location.href="<%=request.getContextPath()%>/maker/inputMyCooperation?userid="+id; 
               	  }
                 },'-',
                 {
@@ -62,19 +62,17 @@ $(function () {
               	  iconCls: "icon-cut",
               	  handler: function () {
               		  var post= $('#roleList').datagrid('getSelections');
-              		  var id = new Array([post.length]);
-              		  for(var i=0;i<post.length;i++){
-              			  id[i]=post[i].CODE;
-              			  alert(id[i]);
+              		  if(post.length==0){
+              			  alert("提示：\n\n请选择删除对象");
               		  }
-              		var opts = $('#roleList').datagrid('options');
-                	var page=opts.pageNumber;
-                	var size=opts.pageSize;
-                	var sort=opts.sortName;
-                	var order=opts.sortOrder;
+              		  else{
+              		  var id = new Array(post.length);
+              		  for(var i=0;i<post.length;i++){
+              			  id[i]=post[i].id;
+              		  }              		
                     $.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
-                        data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"remove":id},
+                        url:'<%=request.getContextPath()%>/maker/deleteMyCooperation',
+                        data:{"remove":id},
                         type: 'post',
                         dataType : "text",
                         traditional:true,
@@ -86,15 +84,12 @@ $(function () {
                			   
                         success: function (msg) {
                         	
-                        	var result = eval("("+msg+")");
-        					
-         						$("#roleList").datagrid("loadData",result);
-         					
-                            
-                     
+                        	sear();
+         				
                         }
                     });
                     $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
+              	  }
               	  }                  
                 }],
                 pagination: true,
@@ -145,8 +140,8 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
+                url:'<%=request.getContextPath()%>/maker/myCooperationList',
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":1},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {

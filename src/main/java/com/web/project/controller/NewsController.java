@@ -39,6 +39,7 @@ public class NewsController {
 	public String getListByType(@RequestParam(value="type")final String type,
 			@RequestParam(value = "pageNum") final int pageId,
 			@RequestParam(value = "pageSize") final int pageSize){
+		
 		ArrayList<News> newsList= newsService.getNewsByType(type);
 		int start = (pageId - 1) * pageSize;
 		int end = Math.min(newsList.size(), start + pageSize);
@@ -66,6 +67,18 @@ public class NewsController {
 		newsVo.transfer(news);
 		model.put("detail", newsVo);
 		return "expert/newsview";
+	}
+	
+	/** 
+	 * 通过id获取创客新闻的详细信息
+	 */
+	@RequestMapping("makerNewsDetail")
+	public String getMakerNewsDetailById(@RequestParam(value="id")final int id,ModelMap model){
+		News news = newsService.getNewsDetailById(id);
+		NewsVo newsVo = new NewsVo();
+		newsVo.transfer(news);
+		model.put("detail", newsVo);
+		return "maker/news";
 	}
 
 }

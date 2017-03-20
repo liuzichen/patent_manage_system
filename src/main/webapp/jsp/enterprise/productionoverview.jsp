@@ -45,7 +45,7 @@ $(function () {
 				{field : 'STATE',title : '成果类别',width : 208,align:'center'},  
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/productview.jsp' >查看详情</a>";  
                     }
                 }
               
@@ -73,7 +73,7 @@ $(function () {
           			  alert("请先输入想要添加科研成果的项目名称");
           		 	 }
           		  	else{
-              		  window.location.href=""; 
+              		  window.location.href="<%=request.getContextPath()%>/jsp/enterprise/product.jsp"; 
           		  	}
               	  }
                 },'-',
