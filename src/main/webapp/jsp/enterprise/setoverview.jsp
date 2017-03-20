@@ -56,7 +56,7 @@ $(function () {
               	  text: "申报科技项目",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		window.location.href="<%=request.getContextPath()%>/jsp/enterprise/setproject.jsp"; 
+              		window.location.href="<%=request.getContextPath()%>/enterprise/toSetProject?id=1"; 
               	  }
                 },'-',
                 ],
