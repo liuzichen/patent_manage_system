@@ -28,24 +28,22 @@ $(function () {
                 collapsible: true,
                	
                 pageList: [10, 20,30,50],
-                pageSize: 10,
-                sortName: 'DATE',
-                sortOrder: 'asc',
+                pageSize: 10,            
                 remoteSort: true,
-                idField: 'CODE',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'title', title : '成果名称',width :336,align:'center'},
-				{field : 'time',title : '提交时间',width : 160,align:'center',sortable:true},
+				{field : 'submitTime',title : '提交时间',width : 160,align:'center'},
 				{field : 'field',title : '技术领域',width : 160,align:'center'},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/maker/myCommonWorkDetail?id="+ row.id +"'>查看详情</a>";  
                     }
                 }
               
@@ -57,7 +55,7 @@ $(function () {
               		window.location.href=""; 
               	  }
                 },'-',
-                {
+                /*{
               	  text: "删除创新成果",
               	  iconCls: "icon-cut",
               	  handler: function () {
@@ -73,7 +71,7 @@ $(function () {
                 	var sort=opts.sortName;
                 	var order=opts.sortOrder;
                     $.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
+                        url:'<%=request.getContextPath()%>/maker/myCommonWorksList',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"remove":id},
                         type: 'post',
                         dataType : "text",
@@ -96,7 +94,7 @@ $(function () {
                     });
                     $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
               	  }                  
-                }],
+                }*/],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -145,8 +143,8 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
+                url:'<%=request.getContextPath()%>/maker/myCommonWorksList',
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":1},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {

@@ -12,7 +12,7 @@
 		<result column="phone" property="phone" jdbcType="VARCHAR" />
 		<result column="teamintro" property="teamIntro" jdbcType="VARCHAR" />
 		<result column="detail" property="detail" jdbcType="VARCHAR" />
-		<result column="subtime" property="subTime" jdbcType="DATE" />
+		<result column="subtime" property="subTime" jdbcType="INTEGER" />
 	</resultMap>
 	<select id="getCooperationById"  resultMap="makerCooperationMap">        
               select * from cooperation
@@ -24,5 +24,37 @@
 	<select id="getCooperationList"  resultMap="makerCooperationMap">        
               select * from cooperation 
               order by ${param1} ${param2}    
-	</select>      
+	</select>
+
+	<select id="getCooperationListByUser" resultMap="makerCooperationMap">
+		select * from cooperation
+		<where>
+		makerid=#{id}
+		</where>
+		order by subtime DESC
+	</select>   
+	
+	<delete id="deleteCooperationById"  parameterType="java.util.List">
+		delete from cooperation
+		<where>
+			cooperationid in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+	
+	<update id="updateCooperationById" parameterType="com.web.project.model.maker.MakerCooperation">
+		update cooperation
+		<set>			
+			contact=#{contact},phone=#{phone},teamintro=#{teamIntro},detail=#{detail},
+		</set>
+		where cooperationid=#{id}
+	</update>
+	
+	<insert id="insertCooperation" parameterType="com.web.project.model.maker.MakerCooperation" keyProperty="id" useGeneratedKeys="true">
+  		insert into cooperation(title,makerid,team,field,contact,phone,teamintro,detail,subtime
+  				)
+		VALUES (#{title},#{makerId},#{team},#{field},#{contact},#{phone},#{teamIntro},#{detail},#{subTime}
+				)
+	</insert>
 </mapper>

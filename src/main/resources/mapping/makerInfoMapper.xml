@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.MakerInfoDao">
+	<resultMap id="makerInfoMap" type="com.web.project.model.maker.MakerInfo">
+		<id column="makerid" property="id" jdbcType="INTEGER" /> 
+		<result column="loginname" property="loginName" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR"/>
+		<result column="email" property="email" jdbcType="VARCHAR"/>
+		<result column="contact" property="contact" jdbcType="VARCHAR"/>
+		<result column="phone" property="phone" jdbcType="VARCHAR"/>
+		<result column="team" property="team" jdbcType="VARCHAR"/>
+		<result column="address" property="address" jdbcType="VARCHAR"/>
+		<result column="teamintro" property="teamIntro" jdbcType="VARCHAR"/>
+		<result column="achievement" property="achievement" jdbcType="VARCHAR"/>
+		<result column="roleid" property="roleId" jdbcType="INTEGER"/>
+		<result column="field1" property="field1" jdbcType="VARCHAR"/>
+		<result column="field2" property="field2" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="getMakerList" resultMap="makerInfoMap">
+		select * from maker
+	</select>
+	
+	<select id="getMakerInfoById" resultMap="makerInfoMap">
+		select * from maker
+		<where>
+		makerid=#{id}
+		</where>
+	</select>
+	
+	<update id="updateMakerInfoById" parameterType="com.web.project.model.maker.MakerInfo">
+		update maker
+		<set>			
+			email=#{email},contact=#{contact},phone=#{phone},team=#{team},address=#{address},teamintro=#{teamIntro},
+			achievement=#{achievement},field1=#{field1},field2=#{field2},
+		</set>
+		where makerid=#{id}
+	</update>
+</mapper>

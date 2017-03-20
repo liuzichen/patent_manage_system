@@ -18,4 +18,5 @@ public interface NewsDao {
 	public ArrayList<News> getNewsByType(String name);
 	
 	public News getNewsDetailById(int id);
+	
 }

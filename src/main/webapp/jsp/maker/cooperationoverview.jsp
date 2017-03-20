@@ -45,7 +45,7 @@ $(function () {
 				{field : 'field',title : '合作领域',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='#'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/maker/makerCooperationDetail?id="+ row.id +"'>查看详情</a>";  
                     }
                 }
               

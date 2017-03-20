@@ -16,6 +16,13 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>klk</display-name>
+		<servlet-name>klk</servlet-name>
+		<servlet-class>com.web.project.dao.klk</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -39,6 +46,10 @@
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>klk</servlet-name>
+		<url-pattern>/klk</url-pattern>
 	</servlet-mapping>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

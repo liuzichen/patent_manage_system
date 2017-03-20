@@ -32,5 +32,9 @@ public class MakerWorksService {
 	public void updateMakerWorkInfo(String problems,String evaluation,Long time,boolean flag,int id){
 		makerWorksDao.updateMakerWorkInfo(problems, evaluation, time, flag, id);
 	}
+	
+	public ArrayList<MakerWorks> getMakerWorksListByUser(int id){
+		return makerWorksDao.getMakerWorksListByUser(id);
+	}
 
 }
