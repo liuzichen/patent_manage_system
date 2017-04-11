@@ -61,9 +61,9 @@ public class LoginController {
 		}
 		
 		if(new String(type.getBytes("iso-8859-1"), "utf-8").equals("专家用户") ){
-			if(expertInfoService.isExist(username, password)==true){
-				model.put("type", "expert");				
+			if(expertInfoService.isExist(username, password)==true){			
 				session.setAttribute("userId", expertInfoService.getExpertInfoByLoginName(username).getId());
+				session.setAttribute("type", "expert");
 				session.setAttribute("userName", username);
 				session.setAttribute("usertype", "专家用户");
 				session.setAttribute("table", "expert");
@@ -117,16 +117,7 @@ public class LoginController {
 		return "expert/loging";
 	}
     
-	/**
-	 * 登陆成功后，topmenu的显示
-	 */
-	@RequestMapping("topmenu")
-	public String toTopMenu(@RequestParam("username") String  username,
-			@RequestParam("usertype") String usertype,ModelMap model){
-		model.put("username",username);
-		model.put("usertype", "专家用户");
-		return "topmenu";
-	}
+	
 	
 	/**
 	 * 修改密码，根据用户类别，对应更新相关的登录密码信息

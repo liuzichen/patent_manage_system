@@ -219,7 +219,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  
                    <!--快捷菜单 Begin-->
-                    <div class="srortcut4box" style="margin-top: 10px;">
+                    <div class="srortcut4box" style="margin-top: 10px;" align="center">
                         <ul>
                             <li><a href="<%=request.getContextPath()%>/jsp/expert/pmakeroverview.jsp">
                                 <img src="<%=request.getContextPath()%>/image/21.jpg" style="position:relative;float:left; margin-left:35px;  margin-bottom:auto;margin-top:-15px;" height="50px" width="50px" />创客项目作品评审</a></li>
