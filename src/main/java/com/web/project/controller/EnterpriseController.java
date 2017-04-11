@@ -173,7 +173,7 @@ public class EnterpriseController {
 		enterpriseInfoService.deleteEnterpriseFinanceById(id);
 		enterpriseInfoService.insertEnterpriseFinanceById(financeMap);
 		
-		//企业负责人信息
+		//企业负责人信息el
 		EnterprisePeopleInCharge person = new EnterprisePeopleInCharge();
 		person.setEnterpriseId(id);
 		person.setName(new String(chargeName.getBytes("iso-8859-1"), "utf-8"));
