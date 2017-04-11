@@ -12,7 +12,7 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
-	
+	  <% int id = Integer.parseInt(session.getAttribute("userId").toString()); %>
 <script type="text/javascript">
 
 $(function () {
@@ -53,7 +53,7 @@ $(function () {
                 	var page=opts.pageNumber;
                 	var size=opts.pageSize;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/expert/questionList?expertId=1',
+                        url:'<%=request.getContextPath()%>/expert/questionList?expertId=<%=id%>',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"expertId":1},
                         type: 'post',
                         dataType : "text",
@@ -78,7 +78,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/expert/questionList?expertId=1',
+                url:'<%=request.getContextPath()%>/expert/questionList?expertId=<%=id%>',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"expertId":1},
                 type: 'post',
                 dataType : "text",
@@ -130,7 +130,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/expert/questionList?expertId=1',
+                url:'<%=request.getContextPath()%>/expert/questionList?expertId=<%=id%>',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order,"expertId":1},
                 type: 'post',
                 dataType : "text",

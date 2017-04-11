@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src='<%=request.getContextPath()%>/js/outlook.js'> </script>
 	
-
+    <%int id = Integer.parseInt(session.getAttribute("userId").toString()); %>
 
     <script type="text/javascript">
 	var _menus = {
@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "基本信息维护",
 			"icon" : "icon-nav",
-			"url" : "<%=request.getContextPath()%>/jsp/expert/personalityPage.jsp"
+			"url" : "<%=request.getContextPath()%>/expert/detail?id=<%=id%>"
 		},{
 			"menuid" : "213",
 			"menuname" : "登录密码修改",

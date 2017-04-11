@@ -53,7 +53,7 @@
 </head>
 
 <body>
-
+<%int id = Integer.parseInt(session.getAttribute("userId").toString()); %>
  <div class="commonPage">
  
      <div class="topnav"  >
@@ -66,7 +66,7 @@
     <div class="context">
        <div class="titlebox" style="width:80%; margin:0 auto;"><span class="title">专家简介</span></div>
 	   <div >
-	   	<form action="<%=request.getContextPath()%>/expert/updateInfo?id=1" name="Form1" id="Form1" method="post">
+	   	<form action="<%=request.getContextPath()%>/expert/updateInfo?id=<%=id %>" name="Form1" id="Form1" method="post">
 	   	<table class="persional" align="center" border="0"  cellpadding="0" cellspacing="0" bordercolor="white">
 	   	 <tr><th style="height:30px;background-color:#CDE8F9;color:#2C3E4B;font-weight:bolder;">专家基本信息</th></tr>
 	   	 <tr><td style="height:320px;">
@@ -133,13 +133,13 @@
                 <tr >
                     <td style="background-color:#F2F2F2;">领&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域1：</td>
                     <td style="text-indent:10">
-                     <b><%=request.getAttribute("field1")%></b>
+                     <b>${detailInfo.field1}</b>
                     </td>
                 </tr>
                 <tr >
                     <td style="background-color:#F2F2F2;">领&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域2：</td>
                     <td >
-                     <b><%=request.getAttribute("field2")%></b>
+                     <b>${detailInfo.field2}</b>
                     </td>
                 </tr>
             </table>
