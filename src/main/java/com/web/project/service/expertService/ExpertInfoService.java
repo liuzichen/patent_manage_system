@@ -38,9 +38,7 @@ public class ExpertInfoService {
 		return false;
 	}
 	
-	public ArrayList<ExpertInfo> getExpertByField(String field){
-		return expertInfoDao.getExpertByField(field);
-	}
+	
 
 	public ExpertInfo getExpertInfoByLoginName(String loginName){
 		return expertInfoDao.getInfoByLoginName(loginName);
