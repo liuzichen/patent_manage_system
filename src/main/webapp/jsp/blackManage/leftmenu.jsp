@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuname" : "政府信息管理",
 			"icon" : "icon-nav",
 			"url" : "<%=request.getContextPath()%>/jsp/blackManage/userPageManage/goverOverview.jsp"
-		},]
+		}]
 	}, {
 		"menuid" : "300",
 		"icon" : "icon-sys",

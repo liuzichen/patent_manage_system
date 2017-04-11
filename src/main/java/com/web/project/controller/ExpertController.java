@@ -389,4 +389,13 @@ public class ExpertController {
 		}
 		return "expert/setproord";
 	}
+	
+	/**
+	 * 根据领域查询专家
+	 */
+	@RequestMapping("getExpertByField")
+	@ResponseBody
+	public String getExpertByField(@RequestParam(value = "field") String field){
+		return null;
+	}
 }

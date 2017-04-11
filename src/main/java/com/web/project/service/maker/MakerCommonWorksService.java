@@ -30,4 +30,8 @@ public class MakerCommonWorksService {
 	public void insertMakerCommonWork(MakerCommonWorks makerCommonWorks){
 		makerCommonWorksDao.insertMakerCommonWork(makerCommonWorks);
 	}
+	
+	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByTitle(String title){
+		return makerCommonWorksDao.getMakerCommonWorksListByTitle(title);
+	}
 }
