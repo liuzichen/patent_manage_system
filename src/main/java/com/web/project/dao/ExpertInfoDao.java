@@ -13,4 +13,7 @@ public interface ExpertInfoDao {
 	public void updateExpertInfo(int id);
 	
 	public ArrayList<ExpertInfo> getExpertByField(String field);
+
+	public ExpertInfo getInfoByLoginName(String loginname);
+
 }
