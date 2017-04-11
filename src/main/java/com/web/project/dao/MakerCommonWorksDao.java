@@ -18,4 +18,6 @@ public interface MakerCommonWorksDao {
 	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByUser(int id);
 	
 	public void insertMakerCommonWork(MakerCommonWorks makerCommonWorks);
+	
+	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByTitle(String title);
 }

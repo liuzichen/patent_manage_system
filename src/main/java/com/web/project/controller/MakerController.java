@@ -860,6 +860,40 @@ public class MakerController {
 		}
 		
 	}
+	
+	/**
+	 * 获取创客原创作品列表（可查询）
+	 */
+	@RequestMapping("getMakerCommonWorkListForAdmin")
+	@ResponseBody
+	public String getMakerCommonWorkListForAdmin(
+			@RequestParam(value = "pageNum") final int pageId,
+			@RequestParam(value = "pageSize") final int pageSize,
+			@RequestParam(value = "pageSort") final String pageSort,
+			@RequestParam(value = "pageOrder") final String pageOrder,
+			@RequestParam(value = "state") String title)throws UnsupportedEncodingException{
+		
+		ArrayList<MakerCommonWorks> makerCommonWorksList = new ArrayList<MakerCommonWorks>();
+		if(title==""){
+			makerCommonWorksList=makerCommonWorksService.getMakerCommonWorksList();
+		}
+		else{
+			makerCommonWorksList=makerCommonWorksService.getMakerCommonWorksListByTitle(title);
+		}
+		int start = (pageId - 1) * pageSize;
+		int end = Math.min(makerCommonWorksList.size(), start + pageSize);
+		List<MakerCommonWorks> makerCommonWorks=makerCommonWorksList.subList(start, end);
+		HashMap hashMap = new HashMap();
+		hashMap.put("total", makerCommonWorks.size());
+		hashMap.put("rows", makerCommonWorks);
+		String result1 = JSONArray.fromObject(hashMap).toString();
+		String result = result1.substring(1, result1.length() - 1);
+		return result;
+	}
+	/**
+	 * 获取创客原创作品详细信息及专家评审结果
+	 */
+
 }
 
 

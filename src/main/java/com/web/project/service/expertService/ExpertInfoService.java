@@ -26,4 +26,7 @@ public class ExpertInfoService {
 		expertInfoDao.updateExpertInfo(id);
 	}
 	
+	public ArrayList<ExpertInfo> getExpertByField(String field){
+		return expertInfoDao.getExpertByField(field);
+	}
 }
