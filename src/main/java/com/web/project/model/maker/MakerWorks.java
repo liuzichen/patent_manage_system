@@ -26,6 +26,7 @@ public class MakerWorks {
 	String evaluation;
 	Long evaluatetime;
 	boolean isevaluated;
+	boolean isAssigned;
 
 	public int getId() {
 		return id;
@@ -169,6 +170,14 @@ public class MakerWorks {
 
 	public void setIsevaluated(boolean isevaluated) {
 		this.isevaluated = isevaluated;
+	}
+
+	public boolean isAssigned() {
+		return isAssigned;
+	}
+
+	public void setAssigned(boolean isAssigned) {
+		this.isAssigned = isAssigned;
 	}
 
 	

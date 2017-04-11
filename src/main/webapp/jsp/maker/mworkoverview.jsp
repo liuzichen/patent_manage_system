@@ -52,7 +52,8 @@ $(function () {
               	  text: "提交创新成果",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		window.location.href=""; 
+              		var id="1";
+              		window.location.href="<%=request.getContextPath()%>/maker/toInsertMakerCommonWork?id="+id; 
               	  }
                 },'-',
                 /*{

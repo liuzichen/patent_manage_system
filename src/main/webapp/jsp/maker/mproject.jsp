@@ -19,7 +19,7 @@ $(document).ready(function(){
 	if(hid==1){
 		$('#attach').hide();
 	}
-	$("#attend").attr("href","<%=request.getContextPath()%>/maker/makerProjectDetail?projectId="+"<%=request.getParameter("projectId")%>");
+	$("#attend").attr("href","<%=request.getContextPath()%>/maker/toInsertMakerProjectWork?userId="+"4"+"&"+"projectId="+"<%=request.getParameter("projectId")%>");
 });
 </script>
 </head>

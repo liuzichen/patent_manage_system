@@ -16,4 +16,6 @@ public interface MakerCommonWorksDao {
 	public MakerCommonWorks getMakerCommonWorksDetailById(int id);
 
 	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByUser(int id);
+	
+	public void insertMakerCommonWork(MakerCommonWorks makerCommonWorks);
 }
