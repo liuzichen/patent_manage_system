@@ -10,29 +10,42 @@
 		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="education" property="education" jdbcType="VARCHAR" />
 		<result column="cellphone" property="cellPhone" jdbcType="VARCHAR" />
-		<result column="telephone" property="telePhone" jdbcType="VARCHAR" />
+		<result column="telephone" property="tellPhone" jdbcType="VARCHAR" />
 		<result column="email" property="email" jdbcType="VARCHAR" />
 		<result column="achievement" property="achievement" jdbcType="VARCHAR" />
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="loginname" property="loggingName" jdbcType="VARCHAR" />
 		<result column="password" property="passWord" jdbcType="VARCHAR" />
 		<result column="roleid" property="roleId" jdbcType="INTEGER" />
+		<result column="major" property="major" jdbcType="VARCHAR" />
+		<result column="field1" property="field1" jdbcType="VARCHAR" />
+		<result column="field2" property="field2" jdbcType="VARCHAR" />
 	</resultMap>
+	
 	<select id="getExpertList"  resultMap="expertInfoMap">        
         select * from expert   	       
 	</select>        
+	
 	<select id="getInfoById" resultMap="expertInfoMap"> 
 		select * from expert
 		<where>
 		id=#{id}
 		</where>
 	</select>
+	
+	<select id="getInfoByLoginName" resultMap="expertInfoMap"> 
+		select * from expert
+		<where>
+		loginname=#{loginname}
+		</where>
+	</select>
+	
 	<update id="updateExpertInfo" >
 		update expert
 		<set>			
-			achievement=#{1},
+			achievement=#{0},
 		</set>
-		where id=#{0}
+		where id=#{1}
 	</update>
 	<select id="getExpertByField" resultMap="expertInfoMap">
 		select * from expert

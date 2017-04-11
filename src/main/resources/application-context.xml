@@ -56,6 +56,40 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
 	</bean>  
     
+    <!-- 定义验证码类 -->
+	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">  
+        <property name="config">  
+            <bean class="com.google.code.kaptcha.util.Config">  
+                <constructor-arg>  
+                    <props>  
+                        <prop key="kaptcha.border">no</prop>  
+                        <prop key="kaptcha.border.color">105,179,90</prop>  
+                        <prop key="kaptcha.textproducer.font.color">red</prop>  
+                        <prop key="kaptcha.image.width">80</prop>  
+                        <prop key="kaptcha.textproducer.font.size">30</prop>  
+                        <prop key="kaptcha.image.height">40</prop>  
+                        <prop key="kaptcha.session.key">code</prop>  
+                        <prop key="kaptcha.textproducer.char.length">4</prop>  
+                    </props>  
+                </constructor-arg>  
+            </bean>  
+        </property>  
+    </bean>  
+
+	<bean id="KaptchaAction"
+			class="com.web.project.controller.kaptchaController">
+	 		<property name="captchaProducer" ref="captchaProducer"/> 
+	</bean>
+
+	<bean id="kaptchaMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/kaptcha.do">KaptchaAction</prop>
+			</props>
+		</property>
+	</bean> 
+    
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->  
 	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
 		<property name="dataSource" ref="dataSource" />  

@@ -203,6 +203,7 @@ public class ExpertController {
 			@RequestParam(value = "id") Integer id, ModelMap model)
 			throws UnsupportedEncodingException {
 		achievement = new String(achievement.getBytes("iso-8859-1"), "utf-8");
+		System.out.println(achievement);
 		expertInfoService.updateExpertInfo(id, achievement);
 		ExpertInfo expertInfo = expertInfoService.getInfoById(id);
 		model.put("detailInfo", expertInfo);

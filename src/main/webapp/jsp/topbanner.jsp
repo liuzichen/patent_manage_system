@@ -37,7 +37,7 @@
 			大连市智慧科技云服务平台</div>
 			<ul id="navmenu">
 			<li><img alt="" src="/image/05.jpg" style="float:left; margin-left:20px; margin-top:-1px" height="20px" width="20px"><a onclick="logout()" href="javascript:window.opener=null;%20window.close();">退出系统</a></li>
-			<li><img alt="" src="/image/03.jpg" style="float:left; margin-left:20px; margin-top:-1px" height="20px" width="20px"><a href="<%=request.getContextPath()%>/jsp/login.jsp"  id="editpass" target="PageFrame">修改密码</a></li>
+			<li><img alt="" src="/image/03.jpg" style="float:left; margin-left:20px; margin-top:-1px" height="20px" width="20px"><a href="<%=request.getContextPath()%>/jsp/repassword.jsp"  id="editpass" target="PageFrame">修改密码</a></li>
 			<li><img alt="" src="/image/01.jpg" style="float:left; margin-left:35px; margin-top:-1px" height="20px" width="20px"><a href="<%=request.getContextPath()%>/general/loging.jsp"  target="PageFrame">主页</a></li>
 			</ul>
 			</div>
