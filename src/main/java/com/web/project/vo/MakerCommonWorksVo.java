@@ -26,6 +26,9 @@ public class MakerCommonWorksVo {
 	String field;
 	String submitTime;
 	boolean isevaluated;
+	boolean isAssigned;
+	String evaluation;
+	String evaluateTime;
 
 	public int getId() {
 		return id;
@@ -138,6 +141,32 @@ public class MakerCommonWorksVo {
 	public void setIsevaluated(boolean isevaluated) {
 		this.isevaluated = isevaluated;
 	}
+	
+
+	public boolean isAssigned() {
+		return isAssigned;
+	}
+
+	public void setAssigned(boolean isAssigned) {
+		this.isAssigned = isAssigned;
+	}
+
+	
+	public String getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(String evaluation) {
+		this.evaluation = evaluation;
+	}
+
+	public String getEvaluateTime() {
+		return evaluateTime;
+	}
+
+	public void setEvaluateTime(String evaluateTime) {
+		this.evaluateTime = evaluateTime;
+	}
 
 	public MakerCommonWorksVo transfer(MakerCommonWorks makerCommonWorks){
 		this.setId(makerCommonWorks.getId());
@@ -153,9 +182,13 @@ public class MakerCommonWorksVo {
 		this.setFujianType(makerCommonWorks.getFujianType());
 		this.setField(makerCommonWorks.getField());
 		this.setIsevaluated(makerCommonWorks.isIsevaluated());
+		this.setAssigned(makerCommonWorks.isAssigned());
+		this.setEvaluation(makerCommonWorks.getEvaluation());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Long time = makerCommonWorks.getSubmitTime() * 1000;
 		this.setSubmitTime(sdf.format(time));
+		time=makerCommonWorks.getEvaluateTime() * 1000;
+		this.setEvaluateTime(sdf.format(time));
 		return this;
 	}
 }

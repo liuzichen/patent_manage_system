@@ -36,5 +36,9 @@ public class MakerWorksService {
 	public ArrayList<MakerWorks> getMakerWorksListByUser(int id){
 		return makerWorksDao.getMakerWorksListByUser(id);
 	}
+	
+	public void insertMakerWork(MakerWorks makerWorks){
+		makerWorksDao.insertMakerWork(makerWorks);
+	}
 
 }
