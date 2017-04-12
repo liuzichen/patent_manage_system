@@ -165,7 +165,7 @@ int id = Integer.parseInt(session.getAttribute("userId").toString());
                                     <ul>
                                      <c:forEach items="${questions}" var="item">
 												
-										     <li><span>${item.askTime}</span><a href="<%=request.getContextPath()%>/expert/answer?questionId=${item.id}" ><span ><b>${item.title}</b></span></a></li>
+										     <li><span>${item.askTime}</span><a href="<%=request.getContextPath()%>/expert/answer?questionId=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a></li>
 
 									</c:forEach> 
                                     
@@ -185,7 +185,10 @@ int id = Integer.parseInt(session.getAttribute("userId").toString());
 										<ul>
 											 <c:forEach items="${news}" var="item">
 												
-										     <li><span>${item.time}</span><a href="<%=request.getContextPath()%>/news/detail?id=${item.id}" ><span ><b>${item.title}</b></span></a></li>
+										     <li>
+										     <span>${item.time}</span>
+										     <a href="<%=request.getContextPath()%>/news/detail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a>
+										     </li>
 
 											</c:forEach> 
 
@@ -220,7 +223,7 @@ int id = Integer.parseInt(session.getAttribute("userId").toString());
                                     <ul>
                                      <c:forEach items="${commonProjects}" var="item">
 												
-										     <li><span>${item.submitTime}</span><a href="<%=request.getContextPath()%>/expert/enterpriseCommonProjectDetail?id=${item.id}" ><span ><b>${item.title}</b></span></a></li>
+										     <li><span>${item.submitTime}</span><a href="<%=request.getContextPath()%>/expert/enterpriseCommonProjectDetail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a></li>
 
 											</c:forEach> 
                                              
