@@ -11,6 +11,7 @@ public interface ExpertInfoDao {
 	public ExpertInfo getInfoById(int id);
 	
 	public void updateExpertInfo(int id);
-	
+
 	public ExpertInfo getInfoByLoginName(String loginname);
+
 }

@@ -3,6 +3,13 @@
  */
 package com.web.project.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -436,6 +443,90 @@ public class MakerController {
 	}
 	
 	/**
+	 * 进入创客项目作品添加页面
+	 */
+	@RequestMapping("toInsertMakerProjectWork")
+	public String toInsertMakerProjectWork(@RequestParam(value = "userId") int userid,
+			@RequestParam(value = "projectId") int projectid,
+			ModelMap model){
+		MakerInfo makerInfo=makerInfoService.getMakerInfoById(userid);
+		MakerProject makerProject=makerProjectService.getProjectById(projectid);
+		ArrayList<Field> field=fieldService.getField();
+		model.put("makerInfo", makerInfo);
+		model.put("fieldList", field);
+		model.put("project", makerProject);
+		return "maker/mprojectwork";
+	}
+	
+	/**
+	 * 添加创客项目作品
+	 */
+	@RequestMapping("insertMakerProjectWork")
+	public String insetMakerProjectWork(@RequestParam(value = "userid") int userid,
+			@RequestParam(value = "projectid") int projectid,
+			@RequestParam(value = "title") String title,
+			@RequestParam(value = "team") String team,
+			@RequestParam(value = "field") String field,
+			@RequestParam(value = "contact") String contact,
+			@RequestParam(value = "phone") String phone,
+			@RequestParam(value = "email") String email,
+			@RequestParam(value = "upload") String filePath,
+			@RequestParam(value = "description") String description)throws UnsupportedEncodingException{
+		title= new String(title.getBytes("iso-8859-1"),"utf-8");
+		team= new String(team.getBytes("iso-8859-1"),"utf-8");
+		field= new String(field.getBytes("iso-8859-1"),"utf-8");
+		contact= new String(contact.getBytes("iso-8859-1"),"utf-8");
+		phone= new String(phone.getBytes("iso-8859-1"),"utf-8");
+		email= new String(email.getBytes("iso-8859-1"),"utf-8");
+		description= new String(description.getBytes("iso-8859-1"),"utf-8");
+		//附件上传
+				filePath = new String(filePath.getBytes("iso-8859-1"), "utf-8");				
+				String[] strings = filePath.split(File.separator+File.separator);
+				int length = strings.length;
+				String fileName = strings[length-1];
+				String[] strings2 = fileName.split("\\.");
+				String fileType = strings2[strings2.length-1];
+				
+				byte[] buffer = null;  
+		        try {  
+		            File file = new File(filePath);  
+		            FileInputStream fis = new FileInputStream(file);  
+		            ByteArrayOutputStream bos = new ByteArrayOutputStream(1000);  
+		            byte[] b = new byte[1000];  
+		            int n;  
+		            while ((n = fis.read(b)) != -1) {  
+		                bos.write(b, 0, n);  
+		            }  
+		            fis.close();  
+		            bos.close();  
+		            buffer = bos.toByteArray();  
+		        } catch (FileNotFoundException e) {  
+		            e.printStackTrace();  
+		        } catch (IOException e) {  
+		            e.printStackTrace();  
+		        }
+		        
+		MakerWorks makerWorks=new MakerWorks();
+		makerWorks.setMakerId(userid);
+		makerWorks.setMakerProjectID(projectid);
+		makerWorks.setTitle(title);
+		makerWorks.setTeam(team);
+		makerWorks.setField(field);
+		makerWorks.setContack(contact);
+		makerWorks.setPhone(phone);
+		makerWorks.setEmail(email);
+		makerWorks.setDescription(description);
+		makerWorks.setFujian(buffer);
+		makerWorks.setFujianName(fileName);
+		makerWorks.setFujianType(fileType);
+		Long time = System.currentTimeMillis()/1000;
+		makerWorks.setSubmitTime(time);
+		
+		makerWorksService.insertMakerWork(makerWorks);
+		return "maker/mprojectworkoverview";
+	}
+	
+	/**
 	 * 获取创客个人原创作品信息
 	 */
 	@RequestMapping("myCommonWorkDetail")
@@ -445,7 +536,86 @@ public class MakerController {
 		MakerCommonWorksVo makerCommonWorksVo=new MakerCommonWorksVo();
 		makerCommonWorksVo.transfer(makerCommonWorks);
 		model.put("detail", makerCommonWorksVo);
+		request.setAttribute("flag",makerCommonWorks.isIsevaluated());
 		return "maker/mworkview";
+	}
+	
+	/**
+	 * 进入创客原创作品添加界面
+	 */
+	@RequestMapping("toInsertMakerCommonWork")
+	public String toInsertMakerCommonWork(@RequestParam(value = "id") int id,ModelMap model){		
+		MakerInfo makerInfo=makerInfoService.getMakerInfoById(id);
+		ArrayList<Field> field=fieldService.getField();
+		model.put("fieldList", field);
+		model.put("makerInfo", makerInfo);
+		return "maker/mwork";
+	}
+	
+	/**
+	 * 添加创客原创作品
+	 */
+	@RequestMapping("insertMakerCommonWork")
+	public String insertMakerCommonWork(@RequestParam(value = "userid") int id,
+			@RequestParam(value = "title") String title,
+			@RequestParam(value = "team") String team,
+			@RequestParam(value = "field") String field,
+			@RequestParam(value = "contact") String contact,
+			@RequestParam(value = "phone") String phone,
+			@RequestParam(value = "email") String email,
+			@RequestParam(value = "upload") String filePath,
+			@RequestParam(value = "description") String description)throws UnsupportedEncodingException{
+		title= new String(title.getBytes("iso-8859-1"),"utf-8");
+		team= new String(team.getBytes("iso-8859-1"),"utf-8");
+		field= new String(field.getBytes("iso-8859-1"),"utf-8");
+		contact= new String(contact.getBytes("iso-8859-1"),"utf-8");
+		phone= new String(phone.getBytes("iso-8859-1"),"utf-8");
+		email= new String(email.getBytes("iso-8859-1"),"utf-8");
+		description= new String(description.getBytes("iso-8859-1"),"utf-8");
+		//附件上传
+		filePath = new String(filePath.getBytes("iso-8859-1"), "utf-8");
+		String[] strings = filePath.split(File.separator+File.separator);
+		int length = strings.length;
+		String fileName = strings[length-1];
+		String[] strings2 = fileName.split("\\.");
+		String fileType = strings2[strings2.length-1];
+		
+		byte[] buffer = null;  
+        try {  
+            File file = new File(filePath);  
+            FileInputStream fis = new FileInputStream(file);  
+            ByteArrayOutputStream bos = new ByteArrayOutputStream(1000);  
+            byte[] b = new byte[1000];  
+            int n;  
+            while ((n = fis.read(b)) != -1) {  
+                bos.write(b, 0, n);  
+            }  
+            fis.close();  
+            bos.close();  
+            buffer = bos.toByteArray();  
+        } catch (FileNotFoundException e) {  
+            e.printStackTrace();  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }
+        
+        MakerCommonWorks makerCommonWorks=new MakerCommonWorks();
+        makerCommonWorks.setContack(contact);
+        makerCommonWorks.setDescription(description);
+        makerCommonWorks.setEmail(email);
+        makerCommonWorks.setField(field);
+        makerCommonWorks.setFujian(buffer);
+        makerCommonWorks.setFujianName(fileName);
+        makerCommonWorks.setFujianType(fileType);
+        makerCommonWorks.setMakerId(id);
+        makerCommonWorks.setPhone(phone);
+        makerCommonWorks.setTeam(team);
+        makerCommonWorks.setTitle(title);
+        Long time = System.currentTimeMillis()/1000;
+        makerCommonWorks.setSubmitTime(time);
+        makerCommonWorksService.insertMakerCommonWork(makerCommonWorks);
+        return "maker/mworkoverview";
+        
 	}
 	
 	/**
@@ -537,4 +707,193 @@ public class MakerController {
 		}
 		return "maker/newsoverview";
     }
+	
+	/**
+	 * 创客项目附件下载
+	 */
+	@RequestMapping("makerProjectDownload")
+	@ResponseBody
+	public String makerProjectDownload(@RequestParam(value = "id") final int id,
+			@RequestParam(value = "filepath") String filePath,
+			ModelMap model){
+		MakerProject makerProject=makerProjectService.getProjectById(id);
+		byte [] fujian= makerProject.getAttachment();
+		BufferedOutputStream bos = null;  
+        FileOutputStream fos = null;  
+        File file = null;  
+ 
+        try {  
+            File dir = new File(filePath);  
+            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
+                dir.mkdirs();  
+            }  
+            file = new File(filePath+File.separator+File.separator+makerProject.getAttachmentName());  
+            fos = new FileOutputStream(file);  
+            bos = new BufferedOutputStream(fos);  
+            bos.write(fujian);  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        } finally {  
+            if (bos != null) {  
+                try {  
+                    bos.close();  
+                } catch (IOException e1) {  
+                    e1.printStackTrace();  
+                }  
+            }  
+            if (fos != null) {  
+                try {  
+                    fos.close();  
+                } catch (IOException e1) {  
+                    e1.printStackTrace();  
+                }  
+            }  
+        } 
+        model.put("id", id);
+		return "maker/mprojectdownloadsuccess";
+	}
+	
+	/**
+	 * 创客项目作品附件下载
+	 */
+	@RequestMapping("makerProjectWorksDownload")
+	public String makerProjectWorksDownload(@RequestParam(value = "id") final int id,
+			@RequestParam(value = "filepath") String filePath,
+			ModelMap model){
+		MakerWorks makerWorks=makerWorksService.getMakerWorksDetailById(id);
+		byte [] fujian= makerWorks.getFujian();
+		if(fujian==null)
+		{
+			 model.put("id", id);
+			 model.put("path", "/maker/myProjectWorkDetail?id=");
+		     return "maker/makerworksdownloadfalse";
+		}
+		else {
+			BufferedOutputStream bos = null;  
+	        FileOutputStream fos = null;  
+	        File file = null;  
+	        filePath ="C:"+File.separator+"Users"+File.separator+"Administrator"+File.separator+"Desktop";
+	        try {  
+	            File dir = new File(filePath);  
+	            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
+	                dir.mkdirs();  
+	            }  
+	            file = new File(filePath+File.separator+File.separator+makerWorks.getFujianName());  
+	            fos = new FileOutputStream(file);  
+	            bos = new BufferedOutputStream(fos);  
+	            bos.write(fujian);  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        } finally {  
+	            if (bos != null) {  
+	                try {  
+	                    bos.close();  
+	                } catch (IOException e1) {  
+	                    e1.printStackTrace();  
+	                }  
+	            }  
+	            if (fos != null) {  
+	                try {  
+	                    fos.close();  
+	                } catch (IOException e1) {  
+	                    e1.printStackTrace();  
+	                }  
+	            }  
+	        } 
+	        model.put("id", id);
+	        model.put("path", "/maker/myProjectWorkDetail?id=");
+	        return "maker/makerworksdownloadsuccess";
+		}
+		
+	}
+	
+	/**
+	 * 创客原创作品附件下载
+	 */
+	@RequestMapping("makerCommonWorksDownload")
+	public String makerCommonWorksDownload(@RequestParam(value = "id") final int id,
+			@RequestParam(value = "filepath") String filePath,
+			ModelMap model){
+		MakerCommonWorks makerWorks=makerCommonWorksService.getMakerCommonWorksDetailById(id);
+		byte [] fujian= makerWorks.getFujian();
+		if(fujian==null)
+		{
+			 model.put("id", id);
+			 model.put("path", "/maker/myCommonWorkDetail?id=");
+		     return "maker/makerworksdownloadfalse";
+		}
+		else {
+			BufferedOutputStream bos = null;  
+	        FileOutputStream fos = null;  
+	        File file = null;  
+	        filePath ="C:"+File.separator+"Users"+File.separator+"Administrator"+File.separator+"Desktop";
+	        try {  
+	            File dir = new File(filePath);  
+	            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
+	                dir.mkdirs();  
+	            }  
+	            file = new File(filePath+File.separator+File.separator+makerWorks.getFujianName());  
+	            fos = new FileOutputStream(file);  
+	            bos = new BufferedOutputStream(fos);  
+	            bos.write(fujian);  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        } finally {  
+	            if (bos != null) {  
+	                try {  
+	                    bos.close();  
+	                } catch (IOException e1) {  
+	                    e1.printStackTrace();  
+	                }  
+	            }  
+	            if (fos != null) {  
+	                try {  
+	                    fos.close();  
+	                } catch (IOException e1) {  
+	                    e1.printStackTrace();  
+	                }  
+	            }  
+	        } 
+	        model.put("id", id);
+	        model.put("path", "/maker/myCommonWorkDetail?id=");
+	        return "maker/makerworksdownloadsuccess";
+		}
+		
+	}
+	
+	/**
+	 * 获取创客原创作品列表（可查询）
+	 */
+	@RequestMapping("getMakerCommonWorkListForAdmin")
+	@ResponseBody
+	public String getMakerCommonWorkListForAdmin(
+			@RequestParam(value = "pageNum") final int pageId,
+			@RequestParam(value = "pageSize") final int pageSize,
+			@RequestParam(value = "pageSort") final String pageSort,
+			@RequestParam(value = "pageOrder") final String pageOrder,
+			@RequestParam(value = "state") String title)throws UnsupportedEncodingException{
+		
+		ArrayList<MakerCommonWorks> makerCommonWorksList = new ArrayList<MakerCommonWorks>();
+		if(title==""){
+			makerCommonWorksList=makerCommonWorksService.getMakerCommonWorksList();
+		}
+		else{
+			makerCommonWorksList=makerCommonWorksService.getMakerCommonWorksListByTitle(title);
+		}
+		int start = (pageId - 1) * pageSize;
+		int end = Math.min(makerCommonWorksList.size(), start + pageSize);
+		List<MakerCommonWorks> makerCommonWorks=makerCommonWorksList.subList(start, end);
+		HashMap hashMap = new HashMap();
+		hashMap.put("total", makerCommonWorks.size());
+		hashMap.put("rows", makerCommonWorks);
+		String result1 = JSONArray.fromObject(hashMap).toString();
+		String result = result1.substring(1, result1.length() - 1);
+		return result;
+	}
+	/**
+	 * 获取创客原创作品详细信息及专家评审结果
+	 */
+
 }
+
+

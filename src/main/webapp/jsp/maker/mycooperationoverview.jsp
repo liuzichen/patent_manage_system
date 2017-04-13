@@ -61,7 +61,7 @@ $(function () {
               	  text: "删除合作意向",
               	  iconCls: "icon-cut",
               	  handler: function () {
-              		  var post= $('#roleList').datagrid('getSelections');
+              		  var post= $('#roleList').datagrid('getChecked');
               		  if(post.length==0){
               			  alert("提示：\n\n请选择删除对象");
               		  }

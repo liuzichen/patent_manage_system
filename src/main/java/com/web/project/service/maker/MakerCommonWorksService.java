@@ -27,4 +27,11 @@ public class MakerCommonWorksService {
 	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByUser(int id){
 		return makerCommonWorksDao.getMakerCommonWorksListByUser(id);
 	}
+	public void insertMakerCommonWork(MakerCommonWorks makerCommonWorks){
+		makerCommonWorksDao.insertMakerCommonWork(makerCommonWorks);
+	}
+	
+	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByTitle(String title){
+		return makerCommonWorksDao.getMakerCommonWorksListByTitle(title);
+	}
 }
