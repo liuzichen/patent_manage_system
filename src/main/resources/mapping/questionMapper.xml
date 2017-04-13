@@ -10,8 +10,10 @@
 		<result column="title" property="title" jdbcType="VARCHAR" />	
 		<result column="answer" property="answer" jdbcType="VARCHAR" />
 		<result column="title" property="title" jdbcType="TINYINT" />
-		<result column="area" property="area" jdbcType="VARCHAR" />		
+		<result column="area" property="area" jdbcType="VARCHAR" />	
+		<result column="askertype" property="askertype" jdbcType="VARCHAR" />	
 	</resultMap>
+	
 	<select id="getQuestionById"  resultMap="questionMap">        
         select * from question 
         <where>
