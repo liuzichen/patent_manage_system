@@ -12,6 +12,7 @@ public class Question {
 	Long askTime;
 	Long answerTime;
 	String area;
+	String askertype;
 
 	public int getId() {
 		return id;
@@ -91,6 +92,14 @@ public class Question {
 
 	public void setArea(String area) {
 		this.area = area;
+	}
+
+	public String getAskertype() {
+		return askertype;
+	}
+
+	public void setAskertype(String askertype) {
+		this.askertype = askertype;
 	}
 
 }
