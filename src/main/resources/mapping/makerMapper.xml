@@ -16,7 +16,7 @@
 		<result column="submitTime" property="submitTime" jdbcType="VARCHAR" />
 		<result column="fujian" property="fujian" jdbcType="VARCHAR" />
 		<result column="fujiantype" property="fujianType" jdbcType="VARCHAR" />
-		<result column="fujianname" property="fujianname" jdbcType="VARCHAR" />		
+		<result column="fujianname" property="fujianName" jdbcType="VARCHAR" />		
 	</resultMap>    
 	  
 	<select id="getMakerWorksList" resultMap="makerWorkMap"> 
