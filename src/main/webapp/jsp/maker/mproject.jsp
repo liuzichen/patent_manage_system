@@ -13,13 +13,15 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	var hid;
 	if("${detail.attachment}"==""){
 		hid=1;
 	}
 	if(hid==1){
 		$('#attach').hide();
 	}
-	$("#attend").attr("href","<%=request.getContextPath()%>/maker/toInsertMakerProjectWork?userId="+"4"+"&"+"projectId="+"<%=request.getParameter("projectId")%>");
+	$("#attend").attr("href","<%=request.getContextPath()%>/maker/toInsertMakerProjectWork?userId="+"<%=session.getAttribute("userId")%>"+"&"+"projectId="+"<%=request.getParameter("projectId")%>");
+	$("#attach").attr("href","<%=request.getContextPath()%>/maker/makerProjectDownload?id="+"<%=request.getParameter("projectId")%>");
 });
 </script>
 </head>
@@ -41,7 +43,7 @@ $(document).ready(function(){
 	     	<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.description}</pre>
 	     </div>
 	     <div style="height:30px">&nbsp;</div>
-	     <div><a href="" id="attach" name="attach" style="height:25px;width:150px;font-size:14px;" >相&nbsp;关&nbsp;附&nbsp;件&nbsp;下&nbsp;载</a></div>
+	     <div><input type="file" name="download" id="download" style="display:none"><a id="attach" name="attach" style="height:25px;width:150px;font-size:14px;">相&nbsp;关&nbsp;附&nbsp;件&nbsp;下&nbsp;载</a></div>
 	      <div style="height:30px">&nbsp;</div>
 	     <div align="center"><a id="attend" name="attend" style="height:30px;width:150px;font-size:20px;font-weight:bold; " class="easyui-linkbutton" >报&nbsp;名&nbsp;参&nbsp;加</a></div>
      </div> 

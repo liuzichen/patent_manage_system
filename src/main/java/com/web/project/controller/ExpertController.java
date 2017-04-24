@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ import com.web.project.service.enterprise.EnterpriseInfoService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
 import com.web.project.service.expertService.ExpertInfoService;
 import com.web.project.service.relationship.QuestionService;
+import com.web.project.vo.ExpertAssignVo;
 import com.web.project.vo.ExpertInfoVo;
 import com.web.project.vo.QuestionVo;
 
@@ -396,6 +398,17 @@ public class ExpertController {
 	@RequestMapping("getExpertByField")
 	@ResponseBody
 	public String getExpertByField(@RequestParam(value = "field") String field){
-		return null;
+		ArrayList<ExpertInfo> expertInfos=expertInfoService.getExpertByField(field);
+		ArrayList<ExpertAssignVo> expertAssignVos=new ArrayList<ExpertAssignVo>();
+		for(int i=0;i<expertInfos.size();i++){
+			ExpertAssignVo expertAssignVo=new ExpertAssignVo();
+			expertAssignVo.transfer(expertInfos.get(i));
+			expertAssignVos.add(expertAssignVo);
+		}
+		HashMap hashMap = new HashMap();
+		hashMap.put("msg", expertAssignVos);
+		String result1 = JSONArray.fromObject(hashMap).toString();
+		String result = result1.substring(1, result1.length() - 1);
+		return result;
 	}
 }

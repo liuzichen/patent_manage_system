@@ -33,7 +33,7 @@
 		<result column="isComment" property="iscomment" jdbcType="BOOLEAN" />	
 	</resultMap>  
 	
-	<resultMap id="makerWorksCommentMap" type="com.web.project.model.comment.MakerComWorksComment" >
+	<resultMap id="makerWorksCommentMap" type="com.web.project.model.comment.MakerWorksComment" >
 		<id column="id" property="id" jdbcType="INTEGER" /> 
 		<result column="makerworksId" property="makerworksId" jdbcType="INTEGER" />
 		<result column="expertId" property="expertId" jdbcType="INTEGER" />
@@ -43,6 +43,25 @@
 		<result column="isComment" property="iscomment" jdbcType="BOOLEAN" />	
 	</resultMap>  
 	 
-	  
+	 <select id="getMakerComWorksCommentsByWorkId" resultMap="makerComWorksCommentMap">
+		 select * from comment_makercommonworks
+		 <where>
+			 makercommonworksId=#{id}
+		 </where>
+	 </select>
+	 
+	 <insert id="insertMakerComWorksCommentList" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+	 	INSERT INTO comment_makercommonworks(makercommonworksId,expertId,isComment)
+	 	VALUES 
+			<foreach collection="list" index="index" item="item"  separator="," >
+				(#{item.makercommonworksId},#{item.expertId},0)
+			</foreach>
+		
+	 </insert>
+	 
+	 <insert id="insertMakerComWorksComment" parameterType="com.web.project.model.comment.MakerComWorksComment" keyProperty="id" useGeneratedKeys="true">
+	 	INSERT INTO comment_makercommonworks(makercommonworksId,expertId,isComment)
+	 	VALUES (#{makercommonworksId},#{expertId},0)		
+	 </insert>
 	
 </mapper>

@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -18,7 +19,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 
@@ -28,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,11 +39,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sf.json.JSONArray;
 
+import com.web.project.model.comment.MakerComWorksComment;
+import com.web.project.model.expert.ExpertFee;
+import com.web.project.model.expert.ExpertInfo;
 import com.web.project.model.maker.MakerCommonWorks;
 import com.web.project.model.maker.MakerCooperation;
 import com.web.project.model.maker.MakerProject;
 import com.web.project.model.maker.MakerInfo;
 import com.web.project.service.FieldService;
+import com.web.project.service.expertService.CommentService;
+import com.web.project.service.expertService.ExpertFeeService;
+import com.web.project.service.expertService.ExpertInfoService;
 import com.web.project.service.makerService.MakerProjectService;
 import com.web.project.vo.MakerProjectListVo;
 import com.web.project.model.Field;
@@ -49,6 +59,7 @@ import com.web.project.service.maker.MakerCommonWorksService;
 import com.web.project.service.maker.MakerCooperationService;
 import com.web.project.service.maker.MakerInfoService;
 import com.web.project.service.maker.MakerWorksService;
+import com.web.project.vo.MakerComWorkCommentVo;
 import com.web.project.vo.MakerCommonWorksVo;
 import com.web.project.vo.MakerCooperationVo;
 import com.web.project.vo.MakerWorkVo;
@@ -77,6 +88,12 @@ public class MakerController {
 	MakerInfoService makerInfoService;
 	@Autowired
 	FieldService fieldService;
+	@Autowired
+	CommentService commentService;
+	@Autowired
+	ExpertInfoService expertInfoService;
+	@Autowired
+	ExpertFeeService expertFeeService;
 	
 	/**
 	 * 获取创客信息并跳转信息维护界面
@@ -91,6 +108,69 @@ public class MakerController {
 		return "maker/personalinfo";
 	}
 	
+	/**
+	 * 进入创客注册界面
+	 */
+	@RequestMapping("toRegisterMaker")
+	public String toMakerRegisterPage(ModelMap model){
+		ArrayList<Field> fieldsList=fieldService.getField();
+		model.put("field", fieldsList);
+		return "register_maker";
+	}
+	
+	/**
+	 * 创客注册用户名认证
+	 */
+	@RequestMapping("loginNameIsExist")
+	@ResponseBody
+	public String loginNameIsExist(@RequestParam(value = "username")String loginName){
+		MakerInfo makerInfo=makerInfoService.getMakerInfoByLoginName(loginName);
+		if(makerInfo==null){
+			return "success";
+		}
+		else{
+			
+			return "false";
+		}		
+	}
+	
+	/**
+	 * 注册创客信息
+	 */
+	@RequestMapping("makerRegister")
+	public String insertMakerInfo(
+			@RequestParam(value="register_username") String username,
+			@RequestParam(value="register_password") String password,
+			@RequestParam(value="register_team") String team,
+			@RequestParam(value="register_contact") String contact,
+			@RequestParam(value="register_email") String email,
+			@RequestParam(value="register_phone") String phone,
+			@RequestParam(value="register_address") String address,
+			@RequestParam(value="register_field1") String field1,
+			@RequestParam(value="register_field2") String field2
+			)throws UnsupportedEncodingException{
+		username = new String(username.getBytes("iso-8859-1"), "utf-8");
+		password = new String(password.getBytes("iso-8859-1"), "utf-8");
+		team = new String(team.getBytes("iso-8859-1"), "utf-8");
+		contact = new String(contact.getBytes("iso-8859-1"), "utf-8");
+		email = new String(email.getBytes("iso-8859-1"), "utf-8");
+		phone = new String(phone.getBytes("iso-8859-1"), "utf-8");
+		address = new String(address.getBytes("iso-8859-1"), "utf-8");
+		field1 = new String(field1.getBytes("iso-8859-1"), "utf-8");
+		field2 = new String(field2.getBytes("iso-8859-1"), "utf-8");
+		MakerInfo makerInfo=new MakerInfo();
+		makerInfo.setAddress(address);
+		makerInfo.setContact(contact);
+		makerInfo.setEmail(email);
+		makerInfo.setField1(field1);
+		makerInfo.setField2(field2);
+		makerInfo.setLoginName(username);
+		makerInfo.setPassword(password);
+		makerInfo.setPhone(phone);
+		makerInfo.setTeam(team);
+		makerInfoService.insertMakerInfo(makerInfo);
+		return "login";
+	}
 	/**
 	 * 修改创客个人信息
 	 */
@@ -376,6 +456,33 @@ public class MakerController {
 	}
 	
 	/**
+	 * 获取未分配专家创客原创作品列表
+	 */
+	@RequestMapping("getAssignMakerCommonWorkList")
+	@ResponseBody
+	public String getNoAssignedMakerCommonWorksList(
+			@RequestParam(value = "pageNum") int pageId,
+			@RequestParam(value = "pageSize") int pageSize
+			){
+		ArrayList<MakerCommonWorks> makerCommonWorksList=makerCommonWorksService.getNoAssignedMakerCommonWorksList();
+		int start = (pageId - 1) * pageSize;
+		int end = Math.min(makerCommonWorksList.size(), start + pageSize);
+		ArrayList<MakerCommonWorksVo> makerWorkVos = new ArrayList<MakerCommonWorksVo>();
+		for(int i=start;i<end;i++){
+			MakerCommonWorksVo makerWorkVo = new MakerCommonWorksVo();
+			makerWorkVo.transfer(makerCommonWorksList.get(i));
+			makerWorkVos.add(makerWorkVo);
+		}
+		HashMap hashMap = new HashMap();
+		hashMap.put("total", makerCommonWorksList.size());
+		hashMap.put("rows", makerWorkVos);
+		String result1 = JSONArray.fromObject(hashMap).toString();
+		String result = result1.substring(1, result1.length() - 1);
+		return result;
+		
+	}
+	
+	/**
 	 * 获取创客个人原创作品列表
 	 */
 	@RequestMapping("myCommonWorksList")
@@ -480,7 +587,7 @@ public class MakerController {
 		email= new String(email.getBytes("iso-8859-1"),"utf-8");
 		description= new String(description.getBytes("iso-8859-1"),"utf-8");
 		//附件上传
-				filePath = new String(filePath.getBytes("iso-8859-1"), "utf-8");				
+				filePath = new String(filePath.getBytes("iso-8859-1"), "utf-8");
 				String[] strings = filePath.split(File.separator+File.separator);
 				int length = strings.length;
 				String fileName = strings[length-1];
@@ -538,6 +645,28 @@ public class MakerController {
 		model.put("detail", makerCommonWorksVo);
 		request.setAttribute("flag",makerCommonWorks.isIsevaluated());
 		return "maker/mworkview";
+	}
+	
+	/**
+	 * 管理员获取创客原创作品信息
+	 */
+	@RequestMapping("makerCommonWorkDetailForAssign")
+	public String getMakerCommonWorkDetail(@RequestParam(value = "id") final int id,
+			ModelMap model){
+		model=this.getMakerCommonWorkDetailById(id, model);
+		return "blackManage/expertPageManage/chuangkeprojectworkDetail";
+	}
+	
+	/**
+	 * 封装：通过id获取创客原创作品信息
+	 */
+	public ModelMap getMakerCommonWorkDetailById(@RequestParam(value = "id") final int id,
+			ModelMap model){
+		MakerCommonWorks makerCommonWorks=makerCommonWorksService.getMakerCommonWorksDetailById(id);
+		MakerCommonWorksVo makerCommonWorksVo=new MakerCommonWorksVo();
+		makerCommonWorksVo.transfer(makerCommonWorks);
+		model.put("detail", makerCommonWorksVo);
+		return model;
 	}
 	
 	/**
@@ -713,22 +842,36 @@ public class MakerController {
 	 */
 	@RequestMapping("makerProjectDownload")
 	@ResponseBody
-	public String makerProjectDownload(@RequestParam(value = "id") final int id,
-			@RequestParam(value = "filepath") String filePath,
-			ModelMap model){
+	public void makerProjectDownload(@RequestParam(value = "id") final int id,
+			HttpServletRequest request, HttpServletResponse response){
 		MakerProject makerProject=makerProjectService.getProjectById(id);
 		byte [] fujian= makerProject.getAttachment();
+		if(fujian==null)
+		{
+		    
+		}
+		else{
 		BufferedOutputStream bos = null;  
-        FileOutputStream fos = null;  
-        File file = null;  
+        ServletOutputStream fos = null;   
  
         try {  
-            File dir = new File(filePath);  
-            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
-                dir.mkdirs();  
-            }  
-            file = new File(filePath+File.separator+File.separator+makerProject.getAttachmentName());  
-            fos = new FileOutputStream(file);  
+        	//获得浏览器代理信息
+			final String userAgent = request.getHeader("USER-AGENT");
+			String showValue=makerProject.getAttachmentName();
+			//判断浏览器代理并分别设置响应给浏览器的编码格式
+			String finalFileName = null;
+            if(userAgent.contains("MSIE")||userAgent.contains("Trident")){//IE浏览器
+                finalFileName = URLEncoder.encode(showValue,"UTF8");
+            }else if(userAgent.contains("Mozilla")){//google,火狐浏览器
+                finalFileName = new String(showValue.getBytes(), "ISO8859-1");
+            }else{
+                finalFileName = URLEncoder.encode(showValue,"UTF8");//其他浏览器
+            }           
+			response.setContentType("application/x-download");//告知浏览器下载文件，而不是直接打开，浏览器默认为打开
+            response.setHeader("Content-Disposition" ,"attachment;filename=\"" +finalFileName+ "\"");//下载文件的名称
+
+        	
+            fos = response.getOutputStream();  
             bos = new BufferedOutputStream(fos);  
             bos.write(fujian);  
         } catch (Exception e) {  
@@ -749,37 +892,43 @@ public class MakerController {
                 }  
             }  
         } 
-        model.put("id", id);
-		return "maker/mprojectdownloadsuccess";
+		
+		}
 	}
 	
 	/**
 	 * 创客项目作品附件下载
 	 */
 	@RequestMapping("makerProjectWorksDownload")
-	public String makerProjectWorksDownload(@RequestParam(value = "id") final int id,
-			@RequestParam(value = "filepath") String filePath,
-			ModelMap model){
+	public void makerProjectWorksDownload(@RequestParam(value = "id") final int id,
+			HttpServletRequest request, HttpServletResponse response){
 		MakerWorks makerWorks=makerWorksService.getMakerWorksDetailById(id);
 		byte [] fujian= makerWorks.getFujian();
 		if(fujian==null)
 		{
-			 model.put("id", id);
-			 model.put("path", "/maker/myProjectWorkDetail?id=");
-		     return "maker/makerworksdownloadfalse";
+			
 		}
 		else {
 			BufferedOutputStream bos = null;  
-	        FileOutputStream fos = null;  
-	        File file = null;  
-	        filePath ="C:"+File.separator+"Users"+File.separator+"Administrator"+File.separator+"Desktop";
+	        ServletOutputStream fos = null;   
+	       
 	        try {  
-	            File dir = new File(filePath);  
-	            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
-	                dir.mkdirs();  
-	            }  
-	            file = new File(filePath+File.separator+File.separator+makerWorks.getFujianName());  
-	            fos = new FileOutputStream(file);  
+	        	//获得浏览器代理信息
+				final String userAgent = request.getHeader("USER-AGENT");
+				String showValue=makerWorks.getFujianName();
+				//判断浏览器代理并分别设置响应给浏览器的编码格式
+				String finalFileName = null;
+	            if(userAgent.contains("MSIE")||userAgent.contains("Trident")){//IE浏览器
+	                finalFileName = URLEncoder.encode(showValue,"UTF8");
+	            }else if(userAgent.contains("Mozilla")){//google,火狐浏览器
+	                finalFileName = new String(showValue.getBytes(), "ISO8859-1");
+	            }else{
+	                finalFileName = URLEncoder.encode(showValue,"UTF8");//其他浏览器
+	            }           
+				response.setContentType("application/x-download");//告知浏览器下载文件，而不是直接打开，浏览器默认为打开
+	            response.setHeader("Content-Disposition" ,"attachment;filename=\"" +finalFileName+ "\"");//下载文件的名称
+	            
+	            fos = response.getOutputStream();   
 	            bos = new BufferedOutputStream(fos);  
 	            bos.write(fujian);  
 	        } catch (Exception e) {  
@@ -800,9 +949,7 @@ public class MakerController {
 	                }  
 	            }  
 	        } 
-	        model.put("id", id);
-	        model.put("path", "/maker/myProjectWorkDetail?id=");
-	        return "maker/makerworksdownloadsuccess";
+	        
 		}
 		
 	}
@@ -811,29 +958,36 @@ public class MakerController {
 	 * 创客原创作品附件下载
 	 */
 	@RequestMapping("makerCommonWorksDownload")
-	public String makerCommonWorksDownload(@RequestParam(value = "id") final int id,
-			@RequestParam(value = "filepath") String filePath,
-			ModelMap model){
+	public void makerCommonWorksDownload(@RequestParam(value = "id") final int id,
+			HttpServletRequest request, HttpServletResponse response){
 		MakerCommonWorks makerWorks=makerCommonWorksService.getMakerCommonWorksDetailById(id);
 		byte [] fujian= makerWorks.getFujian();
 		if(fujian==null)
 		{
-			 model.put("id", id);
-			 model.put("path", "/maker/myCommonWorkDetail?id=");
-		     return "maker/makerworksdownloadfalse";
+			 
 		}
 		else {
 			BufferedOutputStream bos = null;  
-	        FileOutputStream fos = null;  
-	        File file = null;  
-	        filePath ="C:"+File.separator+"Users"+File.separator+"Administrator"+File.separator+"Desktop";
+	        ServletOutputStream fos = null;  
+	        
+	        
 	        try {  
-	            File dir = new File(filePath);  
-	            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  
-	                dir.mkdirs();  
-	            }  
-	            file = new File(filePath+File.separator+File.separator+makerWorks.getFujianName());  
-	            fos = new FileOutputStream(file);  
+	        	//获得浏览器代理信息
+				final String userAgent = request.getHeader("USER-AGENT");
+				String showValue=makerWorks.getFujianName();
+				//判断浏览器代理并分别设置响应给浏览器的编码格式
+				String finalFileName = null;
+	            if(userAgent.contains("MSIE")||userAgent.contains("Trident")){//IE浏览器
+	                finalFileName = URLEncoder.encode(showValue,"UTF8");
+	            }else if(userAgent.contains("Mozilla")){//google,火狐浏览器
+	                finalFileName = new String(showValue.getBytes(), "ISO8859-1");
+	            }else{
+	                finalFileName = URLEncoder.encode(showValue,"UTF8");//其他浏览器
+	            }           
+				response.setContentType("application/x-download");//告知浏览器下载文件，而不是直接打开，浏览器默认为打开
+	            response.setHeader("Content-Disposition" ,"attachment;filename=\"" +finalFileName+ "\"");//下载文件的名称
+	           
+	            fos = response.getOutputStream();
 	            bos = new BufferedOutputStream(fos);  
 	            bos.write(fujian);  
 	        } catch (Exception e) {  
@@ -854,15 +1008,13 @@ public class MakerController {
 	                }  
 	            }  
 	        } 
-	        model.put("id", id);
-	        model.put("path", "/maker/myCommonWorkDetail?id=");
-	        return "maker/makerworksdownloadsuccess";
+	       
 		}
 		
 	}
 	
 	/**
-	 * 获取创客原创作品列表（可查询）
+	 * 管理员获取创客原创作品列表（可查询）
 	 */
 	@RequestMapping("getMakerCommonWorkListForAdmin")
 	@ResponseBody
@@ -884,16 +1036,165 @@ public class MakerController {
 		int end = Math.min(makerCommonWorksList.size(), start + pageSize);
 		List<MakerCommonWorks> makerCommonWorks=makerCommonWorksList.subList(start, end);
 		HashMap hashMap = new HashMap();
-		hashMap.put("total", makerCommonWorks.size());
+		hashMap.put("total", makerCommonWorksList.size());
 		hashMap.put("rows", makerCommonWorks);
 		String result1 = JSONArray.fromObject(hashMap).toString();
 		String result = result1.substring(1, result1.length() - 1);
 		return result;
 	}
+	
 	/**
-	 * 获取创客原创作品详细信息及专家评审结果
+	 * 管理员根据状态获取创客原创作品列表
 	 */
+	@RequestMapping("getMakerCommonWorkListForAdminByState")
+	@ResponseBody
+	public String getMakerCommonWorkListForAdminByState(
+			@RequestParam(value = "pageNum") final int pageId,
+			@RequestParam(value = "pageSize") final int pageSize,
+			@RequestParam(value = "pageSort") final String pageSort,
+			@RequestParam(value = "pageOrder") final String pageOrder,
+			@RequestParam(value = "state") int state)throws UnsupportedEncodingException{
+		ArrayList<MakerCommonWorks> makerCommonWorksList = makerCommonWorksService.getMakerCommonWorksListByState(state);
+		int start = (pageId - 1) * pageSize;
+		int end = Math.min(makerCommonWorksList.size(), start + pageSize);
+		List<MakerCommonWorks> makerCommonWorks=makerCommonWorksList.subList(start, end);
+		HashMap hashMap = new HashMap();
+		hashMap.put("total", makerCommonWorksList.size());
+		hashMap.put("rows", makerCommonWorks);
+		String result1 = JSONArray.fromObject(hashMap).toString();
+		String result = result1.substring(1, result1.length() - 1);
+		return result;
+	}
+	
+	/**
+	 * 管理员获取创客原创作品详细信息及专家评审结果
+	 */
+	@RequestMapping("getMakerCommonWorkDetailAndComments")
+	public String getMakerCommonWorkDetailAndCommentsForAdmin(
+			@RequestParam(value="id") int id,ModelMap model){
+		model=this.getMakerCommonWorkDetailById(id, model);
+		ArrayList<MakerComWorksComment> makerComWorksCommentsList=commentService.getMakerComWorksCommentsByWorkId(id);
+		ArrayList<MakerComWorkCommentVo> makerComWorkCommentVosList=new ArrayList<MakerComWorkCommentVo>();
+		for(int i=0;i<makerComWorksCommentsList.size();i++){
+			MakerComWorkCommentVo makerComWorkCommentVo=new MakerComWorkCommentVo();
+			makerComWorkCommentVo.transfer(makerComWorksCommentsList.get(i));
+			ExpertInfo expertInfo= expertInfoService.getInfoById(makerComWorkCommentVo.getExpertId());
+			makerComWorkCommentVo.setExpertName(expertInfo.getName());
+			makerComWorkCommentVosList.add(makerComWorkCommentVo);
+		}
+			
+		model.put("comments", makerComWorkCommentVosList);
+		model.put("size", makerComWorksCommentsList.size());
+		return "blackManage/projectManage/chaungkeProjectDetail";
+	}
 
+	/**
+	 * 管理员回复创客原创作品
+	 */
+	@RequestMapping("replyMakerCommonWork")
+	public String updateEvaluationOfMakerCommonWork(
+			@RequestParam(value="workid") int id,
+			@RequestParam(value="evaluation") String eval)throws UnsupportedEncodingException{
+		eval=new String(eval.getBytes("iso-8859-1"), "utf-8");
+		MakerCommonWorks makerCommonWorks=new MakerCommonWorks();
+		makerCommonWorks.setId(id);
+		makerCommonWorks.setIsevaluated(true);
+		makerCommonWorks.setEvaluation(eval);
+		Long time = System.currentTimeMillis()/1000;
+		makerCommonWorks.setEvaluateTime(time);
+		makerCommonWorksService.updateEvaluationOfMakerCommonWork(makerCommonWorks);
+		return "blackManage/projectManage/chuangkeProjectOverview";
+	}
+	
+	/**
+	 * 管理员进入创客原创作品专家分配页面
+	 */
+	@RequestMapping("toAssignExpertForMakerCommonWork")
+	public String toAssignExpert(@RequestParam(value="id") int id,ModelMap model){
+		MakerCommonWorks makerCommonWorks=makerCommonWorksService.getMakerCommonWorksDetailById(id);
+		ArrayList<Field> field=fieldService.getField();
+		model.put("detail", makerCommonWorks);
+		model.put("fieldList", field);
+		return "blackManage/expertPageManage/chaungkeExpertSperate";
+	}
+	
+	/**
+	 * 管理员为创客原创作品分配专家
+	 */
+	@RequestMapping("AssignExpertForMakerCommonWork")
+	public String insertCommentMakerCommonWork(
+			@RequestParam(value="projectid") int projectid,
+			@RequestParam(value="commentType") String commentType,
+			@RequestParam(value="flag") int flag,
+			@RequestParam(value="num") int num,
+			@RequestParam(value="field") String field,
+			@RequestParam(value="ExpertID1") int expertId1,
+			@RequestParam(value="ExpertID2") int expertId2,
+			@RequestParam(value="ExpertID3") int expertId3,
+			@RequestParam(value="ExpertID4") int expertId4,
+			@RequestParam(value="ExpertID5") int expertId5,
+			@RequestParam(value="fee1") String sfee1,
+			@RequestParam(value="fee2") String sfee2,
+			@RequestParam(value="fee3") String sfee3,
+			@RequestParam(value="fee4") String sfee4,
+			@RequestParam(value="fee5") String sfee5,
+			ModelMap model)throws UnsupportedEncodingException{
+		commentType=new String(commentType.getBytes("iso-8859-1"), "utf-8");
+		field=new String(field.getBytes("iso-8859-1"), "utf-8");
+		//插入评审项
+		ArrayList<Integer> expertIdArrayList=new ArrayList<Integer>();
+		expertIdArrayList.add(expertId1);
+		expertIdArrayList.add(expertId2);
+		expertIdArrayList.add(expertId3);
+		expertIdArrayList.add(expertId4);
+		expertIdArrayList.add(expertId5);
+		ArrayList<MakerComWorksComment> makerComWorksComments=new ArrayList<MakerComWorksComment>();
+		MakerCommonWorks makerCommonWork=new MakerCommonWorks();
+		makerCommonWork.setId(projectid);
+		for(int i=0;i<num;i++){
+			MakerComWorksComment makerComWorksComment=new MakerComWorksComment();
+			makerComWorksComment.setMakercommonworksId(projectid);
+			makerComWorksComment.setExpertId(expertIdArrayList.get(i));
+			makerComWorksComments.add(makerComWorksComment);
+		}
+
+	    for(int i=0;i<num;i++){
+	    	commentService.insertMakerComWorksComment(makerComWorksComments.get(i));
+	    }
+	    //插入费用项
+	    double fee1=Double.valueOf(sfee1).doubleValue();
+	    double fee2=Double.valueOf(sfee2).doubleValue();
+	    double fee3=Double.valueOf(sfee3).doubleValue();
+	    double fee4=Double.valueOf(sfee4).doubleValue();
+	    double fee5=Double.valueOf(sfee5).doubleValue();
+	    ArrayList<ExpertFee> expertFees=new ArrayList<ExpertFee>();
+	    ArrayList<Double> feeArrayList=new ArrayList<Double>();
+	    feeArrayList.add(fee1);
+	    feeArrayList.add(fee2);
+	    feeArrayList.add(fee3);
+	    feeArrayList.add(fee4);
+	    feeArrayList.add(fee5);
+	    for(int i=0;i<num;i++){
+	    	ExpertFee expertFee=new ExpertFee();
+	    	expertFee.setCommentId(makerComWorksComments.get(i).getId());
+	    	expertFee.setCommentType(commentType);
+	    	expertFee.setFee(feeArrayList.get(i));
+	    	expertFees.add(expertFee);
+	    }
+	    expertFeeService.insertExpertFee(expertFees);
+	    //更新状态
+	    makerCommonWorksService.updateAssignOfMakerCommonWork(makerCommonWork);
+		if(flag==0){
+			return "blackManage/expertPageManage/chuangkeExpertSperateOverview";
+		}
+		else {
+			MakerCommonWorks makerCommonWorks=makerCommonWorksService.getMakerCommonWorksDetailById(projectid);
+			ArrayList<Field> fields=fieldService.getField();
+			model.put("detail", makerCommonWorks);
+			model.put("fieldList", fields);
+			return "blackManage/expertPageManage/chaungkeExpertSperate";
+		}
+	}
 }
 
 

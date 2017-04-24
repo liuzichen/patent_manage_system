@@ -14,7 +14,14 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#download").attr("href","<%=request.getContextPath()%>/maker/makerCommonWorksDownload?id="+"${detail.id }"+"&filepath=abc"); 
+	var hid;
+	if("${detail.fujian}"==""){
+		hid=1;
+	}
+	if(hid==1){
+		$('#download').hide();
+	}
+	$("#download").attr("href","<%=request.getContextPath()%>/maker/makerCommonWorksDownload?id="+"${detail.id }"); 
 });
 </script>
 </head>
