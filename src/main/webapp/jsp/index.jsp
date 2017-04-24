@@ -17,9 +17,9 @@
 		framespacing="0">
 		<frame name="topFrame" src="<%=request.getContextPath()%>/jsp/topbanner.jsp" scrolling="no" noresize target="contents">
 		<frame name="topFrame1" src="<%=request.getContextPath()%>/jsp/topmenu.jsp" scrolling="no" noresize>
-		    <frameset id="centerFrame" name="centerFrame" cols="180,10,*" framespacing="0">
+		    <frameset id="centerFrame" name="centerFrame" cols="180,*" framespacing="0">
 			<frame name="MenuFrame" src="<%=request.getContextPath()%>/jsp/<%=session.getAttribute("type") %>/leftmenu.jsp" scrolling="no" noresize>
-			<frame name="pushRLFrame" src="<%=request.getContextPath()%>/jsp/pushRL.htm" scrolling="no" noresize>
+			
 			<frame name="PageFrame" src="<%=request.getContextPath()%>/login/<%=session.getAttribute("type") %>">
 		</frameset>
 	</frameset><noframes></noframes>

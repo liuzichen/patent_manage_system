@@ -75,7 +75,7 @@ function changecode(){
 						<td width="60" height="40" align="left">账号类型</td>
 						<td><select id="role"  name="role" style="width:180px;">
  								<option value="专家用户">专家用户</option>
-								<option value="个人用户">个人用户</option>
+								<option value="创客用户">创客用户</option>
  								<option value="企业用户">企业用户</option>
  								<option value="政府用户">政府用户</option>
  							</select></td>
@@ -98,7 +98,7 @@ function changecode(){
 										<img name="login_signin" id="login_signin" alt="登录" src="<%=request.getContextPath()%>/image/signin.png" onclick="checkForm()" style="cursor:pointer;" />&nbsp;										
 									</div>
                                     <div style="float:left; line-height:40px; padding-left:20px;">
-                                    <a href="register.jsp" style="color: #338cce;">新用户注册</a><!-- 链接注册页面 -->
+                                    <a href="<%=request.getContextPath()%>/maker/toRegisterMaker" style="color: #338cce;">新用户注册</a><!-- 链接注册页面 -->
                                     </div>
 								</td>
 

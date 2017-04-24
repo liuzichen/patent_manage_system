@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>创客项目总览</title>
+<title>创客作品总览</title>
 	
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
@@ -47,13 +47,13 @@ $(function () {
 				{field : 'contack',title : '联系人',width : 160,align:'center'},
 				{field: 'opt', title: '操作', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/?id="+ row.id +"'>项目详情查看</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/maker/getMakerCommonWorkDetailAndComments?id="+ row.id +"'>项目详情查看</a>";  
                     }
                 }
           		]],
           		toolbar: [
                 	  {
-                		text: '<input  type="text" style="width:150px;" id="state"  name="state" placeholder="请输入项目名称查询" value="">',
+                		  text: '<select style="width:230px;" id="state"  name="state"><option value="0">待回复作品</option><option value="1">已回复作品</option></select>',
                 	  },
                 	  {
                 		text: "搜索",
@@ -112,7 +112,7 @@ function sear(){
 	var order=opts.sortOrder;
 	var state=document.getElementById("state").value;
     $.ajax({
-        url:'<%=request.getContextPath()%>/maker/getMakerCommonWorkListForAdmin',
+        url:'<%=request.getContextPath()%>/maker/getMakerCommonWorkListForAdminByState',
         data:{"pageNum":page,"pageSize":size,"pageSort":sort,"pageOrder":order,"state":state},
         type: 'post',
         dataType : "text",
@@ -146,13 +146,13 @@ function sear(){
      <div class="topnav"  >
 	   <div  class="path" >
 	      <span ><font>当前位置:</font></span>
-	      <span ><font >项目管理&nbsp;&nbsp; &gt;&nbsp;&nbsp;创客项目管理</font></span>
+	      <span ><font >项目管理&nbsp;&nbsp; &gt;&nbsp;&nbsp;创客原创管理</font></span>
 	   </div>
      </div> 
 	<form action="#" name="Form1" id="Form1">
        	<input type="hidden" id="id" name="id">	 
     <div class="context" style="width:1085px">
-     <div class="titlebox" style="width:100%; margin:0 auto;"><span class="title" >创客项目一览表</span></div>
+     <div class="titlebox" style="width:100%; margin:0 auto;"><span class="title" >创客原创作品一览表</span></div>
 		<table id="roleList" style="width:100%;" >
 	    
 	    </table>

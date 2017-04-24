@@ -1,8 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.web.project.model.News" %> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+int id = Integer.parseInt(session.getAttribute("userId").toString());
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -146,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <input type="hidden" name="newId" id="newsId" value="" />
 
     <div>
-       <%--  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td style="vertical-align:top">
                     
@@ -156,16 +159,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 
                                 <!--国家科技政策Begin-->
                                 <div class="maintitlebg">
-                                    <span><a href="#">更多>></a></span><div></div><div class="title1icon">
+                                    <span><a href="<%=request.getContextPath()%>/jsp/maker/mprojectoverview.jsp">更多>></a></span><div></div><div class="title1icon">
                                     </div>
                                     创客项目</div>
                                 <div class="titlebox">
                                     <ul>
-                                    <%List  list1= (ArrayList)request.getAttribute("n_policy");
-    								for(int i=0;i<list1.size();i++){
-    									Field fd = (Field)list1.get(i); %>
-										<li><span><%=fd.getNewsTime() %></span><a href="javascript:void(document.form1.submit())" onclick="return setId(this.id);" id="<%=fd.getNewsId()%>"><%=fd.getNewsTitle()%></a></li><!-- href填servlet -->
-										<%}%>
+                                     <c:forEach items="${project}" var="item">
+												
+										     <li><span>${item.startTime}</span><a href="<%=request.getContextPath()%>/maker/makerProjectDetail?projectId=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a></li>
+
+									</c:forEach> 
+                                    
                                     </ul>
                                 </div>
                                 <!--国家科技政策End-->
@@ -173,18 +177,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                
                                 <!--系统公告Begin-->
                         <div class="maintitlebg" style="margin-top: 18px;">
-                            <span><a href="#">更多>></a></span>
+                            <span><a href="<%=request.getContextPath()%>/maker/loginNewsList?type=4">更多>></a></span>
 	                             <div class="title4icon">
 	                                 <img alt="" src="<%=request.getContextPath()%>/image/33.jpg" style="float:left;margin-right:9px; margin-left:0px;" width="30px" height="30px">
 	                             </div>
 	                      系统公告</div>
                                 <div class="titlebox">
                                     <ul>
-                                 	   <%List  list2= (ArrayList)request.getAttribute("announcement");
-    								for(int i=0;i<list2.size();i++){
-    									Field fd = (Field)list2.get(i); %>
-										<li><span><%=fd.getNewsTime() %></span><a href="javascript:void(document.form1.submit())" onclick="return setId(this.id);" id="<%=fd.getNewsId()%>"><%=fd.getNewsTitle()%></a></li><!-- href填servlet -->
-										<%}%>
+                                     <c:forEach items="${news1}" var="item">
+												
+										    <li>
+										     <span>${item.time}</span>
+										     <a href="<%=request.getContextPath()%>/news/detail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a>
+										     </li>
+
+									</c:forEach> 
+                                    
                                     </ul>
                                 </div>
                                 <!--系统公告 End-->
@@ -194,17 +202,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <td width="45%" valign="top" style="padding-left: 5px;">
                                 <!--专项与基金 Begin-->
                                 <div class="maintitlebg">
-                                    <span><a href="#">更多>></a></span><div class="title2icon">
+                                    <span><a href="<%=request.getContextPath()%>/maker/loginNewsList?type=2">更多>></a></span><div class="title2icon">
                                     	<img alt="" src="<%=request.getContextPath()%>/image/32.jpg" style="float:left;margin-right:9px; margin-left:0px;" width="30px" height="30px">
                                     </div>
                                    政府培训通知</div>
                                 <div class="titlebox">
                                     <ul>
-                                      <%List  list3= (ArrayList)request.getAttribute("foundation");
-    								for(int i=0;i<list3.size();i++){
-    									Field fd = (Field)list3.get(i); %>
-										<li><span><%=fd.getNewsTime() %></span><a href="javascript:void(document.form1.submit())" onclick="return setId(this.id);" id="<%=fd.getNewsId()%>"><%=fd.getNewsTitle()%></a></li><!-- href填servlet -->
-										<%}%>
+                                     <c:forEach items="${news2}" var="item">
+												
+										     <li>
+										     <span>${item.time}</span>
+										     <a href="<%=request.getContextPath()%>/news/detail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a>
+										     </li>
+
+									</c:forEach> 
+                                    
                                     </ul>
                                 </div>
                                 <!-- 专项与基金End-->
@@ -212,17 +224,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                
                                 <!--银行资金援助项目Begin-->
                                 <div class="maintitlebg" style="margin-top: 18px;">
-                                    <span><a href="#">更多>></a></span><div class="title3icon">
+                                    <span><a href="<%=request.getContextPath()%>/maker/loginNewsList?type=3">更多>></a></span><div class="title3icon">
                                     	<img alt="" src="<%=request.getContextPath()%>/image/34.jpg"  style="float:left;margin-right:9px; margin-left:0px;" width="30px" height="30px">
                                     </div>
                                   银行资金援助项目</div>
                                 <div class="titlebox" style="height: 135px;">
                                     <ul>
-                                       <%List  list4= (ArrayList)request.getAttribute("b_policy");
-    								for(int i=0;i<list4.size();i++){
-    									Field fd = (Field)list4.get(i); %>
-										<li><span><%=fd.getNewsTime() %></span><a href="javascript:void(document.form1.submit())" onclick="return setId(this.id);" id="<%=fd.getNewsId()%>"><%=fd.getNewsTitle()%></a></li><!-- href填servlet -->
-										<%}%>      
+                                     <c:forEach items="${news3}" var="item">
+												
+										     <li>
+										     <span>${item.time}</span>
+										     <a href="<%=request.getContextPath()%>/news/detail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a>
+										     </li>
+
+									</c:forEach> 
+                                    
                                     </ul>
                                 </div>
                                 <!-- 银行资金援助项目 End-->
@@ -237,14 +253,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <!--快捷菜单 Begin-->
                     <div class="srortcut4box" style="margin-top: 10px;">
                         <ul>
-                            <li><a href="#">
+                            <li><a href="">
                                 <img src="<%=request.getContextPath()%>/image/21.jpg" style="position:relative;float:left; margin-left:35px;  margin-bottom:auto;margin-top:-15px;" height="50px" width="50px" />我的咨询</a></li>
-                            <li><a href="#">
+                            <li><a href="<%=request.getContextPath()%>/jsp/maker/mworkoverview.jsp">
                                 <img src="<%=request.getContextPath()%>/image/22.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >我的成果</a></li>
-                                <li><a href="#">
-                                <img src="<%=request.getContextPath()%>/image/23.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >我的合作</a></li>
-                            <li><a href="#">
-                                <img src="<%=request.getContextPath()%>/image/23.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >我的管理</a></li>
+                                <li><a href="<%=request.getContextPath()%>/jsp/maker/mycooperationoverview.jsp">
+                                <img src="<%=request.getContextPath()%>/image/23.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >我的合作</a></li>                          
                         </ul>
                         <div class="clear">
                         </div>
@@ -255,7 +269,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 
                
             </tr>
-        </table> --%>
+        </table> 
     </div>
 
     </form>

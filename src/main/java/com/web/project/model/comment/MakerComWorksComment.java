@@ -13,7 +13,7 @@ public class MakerComWorksComment {
 	int expertId;
 	String comment;
 	String questions;
-	String commenttime;
+	long commenttime;
 	boolean iscomment;
 
 	public int getId() {
@@ -56,11 +56,11 @@ public class MakerComWorksComment {
 		this.questions = questions;
 	}
 
-	public String getCommenttime() {
+	public long getCommenttime() {
 		return commenttime;
 	}
 
-	public void setCommenttime(String commenttime) {
+	public void setCommenttime(long commenttime) {
 		this.commenttime = commenttime;
 	}
 

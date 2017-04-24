@@ -13,6 +13,7 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	var hid;
 	if("${detail.fujianName}"==""){
 		hid=1;
 	}
