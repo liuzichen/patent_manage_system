@@ -98,7 +98,7 @@ $(function () {
         	var order=opts.sortOrder;
             $.ajax({
                 url:'<%=request.getContextPath()%>/maker/myProjectWorksList',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":2},
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":<%=session.getAttribute("userId")%>},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {

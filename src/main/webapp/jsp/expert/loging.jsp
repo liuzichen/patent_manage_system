@@ -1,9 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.web.project.model.News" %> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+int id = Integer.parseInt(session.getAttribute("userId").toString());
 %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -149,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td style="vertical-align:top">
-                    
+                  
                     <table width="90%" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;">
                         <tr>
                             <td width="45%" style="padding-right: 5px; vertical-align: top">
@@ -161,6 +163,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     咨询问题回复</div>
                                 <div class="titlebox">
                                     <ul>
+                                     <c:forEach items="${questions}" var="item">
+												
+										     <li><span>${item.askTime}</span><a href="<%=request.getContextPath()%>/expert/answer?questionId=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a></li>
+
+									</c:forEach> 
                                     
                                     </ul>
                                 </div>
@@ -175,10 +182,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                             </div>
 	                      系统公告</div>
                                 <div class="titlebox">
-                                    <ul>
-                                 	   
-                                    </ul>
-                                </div>
+										<ul>
+											 <c:forEach items="${news}" var="item">
+												
+										     <li>
+										     <span>${item.time}</span>
+										     <a href="<%=request.getContextPath()%>/news/detail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a>
+										     </li>
+
+											</c:forEach> 
+
+										</ul>
+									</div>
                                 <!--系统公告 End-->
                             </td>
                             
@@ -206,6 +221,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                  企业一般项目评审</div>
                                 <div class="titlebox" style="height: 135px;">
                                     <ul>
+                                     <c:forEach items="${commonProjects}" var="item">
+												
+										     <li><span>${item.submitTime}</span><a href="<%=request.getContextPath()%>/expert/enterpriseCommonProjectDetail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a></li>
+
+											</c:forEach> 
                                              
                                     </ul>
                                 </div>
@@ -219,14 +239,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  
                    <!--快捷菜单 Begin-->
-                    <div class="srortcut4box" style="margin-top: 10px;">
+                    <div class="srortcut4box" style="margin-top: 10px;" align="center">
                         <ul>
                             <li><a href="<%=request.getContextPath()%>/maker/toMakerWorkList">
                                 <img src="<%=request.getContextPath()%>/image/21.jpg" style="position:relative;float:left; margin-left:35px;  margin-bottom:auto;margin-top:-15px;" height="50px" width="50px" />创客项目作品评审</a></li>
                             <li><a href="<%=request.getContextPath()%>/expert/toEnterpriseProject">
                                 <img src="<%=request.getContextPath()%>/image/22.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >企业科技项目评审</a></li>
                             
-                            <li><a href="<%=request.getContextPath()%>/expert/detail?id=1">
+                            <li><a href="<%=request.getContextPath()%>/expert/detail?id=<%=id%>">
                                 <img src="<%=request.getContextPath()%>/image/23.jpg" style="position:relative;float:left; margin-left:35px; margin-bottom:auto; margin-top:-15px" height="50px" width="50px" >基本信息维护</a></li>
                         </ul>
                         <div class="clear">

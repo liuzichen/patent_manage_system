@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.CommentDao">	 
+
+    <resultMap id="enterpriseComProjectCommentMap" type="com.web.project.model.comment.EnterpriseComProjectComment" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="enterCommmonId" property="enterCommmonId" jdbcType="INTEGER" />
+		<result column="expertId" property="expertId" jdbcType="INTEGER" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+		<result column="commentTime" property="commentTime" jdbcType="INTEGER" />
+		<result column="isComment" property="isComment" jdbcType="BOOLEAN" />	
+	</resultMap>  
+	
+	 <resultMap id="enterpriseProjectCommentMap" type="com.web.project.model.comment.EnterpriseProjectComment" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="enterprojectId" property="enterprojectId" jdbcType="INTEGER" />
+		<result column="expertId" property="expertId" jdbcType="INTEGER" />
+		<result column="mid_describe" property="mid_describe" jdbcType="VARCHAR" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+		<result column="commentTime" property="commentTime" jdbcType="INTEGER" />
+		<result column="isComment" property="isComment" jdbcType="BOOLEAN" />	
+	</resultMap> 
+	
+	<resultMap id="makerComWorksCommentMap" type="com.web.project.model.comment.MakerComWorksComment" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="makercommonworksId" property="makercommonworksId" jdbcType="INTEGER" />
+		<result column="expertId" property="expertId" jdbcType="INTEGER" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+		<result column="questions" property="questions" jdbcType="VARCHAR" />
+		<result column="commentTime" property="commenttime" jdbcType="INTEGER" />
+		<result column="isComment" property="iscomment" jdbcType="BOOLEAN" />	
+	</resultMap>  
+	
+	<resultMap id="makerWorksCommentMap" type="com.web.project.model.comment.MakerWorksComment" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="makerworksId" property="makerworksId" jdbcType="INTEGER" />
+		<result column="expertId" property="expertId" jdbcType="INTEGER" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+		<result column="questions" property="questions" jdbcType="VARCHAR" />
+		<result column="commentTime" property="commenttime" jdbcType="INTEGER"/>
+		<result column="isComment" property="iscomment" jdbcType="BOOLEAN" />	
+	</resultMap>  
+	 
+	 <select id="getMakerComWorksCommentsByWorkId" resultMap="makerComWorksCommentMap">
+		 select * from comment_makercommonworks
+		 <where>
+			 makercommonworksId=#{id}
+		 </where>
+	 </select>
+	 
+	 <insert id="insertMakerComWorksCommentList" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+	 	INSERT INTO comment_makercommonworks(makercommonworksId,expertId,isComment)
+	 	VALUES 
+			<foreach collection="list" index="index" item="item"  separator="," >
+				(#{item.makercommonworksId},#{item.expertId},0)
+			</foreach>
+		
+	 </insert>
+	 
+	 <insert id="insertMakerComWorksComment" parameterType="com.web.project.model.comment.MakerComWorksComment" keyProperty="id" useGeneratedKeys="true">
+	 	INSERT INTO comment_makercommonworks(makercommonworksId,expertId,isComment)
+	 	VALUES (#{makercommonworksId},#{expertId},0)		
+	 </insert>
+	
+</mapper>

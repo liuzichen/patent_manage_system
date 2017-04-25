@@ -16,4 +16,8 @@ public interface MakerInfoDao {
 	public MakerInfo getMakerInfoById(int id);
 
 	public void updateMakerInfoById(MakerInfo detail);
+	
+	public MakerInfo getInfoByLoginName(String loginname);
+	
+	public void insertMakerInfo(MakerInfo makerInfo);
 }

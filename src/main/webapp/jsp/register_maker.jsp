@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -106,7 +107,7 @@ function checkForm()
 		return false;
 	}
 	else{
-		$("#info_form1").submit();
+		$("#register_Form").submit();
 	}
 }
 function usernameajax(objid)
@@ -115,7 +116,7 @@ function usernameajax(objid)
 	$.ajax({
 		type: "POST",
 		async: false,
-		url: "",    
+		url: "<%=request.getContextPath()%>/maker/loginNameIsExist",    
 		data: {username:txtval},   
 		dataType : "text",
 		success: function(msg){
@@ -150,7 +151,7 @@ function usernameajax(objid)
 </div>
 <div class="xline"></div>
 <div class="info">
-<form method="post" action="" id="register_Form" name="register_Form">
+<form method="post" action="<%=request.getContextPath()%>/maker/makerRegister" id="register_Form" name="register_Form">
 	<div class="label1">
 		<span>基本信息</span>
 	</div>
@@ -208,9 +209,9 @@ function usernameajax(objid)
 						<td>第一领域:</td>
 						<td><select id="register_field1"  name="register_field1">
 								<option value="">--请选择--</option> 
-								<%List  list= (ArrayList)request.getAttribute("field");
-								for(int i=0;i<list.size();i++){
-									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
+								<c:forEach items="${field}" var="map">
+									<option value=${map.name}>${map.name}</option>
+								</c:forEach>
 							</select>
 
 						</td>
@@ -220,9 +221,9 @@ function usernameajax(objid)
 						<td>第二领域:</td>
 						<td><select id="register_field2"  name="register_field2">
 								<option value="">--请选择--</option> 
-								<%
-								for(int i=0;i<list.size();i++){
-									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
+								<c:forEach items="${field}" var="map">
+									<option value=${map.name}>${map.name}</option>
+								</c:forEach>
 							</select>
 
 						</td>

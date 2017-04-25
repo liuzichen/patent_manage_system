@@ -45,12 +45,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "111",
 			"menuname" : "我的问题咨询",
 			"icon" : "icon-nav",
-			"url" : "https://www.baidu.com/"
+			"url" : "<%=request.getContextPath()%>/jsp/enterprise/consultoverview.jsp"
 		}, {
 			"menuid" : "113",
 			"menuname" : "咨询问题提交",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/question/toAddQA"
 		}]
 	}, {
 		"menuid" : "20",
@@ -60,12 +60,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "团队基本信息维护",
 			"icon" : "icon-nav",
-			"url" : "<%=request.getContextPath()%>/maker/personalInfo?id="+"3"
+			"url" : "<%=request.getContextPath()%>/maker/personalInfo?id="+"<%=session.getAttribute("userId")%>"
 		}, {
 			"menuid" : "213",
 			"menuname" : "登录密码修改",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/repassword.jsp"
 		} ]
 	}, {
 		"menuid" : "20",
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "原创成果管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/mworkoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "创客项目报名",
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "213",
 			"menuname" : "创客项目作品管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/mprojectworkoverview.jsp"
 		} ]
 	}, {
 		"menuid" : "20",
@@ -95,12 +95,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "213",
 			"menuname" : "我的合作意向",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/mycooperationoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "寻求合作",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/cooperationoverview.jsp"
 		} ]
 	} , {
 		"menuid" : "20",

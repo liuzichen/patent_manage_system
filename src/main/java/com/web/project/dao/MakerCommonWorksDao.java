@@ -16,4 +16,16 @@ public interface MakerCommonWorksDao {
 	public MakerCommonWorks getMakerCommonWorksDetailById(int id);
 
 	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByUser(int id);
+	
+	public void insertMakerCommonWork(MakerCommonWorks makerCommonWorks);
+	
+	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByTitle(String title);
+	
+	public ArrayList<MakerCommonWorks> getNoAssignedMakerCommonWorksList();
+	
+	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByState(int state);
+	
+	public void updateEvaluationOfMakerCommonWork(MakerCommonWorks makerCommonWorksl);
+	
+	public void updateAssignOfMakerCommonWork(MakerCommonWorks makerCommonWorks);
 }

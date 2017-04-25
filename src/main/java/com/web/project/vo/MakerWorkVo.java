@@ -30,6 +30,7 @@ public class MakerWorkVo {
 	String evaluation;
 	String evaluatetime;
 	boolean isevaluated;
+	boolean isAssigned;
 
 	public int getId() {
 		return id;
@@ -176,6 +177,15 @@ public class MakerWorkVo {
 		this.isevaluated = isevaluated;
 	}
 
+	
+	public boolean isAssigned() {
+		return isAssigned;
+	}
+
+	public void setAssigned(boolean isAssigned) {
+		this.isAssigned = isAssigned;
+	}
+
 	public MakerWorkVo transfer(MakerWorks makerWorks) {
 		this.setId(makerWorks.getId());
 		this.setMakerProjectID(makerWorks.getMakerProjectID());
@@ -191,8 +201,9 @@ public class MakerWorkVo {
 		this.setFujianType(makerWorks.getFujianType());
 		this.setField(makerWorks.getField());
 		this.setProblems(makerWorks.getProblems());
-		this.isevaluated = makerWorks.isIsevaluated();
+		this.setIsevaluated(makerWorks.isIsevaluated());
 		this.setEvaluation(makerWorks.getEvaluation());
+		this.setAssigned(makerWorks.isAssigned());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Long time = makerWorks.getSubmitTime() * 1000;
 		if (this.isevaluated == true) {

@@ -21,7 +21,7 @@ function checkform(){
 	var oldp = document.getElementById("oldp").value;
 	var newp = document.getElementById("newp").value;
 	var againp = document.getElementById("againp").value;
-	var password=<%=request.getSession().getAttribute("password")%>;
+	var password=<%=session.getAttribute("password")%>;
 	if(oldp!=password){
 		alert("提示：\n\n原始密码错误！");
 		document.getElementById("oldp").value = "";             
@@ -62,7 +62,7 @@ function checkform(){
 		 </div> 
 		 
 	     <div  class="context">
-	     <form  method="post" action="welcome.jsp" id="reform" name="reform">
+	     <form  method="post" action="<%=request.getContextPath()%>/login/repassword" id="reform" name="reform">
 	     	<div class="box">
 	     		<div class="titlebox">
 	     			<div class="title">登录密码修改</div>
@@ -74,7 +74,7 @@ function checkform(){
 	     				<tr><td>&nbsp;</td></tr>
 	     				<tr>
 	     					<td class="tdname" style="background-color:#F7F7F7;">当前用户名:</td>
-	     					<td class="tdcontent"><%=request.getSession().getAttribute("username")%></td>
+	     					<td class="tdcontent"><%=session.getAttribute("userName")%></td>
 	     				</tr>
 	     				<tr>
 	     					<td class="tdname" style="background-color:#F7F7F7;">旧&nbsp;&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码:</td>

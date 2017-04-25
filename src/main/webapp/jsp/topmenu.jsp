@@ -26,11 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <form method="post" action="#" id="Form1">
     <div class="navbg">
         <div align="center" class="navleft">
-            <font size="2" color="#fff100">欢迎您登录:&nbsp;<%=request.getSession().getAttribute("username") %>！</font>
+            <font size="2" color="#fff100">欢迎您登录:&nbsp;<%=session.getAttribute("userName") %>！</font>
         </div>
         <div class="navx">
-        	 <font size="2" color="#fff100">当前用户组:&nbsp;
-          	<%=request.getSession().getAttribute("role") %></font>
+        	 <font size="2" color="#fff100">当前用户组:&nbsp;<%=session.getAttribute("usertype") %></font>
         </div>
         <div class="nav">
             <ul>

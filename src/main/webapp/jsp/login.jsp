@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@page import="com.google.code.kaptcha.Constants"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,19 +26,20 @@ body{margin:0;padding:0; font:12px "宋体", arial,sans-serif;}
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script type="text/javascript">
 $.ajaxSetup ({
-   	cache: false //关闭AJAX相应的缓存
+   	cache: true //关闭AJAX相应的缓存
 });
 $(document).ready(function(){
 	var isExist ="<%=request.getSession().getAttribute("isExist")%>";
 	if(isExist=="1"){
 		alert("用户名或密码错误");
 	}
+	if(isExist=="2"){
+		alert("验证码错误");
+	}
 });
 function checkForm(){
-	var username = document.getElementById("login_username").value;        
+	var username = document.getElementById("login_username").value;   
 	var password = document.getElementById("login_password").value;
-	<%-- var code = "<%=request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY)%>"; --%>
-	var mycode = document.getElementById("login_code").value;
 	if(username.length==0){             
 		alert("提示：\n\n用户名不能为空！");  
 		document.getElementById("login_username").value = "";             
@@ -49,14 +52,6 @@ function checkForm(){
 		document.getElementById("login_password").focus();             
 		return false;        
 		}
-	if(code!=mycode){
-		alert("提示：\n\n验证码错误！");
-		document.getElementById("login_code").value = "";             
-		document.getElementById("login_code").focus();
-		changecode();
-		return false;        
-	}
-	login_Form.action="welcome.jsp";
 	login_Form.submit();
 }
 function changecode(){
@@ -74,13 +69,13 @@ function changecode(){
 	<div class="container">
 		<div class="background">
 		<div class="info">
-			<form  method="post" action="" id="login_Form"> <!-- action填目标文件地址 -->
+			<form  method="post" action="<%=request.getContextPath()%>/login/log" id="login_Form"> <!-- action填目标文件地址 -->
 				<table width="350" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td width="60" height="40" align="left">账号类型</td>
 						<td><select id="role"  name="role" style="width:180px;">
  								<option value="专家用户">专家用户</option>
-								<option value="个人用户">个人用户</option>
+								<option value="创客用户">创客用户</option>
  								<option value="企业用户">企业用户</option>
  								<option value="政府用户">政府用户</option>
  							</select></td>
@@ -103,7 +98,7 @@ function changecode(){
 										<img name="login_signin" id="login_signin" alt="登录" src="<%=request.getContextPath()%>/image/signin.png" onclick="checkForm()" style="cursor:pointer;" />&nbsp;										
 									</div>
                                     <div style="float:left; line-height:40px; padding-left:20px;">
-                                    <a href="register.jsp" style="color: #338cce;">新用户注册</a><!-- 链接注册页面 -->
+                                    <a href="<%=request.getContextPath()%>/maker/toRegisterMaker" style="color: #338cce;">新用户注册</a><!-- 链接注册页面 -->
                                     </div>
 								</td>
 

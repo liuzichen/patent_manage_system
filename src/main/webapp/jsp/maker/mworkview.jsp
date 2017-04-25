@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +13,16 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
-
+$(document).ready(function(){
+	var hid;
+	if("${detail.fujian}"==""){
+		hid=1;
+	}
+	if(hid==1){
+		$('#download').hide();
+	}
+	$("#download").attr("href","<%=request.getContextPath()%>/maker/makerCommonWorksDownload?id="+"${detail.id }"); 
+});
 </script>
 </head>
 <body>
@@ -48,7 +58,7 @@
 	     	 		<td class="tdname">电子邮箱：</td>
 	     	 		<td class="tdcontent1">${detail.email }</td>
 	     	 		<td class="tdname" colspan="2" >
-                   	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
+                   	 <div align="center" ><a href="#" id="download" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
 	     	 		
 	     	 	</tr>
 	     	 		     	 	
@@ -60,7 +70,19 @@
 	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.description }</pre>
 	    				 </div>
 		             </div>
-             </tr>          
+             </tr> 
+             <%boolean flag=(Boolean)request.getAttribute("flag");%>
+             <%if(flag==true){%>
+             <tr>             
+             	 <td  class="tdname"  align="center" >评审结果</td>
+            	 <td  align="center"   colspan="3">
+	            	 <div class="tdcontent3">
+		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.evaluation}</pre>
+	    				 </div>
+		             </div>
+             </tr> 
+             <%}%>      
 	     	 </table>
 	     	 </form>
 	     </div>
