@@ -15,7 +15,9 @@
 $(document).ready(function(){
 	var hid;
 	if("${detail.isevaluated}"=="false"){
-		$('.easyui-tabs').tabs('close','评审结果');
+		/* $('.easyui-tabs').tabs('close','评审结果'); */
+		var ctab = $('.easyui-tabs').tabs('getTab', '评审结果').panel('options').tab;
+		 ctab.hide();
 	}
 	if("${detail.fujian}"==""){
 		hid=1;
