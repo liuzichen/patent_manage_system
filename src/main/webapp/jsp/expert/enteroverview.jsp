@@ -27,8 +27,8 @@ $(function () {
                 striped: true,
                 collapsible: true,
                	
-                pageList: [1, 2,3,5],
-                pageSize: 1,
+                pageList: [10, 20,30,50],
+                pageSize: 10,
                 sortName: 'DATE',
                 sortOrder: 'asc',
                 remoteSort: true,
@@ -127,8 +127,8 @@ $(function () {
                 }
             });
         	$('#roleList').datagrid('getPager').pagination( {
-        		pageList: [1, 2,3,5],
-                pageSize: 1,
+        		pageList: [10, 20,30,50],
+                pageSize: 10,
 				beforePageText : '第',
 				afterPageText : '页    共 {pages} 页',
 				displayMsg : '当前显示从{from}到{to}共{total}记录',

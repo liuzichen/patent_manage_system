@@ -379,9 +379,15 @@ public class ExpertController {
 		if (enterpriseCommonProjects.size() > 0)
 			start = (pageId - 1) * pageSize;
 		end = Math.min(enterpriseCommonProjects.size(), start + pageSize);
+		ArrayList<EnterpriseCommonProjectVo> vos = new ArrayList<>();
+		for(int i=start;i<end;i++){
+			EnterpriseCommonProjectVo vo = new EnterpriseCommonProjectVo();
+			vo.transfer(enterpriseCommonProjects.get(i));
+			vos.add(vo);
+		}
 		HashMap hashMap = new HashMap();
 		hashMap.put("total", enterpriseCommonProjects.size());
-		hashMap.put("rows", enterpriseCommonProjects.subList(start, end));
+		hashMap.put("rows", vos);
 		String result1 = JSONArray.fromObject(hashMap).toString();
 		String result = result1.substring(1, result1.length() - 1);
 		return result;
