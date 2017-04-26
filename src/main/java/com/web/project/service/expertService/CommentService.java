@@ -6,6 +6,7 @@ package com.web.project.service.expertService;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ import com.web.project.model.enterprise.EnterpriseCommonProject;
 import com.web.project.model.enterprise.EnterpriseProject;
 import com.web.project.model.maker.MakerCommonWorks;
 import com.web.project.model.maker.MakerWorks;
+import com.web.project.model.comment.MakerComWorksComment;
 
 /**
  * @author 子晨
@@ -108,4 +110,17 @@ public class CommentService {
 	public EnterpriseProjectComment getEnterProjectComment(int expertId,int projectId,String type){
 		return commentDao.getEnterProjectComment(expertId, projectId, type);
 	}
+	
+	public ArrayList<MakerComWorksComment> getMakerComWorksCommentsByWorkId(int id){
+		return commentDao.getMakerComWorksCommentsByWorkId(id);
+	}
+	
+	public void insertMakerComWorksCommentList(ArrayList<MakerComWorksComment> makerComWorksComments){
+		commentDao.insertMakerComWorksCommentList(makerComWorksComments);
+	}
+	
+	public int insertMakerComWorksComment(MakerComWorksComment makerComWorksComment){
+		return commentDao.insertMakerComWorksComment(makerComWorksComment);
+	}
+	
 }

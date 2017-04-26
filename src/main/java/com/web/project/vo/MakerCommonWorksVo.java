@@ -187,8 +187,10 @@ public class MakerCommonWorksVo {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Long time = makerCommonWorks.getSubmitTime() * 1000;
 		this.setSubmitTime(sdf.format(time));
+		if(this.isevaluated==true){
 		time=makerCommonWorks.getEvaluateTime() * 1000;
 		this.setEvaluateTime(sdf.format(time));
+		}
 		return this;
 	}
 }

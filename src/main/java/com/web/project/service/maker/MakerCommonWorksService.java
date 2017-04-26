@@ -34,4 +34,20 @@ public class MakerCommonWorksService {
 	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByTitle(String title){
 		return makerCommonWorksDao.getMakerCommonWorksListByTitle(title);
 	}
+	
+	public ArrayList<MakerCommonWorks> getNoAssignedMakerCommonWorksList(){
+		return makerCommonWorksDao.getNoAssignedMakerCommonWorksList();
+	}
+	
+	public ArrayList<MakerCommonWorks> getMakerCommonWorksListByState(int state){
+		return makerCommonWorksDao.getMakerCommonWorksListByState(state);
+	}
+	
+	public void updateEvaluationOfMakerCommonWork(MakerCommonWorks makerCommonWorks){
+		makerCommonWorksDao.updateEvaluationOfMakerCommonWork(makerCommonWorks);
+	}
+	
+	public void updateAssignOfMakerCommonWork(MakerCommonWorks makerCommonWorks){
+		makerCommonWorksDao.updateAssignOfMakerCommonWork(makerCommonWorks);
+	}
 }

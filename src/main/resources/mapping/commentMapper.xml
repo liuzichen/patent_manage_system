@@ -148,5 +148,25 @@
 		expertid=#{0} and iscomment=0 and enterprojectId=#{1} and type=#{2}
 		</where>
 	</select> 
+	 <select id="getMakerComWorksCommentsByWorkId" resultMap="makerComWorksCommentMap">
+		 select * from comment_makercommonworks
+		 <where>
+			 makercommonworksId=#{id}
+		 </where>
+	 </select>
+	 
+	 <insert id="insertMakerComWorksCommentList" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+	 	INSERT INTO comment_makercommonworks(makercommonworksId,expertId,isComment)
+	 	VALUES 
+			<foreach collection="list" index="index" item="item"  separator="," >
+				(#{item.makercommonworksId},#{item.expertId},0)
+			</foreach>
+		
+	 </insert>
+	 
+	 <insert id="insertMakerComWorksComment" parameterType="com.web.project.model.comment.MakerComWorksComment" keyProperty="id" useGeneratedKeys="true">
+	 	INSERT INTO comment_makercommonworks(makercommonworksId,expertId,isComment)
+	 	VALUES (#{makercommonworksId},#{expertId},0)		
+	 </insert>
 	
 </mapper>

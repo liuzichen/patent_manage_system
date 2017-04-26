@@ -13,12 +13,19 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
+	var hid;
 	if("${detail.isevaluated}"=="false"){
-		$('.easyui-tabs').tabs('close','评审结果');
+		/* $('.easyui-tabs').tabs('close','评审结果'); */
+		var ctab = $('.easyui-tabs').tabs('getTab', '评审结果').panel('options').tab;
+		 ctab.hide();
 	}
-	
-	$("#download").attr("href","<%=request.getContextPath()%>/maker/makerProjectWorksDownload?id="+"${detail.id }"+"&filepath=abc"); 
+	if("${detail.fujian}"==""){
+		hid=1;
+	}
+	if(hid==1){
+		$('#download').hide();
+	}
+	$("#download").attr("href","<%=request.getContextPath()%>/maker/makerProjectWorksDownload?id="+"${detail.id }"); 	
 });
 </script>
 </head>

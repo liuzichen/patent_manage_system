@@ -52,50 +52,10 @@ $(function () {
               	  text: "提交创新成果",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		var id="1";
-              		window.location.href="<%=request.getContextPath()%>/maker/toInsertMakerCommonWork?id="+id; 
+              		window.location.href="<%=request.getContextPath()%>/maker/toInsertMakerCommonWork?id="+"<%=session.getAttribute("userId")%>"; 
               	  }
                 },'-',
-                /*{
-              	  text: "删除创新成果",
-              	  iconCls: "icon-cut",
-              	  handler: function () {
-              		  var post= $('#roleList').datagrid('getChecked');
-              		  var id = new Array([post.length]);
-              		  for(var i=0;i<post.length;i++){
-              			  id[i]=post[i].CODE;
-              			  alert(id[i]);
-              		  }
-              		var opts = $('#roleList').datagrid('options');
-                	var page=opts.pageNumber;
-                	var size=opts.pageSize;
-                	var sort=opts.sortName;
-                	var order=opts.sortOrder;
-                    $.ajax({
-                        url:'<%=request.getContextPath()%>/maker/myCommonWorksList',
-                        data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"remove":id},
-                        type: 'post',
-                        dataType : "text",
-                        traditional:true,
-                    	error: function(XMLHttpRequest, textStatus, errorThrown) {
-        	       			alert(XMLHttpRequest.status);
-        	       			alert(XMLHttpRequest.readyState);
-        	       			alert(textStatus);
-        	       		},
-               			   
-                        success: function (msg) {
-                        	
-                        	var result = eval("("+msg+")");
-        					
-         						$("#roleList").datagrid("loadData",result);
-         					
-                            
-                     
-                        }
-                    });
-                    $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
-              	  }                  
-                }*/],
+               ],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -113,7 +73,7 @@ $(function () {
                 pageSize: 10,
 				beforePageText : '第',
 				afterPageText : '页    共 {pages} 页',
-				displayMsg : '当前显示从{from}到{to}共{total}记录',
+				displayMsg : '当前显示从{from}到{to}条记录，共{total}条记录',
 				onBeforeRefresh : function(pageNumber, pageSize) {
 					$('#roleList').datagrid('clearSelections').datagrid("clearChecked");
 					
@@ -145,7 +105,7 @@ $(function () {
         	var order=opts.sortOrder;
             $.ajax({
                 url:'<%=request.getContextPath()%>/maker/myCommonWorksList',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":1},
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":<%=session.getAttribute("userId")%>},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {

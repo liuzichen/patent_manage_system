@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,7 +50,9 @@ function sub(){
 		 
     <div class="context">
        <div class="titlebox"><span class="title">咨询问题</span></div>
-       <form action="" name="Form1" id="Form1">
+       <form action="<%=request.getContextPath()%>/question/insertQA" name="Form1" id="Form1">
+       <input type="hidden" id="userid" name="userid" value=<%=session.getAttribute("userId")%>>
+       <input type="hidden" id="usertype" name="usertype" value="<%=session.getAttribute("type")%>">
        <div style="width:100%">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
                 <tr >
@@ -61,6 +64,9 @@ function sub(){
                     <td class="tdcontent2" >
                       <select id="field"  name="field" style="width:80%">
                       			<option value="">--请选择--</option>               
+								<c:forEach items="${fieldList}" var="map">
+								<option value=${map.name }>${map.name}</option>
+								</c:forEach>
 								
 							</select>
                     </td>

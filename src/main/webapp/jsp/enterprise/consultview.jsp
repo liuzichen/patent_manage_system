@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,16 +16,13 @@
 
 </script>
 </head>
-<%String a="1111111\n   1111";
-int b=3;
-%>
 <body>
 	 <div>
  
      <div class="topnav" >
 	   <div  class="path" >
 	      <span ><font>当前位置:</font></span>
-	      <span ><font >专家咨询&nbsp;&nbsp; &gt;&nbsp;&nbsp; 我的问题咨询提交</font></span>
+	      <span ><font >专家咨询&nbsp;&nbsp; &gt;&nbsp;&nbsp; 我的问题咨询</font></span>
 	   </div>
      </div> 
 		 
@@ -36,11 +34,11 @@ int b=3;
                 <tr >
                     <td class="tdname" >标题：</td>                    
                     <td class="tdcontent1">
-                      
+                      ${detail.title }
                     </td>
                     <td class="tdname" >提问时间：</td>                    
                     <td class="tdcontent1">
-                      
+                      ${detail.askTime }
                     </td>
                 </tr>
                 <tr >
@@ -48,7 +46,7 @@ int b=3;
                     <td  colspan="3">
                      <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap;"><%=a %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap;">${detail.content }</pre>
 	    				 </div>
 		             </div> 
                     </td>
@@ -58,7 +56,14 @@ int b=3;
                     <td  colspan="3">
                     <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap; "><%if(b==3){%><%=a %><%}else{%>专家还未回复，请耐心等待。<%} %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap; ">
+	     					<c:if test="${detail.isAnswered()==true}">
+	     					${detail.answer }
+	     					</c:if>
+	     					<c:if test="${detail.isAnswered()==false}">
+	     					等待回复
+	     					</c:if>
+	     					</pre>
 	    				 </div>
 	    				</div>
                     </td>

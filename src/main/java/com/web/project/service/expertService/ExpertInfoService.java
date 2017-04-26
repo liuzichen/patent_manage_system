@@ -42,4 +42,8 @@ public class ExpertInfoService {
 		return expertInfoDao.getInfoByLoginName(loginName);
 	}
 
+	public ArrayList<ExpertInfo> getExpertByField(String field){
+		return expertInfoDao.getExpertByField(field);
+	}
+
 }

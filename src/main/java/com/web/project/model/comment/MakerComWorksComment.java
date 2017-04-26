@@ -61,6 +61,7 @@ public class MakerComWorksComment {
 	}
 
 	public void setCommenttime(Long commenttime) {
+
 		this.commenttime = commenttime;
 	}
 
