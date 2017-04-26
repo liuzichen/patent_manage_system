@@ -117,6 +117,16 @@ function sub(){
 		             </div>
 		             </td> 
              </tr>
+             <tr>             
+             	 <td  class="tdname"  align="center" colspan="1">主要问题</td>
+            	 <td  align="center"   colspan="3">
+	            	 <div class="tdcontent3">
+		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${item.questions}</pre>
+		             </div>
+		             </div>
+		             </td> 
+             </tr>
        			</c:forEach>
        			</table>       			
        			</div>

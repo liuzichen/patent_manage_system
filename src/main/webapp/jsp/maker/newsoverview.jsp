@@ -65,7 +65,7 @@ $(function () {
                 pageSize: 10,
 				beforePageText : '第',
 				afterPageText : '页    共 {pages} 页',
-				displayMsg : '当前显示从{from}到{to}共{total}记录',
+				displayMsg : '当前显示从{from}到{to}条记录，共{total}条记录',
 				onBeforeRefresh : function(pageNumber, pageSize) {
 					$('#roleList').datagrid('clearSelections').datagrid("clearChecked");
 					
