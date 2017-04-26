@@ -46,7 +46,7 @@ $(function () {
 				{field : 'submitTime',title : '提交时间',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/maker/makerWorkDetail?id="+row.id+"' >查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/maker/expertWorkDetail?id="+row.id+"' >查看详情</a>";  
                     }
                 }
               

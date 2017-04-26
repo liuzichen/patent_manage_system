@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONArray;
 
@@ -28,11 +29,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sf.json.JSONArray;
 
+import com.web.project.model.comment.MakerComWorksComment;
+import com.web.project.model.comment.MakerWorksComment;
 import com.web.project.model.maker.MakerCommonWorks;
 import com.web.project.model.maker.MakerCooperation;
 import com.web.project.model.maker.MakerProject;
 import com.web.project.model.maker.MakerInfo;
 import com.web.project.service.FieldService;
+import com.web.project.service.expertService.CommentService;
 import com.web.project.service.makerService.MakerProjectService;
 import com.web.project.vo.MakerProjectListVo;
 import com.web.project.model.Field;
@@ -70,6 +74,8 @@ public class MakerController {
 	MakerInfoService makerInfoService;
 	@Autowired
 	FieldService fieldService;
+	@Autowired
+	CommentService commentService;
 	
 	/**
 	 * 获取创客信息并跳转信息维护界面
@@ -449,13 +455,51 @@ public class MakerController {
 	}
 	
 	/**
+	 * 专家获取创客个人原创作品信息
+	 */
+	@RequestMapping("expertCommonWorkDetail")
+	public String expertGetMyCommonWorkDetail(@RequestParam(value = "id") final int id,
+			ModelMap model,HttpServletRequest request){
+		MakerCommonWorks makerCommonWorks=makerCommonWorksService.getMakerCommonWorksDetailById(id);
+		MakerCommonWorksVo makerCommonWorksVo=new MakerCommonWorksVo();
+		String makerName = makerCommonWorksService.getMakerCommonWorksDetailById(makerCommonWorks.getMakerId()).getTeam();
+		MakerComWorksComment comment = commentService.getComWorksComment((int)(request.getSession().getAttribute("userId")), id);
+		makerCommonWorksVo.transfer(makerCommonWorks);
+		model.put("team", makerName);
+		model.put("detail", makerCommonWorksVo);
+		model.put("comment", comment);
+		request.setAttribute("id", id);
+		return "expert/makerreview";
+	}
+	
+	/**
+	 * 专家获取创客个人原创作品信息
+	 */
+	@RequestMapping("expertWorkDetail")
+	public String expertGetMyWorkDetail(@RequestParam(value = "id") final int id,
+			ModelMap model,HttpServletRequest request){
+		MakerWorks makerWorks=makerWorksService.getMakerWorksDetailById(id);
+		MakerWorkVo makerWorkVo = new MakerWorkVo();
+		String makerName =makerWorksService.getMakerWorksDetailById(makerWorks.getMakerId()).getTeam();
+		MakerWorksComment comment = commentService.getWorksComment((int)(request.getSession().getAttribute("userId")), id);
+		makerWorkVo.transfer(makerWorks);
+		model.put("team", makerName);
+		model.put("detail", makerWorkVo);
+		model.put("comment", comment);
+		model.put("id", id);
+		return "expert/pmakerreview";
+	}
+	
+	/**
 	 * 创客项目作品列表
 	 */
 	@RequestMapping("workList")
 	@ResponseBody
 	public String getMakerWorkList(@RequestParam(value = "pageNum") final int pageId,
-			@RequestParam(value = "pageSize") final int pageSize,ModelMap model){
-		ArrayList<MakerWorks> makerWorks = makerWorksService.getMakerWorksList();
+			@RequestParam(value = "pageSize") final int pageSize,ModelMap model, HttpServletRequest request){
+		HttpSession session = request.getSession();	
+		int id = Integer.parseInt(session.getAttribute("userId").toString());
+		ArrayList<MakerWorks> makerWorks = commentService.getMakerWorksByExpertId(id);
 		int start = (pageId - 1) * pageSize;
 		int end = Math.min(makerWorks.size(), start + pageSize);
 		ArrayList<MakerWorkVo> makerWorkVos = new ArrayList<MakerWorkVo>();

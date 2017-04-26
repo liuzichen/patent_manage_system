@@ -12,9 +12,11 @@ public class EnterpriseComProjectComment {
 	int id;
 	int enterCommmonId;
 	int expertId;
+	String bianzhiCompany;
+	String evaluateCompany;
 	String comment;
-	int commentTime;
-	boolean isComment;
+	Long commentTime;
+	boolean iscommented;
 
 	public int getId() {
 		return id;
@@ -40,6 +42,22 @@ public class EnterpriseComProjectComment {
 		this.expertId = expertId;
 	}
 
+	public String getBianzhiCompany() {
+		return bianzhiCompany;
+	}
+
+	public void setBianzhiCompany(String bianzhiCompany) {
+		this.bianzhiCompany = bianzhiCompany;
+	}
+
+	public String getEvaluateCompany() {
+		return evaluateCompany;
+	}
+
+	public void setEvaluateCompany(String evaluateCompany) {
+		this.evaluateCompany = evaluateCompany;
+	}
+
 	public String getComment() {
 		return comment;
 	}
@@ -48,19 +66,22 @@ public class EnterpriseComProjectComment {
 		this.comment = comment;
 	}
 
-	public int getCommentTime() {
+	public Long getCommentTime() {
 		return commentTime;
 	}
 
-	public void setCommentTime(int commentTime) {
+	public void setCommentTime(Long commentTime) {
 		this.commentTime = commentTime;
 	}
 
-	public boolean isComment() {
-		return isComment;
+	public boolean isIscommented() {
+		return iscommented;
 	}
 
-	public void setComment(boolean isComment) {
-		this.isComment = isComment;
+	public void setIscommented(boolean iscommented) {
+		this.iscommented = iscommented;
 	}
+
+	
+	
 }

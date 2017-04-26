@@ -17,12 +17,15 @@ import com.web.project.model.News;
 import com.web.project.model.Question;
 import com.web.project.model.enterprise.EnterpriseCommonProject;
 import com.web.project.model.enterprise.EnterpriseProject;
+import com.web.project.model.maker.MakerCommonWorks;
 import com.web.project.service.RePasswordService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
+import com.web.project.service.expertService.CommentService;
 import com.web.project.service.expertService.ExpertInfoService;
 import com.web.project.service.relationship.NewsService;
 import com.web.project.service.relationship.QuestionService;
 import com.web.project.vo.EnterpriseCommonProjectVo;
+import com.web.project.vo.MakerCommonWorksVo;
 import com.web.project.vo.NewsVo;
 import com.web.project.vo.QuestionVo;
 
@@ -45,6 +48,8 @@ public class LoginController {
 	@Autowired
 	RePasswordService rePasswordService;
 	
+	@Autowired
+	CommentService commentService;
 	/**
 	 * 登录验证
 	 */
@@ -81,6 +86,8 @@ public class LoginController {
 	 */
 	@RequestMapping("expert")
 	public String login(ModelMap model, HttpServletRequest request){
+		HttpSession session = request.getSession();	
+		int id = Integer.parseInt(session.getAttribute("userId").toString());
 		//系统公告
 		ArrayList<News> newsList = newsService.getNewsByType("系统公告");
 		ArrayList<NewsVo> news = new ArrayList<NewsVo>();		
@@ -93,7 +100,7 @@ public class LoginController {
 		model.put("news", news);
 		
 		//企业一般项目
-		ArrayList<EnterpriseCommonProject> projectsList = enterpriseProjectService.getEnterpriseCommonProjectLists();
+		ArrayList<EnterpriseCommonProject> projectsList = commentService.getEnterpriseCommonProjectsByExpertId(id);
 		ArrayList<EnterpriseCommonProjectVo> commonProjects = new ArrayList<>();
 		for(int i=0;i< (projectsList.size()<4?projectsList.size():4);i++){
 			EnterpriseCommonProjectVo vo = new EnterpriseCommonProjectVo();
@@ -101,9 +108,8 @@ public class LoginController {
 			vo.setSubmitTime(vo.getSubmitTime().substring(0, 10));
 			commonProjects.add(vo);
 		}
-		model.put("commonProjects", commonProjects);
-		HttpSession session = request.getSession();
-		int id = Integer.parseInt(session.getAttribute("userId").toString());
+		model.put("commonProjects", commonProjects);			
+		
 		//咨询问题回复
 		ArrayList<Question> questionList = questionService.getQuestionByExpertID(id);
 		ArrayList<QuestionVo> questions = new ArrayList<>();
@@ -113,7 +119,18 @@ public class LoginController {
 			vo.setAskTime(vo.getAskTime().substring(0, 10));
 			questions.add(vo);
 		}
-		model.put("questions", questions);		
+		model.put("questions", questions);	
+		
+		//创客原创成果评审
+		ArrayList<MakerCommonWorks> makerCommonWorks = commentService.getMakerCommonWorksByExpertId(id);
+		ArrayList<MakerCommonWorksVo> makerCommonWorksVos = new ArrayList<>();
+		for(int i=0;i< (makerCommonWorks.size()<4?makerCommonWorks.size():4);i++){
+			MakerCommonWorksVo vo = new MakerCommonWorksVo();
+			vo.transfer(makerCommonWorks.get(i));
+			vo.setSubmitTime(vo.getSubmitTime().substring(0, 10));
+			makerCommonWorksVos.add(vo);
+		}
+		model.put("makercommworks", makerCommonWorksVos);
 		return "expert/loging";
 	}
     

@@ -43,8 +43,8 @@
 	<update id="updateExpertInfo" >
 		update expert
 		<set>			
-			achievement=#{0},
+			achievement=#{1},
 		</set>
-		where id=#{1}
+		where id=#{0}
 	</update>
 </mapper>
