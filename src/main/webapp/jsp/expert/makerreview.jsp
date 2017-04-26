@@ -58,7 +58,6 @@ function sub(){
 </head>
 
 <body>
-<%String a="      11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"; %>
  <div class="commonPage">
  
      <div class="topnav"  >
@@ -67,28 +66,29 @@ function sub(){
 	      <span ><font >项目评审&nbsp;&nbsp; &gt;&nbsp;&nbsp; 创客原创成果评审</font></span>
 	   </div>
      </div> 
-		 
+		 <%String path=request.getContextPath()+"/expert/commentMakerCommonWorks"; %>
     <div class="context">
        <div class="titlebox"><span class="title">创客原创成果评审</span></div>
 	   <div>
-	   	<form action="" name="Form1" id="Form1">
+	   	<form action=<%=path %> name="Form1" id="Form1">
+	   	<input type="hidden" name="workId" value=<%=request.getAttribute("id")%>>
 	   	<input type="hidden" name="sort" id="sort">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
                 <tr >
                     <td class="tdname">创新成果名称：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <%=request.getAttribute("name")%>
+                      ${detail.title}
                     </td>
                     
                 </tr>
                 <tr >
                     <td class="tdname">团队名称：</td>
                     <td class="tdcontent1">
-                       <%=request.getAttribute("age")%>
+                       ${team}
                     </td>
                     <td class="tdname">技术领域：</td>
                     <td class="tdcontent2">
-                       <%=request.getAttribute("company")%>
+                      ${detail.field}
                     </td>                    
                 </tr>
                 <tr>
@@ -104,7 +104,7 @@ function sub(){
             	 <td    colspan="3">
 	            	 <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px"><%=a %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.description}</pre>
 	    				 </div>
 		             </div>
              </tr>
@@ -112,7 +112,7 @@ function sub(){
              	 <td  class="tdname"  align="center" height="100px" >专家意见与评述</td>
             	 <td  align="center" height="100px" colspan="3">
 	            	 <div class="tdcontent3">
-		               <textarea id="presention" name="presention" cols="40" rows="12" style="width:90%;height:100%;"></textarea>
+		               <textarea id="presention" name="presention" cols="40" rows="12" style="width:90%;height:100%;">${comment.comment}</textarea>
 		             </div>
              </tr>
              
@@ -120,7 +120,7 @@ function sub(){
              	 <td  class="tdname" align="center" >主要问题及建议</td>
             	 <td  align="center" height="400px" colspan="3">
 	            	 <div class="tdcontent3">
-		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;"></textarea>
+		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;">${comment.questions}</textarea>
 		             </div> 
              </td>
              </tr>

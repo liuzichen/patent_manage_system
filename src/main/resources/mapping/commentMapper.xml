@@ -7,9 +7,11 @@
 		<id column="id" property="id" jdbcType="INTEGER" /> 
 		<result column="enterCommmonId" property="enterCommmonId" jdbcType="INTEGER" />
 		<result column="expertId" property="expertId" jdbcType="INTEGER" />
+		<result column="bianzhiCompany" property="bianzhiCompany" jdbcType="VARCHAR" />
+		<result column="evaluateCompany" property="evaluateCompany" jdbcType="VARCHAR" />
 		<result column="comment" property="comment" jdbcType="VARCHAR" />
 		<result column="commentTime" property="commentTime" jdbcType="INTEGER" />
-		<result column="isComment" property="isComment" jdbcType="BOOLEAN" />	
+		<result column="iscomment" property="iscommented" jdbcType="BOOLEAN" />	
 	</resultMap>  
 	
 	 <resultMap id="enterpriseProjectCommentMap" type="com.web.project.model.comment.EnterpriseProjectComment" >
@@ -17,10 +19,12 @@
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="enterprojectId" property="enterprojectId" jdbcType="INTEGER" />
 		<result column="expertId" property="expertId" jdbcType="INTEGER" />
+		<result column="bianzhiCompany" property="bianzhiCompany" jdbcType="VARCHAR" />
+		<result column="evaluateCompany" property="evaluateCompany" jdbcType="VARCHAR" />
 		<result column="mid_describe" property="mid_describe" jdbcType="VARCHAR" />
 		<result column="comment" property="comment" jdbcType="VARCHAR" />
 		<result column="commentTime" property="commentTime" jdbcType="INTEGER" />
-		<result column="isComment" property="isComment" jdbcType="BOOLEAN" />	
+		<result column="iscomment" property="iscommented" jdbcType="BOOLEAN" />	
 	</resultMap> 
 	
 	<resultMap id="makerComWorksCommentMap" type="com.web.project.model.comment.MakerComWorksComment" >
@@ -43,6 +47,107 @@
 		<result column="isComment" property="iscomment" jdbcType="BOOLEAN" />	
 	</resultMap>  
 	 
+	<select id="getMakercommonworksIdByExpertId" resultType="int">
+		select makercommonworksId from comment_makercommonworks
+		<where>
+		expertid=#{expertid} and iscomment=0
+		</where>
+		order by id desc
+	</select> 
+	
+	<select id="getEnterpriseCommonProIdByExpertId" resultType="int">
+		select enterCommmonId from comment_entercommonproject
+		<where>
+		expertid=#{expertid} and iscomment=0
+		</where>
+		order by id desc
+	</select> 
+	
+	<select id="getEnterpriseProIdByExpertId" resultType="int">
+		select enterprojectId from comment_enterproject
+		<where>
+		expertid=#{0} and iscomment=0 and type=#{1}
+		</where>
+		order by id desc
+	</select> 
+	
+	
+	<select id="getMakerWorksIdByExpertId" resultType="int">
+		select makerworksId from comment_makerworks
+		<where>
+		expertid=#{expertid} and iscomment=0
+		</where>
+		order by id desc
+	</select> 
+	
+	<update id="commentMakercommonworks" parameterType="com.web.project.model.comment.MakerComWorksComment">
+			update  comment_makercommonworks
+  		<set>
+  			comment=#{comment},questions=#{questions},commenttime=#{commenttime},iscomment=#{iscomment}	
+  		</set>
+		<where>
+			expertid=#{expertId} and makercommonworksId=#{makercommonworksId}
+		</where>		
+	</update>
+	
+	<update id="commentMakerworks" parameterType="com.web.project.model.comment.MakerComWorksComment">
+			update  comment_makerworks
+  		<set>
+  			comment=#{comment},questions=#{questions},commenttime=#{commenttime},iscomment=#{iscomment}	
+  		</set>
+		<where>
+			expertid=#{expertId} and makerworksId=#{makerworksId}
+		</where>		
+	</update> 
+	
+	<update id="commentEnterComproject" parameterType="com.web.project.model.comment.EnterpriseComProjectComment">
+			update  comment_entercommonproject
+  		<set>
+  			comment=#{comment},commenttime=#{commentTime},iscomment=#{iscommented},bianzhiCompany=#{bianzhiCompany},evaluateCompany=#{evaluateCompany}	
+  		</set>
+		<where>
+			expertid=#{expertId} and enterCommmonId=#{enterCommmonId}
+		</where>		
+	</update>
+	
+	<update id="commentEnterProject" parameterType="com.web.project.model.comment.EnterpriseProjectComment">
+			update  comment_enterproject
+  		<set>
+  			comment=#{comment},commenttime=#{commentTime},iscomment=#{iscommented},mid_describe=#{mid_describe},
+  			bianzhiCompany=#{bianzhiCompany},evaluateCompany=#{evaluateCompany}	
+  		</set>
+		<where>
+			expertid=#{expertId} and enterprojectId=#{enterprojectId} and type=#{type}
+		</where>		
+	</update>	
+	
+	<select id="getmakeComWorksComment" resultMap="makerComWorksCommentMap">
+		select * from comment_makercommonworks
+		<where>
+		expertid=#{0} and iscomment=0 and makercommonworksId=#{1}
+		</where>
+	</select> 
+	
+	<select id="getmakerWorksComment" resultMap="makerWorksCommentMap">
+		select * from comment_makerworks
+		<where>
+		expertid=#{0} and iscomment=0 and makerworksId=#{1}
+		</where>
+	</select> 
+	
+	<select id="getEnterComProjectComment" resultMap="enterpriseComProjectCommentMap">
+		select * from comment_entercommonproject
+		<where>
+		expertid=#{0} and iscomment=0 and enterCommmonId=#{1}
+		</where>
+	</select> 
+	
+	<select id="getEnterProjectComment" resultMap="enterpriseProjectCommentMap">
+		select * from comment_enterproject
+		<where>
+		expertid=#{0} and iscomment=0 and enterprojectId=#{1} and type=#{2}
+		</where>
+	</select> 
 	 <select id="getMakerComWorksCommentsByWorkId" resultMap="makerComWorksCommentMap">
 		 select * from comment_makercommonworks
 		 <where>

@@ -100,6 +100,6 @@ public class Question {
 
 	public void setAskertype(String askertype) {
 		this.askertype = askertype;
-	}
+	}	
 
 }

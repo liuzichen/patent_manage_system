@@ -85,8 +85,9 @@ function sub(){
 		 
     <div class="context">
        <div class="titlebox"><span class="title">科技项目立项评审</span></div>
-	   	<form action="" name="Form1" id="Form1">
+	   	<form method="post" action="<%=request.getContextPath()%>/expert/commentEnterProject?workId=${detail.id}&type=项目立项评审" name="Form1" id="Form1">
 	   	<input type="hidden" name="sort" id="sort">
+	 
 	   	<div class="easyui-tabs" style="width:100%">
 	   	 <div title="申报扉页" style="width:100%">
        	<div style="width:100%">
@@ -1843,7 +1844,7 @@ function sub(){
              	 <td  class="tdname" align="center" >专家意见</td>
             	 <td  align="center" height="500px" colspan="3">
 	            	 <div class="tdcontent3">
-		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;"></textarea>
+		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;">${comment.comment}</textarea>
 		             </div> 
              </td>
              </tr>

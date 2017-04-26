@@ -24,7 +24,7 @@ public class ExpertInfoService {
 	}
 
 	public void updateExpertInfo(int id, String achievement) {
-		expertInfoDao.updateExpertInfo(id);
+		expertInfoDao.updateExpertInfo(id,achievement);
 	}
 
 	public boolean isExist(String loginName, String passWord) {

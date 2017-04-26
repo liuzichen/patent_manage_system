@@ -86,7 +86,7 @@ function sub(){
     <div class="context">
        <div class="titlebox"><span class="title">一般项目立项评审</span></div>
 	   <div>
-	   	<form method="post" action="<%=request.getContextPath()%>/expert/updateEnterpriseCommonProject?id=1" name="Form1" id="Form1">
+	   	<form method="post" action="<%=request.getContextPath()%>/expert/commentEnterCommonProject?workId=${id}" name="Form1" id="Form1">
 	   	<input type="hidden" name="sort" id="sort">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
                 <tr >
@@ -96,23 +96,23 @@ function sub(){
                     </td>
                     <td class="tdname">运营单位：</td>
                     <td class="tdcontent2">
-                       ${detail.enterpriseId}
+                       ${entername}
                     </td>
                 </tr>         
                 <tr >
                     <td class="tdname">编制单位：</td>
                     <td class="tdcontent1">
-                        <input class="easyui-textbox mydatebox" type="text" name="k1" id="k1" >
+                        <input class="easyui-textbox mydatebox" type="text" name="k1" id="k1" value="${comment.bianzhiCompany}">
                     </td>
                     <td class="tdname">评审单位：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k2" id="k2" >
+                       <input class="easyui-textbox mydatebox" type="text" name="k2" id="k2" value="${comment.evaluateCompany}">
                     </td>                    
                 </tr>
                 <tr>
                     <td class="tdname">提交日期：</td>
                     <td class="tdcontent1">
-                        ${detail.enterpriseId}
+                        ${detail.submitTime}
                     </td>
                     <td style="background-color:#F2F2F2;width:15%"colspan="2" >
                    	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>                    
@@ -121,7 +121,7 @@ function sub(){
              	 <td  class="tdname" align="center" >专家意见</td>
             	 <td  align="center" height="500px" colspan="3">
 	            	 <div class="tdcontent3">
-		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;"></textarea>
+		               <textarea id="advice" name="advice" cols="40" rows="12" style="width:90%;height:100%;">${comment.comment}</textarea>
 		             </div> 
              </td>
              </tr>
