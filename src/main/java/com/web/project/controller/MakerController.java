@@ -642,6 +642,7 @@ public class MakerController {
 	@RequestMapping("myCommonWorkDetail")
 	public String getMyCommonWorkDetail(@RequestParam(value = "id") final int id,
 			ModelMap model){
+		System.out.println(id);
 		MakerCommonWorks makerCommonWorks=makerCommonWorksService.getMakerCommonWorksDetailById(id);
 		MakerCommonWorksVo makerCommonWorksVo=new MakerCommonWorksVo();
 		makerCommonWorksVo.transfer(makerCommonWorks);
