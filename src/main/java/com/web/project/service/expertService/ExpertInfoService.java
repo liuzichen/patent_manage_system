@@ -37,7 +37,7 @@ public class ExpertInfoService {
 		}
 		return false;
 	}
-	
+
 	public ExpertInfo getExpertInfoByLoginName(String loginName){
 		return expertInfoDao.getInfoByLoginName(loginName);
 	}

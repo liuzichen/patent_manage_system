@@ -5,7 +5,7 @@
     <resultMap id="makerWorkMap" type="com.web.project.model.maker.MakerWorks" >
 		<id column="id" property="id" jdbcType="INTEGER" /> 
 		<result column="title" property="title" jdbcType="VARCHAR" />
-		<result column="makerprojectid" property="MakerProjectID" jdbcType="VARCHAR" />
+		<result column="makerprojectid" property="MakerProjectID" jdbcType="INTEGER" />
 		<result column="makerId" property="makerId" jdbcType="INTEGER" />
 		<result column="Team" property="team" jdbcType="VARCHAR" />
 		<result column="contact" property="contack" jdbcType="VARCHAR" />
@@ -13,10 +13,15 @@
 		<result column="email" property="email" jdbcType="VARCHAR" />
 		<result column="description" property="description" jdbcType="VARCHAR" />
 		<result column="field" property="field" jdbcType="VARCHAR" />
-		<result column="submitTime" property="submitTime" jdbcType="VARCHAR" />
-		<result column="fujian" property="fujian" jdbcType="VARCHAR" />
+		<result column="submitTime" property="submitTime" jdbcType="INTEGER" />
+		<result column="fujian" property="fujian" jdbcType="BLOB" />
 		<result column="fujiantype" property="fujianType" jdbcType="VARCHAR" />
-		<result column="fujianname" property="fujianName" jdbcType="VARCHAR" />		
+		<result column="fujianname" property="fujianName" jdbcType="VARCHAR" />	
+		<result column="problems" property="problems" jdbcType="VARCHAR" />
+		<result column="evaluation" property="evaluation" jdbcType="VARCHAR" />
+		<result column="evaluateTime" property="evaluatetime" jdbcType="INTEGER" />
+		<result column="isEvaluated" property="isevaluated" jdbcType="TINYINT" />
+		<result column="isAssigned" property="isAssigned" jdbcType="TINYINT" />	
 	</resultMap>    
 	  
 	<select id="getMakerWorksList" resultMap="makerWorkMap"> 
@@ -53,4 +58,11 @@
 		</set>
 		where id=#{4}
 	</update>
+	
+	<insert id="insertMakerWork" parameterType="com.web.project.model.maker.MakerWorks" keyProperty="id" useGeneratedKeys="true">
+		insert into makerworks(title,makerprojectid,makerid,team,field,contact,phone,email,submitTime,description,fujian,fujiantype,fujianname,isEvaluated,isAssigned
+  				)
+		VALUES (#{title},#{MakerProjectID},#{makerId},#{team},#{field},#{contack},#{phone},#{email},#{submitTime},#{description},#{fujian},#{fujianType},#{fujianName},0,0
+				)
+	</insert>
 </mapper>

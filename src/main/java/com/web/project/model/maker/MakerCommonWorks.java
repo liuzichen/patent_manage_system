@@ -22,6 +22,9 @@ public class MakerCommonWorks {
 	String field;
 	Long submitTime;
 	boolean isevaluated;
+	boolean isAssigned;
+	String evaluation;
+	Long evaluateTime;
 
 	public int getId() {
 		return id;
@@ -135,4 +138,28 @@ public class MakerCommonWorks {
 		this.isevaluated = isevaluated;
 	}
 
+	public boolean isAssigned() {
+		return isAssigned;
+	}
+
+	public void setAssigned(boolean isAssigned) {
+		this.isAssigned = isAssigned;
+	}
+
+	public String getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(String evaluation) {
+		this.evaluation = evaluation;
+	}
+
+	public Long getEvaluateTime() {
+		return evaluateTime;
+	}
+
+	public void setEvaluateTime(Long evaluateTime) {
+		this.evaluateTime = evaluateTime;
+	}
+	
 }

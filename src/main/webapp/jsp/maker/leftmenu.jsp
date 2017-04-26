@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "211",
 			"menuname" : "原创成果管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/mworkoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "创客项目报名",
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "213",
 			"menuname" : "创客项目作品管理",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/mprojectworkoverview.jsp"
 		} ]
 	}, {
 		"menuid" : "20",
@@ -95,12 +95,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			"menuid" : "213",
 			"menuname" : "我的合作意向",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/mycooperationoverview.jsp"
 		}, {
 			"menuid" : "213",
 			"menuname" : "寻求合作",
 			"icon" : "icon-nav",
-			"url" : "#"
+			"url" : "<%=request.getContextPath()%>/jsp/maker/cooperationoverview.jsp"
 		} ]
 	} , {
 		"menuid" : "20",

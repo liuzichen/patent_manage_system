@@ -12,7 +12,14 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
-
+$(document).ready(function(){
+	
+	if("${detail.isevaluated}"=="false"){
+		$('.easyui-tabs').tabs('close','评审结果');
+	}
+	
+	$("#download").attr("href","<%=request.getContextPath()%>/maker/makerProjectWorksDownload?id="+"${detail.id }"+"&filepath=abc"); 
+});
 </script>
 </head>
 <body>
@@ -27,6 +34,9 @@
          <div class="titlebox"><span class="title">项目作品查看</span></div>
 	     <div >
 	     	 <form action="" name="Form1" id="Form1">
+	     	 <div class="easyui-tabs" style="width:100%">
+       <div title="作品信息" style="width:100%">
+       	<div style="width:100%">
 	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
 	     	 		<td class="tdname">作品名称：</td>
@@ -50,7 +60,7 @@
 	     	 		<td class="tdname">电子邮箱：</td>
 	     	 		<td class="tdcontent1">${detail.email }</td>
 	     	 		<td class="tdname" colspan="2" >
-                   	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
+                   	 <div align="center" ><a href="#" class="easyui-linkbutton button" id="download" style="width:120px;height:25px">相关附件下载</a></div></td>
 	     	 		
 	     	 	</tr>    	 	
             	 <tr>             
@@ -63,6 +73,36 @@
 		             </div>
              </tr>          
 	     	 </table>
+	     	 </div>
+	     	 </div>
+	     	 <div title="评审结果" style="width:100%" id="result" >
+       			<div style="width:100%">
+       			<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA"> 
+       			<tr>
+             	 <td  class="tdname" align="center" >评审结果</td>
+            	 <td  align="center" height="100px" colspan="3">
+	            	 <div class="tdcontent3">
+		              <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.evaluation }</pre>
+	    				 </div>
+		             </div> 
+             </td>
+             </tr>           
+       			 <tr>
+             	 <td  class="tdname" align="center" >作品评述</td>
+            	 <td  align="center" height="400px" colspan="3">
+	            	 <div class="tdcontent3">
+		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${detail.problems }</pre>
+	    				 </div>
+		             </div> 
+             </td>
+             </tr>         
+             </table>
+       			</div>
+       			</div>
+       			
+	     	 </div>
 	     	 </form>
 	     </div>
 	  </div>

@@ -47,4 +47,10 @@
 		</set>
 		where id=#{0}
 	</update>
+	<select id="getExpertByField" resultMap="expertInfoMap">
+		select * from expert
+		<where>
+		
+		</where>
+	</select>
 </mapper>

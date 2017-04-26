@@ -430,6 +430,7 @@ public class ExpertController {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * 专家查看创客成果列表
 	 * 
 	 */
@@ -573,4 +574,13 @@ public class ExpertController {
 		return "expert/enteroverview";
 	}
 	
+    /*
+	 * 根据领域查询专家
+	 */
+	@RequestMapping("getExpertByField")
+	@ResponseBody
+	public String getExpertByField(@RequestParam(value = "field") String field){
+		return null;
+	}
+
 }

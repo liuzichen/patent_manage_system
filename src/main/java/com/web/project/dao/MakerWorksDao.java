@@ -20,4 +20,6 @@ public interface MakerWorksDao {
 	public void updateMakerWorkInfo(String problems,String evaluation,Long time,boolean flag,int id);
 	
 	public ArrayList<MakerWorks> getMakerWorksListByUser(int id);
+	
+	public void insertMakerWork(MakerWorks makerWorks);
 }

@@ -15,8 +15,11 @@
 		<result column="submitTime" property="submitTime" jdbcType="VARCHAR" />
 		<result column="fujian" property="fujian" jdbcType="BLOB" />
 		<result column="fujiantype" property="fujianType" jdbcType="VARCHAR" />
-		<result column="fujianname" property="fujianName" jdbcType="VARCHAR" />	
-		<result column="isevaluated" property="isevaluated" jdbcType="BOOLEAN" />	
+		<result column="fujianname" property="fujianName" jdbcType="VARCHAR" />		
+		<result column="isevaluated" property="isevaluated" jdbcType="BOOLEAN" />
+		<result column="isAssigned" property="isAssigned" jdbcType="TINYINT" />	
+		<result column="evaluation" property="evaluation" jdbcType="VARCHAR" />
+		<result column="evaluateTime" property="evaluateTime" jdbcType="INTEGER" />
 	</resultMap>    
 	  
 	<select id="getMakerCommonWorksList" resultMap="makerWorkMap"> 
@@ -38,4 +41,10 @@
 		</where>
 		order by submittime DESC;
 	</select>
+	<insert id="insertMakerCommonWork" parameterType="com.web.project.model.maker.MakerCommonWorks" keyProperty="id" useGeneratedKeys="true">
+		insert into makercommonworks(title,makerid,team,field,contact,phone,email,submitTime,description,fujian,fujiantype,fujianname,isEvaluated,isAssigned
+  				)
+		VALUES (#{title},#{makerId},#{team},#{field},#{contack},#{phone},#{email},#{submitTime},#{description},#{fujian},#{fujianType},#{fujianName},0,0
+				)
+	</insert>
 </mapper>
