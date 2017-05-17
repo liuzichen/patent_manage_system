@@ -9,9 +9,11 @@
 		<result column="detail" property="content" jdbcType="VARCHAR" />
 		<result column="title" property="title" jdbcType="VARCHAR" />	
 		<result column="answer" property="answer" jdbcType="VARCHAR" />
-		<result column="title" property="title" jdbcType="TINYINT" />
-		<result column="area" property="area" jdbcType="VARCHAR" />		
+		<result column="isAnswered" property="isAnswered" jdbcType="TINYINT" />
+		<result column="area" property="area" jdbcType="VARCHAR" />	
+		<result column="askertype" property="askertype" jdbcType="VARCHAR" />	
 	</resultMap>
+	
 	<select id="getQuestionById"  resultMap="questionMap">        
         select * from question 
         <where>
@@ -34,4 +36,16 @@
 		</set>
 		where id=#{0}
 	</update>
+	<select id="getQuestionsByUserId" resultMap="questionMap">
+		select * from question
+		<where>
+		askerId=#{0} and askertype=#{1}
+		</where>
+	</select>
+	<insert id="insertQuestion" parameterType="com.web.project.model.Question" keyProperty="id" useGeneratedKeys="true">
+	insert into question(askerId,detail,title,area,askertype,isAnswered,askTime
+  				)
+		VALUES (#{askerId},#{content},#{title},#{area},#{askertype},0,#{askTime}
+				)
+	</insert>
 </mapper>

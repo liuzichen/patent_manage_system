@@ -10,8 +10,10 @@ public interface ExpertInfoDao {
 	
 	public ExpertInfo getInfoById(int id);
 	
-	public void updateExpertInfo(int id);
-
+	public void updateExpertInfo(int id,String achievement);
+	
 	public ExpertInfo getInfoByLoginName(String loginname);
+	
+	public ArrayList<ExpertInfo> getExpertByField(String field);
 
 }

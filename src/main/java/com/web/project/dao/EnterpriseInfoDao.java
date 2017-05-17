@@ -25,7 +25,7 @@ public interface EnterpriseInfoDao {
 	
 	public Enterprise getEnterpriseInfoById(int id);
 	
-	public String  getEnterpriseNamebyId(int id);
+	public String getEnterpriseNamebyId(int id);
 
 	public EnterpriseFinance getEnterpriseFinanceByIdAndYear(int enterpriseId,int year);
 	

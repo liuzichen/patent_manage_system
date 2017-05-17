@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ExpertFeeDao">
+	<resultMap id="enterpriseMap" type="com.web.project.model.enterprise.Enterprise" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="isGive" property="isGive" jdbcType="TINYINT" />
+		<result column="commentType" property="commentType" jdbcType="VARCHAR" />
+		<result column="commentId" property="commentId" jdbcType="INTEGER" />
+		<result column="fee" property="fee" jdbcType="DOUBLE" />
+	</resultMap> 
+	
+	<insert id="insertExpertFee" parameterType="java.util.List">
+		insert into expertfee(isGive,commentType,commentId,fee)
+		VALUES
+		<foreach collection="list" item="item" index="index" separator="," >  
+        	(0,#{item.commentType},#{item.commentId},#{item.fee})  
+        </foreach> 
+	</insert>
+</mapper>	 

@@ -137,7 +137,7 @@ function sub(){
 		 
     <div class="context">
        <div class="titlebox"><span class="title">科技项目中期评审</span></div>
-       <form action="<%=request.getContextPath() %>/intermediateinspection.do" name="Form1" id="Form1">
+       <form method="post" action="<%=request.getContextPath()%>/expert/commentEnterProject?workId=${detail.id}&type=项目中期评审" name="Form1" id="Form1">
       <div class="easyui-tabs" style="width:100%">
        <div title="报告扉页" style="width:100%">
        	<div style="width:100%">

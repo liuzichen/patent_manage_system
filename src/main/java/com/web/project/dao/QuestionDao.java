@@ -12,4 +12,8 @@ public interface QuestionDao {
 	public ArrayList<Question> getQuestionByExpertID(int id);
 	
 	public void addResponse(int id,boolean isanswered,String answer,Long answerTime);
+	
+	public ArrayList<Question> getQuestionsByUserId(int id,String type);
+	
+	public void insertQuestion(Question question);
 }

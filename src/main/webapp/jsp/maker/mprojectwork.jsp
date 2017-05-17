@@ -9,6 +9,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/demo.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/default/easyui.css">
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
@@ -20,6 +22,7 @@ function sub(){
 	var title=document.getElementById("title").value;
 	var field=document.getElementById("field").value;
 	var description=document.getElementById("description").value;
+	var upload=$("#upload").filebox("getValue");
 	if(title==""){
 		alert("提示：\n\n请填写成果名称！");
 		return false;
@@ -42,6 +45,10 @@ function sub(){
 	}
 	if(description==""){
 		alert("提示：\n\n请填写作品简介！");
+		return false;
+	}
+	if(upload==""){
+		alert("提示：\n\n请上传相关附件！");
 		return false;
 	}
 	if(confirm("确认提交原创成果？")){
@@ -101,7 +108,7 @@ function upload(){
 	     	 		<td class="tdname">电子邮箱：</td>
 	     	 		<td class="tdcontent1"><input class="easyui-textbox mydatebox"  type="text" name="email" id="email" value=${makerInfo.email }></td>
 	     	 		<td class="tdname" colspan="2" >
-                   	 <div align="center" ><input type="file" name="upload" id="upload" style="display:none"><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px" onclick="return upload();">相关附件上传</a></div></td>
+                   	 <div align="center" ><input  name="upload" id="upload" class="easyui-filebox" style="width:100%"></div></td>
 	     	 		
 	     	 	</tr>	     	     	 	
             	 <tr>             

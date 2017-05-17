@@ -24,7 +24,7 @@ public class ExpertInfoService {
 	}
 
 	public void updateExpertInfo(int id, String achievement) {
-		expertInfoDao.updateExpertInfo(id);
+		expertInfoDao.updateExpertInfo(id,achievement);
 	}
 
 	public boolean isExist(String loginName, String passWord) {
@@ -40,6 +40,10 @@ public class ExpertInfoService {
 
 	public ExpertInfo getExpertInfoByLoginName(String loginName){
 		return expertInfoDao.getInfoByLoginName(loginName);
+	}
+
+	public ArrayList<ExpertInfo> getExpertByField(String field){
+		return expertInfoDao.getExpertByField(field);
 	}
 
 }

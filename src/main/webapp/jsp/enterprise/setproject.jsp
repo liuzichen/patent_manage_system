@@ -127,17 +127,25 @@ $(document).ready(function(){
 //********************************************************************************
 
 	function getFilePath(input){  
-    if(input){//input是<input type="file">Dom对象  
+		var img = document.getElementById('img');
+	    var path = img.value;
+
+       
+	if(input){//input是<input type="file">Dom对象  
         if(window.navigator.userAgent.indexOf("MSIE")>=1){  //如果是IE    
-            input.select();      
+            input.select();  
+            alert(document.selection.createRange().text); 
           return document.selection.createRange().text;      
         }      
         else if(window.navigator.userAgent.indexOf("Firefox")>=1){  //如果是火狐  {      
             if(input.files){      
-                return input.files.item(0).getAsDataURL();      
-            }      
+            	 alert(input.files.item(0).getAsDataURL()); 
+            	return input.files.item(0).getAsDataURL();      
+            }    
+            alert(input.value); 
             return input.value;      
-        }      
+        }    
+        alert(input.value); 
         return input.value;   
     }  
 }  
@@ -237,10 +245,12 @@ $(document).ready(function(){
                       <input class="easyui-datebox mydatebox" type="text" name="A111213" id="A111213" editable="false" panelHeight="260" panelWidth="200" >
                     </td>
                     <td class="tdname" colspan="2" >
-                   	 <div align="center" ><input class="easyui-filebox" name="file" data-options="prompt:'Choose a file...'" style="width:60%" onclick="getFilePath(this)"></div></td>
+                   	 <div align="center" ><input class="easyui-filebox" name="file" data-options="prompt:'Choose a file...'" style="width:60%" onChange="getFilePath(this)"></div></td>
                 </tr>
+                
              </table>
              </div>
+             <!-- <input type="file" id="img" onChange="getFilePath(this)"> -->
        </div>
        <div title="单位基本情况" style="width:100%">
        <div style="width:100%">

@@ -207,6 +207,11 @@ int id = Integer.parseInt(session.getAttribute("userId").toString());
                                     创客原创成果评审</div>
                                 <div class="titlebox">
                                     <ul>
+                                       <c:forEach items="${makercommworks}" var="item">
+												
+										     <li><span>${item.submitTime}</span><a href="<%=request.getContextPath()%>/maker/expertCommonWorkDetail?id=${item.id}" ><span style="float:left;display:inline-block"><b>${item.title}</b></span></a></li>
+
+											</c:forEach> 
                                      
                                     </ul>
                                 </div>

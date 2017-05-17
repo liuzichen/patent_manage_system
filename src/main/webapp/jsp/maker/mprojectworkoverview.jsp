@@ -66,7 +66,7 @@ $(function () {
                 pageSize: 10,
 				beforePageText : '第',
 				afterPageText : '页    共 {pages} 页',
-				displayMsg : '当前显示从{from}到{to}共{total}记录',
+				displayMsg : '当前显示从{from}到{to}条记录，共{total}条记录',
 				onBeforeRefresh : function(pageNumber, pageSize) {
 					$('#roleList').datagrid('clearSelections').datagrid("clearChecked");
 					
@@ -98,7 +98,7 @@ $(function () {
         	var order=opts.sortOrder;
             $.ajax({
                 url:'<%=request.getContextPath()%>/maker/myProjectWorksList',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":4},
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"userId":<%=session.getAttribute("userId")%>},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {

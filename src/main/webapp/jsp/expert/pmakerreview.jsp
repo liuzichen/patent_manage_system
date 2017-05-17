@@ -74,13 +74,13 @@ function sub(){
 						&gt;&nbsp;&nbsp; 创客项目作品评审</font></span>
 			</div>
 		</div>
-		<% String urlString=request.getContextPath()+"/maker/evaluate?id="+request.getParameter("id"); %>
 		<div class="context">
 			<div class="titlebox">
 				<span class="title">创客项目作品评审</span>
 			</div>
 			<div>
-				<form method="post" action=<%=urlString%> name="Form1" id="Form1">
+				<form method="post" action="<%=request.getContextPath()%>/expert/commentMakerWorks?workId=${id}" name="Form1" id="Form1">
+				   
 					<input type="hidden" name="sort" id="sort">
 					<table class="persional" align="center" border="1" cellpadding="0"
 						cellspacing="0" bordercolor="#DEE5EA" >
@@ -88,11 +88,11 @@ function sub(){
 							<td class="tdname">创新成果名称：</td>
 							<td class="tdcontent1">${detail.title}</td>
 							<td class="tdname">团队名称：</td>
-							<td class="tdcontent2">${detail.id}</td>
+							<td class="tdcontent2">${team}</td>
 						</tr>
 						<tr>
 							<td class="tdname">所属创新项目：</td>
-							<td class="tdcontent1">${detail.makerProjectID}</td>
+							<td class="tdcontent1">${detail.makerId}</td>
 							<td class="tdname">技术领域：</td>
 							<td class="tdcontent2">${detail.field}</td>
 						</tr>
@@ -123,7 +123,7 @@ function sub(){
 							<td align="center" height="100px" colspan="3">
 								<div class="tdcontent3">
 									<textarea id="presention" name="presention" cols="40" rows="12"
-										style="width: 90%; height: 100%;"> ${detail.evaluation}</textarea>
+										style="width: 90%; height: 100%;">${comment.comment}</textarea>
 								</div>
 						</tr>
 
@@ -132,7 +132,7 @@ function sub(){
 							<td align="center" height="400px" colspan="3">
 								<div class="tdcontent3">
 									<textarea id="advice" name="advice" cols="40" rows="12"
-										style="width: 90%; height: 100%;">${detail.problems}</textarea>
+										style="width: 90%; height: 100%;">${comment.questions}</textarea>
 								</div>
 							</td>
 						</tr>
