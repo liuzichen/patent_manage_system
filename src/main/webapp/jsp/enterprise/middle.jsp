@@ -17,55 +17,7 @@ $(document).ready(function(){
 		var ctab = $('#mytabs').tabs('getTab', '评审结果').panel('options').tab;
 		 ctab.hide();
 	}
-	var j5="<%=ii.getJ5() %>";
-	var j6="<%=ii.getJ6() %>";
-	var j789="<%=ii.getJ789() %>";
-	var k5="<%=ii.getK5() %>";
-	var mydata= new Array([50]);
-	mydata[6]="<%=ii.getK6() %>";
-	mydata[7]="<%=ii.getK7() %>";
-	mydata[8]="<%=ii.getK8() %>";
-	mydata[9]="<%=ii.getK9() %>";
-	mydata[10]="<%=ii.getK10() %>";
-	mydata[11]="<%=ii.getK11() %>";
-	mydata[12]="<%=ii.getK12() %>";
-	mydata[13]="<%=ii.getK13() %>";
-	mydata[14]="<%=ii.getK14() %>";
-	mydata[15]="<%=ii.getK15() %>";
-	mydata[16]="<%=ii.getK16() %>";
-	mydata[17]="<%=ii.getK17() %>";
-	mydata[18]="<%=ii.getK18() %>";
-	mydata[19]="<%=ii.getK19() %>";
-	mydata[20]="<%=ii.getK20() %>";
-	mydata[21]="<%=ii.getK21() %>";
-	mydata[22]="<%=ii.getK22() %>";
-	mydata[23]="<%=ii.getK23() %>";
-	mydata[24]="<%=ii.getK24() %>";
-	mydata[25]="<%=ii.getK25() %>";
-	mydata[26]="<%=ii.getK26() %>";
-	mydata[27]="<%=ii.getK27() %>";
-	mydata[28]="<%=ii.getK28() %>";
-	mydata[29]="<%=ii.getK29() %>";
-	mydata[30]="<%=ii.getK30() %>";
-	mydata[31]="<%=ii.getK31() %>";
-	mydata[32]="<%=ii.getK32() %>";
-	mydata[33]="<%=ii.getK33() %>";
-	mydata[34]="<%=ii.getK34() %>";
-	mydata[35]="<%=ii.getK35() %>";
-	mydata[36]="<%=ii.getK36() %>";
-	mydata[37]="<%=ii.getK37() %>";
-	mydata[38]="<%=ii.getK38() %>";
-	mydata[39]="<%=ii.getK39() %>";
-	mydata[40]="<%=ii.getK40() %>";
-	mydata[41]="<%=ii.getK41() %>";
-	mydata[42]="<%=ii.getK42() %>";
-	mydata[43]="<%=ii.getK43() %>";
-	mydata[44]="<%=ii.getK44() %>";
-	mydata[45]="<%=ii.getK45() %>";
-	mydata[46]="<%=ii.getK46() %>";
-	mydata[47]="<%=ii.getK47() %>";
-	mydata[48]="<%=ii.getK48() %>";
-	mydata[49]="<%=ii.getK49() %>";
+
 	$("#j789").datebox("setValue", j789); 
 	$("#j5").textbox("setValue", j5);
 	$("#j6").textbox("setValue", j6);
@@ -129,7 +81,7 @@ function sub(){
 		 
     <div class="context">
        <div class="titlebox"><span class="title">项目执行情况报表（中期）</span></div>
-       <form action="" name="Form1" id="Form1">
+       <form action="<%=request.getContextPath() %>/enterprise/savemiddle" name="Form1" id="Form1">
        <input type="hidden" name="sort" id="sort">
        <div class="easyui-tabs" style="width:100%" id="mytabs">
        <div title="报告扉页" style="width:100%">
@@ -138,38 +90,32 @@ function sub(){
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getJ1()%>
+                       ${emtitle.project_name}
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2">
-                       <%=ii.getJ3()%>
+                       ${emtitle.responsible_unit}
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">计划类别：</td>
                     <td class="tdcontent1">
-                       <%=ii.getJ2()%>
+                       ${emtitle.type}
                     </td>
                     <td class="tdname">单位负责人：</td>
                     <td class="tdcontent2">
-                       <%=ii.getJ4()%>
+                       ${emtitle.principal}
                     </td>                    
                 </tr>
                 <tr>
-                    <td class="tdname">填报人：</td>
+                    <td class="tdname">专家组长：</td>
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="j5" id="j5" >
+                      <input class="easyui-textbox mydatebox" type="text" name="j5" id="j5" value=${emtitle.expert_leader }>
                     </td>
                     <td class="tdname">填报日期：</td>
                     <td class="tdcontent2">
-                      <input class="easyui-datebox mydatebox" type="text" name="j789" id="j789" editable="false" panelHeight="260" panelWidth="200" >
+                      <input class="easyui-datebox mydatebox" type="text" name="j789" id="j789" editable="false" panelHeight="260" panelWidth="200" value=${emtitle.date }>
                     </td>
-                </tr>
-                <tr>
-                	<td class="tdname">联系电话：</td>
-                	<td class="tdcontent2" colspan="3">
-                		<input class="easyui-textbox mydatebox" type="text" name="j6" id="j6" >
-                	</td>
                 </tr>
              </table>
              </div>
@@ -183,21 +129,21 @@ function sub(){
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1">
-                      <%=ii.getK1()%>
+                      ${eminfo.project_name}
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK2()%>
+                      ${eminfo.responsible_unit}
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">计划文号：</td>
                     <td class="tdcontent1">
-                       <%=ii.getK3()%>
+                       ${eminfo.plan_approval}
                     </td>
                     <td class="tdname">项目编号：</td>
                     <td class="tdcontent2">
-                       <%=ii.getK4()%>
+                     ${eminfo.project_number}
                     </td>                    
                 </tr>
                 </table>
@@ -215,6 +161,9 @@ function sub(){
  								<option value="拖延">拖延</option>
  								<option value="停滞">停滞</option>
                       </select>
+                     <script language="javascript">
+                      document.getElementById("k5").value = "${eminfo.project_progress}"; </script> 
+                    </td>
                     </td>
                     
                 </tr>
@@ -231,33 +180,33 @@ function sub(){
                 </tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">单位自筹：</td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k6" id="k6" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k7" id="k7" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k8" id="k8" ></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k6" id="k6" value=${eminfo.unit_self_raised_plan}> </td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k7" id="k7" value=${eminfo.unit_self_raised_real}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k8" id="k8" value=${eminfo.unit_self_raised_total}></td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">市财政拨款：</td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k9" id="k9" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k10" id="k10" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k11" id="k11" ></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k9" id="k9" value=${eminfo.municipal_finance_plan}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k10" id="k10" value=${eminfo.municipal_finance_real}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k11" id="k11" value=${eminfo.municipal_finance_total}></td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">国家、省财政拨款：</td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k12" id="k12" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k13" id="k13" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k14" id="k14" ></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k12" id="k12" value=${eminfo.state_funding_plan}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k13" id="k13" value=${eminfo.state_funding_real}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k14" id="k14" value=${eminfo.state_funding_total}></td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">其他：</td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k15" id="k15" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k16" id="k16" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k17" id="k17" ></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k15" id="k15" value=${eminfo.other_plan}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k16" id="k16" value=${eminfo.other_real}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k17" id="k17" value=${eminfo.other_total}></td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">合计：</td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k18" id="k18" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k19" id="k19" ></td>
-                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k20" id="k20" ></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k18" id="k18" value=${eminfo.sum_plan}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k19" id="k19" value=${eminfo.sum_real}></td>
+                	<td style="text-align:center;"><input class="easyui-textbox" style="width:200px" type="text" name="k20" id="k20" value=${eminfo.sum_total}></td>
                 <tr>
              </table>
               <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
@@ -267,153 +216,153 @@ function sub(){
 	   			 <tr >
                     <td class="tdname">总投入：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k21" id="k21" >万元
+                      <input class="easyui-textbox mydatebox" type="text" name="k21" id="k21" value=${eminfo.total_investment }>万元
                     </td>
                     <td class="tdname">总产值：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k22" id="k22" >万元
+                       <input class="easyui-textbox mydatebox" type="text" name="k22" id="k22" value=${eminfo.total_output }>万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">产品销售收入：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k23" id="k23" >万元
+                      <input class="easyui-textbox mydatebox" type="text" name="k23" id="k23" value=${eminfo.sales_revenue }>万元
                     </td>
                     <td class="tdname">工业增加值：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k24" id="k24" >万元
+                       <input class="easyui-textbox mydatebox" type="text" name="k24" id="k24" value=${eminfo.added_value }>万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">净利润：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k25" id="k25" >万元
+                      <input class="easyui-textbox mydatebox" type="text" name="k25" id="k25" value=${eminfo.net_profit }>万元
                     </td>
                     <td class="tdname">缴税总额：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k26" id="k26" >万元
+                       <input class="easyui-textbox mydatebox" type="text" name="k26" id="k26" value=${eminfo.total_tax }>万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">创汇：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k27" id="k27" >万美元
+                      <input class="easyui-textbox mydatebox" type="text" name="k27" id="k27" value=${eminfo.exchange_earning }>万美元
                     </td>
                     <td class="tdname">新增就业人数：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k28" id="k28" >人
+                       <input class="easyui-textbox mydatebox" type="text" name="k28" id="k28" value=${eminfo.new_employment }>人
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">专利申请：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <input class="easyui-textbox mydatebox" type="text" name="k29" id="k29" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k29" id="k29" value=${eminfo.patent_application }>项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中发明专利：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k30" id="k30" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k30" id="k30" value=${eminfo.invention_patent }>项
                     </td>
                     <td class="tdname">其中PCT专利：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k31" id="k31" >项
+                       <input class="easyui-textbox mydatebox" type="text" name="k31" id="k31" value=${eminfo.pct_patent }>项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">专利授权：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <input class="easyui-textbox mydatebox" type="text" name="k32" id="k32" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k32" id="k32" value=${eminfo.patent_license }>项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中发明专利：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k33" id="k33" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k33" id="k33" value=${eminfo.invention_licence }>项
                     </td>
                     <td class="tdname">其中PCT专利：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k34" id="k34" >项
+                       <input class="easyui-textbox mydatebox" type="text" name="k34" id="k34" value=${eminfo.pct_licence }>项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">软件产品登记：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k35" id="k35" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k35" id="k35" value=${eminfo.software_registration }>项
                     </td>
                     <td class="tdname">软件著作权登记：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k36" id="k36" >项
+                       <input class="easyui-textbox mydatebox" type="text" name="k36" id="k36" value=${eminfo.software_copyright_registration }>项
                     </td>
                 </tr>
                  <tr >
                     <td class="tdname">发表科技论文：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k37" id="k37" >篇
+                      <input class="easyui-textbox mydatebox" type="text" name="k37" id="k37" value=${eminfo.published_papers }>篇
                     </td>
                     <td class="tdname">出版专著：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k38" id="k38" >万字
-                    </td>
+                       <input class="easyui-textbox mydatebox" type="text" name="k38" id="k38" value=${eminfo.published_books }>万字
+                    </td> 
                 </tr>
                 <tr >
                     <td class="tdname">形成新产品、新工艺等：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k39" id="k39" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k39" id="k39" value=${eminfo.develop_new_product }>项
                     </td>
                     <td class="tdname">其中国家重点新产品：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k40" id="k40" >项
+                       <input class="easyui-textbox mydatebox" type="text" name="k40" id="k40" value=${eminfo.national_new_products }>项
                     </td>
                 </tr>
                  <tr >
                     <td class="tdname">科技奖励：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <input class="easyui-textbox mydatebox" type="text" name="k41" id="k41" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k41" id="k41" value=${eminfo.award }>项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中国家级：</td>                    
                     <td class="tdcontent1">
-                      <input class="easyui-textbox mydatebox" type="text" name="k42" id="k42" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k42" id="k42" value=${eminfo.award_nation }>项
                     </td>
                     <td class="tdname">其中省、市级：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k43" id="k43" >项
+                       <input class="easyui-textbox mydatebox" type="text" name="k43" id="k43" value=${eminfo.award_province }>项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">制定标准：</td>                    
                     <td class="tdcontent1" colspan="3">
-                      <input class="easyui-textbox mydatebox" type="text" name="k44" id="k44" >项
+                      <input class="easyui-textbox mydatebox" type="text" name="k44" id="k44" value=${eminfo.standards }>项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中国家：</td>                    
                     <td class="tdcontent1">
-                     <input class="easyui-textbox mydatebox" type="text" name="k45" id="k45" >项
+                     <input class="easyui-textbox mydatebox" type="text" name="k45" id="k45" value=${eminfo.standards_nation }>项
                     </td>
                     <td class="tdname">其中行业：</td>
                     <td class="tdcontent2">
-                       <input class="easyui-textbox mydatebox" type="text" name="k46" id="k46" >项
+                       <input class="easyui-textbox mydatebox" type="text" name="k46" id="k46" value=${eminfo.standards_industry }>项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">建立示范基地、中试平台：</td>                    
                     <td class="tdcontent1" colspan="2">
-                      <input class="easyui-textbox mydatebox" type="text" name="k47" id="k47" >个
+                      <input class="easyui-textbox mydatebox" type="text" name="k47" id="k47" value=${eminfo.demonstration_base }>个
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">建立实验室、工程技术研究中心：</td>                    
                     <td class="tdcontent1" colspan="2">
-                      <input class="easyui-textbox mydatebox" type="text" name="k48" id="k48" >个
+                      <input class="easyui-textbox mydatebox" type="text" name="k48" id="k48" value=${eminfo.lab }>个
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">市级以上科技人才与创新团队：</td>                    
                     <td class="tdcontent1" colspan="2">
-                      <input class="easyui-textbox mydatebox" type="text" name="k49" id="k49" >个
+                      <input class="easyui-textbox mydatebox" type="text" name="k49" id="k49" value=${eminfo.technological_team }>个
                     </td>                
                 </tr>
                 <tr>

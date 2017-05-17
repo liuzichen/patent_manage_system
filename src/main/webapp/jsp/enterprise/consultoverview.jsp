@@ -39,15 +39,15 @@ $(function () {
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'title', title : '标题',width :336,align:'center'},
-				{field : 'field',title : '技术领域',width : 160,align:'center'}, 
-				{field : 'qTime',title : '提问时间',width : 208,align:'center',sortable:true},
+				{field : 'area',title : '技术领域',width : 160,align:'center'}, 
+				{field : 'askTime',title : '提问时间',width : 208,align:'center',sortable:true},
 				{field : 'state',title : '回复状态',width : 160,align:'center'}, 
 				
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/consultview.jsp' >查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/enterprise/answerView?id="+row.id+"' >查看详情</a>";  
                     }
                 }
               
@@ -59,7 +59,7 @@ $(function () {
                 	var page=opts.pageNumber;
                 	var size=opts.pageSize;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
+                        url:'<%=request.getContextPath()%>/enterprise/questionoverview',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                         type: 'post',
                         dataType : "text",
@@ -92,7 +92,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/enterprise/questionoverview',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
@@ -146,7 +146,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/enterprise/questionoverview',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",

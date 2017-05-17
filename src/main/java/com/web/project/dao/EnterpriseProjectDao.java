@@ -33,4 +33,9 @@ public interface EnterpriseProjectDao {
 	public EnterpriseProject getUnSubmitEnterpriseProject(int id);
 	
 	public void  updateEnterpriseProjectById(EnterpriseProject project);
+
+
+	public ArrayList<EnterpriseProject> getEnterpriseProjectsByID(Integer id);
+
+	public ArrayList<EnterpriseProject> getSetEnterpriseProjectsByID(Integer id);
 }

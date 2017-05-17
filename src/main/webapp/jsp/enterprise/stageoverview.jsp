@@ -39,15 +39,26 @@ $(function () {
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '科技项目名称',width :336,align:'center',sortable:true},
-				{field : 'PROJECT',title : '计划类别',width : 208,align:'center'},
-				{field : 'FIELD',title : '技术领域',width : 160,align:'center'},  
-				{field : 'STATE',title : '状态',width : 160,align:'center'},
-				{field : 'TIME',title : '提交时间',width : 160,align:'center',sortable:true},
+				//{field : 'project_id', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '序号',width :160,align:'center'},
+				{field : 'project_name', title : '科技项目名称',width :336,align:'center',sortable:true},
+				{field : 'type',title : '计划类别',width : 208,align:'center'},
+/* 				{field : 'field',title : '技术领域',width : 160,align:'center'},  */
+				{field : 'submit',title : '是否提交',width : 160,align:'center'}, 
+				{field : 'evaluate',title : '是否审核',width : 160,align:'center'}, 
+				{field : 'date',title : '提交时间',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/halfyearview.jsp' >查看详情</a>";  
+                    	if(document.getElementById("sort").value == "项目执行情况报表（中期）"){
+                    		return "<a href='<%=request.getContextPath()%>/enterprise/middleView?id="+row.id+"' >查看详情</a>"; 
+                    	}
+						if(document.getElementById("sort").value == "项目执行情况报表（半年）"){
+							return "<a href='<%=request.getContextPath()%>/enterprise/halfyearView?id="+row.id+"' >查看详情</a>"; 
+						}
+						if(document.getElementById("sort").value == "项目执行情况报表（全年）"){
+							return "<a href='<%=request.getContextPath()%>/enterprise/wholeyearView?id="+row.id+"' >查看详情</a>"; 
+						}
+                    		 
                     }//半年halfyearview，全年wholeyearview，中期middleview，编辑和待修改状态进对应的填表页面
                 }
               
@@ -117,7 +128,7 @@ $(function () {
         	var order=opts.sortOrder;
         	var state=document.getElementById("sort").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/enterprise/stageoverview',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
@@ -154,7 +165,7 @@ $(function () {
 	   </div>
      </div> 
 		 
-    <div class="context" style="width:1200px;">
+    <div class="context" style="width:1040px;">
      <div class="titlebox" style="width:100%; margin:0 auto;"><span class="title" >阶段报告总览</span></div>
        	<!-- 显示总览 -->
 		<table id="roleList" style="width:100%;" >

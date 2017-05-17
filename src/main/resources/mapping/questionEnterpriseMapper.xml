@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.QuestionEnterpriseDao">	 
+	<resultMap id="questionMap" type="com.web.project.model.enterprise.QuestionEnterprise" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="enterpriseId" property="enterpriseId" jdbcType="INTEGER" />
+		<result column="expertId" property="expertId" jdbcType="INTEGER" />
+		<result column="detail" property="detail" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />	
+		<result column="answer" property="answer" jdbcType="VARCHAR" />
+		<result column="isAnswered" property="isAnswered" jdbcType="TINYINT" />
+		<result column="area" property="area" jdbcType="VARCHAR" />		
+		<result column="state" property="state" jdbcType="VARCHAR" />
+		<result column="askTime" property="askTime" jdbcType="INTEGER" />
+		<result column="answerTime" property="answerTime" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="getAnswerbyID"  resultMap="questionMap">        
+        select * from question_enterprise
+        <where>
+		id=#{id}
+		</where> 	       
+	</select>        
+	<select id="getQuestionByEnterpriseID" resultMap="questionMap"> 
+		select * from question_enterprise
+		<where>
+		enterpriseid=#{0}
+		</where>
+		order by askTime DESC;
+	</select>
+	<insert id="savenewQuestion" parameterType="com.web.project.model.enterprise.QuestionEnterprise" keyProperty="id" useGeneratedKeys="true">
+  		insert into question_enterprise(id,enterpriseId,expertId,title,detail,answer,isAnswered,askTime,answerTime,area,state
+  				)
+		VALUES (#{id},#{enterpriseId},#{expertId},#{title},#{detail},#{answer},#{isAnswered},#{askTime},#{answerTime},#{area},#{state}
+				)
+	</insert>
+</mapper>

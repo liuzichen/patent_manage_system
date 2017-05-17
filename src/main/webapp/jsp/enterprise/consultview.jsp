@@ -36,11 +36,11 @@ int b=3;
                 <tr >
                     <td class="tdname" >标题：</td>                    
                     <td class="tdcontent1">
-                      
+                      ${answer.title}
                     </td>
                     <td class="tdname" >提问时间：</td>                    
                     <td class="tdcontent1">
-                      
+                      ${answer.askTime}
                     </td>
                 </tr>
                 <tr >
@@ -48,7 +48,8 @@ int b=3;
                     <td  colspan="3">
                      <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap;"><%=a %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap;">${answer.detail}</pre>
+	     					
 	    				 </div>
 		             </div> 
                     </td>
@@ -58,7 +59,8 @@ int b=3;
                     <td  colspan="3">
                     <div class="tdcontent3">
 		               <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
-	     					<pre style="width:100%;white-space:pre-wrap; "><%if(b==3){%><%=a %><%}else{%>专家还未回复，请耐心等待。<%} %></pre>
+	     					<pre style="width:100%;white-space:pre-wrap; ">${answer.answer}</pre>
+	     					
 	    				 </div>
 	    				</div>
                     </td>

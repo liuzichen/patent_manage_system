@@ -19,6 +19,7 @@ import com.web.project.model.enterprise.EnterpriseCommonProject;
 import com.web.project.model.enterprise.EnterpriseProject;
 import com.web.project.service.RePasswordService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
+import com.web.project.service.enterprise.EnterpriseInfoService;
 import com.web.project.service.expertService.ExpertInfoService;
 import com.web.project.service.relationship.NewsService;
 import com.web.project.service.relationship.QuestionService;
@@ -45,6 +46,8 @@ public class LoginController {
 	@Autowired
 	RePasswordService rePasswordService;
 	
+	@Autowired
+	EnterpriseInfoService enterpriseInfoService;
 	/**
 	 * 登录验证
 	 */
@@ -67,6 +70,21 @@ public class LoginController {
 				session.setAttribute("userName", username);
 				session.setAttribute("usertype", "专家用户");
 				session.setAttribute("table", "expert");
+				session.setAttribute("password", password);
+				return "index";
+			}else {
+				request.getSession().setAttribute("isExist", "1");
+			}
+		}		
+		
+		if(new String(type.getBytes("iso-8859-1"), "utf-8").equals("企业用户") ){
+			if(enterpriseInfoService.isExist(username, password)==true){	
+				session.setAttribute("userId", enterpriseInfoService.getEnterpriseInfoByLoginName(username).getId());
+				session.setAttribute("companyCode", enterpriseInfoService.getEnterpriseInfoByLoginName(username).getCompanyCode());
+				session.setAttribute("type", "enterprise");
+				session.setAttribute("userName", username);
+				session.setAttribute("usertype", "企业用户");
+				session.setAttribute("table", "enterprise");
 				session.setAttribute("password", password);
 				return "index";
 			}else {
@@ -129,6 +147,10 @@ public class LoginController {
 		switch (new String(session.getAttribute("table").toString())) {
 		case "expert":
 			rePasswordService.rePassword(Integer.parseInt(session.getAttribute("userId").toString()), password,  "expert");
+			break;
+		case "enterprise":
+			rePasswordService.rePassword(Integer.parseInt(session.getAttribute("userId").toString()), password,  "enterprise");
+			System.out.println(Integer.parseInt(session.getAttribute("userId").toString()));
 			break;
 		default:
 			break;

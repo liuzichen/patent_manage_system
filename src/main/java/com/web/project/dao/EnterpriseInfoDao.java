@@ -15,6 +15,7 @@ import com.web.project.model.enterprise.EnterprisePeopleInCharge;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
 import com.web.project.model.enterprise.EnterpriseProjectEquipment;
 import com.web.project.model.enterprise.EnterpriseShareholder;
+import com.web.project.model.expert.ExpertInfo;
 
 /**
  * @author 子晨
@@ -75,4 +76,6 @@ public interface EnterpriseInfoDao {
 	public void insertEnterpriseCorporator(HashMap<String, List<EnterpriseCorporator>> corporatorMap);
 	
 	public void deleteEnterpriseCorporators(int id);
+
+	public Enterprise getInfoByLoginName(String loginName);
 }

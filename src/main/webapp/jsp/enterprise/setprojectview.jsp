@@ -145,61 +145,61 @@ $(document).ready(function(){
                <tr >
                     <td class="tdname">受理编号：</td>                    
                     <td class="tdcontent1">
-                    	 <%=request.getAttribute("A1")%>
+                    	${detail.dealNumber}
                     </td>
                     <td class="tdname">负责处室：</td>
                     <td class="tdcontent2">
-                     <%=request.getAttribute("A2")%>
+                        ${detail.department}
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1">
-                    	 <%=request.getAttribute("A3")%>
+                    	 ${detail.title}
                     </td>
                     <td class="tdname">计划类别：</td>
                     <td class="tdcontent2">
-                     <%=request.getAttribute("A4")%>
+                         ${detail.type}
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">技术领域：</td>
                     <td class="tdcontent1">
-                     <%=request.getAttribute("A5")%>
+                     ${detail.type}
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2">
-                     <%=request.getAttribute("A6")%>
+                      ${enterpriseInfo.name}
                     </td>                    
                 </tr>
                 <tr >
                     <td class="tdname">归口管理部门：</td>
                     <td class="tdcontent1">
-                     <%=request.getAttribute("A7")%>
+                      ${detail.competentDepartment}
                     </td>
                     <td class="tdname">单位负责人：</td>
                     <td class="tdcontent2">
-                     <%=request.getAttribute("A8")%>
+                      ${detail.contractor}
                     </td>                    
                 </tr>
                 <tr>
                     <td class="tdname">填报人：</td>
                     <td class="tdcontent1">
-                     <%=request.getAttribute("A9")%>
+                       ${detail.contact}
                     </td>
                      <td class="tdname">联系电话：</td>
                     <td class="tdcontent1">
-                     <%=request.getAttribute("A10")%>
+                      ${detail.contactPhoneNumber}
                     </td>
                
                 </tr>
                 <tr>
                  <td class="tdname">填报日期：</td>
                     <td class="tdcontent1">
-                      
+                       ${applyDate}
                     </td>
                     <td class="tdname" colspan="2" >
-                   	 <div align="center" ><a href="#" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
+                   	 <div align="center" ><a href="<%=request.getContextPath()%>/expert/enterpriseProjectSetProDownload?id=${detail.id}" class="easyui-linkbutton button" style="width:120px;height:25px">相关附件下载</a></div></td>
                 </tr>
              </table>
              </div>
@@ -212,84 +212,84 @@ $(document).ready(function(){
 	   			<tr>
 	   			<td colspan="4" class="tdtitle" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一、项目基本情况</td>
 	   			</tr>
-                <tr >
+ <tr >
                     <td class="tdname">单位名称：</td>                    
                     <td class="tdcontent1">
-                     <%=request.getAttribute("B1")%>
+                     ${enterpriseInfo.name}
                     </td>
                     <td class="tdname">组织机构代码：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B2")%>
+                     ${enterpriseInfo.companyCode}
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">申报渠道：</td>
                     <td class="tdcontent1">
-                    <%=request.getAttribute("B3")%>
+                      ${enterpriseInfo.applyType}
                     </td>
                     <td class="tdname">所在地区：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B4")%>
+                     ${enterpriseInfo.registeredCapital}
                     </td>                    
                 </tr>
                  <tr >
                     <td class="tdname">通信地址：</td>
                     <td class="tdcontent1">
-                    <%=request.getAttribute("B5")%>
+                    ${enterpriseInfo.address}
                     </td>
                     <td class="tdname">邮政编码：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B6")%>
+                     ${enterpriseInfo.postcode}
                     </td>                    
                 </tr>
                  <tr >
                     <td class="tdname">联 系 人：</td>
                     <td class="tdcontent1">
-                    <%=request.getAttribute("B7")%>
+                    ${enterpriseInfo.contact}
                     </td>
                     <td class="tdname">电   话：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B8")%>
+                     ${enterpriseInfo.cellPhone}
                     </td>                    
                 </tr>
                 <tr >
                     <td class="tdname">手    机：</td>
                     <td class="tdcontent1">
-                    <%=request.getAttribute("B9")%>
+                    ${enterpriseInfo.mobilePhone}
                     </td>
                     <td class="tdname">传   真：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B10")%>
+                    ${enterpriseInfo.fax}
                     </td>                    
                 </tr>
                 <tr >
                     <td class="tdname">电子邮箱：</td>
                     <td class="tdcontent1">
-                    <%=request.getAttribute("B11")%>
+                     ${enterpriseInfo.email}
                     </td>
                     <td class="tdname">开户银行：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B12")%>
+                     ${enterpriseInfo.bank}
                     </td>                    
                 </tr>
                 <tr >
                     <td class="tdname">信用等级：</td>
                     <td class="tdcontent1">
-                    <%=request.getAttribute("B13")%>
+                     ${enterpriseInfo.creditRating}
                     </td>
                     <td class="tdname">账户：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B14")%>
+                     ${enterpriseInfo.account}
                     </td>                    
                 </tr>
                  <tr >
                     <td class="tdname">单位性质：</td>
                     <td class="tdcontent1">
-                    <%=request.getAttribute("B15")%>
+                     ${enterpriseInfo.property}
                     </td>
                     <td class="tdname">企业规模：</td>
                     <td class="tdcontent2">
-                    <%=request.getAttribute("B16")%>
+                     ${enterpriseInfo.size}
                     </td>                    
                 </tr>
                 </table>
@@ -307,37 +307,37 @@ $(document).ready(function(){
                 </tr>
                 <tr >
                 	<td class="tdname">
-                	<%=request.getAttribute("B17")%>
+                	${shareHolers[0].investType}
                 	</td>
                     <td class="tdname">
-                    <%=request.getAttribute("B18")%>
+                    ${shareHolers[0].name}
                     </td>                    
                     <td class="tdcontent2" >
-                    <%=request.getAttribute("B19")%>
+                    ${shareHolers[0].percentage}
                     </td>
                     
                 </tr>
-                <tr >
+                 <tr >
                 	<td class="tdname">
-                	<%=request.getAttribute("B20")%>
+                	${shareHolers[1].investType}
                 	</td>
                     <td class="tdname">
-                    <%=request.getAttribute("B21")%>
+                    ${shareHolers[1].name}
                     </td>                    
                     <td class="tdcontent2" >
-                    <%=request.getAttribute("B22")%>
+                    ${shareHolers[1].percentage}
                     </td>
                     
                 </tr>
-                <tr >
+                 <tr >
                 	<td class="tdname">
-                	<%=request.getAttribute("B23")%>
+                	${shareHolers[2].investType}
                 	</td>
                     <td class="tdname">
-                    <%=request.getAttribute("B24")%>
+                    ${shareHolers[2].name}
                     </td>                    
                     <td class="tdcontent2" >
-                    <%=request.getAttribute("B25")%>
+                    ${shareHolers[2].percentage}
                     </td>
                     
                 </tr>
@@ -349,11 +349,11 @@ $(document).ready(function(){
 	   			<tr >
 	   			 	<td class="tdname" >注册时间</td>
                     <td class="tdname" colspan="3">
-                    <%=request.getAttribute("B26")%>
+                    ${enterpriseInfo.registrationTime}
                     </td>                     
                     <td class="tdname">注册资金</td>                    
                     <td class="tdname" colspan="3">
-                    <%=request.getAttribute("B27")%>
+                     ${enterpriseInfo.registrationMoney}
                     </td>
                
                 </tr>
@@ -369,63 +369,63 @@ $(document).ready(function(){
                     
                 </tr>
                 
-                 <tr >
+                 <tr align="center">
                     <td class="tdname1" >
-                    <%=request.getAttribute("B28")%>
+                      ${peopleInCharge.name}
                     </td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B29")%>
+                      ${peopleInCharge.gender}
                     </td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B30")%>
+                      ${peopleInCharge.birthday}
 					</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B31")%>
+                      ${peopleInCharge.education}
                     </td>                    
                     <td class="tdname1">
-	                    <%=request.getAttribute("B32")%>
+	                    ${peopleInCharge.idCard}
 	                </td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B33")%>
+                      ${peopleInCharge.cellPhone}
                     </td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B34")%>
+                      ${peopleInCharge.mobilePhone}
                     </td>
                     
  				</tr>
  				
-                <tr >
+                <tr align="center">
                 	<td class="tdname1" rowspan="2">单位人员</td>
                     <td class="tdname1" rowspan="2">
-                    <%=request.getAttribute("B35")%>
+                    ${enterpriseInfo.peoleNumber}
                     </td>                    
                     <td class="tdname1">大专以上技术人员</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B36")%>
+                     ${enterpriseInfo.juniorCollege}
 					</td>
                     <td class="tdname1">博士</td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B37")%>
+                     ${enterpriseInfo.doctor}
                     </td>
                     <td class="tdname1">硕士</td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B38")%>
+                     ${enterpriseInfo.master}
                     </td>
                     
                 </tr>
-                <tr >
+                <tr align="center">
                 	
                     <td class="tdname1" >高级职称</td>                    
                     <td class="tdname1">
-                    <%=request.getAttribute("B39")%>
+                     ${enterpriseInfo.highPosition}
 					</td>
                     <td class="tdname1">中级职称</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B40")%>
+                     ${enterpriseInfo.midPostion}
 					</td>                    
                     <td class="tdname1">留学人员</td>
                     <td class="tdname1">
-                    <%=request.getAttribute("B41")%>
+                     ${enterpriseInfo.overseas}
 					</td>                    
  
                 </tr>
@@ -450,41 +450,40 @@ $(document).ready(function(){
 					</div>
 				</th>
                     <th class="tdname2"> 前 年:&nbsp;&nbsp;
-                    <%=request.getAttribute("B42")%>
+                    ${yearBeforeLastYear.year}
                     </th>
                     <th class="tdname2">上 一 年度:&nbsp;&nbsp;
-                    <%=request.getAttribute("B43")%>
+                    ${lastyear.year}
                 </tr>
                 
                 
 				<tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">总 产 值（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B44")%>
+                	${yearBeforeLastYear.totalProduction}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B45")%>
+                	  ${lastyear.totalProduction}
                 	</td>
                 	
                 </tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">总 销 售 额（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B46")%>
+                	${yearBeforeLastYear.totalSales}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B47")%>
+                	 ${lastyear.totalSales}
                 	</td>
                 	
                 </tr>
-                
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">净 利 润（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B48")%>
+                	${yearBeforeLastYear.profit}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B49")%>
+                	 ${lastyear.profit}
                 	</td>
                 
                 </tr>
@@ -492,10 +491,10 @@ $(document).ready(function(){
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">纳 税 总 额（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B50")%>
+                	${yearBeforeLastYear.totalTaxPayment}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B51")%>
+                	 ${lastyear.totalTaxPayment}
                 	</td>
                 	
                 </tr>
@@ -503,20 +502,20 @@ $(document).ready(function(){
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">&nbsp;&nbsp;企 业 所 得 税（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B52")%>
+                	${yearBeforeLastYear.corporateTax}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B53")%>
+                	${lastyear.corporateTax}
                 	</td>
                 	
                 </tr>
                 <tr> 
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">&nbsp;&nbsp;增 值 税（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B54")%>
+                	${yearBeforeLastYear.valueAddedTax}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B55")%>
+                	${lastyear.valueAddedTax}
                 	</td>
                 	
                 </tr>
@@ -524,21 +523,10 @@ $(document).ready(function(){
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">&nbsp;&nbsp;营 业 税（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B56")%>
+                	${yearBeforeLastYear.salesTax}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B57")%>
-                	</td>
-                	
-                
-                </tr>
-                <tr>
-                	<td style="height:35px;text-align:center;background-color:#F2F2F2;">&nbsp;&nbsp;个 人 所 得 税（万元）</td>
-                	<td style="text-align:center;">
-                	<%=request.getAttribute("B58")%>
-                	</td>
-                	<td style="text-align:center;">
-                	<%=request.getAttribute("B59")%>
+                	${lastyear.salesTax}
                 	</td>
                 	
                 
@@ -546,10 +534,10 @@ $(document).ready(function(){
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">&nbsp;&nbsp;个 人 所 得 税（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B60")%>
+                	${yearBeforeLastYear.personalIncomeTax}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B61")%>
+                	${lastyear.personalIncomeTax}
                 	</td>
                 	
                 
@@ -558,10 +546,10 @@ $(document).ready(function(){
                  <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">研 发 支 出 费 用（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B62")%>
+                	${yearBeforeLastYear.RDexpense}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B63")%>
+                	${lastyear.RDexpense}
                 	</td>
                 	
                 </tr>
@@ -569,10 +557,10 @@ $(document).ready(function(){
           		<tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">支出费用总额（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B64")%>
+                	${yearBeforeLastYear.totalExpenditure}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B65")%>
+                	${lastyear.totalExpenditure}
                 	</td>
                 	
                 </tr>
@@ -580,20 +568,20 @@ $(document).ready(function(){
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">创 汇 总 额 （ 万 美 元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B66")%>
+                	${yearBeforeLastYear.foreignExchangeEarnings}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B67")%>
+                	${lastyear.foreignExchangeEarnings}
                 	</td>
                 	
                 </tr>
                  <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">固 定 资 产 原 值（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B68")%>
+                	${yearBeforeLastYear.fixedAssert}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B69")%>
+                	${lastyear.fixedAssert}
                 	</td>
                 	
                 </tr>
@@ -601,10 +589,10 @@ $(document).ready(function(){
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">总 资 产（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B70")%>
+                	${yearBeforeLastYear.totalAssert}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B71")%>
+                	${lastyear.totalAssert}
                 	</td>
                 	
                 </tr>
@@ -612,10 +600,10 @@ $(document).ready(function(){
                  <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">总 负 债（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B72")%>
+                	${yearBeforeLastYear.totalLiabilities}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B73")%>
+                	${lastyear.totalLiabilities}
                 	</td>
                 	
                 </tr>
@@ -623,12 +611,13 @@ $(document).ready(function(){
                  <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">净 资 产（万元）</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B74")%>
+                	${yearBeforeLastYear.netAssert}
                 	</td>
                 	<td style="text-align:center;">
-                	<%=request.getAttribute("B75")%>
+                	${lastyear.netAssert}
                 	</td>
                 </tr>
+                
                 
                 
              </table>           
@@ -637,17 +626,17 @@ $(document).ready(function(){
 <!-- 主营业务、主要产品与服务                 -->
 
               <table class="persional" align="center" border="1"  cellpadding="0"  cellspacing="0"  bordercolor="#DEE5EA">
-	   			 <tr>
+	 <tr>
 	   			 <td class="tdname3" >主营业务、主要产品与服务</td>                    
                     <td class="tdname" colspan="5">
-                    <%=request.getAttribute("B76")%>
+                   ${enterpriseInfo.productAndService}
                     </td> 
                  </tr> 
                  
                 <tr>
                     <td class="tdname">单位性质</td>                    
                     <td class="tdname" colspan="5">
-                    <%=request.getAttribute("B77")%>
+                    ${enterpriseInfo.property}
                     </td>   
                  
                 </tr>
@@ -665,19 +654,19 @@ $(document).ready(function(){
                   <tr >
                                   
                     <td class="tdname">
-                    <%=request.getAttribute("B78")%>
+                     ${enterpriseInfo.patents}
                     </td>   
                     <td class="tdname">
-                    <%=request.getAttribute("B79")%>
+                     ${enterpriseInfo.utilityModel}
                     </td>
                     <td class="tdname">
-                    <%=request.getAttribute("B80")%>
+                     ${enterpriseInfo.utilityModel}
                     </td>              
                    <td class="tdname">
-                   <%=request.getAttribute("B81")%>
+                     ${enterpriseInfo.utilityModel}
                     </td>
                    <td class="tdname">
-                   <%=request.getAttribute("B82")%>
+                    ${enterpriseInfo.others}
                     </td>
                 </tr>
                
@@ -685,7 +674,7 @@ $(document).ready(function(){
                 <tr >
                     <td class="tdname">创新基地建设情况</td>                    
                     <td class="tdname" colspan="5">
-                    <%=request.getAttribute("B83")%>
+                     ${enterpriseInfo.innovationBaseConstruction}
 					</td>   
                   
                 </tr>
@@ -693,7 +682,7 @@ $(document).ready(function(){
                   <tr >
                     <td class="tdname">获科技计划支持情况</td>                    
                     <td class="tdname" colspan="5">
-                    <%=request.getAttribute("B84")%>
+                     ${enterpriseInfo.supportedByST}
 						
 					</td>   
                             
@@ -702,13 +691,12 @@ $(document).ready(function(){
                   <tr >
                     <td class="tdname">获科技奖励及认定情况</td>                    
                     <td class="tdname" colspan="5">
-                    <%=request.getAttribute("B85")%>
+                     ${enterpriseInfo.techAward}
 						
 					</td>   
                             
                 </tr>
-
-              </table>
+                </table>
         
           </div>
       
@@ -723,14 +711,14 @@ $(document).ready(function(){
 	   	<input type="hidden" name="sort" id="sort">
 	   	
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-                <tr >
+     <tr >
                     <td class="tdname">项目名称</td>                    
                     <td class="tdcontent1" colspan="3">
-                    <%=request.getAttribute("C1")%>
+                    ${detail.title}
                     </td>
                     <td class="tdname">计划类别</td>
                     <td class="tdcontent2" colspan="2">
-                    <%=request.getAttribute("C2")%>
+                     ${detail.type}
                     </td>
                     
                     
@@ -740,15 +728,15 @@ $(document).ready(function(){
                     <td rowspan="5" class="tdname">项目负责人情况</td>
                     <td class="tdname">姓名</td>
                     <td class="tdname"> 
-                    <%=request.getAttribute("C3")%>
+                    ${leader.name}
                      </td>
                     <td class="tdname">性别</td>
                     <td class="tdname"> 
-                    <%=request.getAttribute("C4")%>
+                     ${leader.gender}
                     </td>
                     <td class="tdname">出生日期</td>
                     <td class="tdname"> 
-                    <%=request.getAttribute("C5")%>
+                     ${leader.birthday}
                     </td>
                 </tr>
                 
@@ -756,15 +744,15 @@ $(document).ready(function(){
                 <tr>
                     <td  class="tdname">职称</td>
                     <td  class="tdname">
-                    <%=request.getAttribute("C6")%>
+                     ${leader.title}
                     </td>
                     <td  class="tdname">证件类型</td>
                     <td  class="tdname">
-                    <%=request.getAttribute("C7")%>
+                     ${leader.cardType}
                     </td>
                     <td  class="tdname">证件号码</td>
                     <td  class="tdname">
-                    <%=request.getAttribute("C8")%>
+                     ${leader.cardnumber}
                     </td>
                 </tr>
                 
@@ -773,30 +761,30 @@ $(document).ready(function(){
                  <tr>
                 	<td class="tdname">职务</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C9")%>
+                     ${leader.position}
                     </td>
                     <td class="tdname">学历</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C10")%>
+                     ${leader.degree}
                     </td>
                     <td class="tdname">学位</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C11")%>
+                     ${leader.qualifications}
                     </td>
                           
                 </tr>      
                  <tr>
                 	<td class="tdname">专业</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C12")%>
+                     ${leader.major}
                     </td>
                     <td class="tdname">固定电话</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C13")%>
+                     ${leader.cellPhone}
                     </td>
                     <td class="tdname">传真</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C14")%>
+                     ${leader.fax}
                     </td>
                           
                 </tr>      
@@ -805,11 +793,11 @@ $(document).ready(function(){
              <tr>             
              	 	<td class="tdname">移动电话</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C15")%>
+                     ${leader.mobilePhone}
                     </td>
                     <td class="tdname">电子邮箱</td>
                     <td class="tdname">
-                    <%=request.getAttribute("C16")%>
+                     ${leader.email}
                     </td>
                     <td class="tdname"></td>
                     <td class="tdname"></td>
@@ -833,211 +821,211 @@ $(document).ready(function(){
 	        </tr>
 	        <tr>
 	             <td class="tdname">
-	             <%=request.getAttribute("C17")%>
+	             ${members[0].name}
 	             </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C18")%>
+                 ${members[0].gender}
                  </td>
          
                  <td class="tdname">
-                 <%=request.getAttribute("C19")%>
+                 ${members[0].age}
                  </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C20")%>
+                 ${members[0].position}
 				 </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C21")%>
+                 ${members[0].major}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C22")%>
+                  ${members[0].task}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C23")%>
+                  ${members[0].company}
                  </td>
                  
 	        </tr>
 	          
 	        <tr>
 	             <td class="tdname">
-	             <%=request.getAttribute("C24")%>
+	             ${members[1].name}
 	             </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C25")%>
+                 ${members[1].gender}
                  </td>
          
                  <td class="tdname">
-                 <%=request.getAttribute("C26")%>
+                 ${members[1].age}
                  </td>
                  
                  <td class="tdname">
-                 <%=request.getAttribute("C27")%>
+                 ${members[1].position}
 				 </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C28")%>
+                 ${members[1].major}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C29")%>
+                  ${members[1].task}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C30")%>
+                  ${members[1].company}
                  </td>
                  
 	        </tr>
 	        
-	        <tr>
+	       <tr>
 	             <td class="tdname">
-	             <%=request.getAttribute("C31")%>
+	             ${members[2].name}
 	             </td>
                  
                  <td class="tdname">
-                 	<%=request.getAttribute("C32")%>
+                 ${members[2].gender}
                  </td>
          
                  <td class="tdname">
-                 		<%=request.getAttribute("C33")%>
+                 ${members[2].age}
                  </td>
                  
                  <td class="tdname">
-                 		<%=request.getAttribute("C34")%>
+                 ${members[2].position}
+				 </td>
+                 <td class="tdname">
+                 ${members[2].major}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C35")%>
+                  ${members[2].task}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C36")%>
-                 </td>
-                 <td class="tdname">
-                 		<%=request.getAttribute("C37")%>
+                  ${members[2].company}
                  </td>
                  
 	        </tr>
 	        
 	        <tr>
 	             <td class="tdname">
-	             	<%=request.getAttribute("C38")%>
-                 </td>
+	             ${members[3].name}
+	             </td>
                  
                  <td class="tdname">
-                 		<%=request.getAttribute("C39")%>
+                 ${members[3].gender}
                  </td>
          
                  <td class="tdname">
-                 		<%=request.getAttribute("C40")%>
+                 ${members[3].age}
                  </td>
                  
                  <td class="tdname">
-                 	<%=request.getAttribute("C41")%>
+                 ${members[3].position}
+				 </td>
+                 <td class="tdname">
+                 ${members[3].major}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C42")%>
+                  ${members[3].task}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C43")%>
-                 </td>
-                 <td class="tdname">
-                 	<%=request.getAttribute("C44")%>
+                  ${members[3].company}
                  </td>
                  
 	        </tr>
 	        
 	        <tr>
 	             <td class="tdname">
-	             	<%=request.getAttribute("C45")%>
-                 </td>
+	             ${members[4].name}
+	             </td>
+                 
                  <td class="tdname">
-                 	<%=request.getAttribute("C46")%>
+                 ${members[4].gender}
                  </td>
          
                  <td class="tdname">
-                 	<%=request.getAttribute("C47")%>
+                 ${members[4].age}
                  </td>
                  
                  <td class="tdname">
-                 	<%=request.getAttribute("C48")%>
+                 ${members[4].position}
+				 </td>
+                 <td class="tdname">
+                 ${members[4].major}
                  </td>
                  <td class="tdname">
-                 	<%=request.getAttribute("C49")%>
+                  ${members[4].task}
                  </td>
                  <td class="tdname">
-                 <%=request.getAttribute("C50")%>
+                  ${members[4].company}
                  </td>
-                 <td class="tdname">
-                 	<%=request.getAttribute("C51")%>
-                 </td>
-	        
                  
-	        </tr>          
+	        </tr>  
 	        
            </table>
            
            
 <!-- 项目现处阶段    -->        
            <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-             <tr>
+            <tr>
              <td >项目现处阶段</td>
              <td colspan="5" class="tdname">
-            	<%=request.getAttribute("C52")%>
+            	   ${detail.state}
              </td>
              </tr>
              
              <tr>
               <td class="tdname">技术领域</td>
               <td class="tdname">
-             	<%=request.getAttribute("C53")%>
+             	${detail.field}
              </td>
               <td class="tdname">行业领域</td>
               <td class="tdname">
-              <%=request.getAttribute("C54")%>
+                ${detail.industryField}
              </td>
               <td class="tdname">项目对应学科代码</td>
               <td class="tdname">
-              <%=request.getAttribute("C55")%>
+                ${detail.subjectCode}
              </td>
              </tr>
                <tr>
                <td class="tdname">项目来源</td>
                <td class="tdname" colspan="2">
-               <%=request.getAttribute("C56")%>
+               ${detail.projectOrigin}
              </td>
                <td class="tdname">技术来源</td>
                <td class="tdname" colspan="2">
-             <%=request.getAttribute("C57")%>
+               ${detail.techOrigin}
              </td>
            
              </tr>
               <tr>
                <td class="tdname" >开发形式</td>
           	 <td class="tdname"  colspan="2">
-          	 <%=request.getAttribute("C58")%>
+          	   ${detail.developType}
              </td>
              
                <td class="tdname">产品采标形式</td>
  				<td class="tdname" colspan="2">
- 				<%=request.getAttribute("C59")%>
+ 				${detail.productAdoption}
              </td>       
              </tr>
             
               <tr>
                <td class="tdname">项目知识产权情况</td>
               <td colspan="5" class="tdname">
-              <%=request.getAttribute("C60")%>
+              ${detail.IPRstatement}
              </td>
              </tr>
              
              <tr>
                <td class="tdname">科技奖励获奖情况</td>
               <td colspan="5" class="tdname">
-              <%=request.getAttribute("C61")%>
+            ${detail.award}
              </td>
              </tr>
              
              <tr>
                <td class="tdname" class="tdname">技术权益及使用方式说明</td>
               <td colspan="5" class="tdname">
-                 <%=request.getAttribute("C62")%>
+               ${detail.techRightsandUsage}
              </td>
              </tr>
             
@@ -1046,11 +1034,11 @@ $(document).ready(function(){
              
                <td class="tdname">项目执行期</td>
           		<td class="tdcontent2" colspan="2">
-                    <%=request.getAttribute("C63")%>
+                    ${detail.startTime}
              </td>
                <td class="tdname"> 至</td>
           	   <td class="tdcontent2" colspan="2">
-                    <%=request.getAttribute("C64")%>
+                   ${detail.endtime}
              </td>
             
              </tr>
@@ -1059,23 +1047,23 @@ $(document).ready(function(){
               <tr>
                <td class="tdname">合作单位1</td>
            	   <td colspan="2" class="tdname">
-           	     <%=request.getAttribute("C65")%>
+           	     ${corporators[0].name}
              </td>
              
                <td class="tdname">组织机构代码</td>
                <td colspan="2" class="tdname">
-                <%=request.getAttribute("C66")%>
+                 ${corporators[0].companyCode}
              </td>
             </tr>
             
              <tr>
                <td class="tdname">负责人</td>
            		<td colspan="2" class="tdname">
-           		 <%=request.getAttribute("C67")%>
+           		 ${corporators[0].peopleInCharge}
              
                <td class="tdname">联系电话</td>
                 <td colspan="2" class="tdname">
-           		  <%=request.getAttribute("C68")%>
+           		  ${corporators[0].phone}
              </td>
              </tr>
              
@@ -1083,22 +1071,22 @@ $(document).ready(function(){
              <tr>
                <td class="tdname">合作单位2</td>
            		<td colspan="2" class="tdname">
-           		  <%=request.getAttribute("C69")%>
+           		 ${corporators[1].name}
              </td>
              
                <td class="tdname">组织机构代码</td>
           		 <td colspan="2" class="tdname">
-          		 <%=request.getAttribute("C70")%>
+          		  ${corporators[1].companyCode}
           		 </td>
              <tr>
                <td class="tdname">负责人</td>
           		 <td colspan="2" class="tdname">
-          		 <%=request.getAttribute("C71")%>
+          		${corporators[1].peopleInCharge}
           		</td>
              
                <td class="tdname">联系电话</td>
            		<td colspan="2" class="tdname">
-           		 <%=request.getAttribute("C72")%>
+           		${corporators[1].phone}
           		</td>
              </tr>
             
@@ -1107,21 +1095,21 @@ $(document).ready(function(){
               <td colspan="1" class="tdname">合作协议类别及名称</td>   
               
               <td colspan="5" class="tdname">
-             <%=request.getAttribute("C73")%>
+             ${detail.corTypeAndName}
           		</td>
              </tr>
 
               <tr>
               <td colspan="1" class="tdname">合作目标及外方投入</td>   
               <td colspan="5" class="tdname">
-             	<%=request.getAttribute("C74")%>
+             	${detail.corGoalsandInvest}
           	</td>
              </tr>
              
              	 <tr>
               <td colspan="1" class="tdname">合作外方机构及负责人</td>   
               <td colspan="5" class="tdname">
-              <%=request.getAttribute("C75")%>
+              ${detail.corDepartmentandPerson}
           		</td>
              </tr>
             
@@ -1129,7 +1117,7 @@ $(document).ready(function(){
            	 <tr>
               <td colspan="1" class="tdname">电子邮箱与通信地址</td>   
               <td colspan="5" class="tdname">
-              <%=request.getAttribute("C76")%>
+              ${detail.corEmailandAddress}
           		</td>
              </tr>
              
@@ -1139,28 +1127,28 @@ $(document).ready(function(){
               <td colspan="1" class="tdname">服务方式</td>   
               
               <td colspan="5" class="tdname">
-             <%=request.getAttribute("C77")%>
+             ${detail.serviceType}
           		</td>
              </tr>
              
              <tr>
               <td colspan="1" class="tdname">已经服务企业数量</td>   
            		<td colspan="1" class="tdname">
-           		 <%=request.getAttribute("C78")%>
+           		 ${detail.serviceNumber}
           		</td>
               <td colspan="2" class="tdname">项目完成预计服务企业数量</td>
           		 <td colspan="2" class="tdname">
-          		 <%=request.getAttribute("C79")%>
+          		 ${detail.numberToserve}
           		</td>
              </tr>
                <tr>
               <td colspan="1"class="tdname">已经提供服务种类或 平 台</td>   
            		<td colspan="1" class="tdname">
-           		 <%=request.getAttribute("C80")%>
+           		 ${detail.servicetypeorplatform}
           		</td>
               <td colspan="2"class="tdname">项目完成预计提供服务种类或平台</td>
           		 <td colspan="2" class="tdname">
-          		 <%=request.getAttribute("C81")%>
+          		 ${detail.planServicetypeorplatform}
           		</td>
              </tr>
               
@@ -1168,14 +1156,14 @@ $(document).ready(function(){
             <tr>
              <td class="tdname">项 目 简介 及 总体 目 标</td>
              <td colspan="6" class="tdname">
-             <%=request.getAttribute("C82")%>
+             ${detail.descriptionAndGoals}
           		</td>
             </tr>
             
             <tr>
               <td class="tdname">主要研究内容及技术指 标</td>
              <td colspan="6" class="tdname">
-             <%=request.getAttribute("C83")%>
+             ${detail.contentAndIndication}
           		</td>
             </tr>
             
@@ -1183,7 +1171,7 @@ $(document).ready(function(){
             <tr>
              <td class="tdname">主要创新点</td>
              <td colspan="6" class="tdname">
-             <%=request.getAttribute("C84")%>
+            ${detail.createPoints}
           		</td>
             </tr>
             
@@ -1191,17 +1179,16 @@ $(document).ready(function(){
              <tr>
              <td class="tdname">工作基础</td>
              <td colspan="6" class="tdname">
-              <%=request.getAttribute("C85")%>
+             ${detail.workBasis}
           		</td>
             </tr>
             
             <tr>
              <td class="tdname">计划进度及阶段性目标</td>
              <td colspan="6" class="tdname">
-              <%=request.getAttribute("C86")%>
+                  ${detail.schedule}
           		</td>
             </tr>
-             
            
            </table>
          
@@ -1215,7 +1202,7 @@ $(document).ready(function(){
 	   <div style="width:100%l;">
 	   	<input type="hidden" name="sort" id="sort">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-                <tr>
+                   <tr>
                     <td class="tdname">预算科目名称</td>                    
                     <td class="tdcontent1-1">合计</td>
                     <td class="tdname">市财政经费</td>
@@ -1225,13 +1212,13 @@ $(document).ready(function(){
                 <tr>
                     <td class="tdname">一、经费支出合计</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D1")%>
+                      ${fromGov.total+fromSelf.total}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D2")%>
+                      ${fromGov.total}
           			</td>
                    <td class="tdname">
-                      <%=request.getAttribute("D3")%>
+                       ${fromSelf.total}
           			</td>          
                 </tr>
                
@@ -1239,63 +1226,63 @@ $(document).ready(function(){
            <tr>
                     <td class="tdname">1、研发设备费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D4")%>
+                       ${fromGov.totalRDequimentFee+fromSelf.totalRDequimentFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D5")%>
+                         ${fromGov.totalRDequimentFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D6")%>
+                        ${fromSelf.totalRDequimentFee}
           			</td>            
                 </tr>
                 <tr>
                     <td class="tdname">（1）购置研发设备费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D7")%>
+                       ${fromGov.equimentBuyFee+fromSelf.equimentBuyFee}
           			</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D8")%>
+                      ${fromGov.equimentBuyFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D9")%>
+                       ${fromSelf.equimentBuyFee}
           			</td>           
                 </tr>
                 
               	 <tr>
                     <td class="tdname">（2）试制研发设备费</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D10")%>
+                        ${fromGov.equimentMakeFee+fromSelf.equimentMakeFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D11")%>
+                        ${fromGov.equimentMakeFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D12")%>
+                        ${fromSelf.equimentMakeFee}
           			</td>            
                 </tr>
              	 <tr>
                     <td class="tdname">（3）软件系统开发费</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D13")%>
+                       ${fromGov.softwareMakeFee+fromSelf.softwareMakeFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D14")%>
+                        ${fromGov.softwareMakeFee}
           			</td>
                    <td class="tdname">
-                      <%=request.getAttribute("D15")%>
+                     ${fromSelf.softwareMakeFee}
           			</td>         
                 </tr>
              
                <tr>
                     <td class="tdname">2、合作研发费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D16")%>
+                       ${fromGov.corRDFee+fromSelf.corRDFee}
           			</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D17")%>
+                      ${fromGov.corRDFee}
           			</td>
                    <td class="tdname">
-                      <%=request.getAttribute("D18")%>
+                      ${fromSelf.corRDFee}
           			</td>         
                 </tr>
              
@@ -1303,26 +1290,26 @@ $(document).ready(function(){
                <tr>
                     <td class="tdname">（1）引进人才、团队费</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D19")%>
+                         ${fromGov.peopleTeamFee+fromSelf.peopleTeamFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D20")%>
+                        ${fromGov.peopleTeamFee}
           			</td>
                    <td class="tdname">
-                      <%=request.getAttribute("D21")%>
+                      ${fromSelf.peopleTeamFee}
           			</td>         
                 </tr>
                
                <tr>
                     <td class="tdname">（2）购置技术、专利及成果费</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D22")%>
+                        ${fromGov.techPatentResBuyFee+fromSelf.techPatentResBuyFee}
           			</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D23")%>
+                      ${fromGov.techPatentResBuyFee}
           			</td>
                    <td class="tdname">
-                      <%=request.getAttribute("D24")%>
+                      ${fromSelf.techPatentResBuyFee}
           			</td>           
                 </tr>
 	        
@@ -1330,219 +1317,219 @@ $(document).ready(function(){
                <tr>
                     <td class="tdname">（3）产学研合作经费</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D25")%>
+                       ${fromGov.researchCooperationFee+fromSelf.researchCooperationFee}
           			</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D26")%>
+                       ${fromGov.researchCooperationFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D27")%>
+                        ${fromSelf.researchCooperationFee}
           			</td>          
                 </tr>
 	        
 	         <tr>
                     <td class="tdname">3、材料费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D28")%>
+                       ${fromGov.materialFee+fromSelf.materialFee}
           			</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D29")%>
+                       ${fromGov.materialFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D30")%>
+                       ${fromSelf.materialFee}
           			</td>            
                 </tr>
                 
                  <tr>
                     <td class="tdname">4、测试化验加工费</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D31")%>
+                        ${fromGov.testLabProcessingFee+fromSelf.testLabProcessingFee}
           			</td>      
                     <td class="tdname">
-                      <%=request.getAttribute("D32")%>
+                       ${fromGov.testLabProcessingFee}
           			</td>      
                    <td class="tdname">
-                       <%=request.getAttribute("D33")%>
+                       ${fromSelf.testLabProcessingFee}
           			</td>                 
                 </tr>
                 
                 <tr>
                     <td class="tdname">5、燃料动力费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D34")%>
+                      ${fromGov.fuelPowerCost+fromSelf.fuelPowerCost}
           			</td>      
                     <td class="tdname">
-                       <%=request.getAttribute("D35")%>
+                        ${fromGov.fuelPowerCost}
           			</td>      
                    <td class="tdname">
-                       <%=request.getAttribute("D36")%>
+                       ${fromSelf.fuelPowerCost}
           			</td>              
                 </tr>
                 
                 <tr>
                     <td class="tdname">6、差旅费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D37")%>
+                      ${fromGov.travelFee+fromSelf.travelFee}
           			</td>      
                     <td class="tdname">
-                      <%=request.getAttribute("D38")%>
+                      ${fromGov.travelFee}
           			</td>      
                    <td class="tdname">
-                      <%=request.getAttribute("D39")%>
+                      ${fromSelf.travelFee}
           			</td>                
                 </tr>
                  <tr>
                     <td class="tdname">7、会议费 </td>
                     <td class="tdname">
-                       <%=request.getAttribute("D40")%>
+                        ${fromGov.conferenceFee+fromSelf.conferenceFee}
           			</td>      
                     <td class="tdname">
-                      <%=request.getAttribute("D41")%>
+                        ${fromGov.conferenceFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D42")%>
+                       ${fromSelf.conferenceFee}
           			</td>            
                 </tr>
                 
                 <tr>
                     <td class="tdname">8、国际合作与交流费</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D43")%>
+                       ${fromGov.cooperationAndExchangeFee+fromSelf.cooperationAndExchangeFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D44")%>
+                       ${fromGov.cooperationAndExchangeFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D45")%>
+                        ${fromSelf.cooperationAndExchangeFee}
           			</td>            
                 </tr>
                 
                  <tr>
                     <td class="tdname">9、出版/文献/信息传播/知识产权事务费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D46")%>
+                      ${fromGov.publicationFee+fromSelf.publicationFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D47")%>
+                       ${fromGov.publicationFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D48")%>
+                       ${fromSelf.publicationFee}
           			</td>           
                 </tr>
                  <tr>
                     <td class="tdname">10、劳务费</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D49")%>
+                       ${fromGov.serviceFee+fromSelf.serviceFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D50")%>
+                        ${fromGov.serviceFee}
           			</td>
                    <td class="tdname">
-                        <%=request.getAttribute("D51")%>
+                         ${fromSelf.serviceFee}
           			</td>          
                 </tr>
                 
                 <tr>
                     <td class="tdname">11、专家咨询费</td>
-                    <td class="tdname">
-                       <%=request.getAttribute("D52")%>
+                     <td class="tdname">
+                       ${fromGov.expertConsultationFee+fromSelf.expertConsultationFee}
           			</td>
                     <td class="tdname">
-                        <%=request.getAttribute("D53")%>
+                        ${fromGov.expertConsultationFee}
           			</td>
                    <td class="tdname">
-                       <%=request.getAttribute("D54")%>
-          			</td>           
-                </tr>
+                         ${fromSelf.expertConsultationFee}
+          			</td>                  
+                </tr>            
                 
                  <tr>
                     <td class="tdname">12、管理费</td>
                     <td class="tdname">
-                        <%=request.getAttribute("D55")%>
+                       ${fromGov.managementFee+fromSelf.managementFee}
           			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D56")%>
+                        ${fromGov.managementFee}
           			</td>
                    <td class="tdname">
-                        <%=request.getAttribute("D57")%>
-          			</td>           
+                         ${fromSelf.managementFee}
+          			</td>             
                 </tr>
                 
                 
                 <tr>
                     <td class="tdname">二、经费来源合计</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D58")%>
+                       ${fromGov.totalSourcesFunds+fromSelf.totalSourcesFunds}
           			</td>
                     <td class="tdname">
-                        <%=request.getAttribute("D59")%>
+                        ${fromGov.totalSourcesFunds}
           			</td>
                    <td class="tdname">
-                        <%=request.getAttribute("D60")%>
-          			</td>          
+                         ${fromSelf.totalSourcesFunds}
+          			</td>                   
                 </tr>
                 
                  <tr>
                     <td class="tdname">1、申请从市财政经费获得的资助</td>
                     <td class="tdname">
-                      <%=request.getAttribute("D61")%>
-          			</td>    
+                       ${fromGov.applyFromGov+fromSelf.applyFromGov}
+          			</td>
                     <td class="tdname">
-                     <%=request.getAttribute("D62")%>
-          			</td>    
+                        ${fromGov.applyFromGov}
+          			</td>
                    <td class="tdname">
-                      <%=request.getAttribute("D63")%>
-          			</td>               
+                         ${fromSelf.applyFromGov}
+          			</td>              
                 </tr>
                  <tr>
                     <td class="tdname">2、自筹经费来源</td>
-                    <td class="tdname">
-                      <%=request.getAttribute("D64")%>
-          			</td>    
-                    <td class="tdname">				
-                       <%=request.getAttribute("D65")%>
-          			</td>    
                    <td class="tdname">
-                       <%=request.getAttribute("D66")%>
-          			</td>               
+                       ${fromGov.selfFounding+fromSelf.selfFounding}
+          			</td>
+                    <td class="tdname">
+                        ${fromGov.selfFounding}
+          			</td>
+                   <td class="tdname">
+                         ${fromSelf.selfFounding}
+          			</td>                
                 </tr>
                 
                 <tr>
                     <td class="tdname">（1）其他财政拨款</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D67")%>
-          			</td>    
+                       ${fromGov.otherFinancialAllocations+fromSelf.otherFinancialAllocations}
+          			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D68")%>
-          			</td>    
+                        ${fromGov.otherFinancialAllocations}
+          			</td>
                    <td class="tdname">
-                      <%=request.getAttribute("D69")%>
-          			</td>               
+                         ${fromSelf.otherFinancialAllocations}
+          			</td>             
                 </tr>
                 
                 
                  <tr>
                     <td class="tdname">（2）单位自有货币资金</td>
-                    <td class="tdname">
-                       <%=request.getAttribute("D70")%>
-          			</td>    
-                    <td class="tdname">
-                        <%=request.getAttribute("D71")%>
-          			</td>  
                    <td class="tdname">
-                        <%=request.getAttribute("D72")%>
-          			</td>              
+                       ${fromGov.ownFound+fromSelf.ownFound}
+          			</td>
+                    <td class="tdname">
+                        ${fromGov.ownFound}
+          			</td>
+                   <td class="tdname">
+                         ${fromSelf.ownFound}
+          			</td>               
                 </tr>
                  <tr>
                     <td class="tdname">（3）其他资金</td>
                     <td class="tdname">
-                        <%=request.getAttribute("D73")%>
-          			</td>  
+                       ${fromGov.otherFound+fromSelf.otherFound}
+          			</td>
                     <td class="tdname">
-                       <%=request.getAttribute("D74")%>
-          			</td>  
+                        ${fromGov.otherFound}
+          			</td>
                    <td class="tdname">
-                        <%=request.getAttribute("D75")%>
+                         ${fromSelf.otherFound}
           			</td>              
                 </tr>  
            
@@ -1553,7 +1540,7 @@ $(document).ready(function(){
 <!--  其中：研发设备费预算明细表       -->    
 
            	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-                <tr >
+              <tr >
                 <td class="tdname" colspan="6">其中：研发设备费预算明细表</td>
                 </tr>
                 
@@ -1567,274 +1554,274 @@ $(document).ready(function(){
                 </tr>
                 <tr>
                  <td class="tdname">
-                       <%=request.getAttribute("E1")%>
+                       ${equipments[0].name}
           			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E2")%>
+                       ${equipments[0].singlePrice}
           			</td> 
                   <td class="tdname">
-                      <%=request.getAttribute("E3")%>
+                       ${equipments[0].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E4")%>
+                      ${equipments[0].totalPrice}
           			</td> 
                  <td class="tdname">
-                     <%=request.getAttribute("E5")%>
+                     ${equipments[0].location}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E6")%>
+                      ${equipments[0].relationship}
           			</td> 
                 </tr>
                 
-                <tr>
-                
+               <tr>
                  <td class="tdname">
-                   <%=request.getAttribute("E7")%>
+                       ${equipments[1].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[1].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[1].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E8")%>
+                      ${equipments[1].totalPrice}
           			</td> 
-                  <td class="tdname">
-                      <%=request.getAttribute("E9")%>
+                 <td class="tdname">
+                     ${equipments[1].location}
           			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E10")%>
+                      ${equipments[1].relationship}
           			</td> 
+                </tr>
+               <tr>
                  <td class="tdname">
-                      <%=request.getAttribute("E11")%>
+                       ${equipments[2].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[2].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[2].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E12")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                       <%=request.getAttribute("E13")%>
-          			</td>    
-                 <td class="tdname">
-                      <%=request.getAttribute("E14")%>
-          			</td> 
-                  <td class="tdname">
-                       <%=request.getAttribute("E15")%>
-          			</td>     
-                 <td class="tdname">
-                     <%=request.getAttribute("E16")%>
+                      ${equipments[2].totalPrice}
           			</td> 
                  <td class="tdname">
-                       <%=request.getAttribute("E17")%>
-          			</td>     
-                 <td class="tdname">
-                      <%=request.getAttribute("E18")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                      <%=request.getAttribute("E19")%>
-          			</td>  
-                 <td class="tdname">
-                      <%=request.getAttribute("E20")%>
-          			</td> 
-                  <td class="tdname">
-                       <%=request.getAttribute("E21")%>
-          			</td>    
-                 <td class="tdname">
-                       <%=request.getAttribute("E22")%>
-          			</td> 
-                 <td class="tdname">
-                      <%=request.getAttribute("E23")%>
-          			</td>     
-                 <td class="tdname">
-                     <%=request.getAttribute("E24")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                    <%=request.getAttribute("E25")%>
+                     ${equipments[2].location}
           			</td>   
                  <td class="tdname">
-                       <%=request.getAttribute("E26")%>
+                      ${equipments[2].relationship}
+          			</td> 
+                </tr>
+                
+                <tr>
+                 <td class="tdname">
+                       ${equipments[3].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[3].singlePrice}
           			</td> 
                   <td class="tdname">
-                      <%=request.getAttribute("E27")%>
+                       ${equipments[3].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E28")%>
+                      ${equipments[3].totalPrice}
           			</td> 
                  <td class="tdname">
-                       <%=request.getAttribute("E29")%>
+                     ${equipments[3].location}
           			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E30")%>
+                      ${equipments[3].relationship}
           			</td> 
                 </tr>
                 
-                <tr>
+               <tr>
                  <td class="tdname">
-                     <%=request.getAttribute("E31")%>
+                       ${equipments[4].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[4].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[4].number}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E32")%>
-          			</td> 
-                  <td class="tdname">
-                      <%=request.getAttribute("E33")%>
-          			</td>     
-                 <td class="tdname">
-                      <%=request.getAttribute("E34")%>
+                      ${equipments[4].totalPrice}
           			</td> 
                  <td class="tdname">
-                      <%=request.getAttribute("E35")%>
-          			</td>    
-                 <td class="tdname">
-                      <%=request.getAttribute("E36")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                      <%=request.getAttribute("E37")%>
-          			</td>    
-                 <td class="tdname">
-                     <%=request.getAttribute("E38")%>
-          			</td> 
-                  <td class="tdname">
-                      <%=request.getAttribute("E39")%>
-          			</td>     
-                 <td class="tdname">
-                     <%=request.getAttribute("E40")%>
-          			</td> 
-                 <td class="tdname">
-                     <%=request.getAttribute("E41")%>
-          			</td>    
-                 <td class="tdname">
-                     <%=request.getAttribute("E42")%>
-          			</td> 
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                     <%=request.getAttribute("E43")%>
-          			</td>    
-                 <td class="tdname">
-                      <%=request.getAttribute("E44")%>
-          			</td>    
-                  <td class="tdname">
-                       <%=request.getAttribute("E45")%>
-          			</td>       
-                 <td class="tdname">
-                        <%=request.getAttribute("E46")%>
-          			</td>    
-                 <td class="tdname">
-                       <%=request.getAttribute("E47")%>
-          			</td>       
-                 <td class="tdname">
-                      <%=request.getAttribute("E48")%>
-          			</td>    
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                      <%=request.getAttribute("E49")%>
-          			</td>      
-                 <td class="tdname">
-                        <%=request.getAttribute("E50")%>
-          			</td>    
-                  <td class="tdname">
-                      <%=request.getAttribute("E51")%>
-          			</td>      
-                 <td class="tdname">
-                     <%=request.getAttribute("E52")%>
-          			</td>  
-                 <td class="tdname">
-                      <%=request.getAttribute("E53")%>
-          			</td>      
-                 <td class="tdname">
-                      <%=request.getAttribute("E54")%>
-          			</td>  
-                </tr>
-                
-                <tr>
-                 <td class="tdname">
-                    <%=request.getAttribute("E55")%>
+                     ${equipments[4].location}
           			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E56")%>
-          			</td>  
-                  <td class="tdname">
-                      <%=request.getAttribute("E57")%>
+                      ${equipments[4].relationship}
+          			</td> 
+                </tr>
+                
+                <tr>
+                 <td class="tdname">
+                       ${equipments[5].name}
           			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E58")%>
-          			</td>  
+                       ${equipments[5].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[5].number}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E59")%>
-          			</td>      
+                      ${equipments[5].totalPrice}
+          			</td> 
                  <td class="tdname">
-                    <%=request.getAttribute("E60")%>
-          			</td>  
+                     ${equipments[5].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[5].relationship}
+          			</td> 
+                </tr>
+                
+               <tr>
+                 <td class="tdname">
+                       ${equipments[6].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[6].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[6].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[6].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[6].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[6].relationship}
+          			</td> 
                 </tr>
                 
                 <tr>
                  <td class="tdname">
-                      <%=request.getAttribute("E61")%>
-          			</td>     
+                       ${equipments[7].name}
+          			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E62")%>
-          			</td>  
+                       ${equipments[7].singlePrice}
+          			</td> 
                   <td class="tdname">
-                     <%=request.getAttribute("E63")%>
-          			</td>     
+                       ${equipments[7].number}
+          			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E64")%>
-          			</td>  
+                      ${equipments[7].totalPrice}
+          			</td> 
                  <td class="tdname">
-                     <%=request.getAttribute("E65")%>
-          			</td>     
+                     ${equipments[7].location}
+          			</td>   
                  <td class="tdname">
-                     <%=request.getAttribute("E66")%>
-          			</td>  
+                      ${equipments[7].relationship}
+          			</td> 
                 </tr>
                 
                 <tr>
                  <td class="tdname">
-                      <%=request.getAttribute("E67")%>
-          			</td>      
+                       ${equipments[8].name}
+          			</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E68")%>
-          			</td>  
+                       ${equipments[8].singlePrice}
+          			</td> 
                   <td class="tdname">
-                      <%=request.getAttribute("E69")%>
-          			</td>      
+                       ${equipments[8].number}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E70")%>
-          			</td>  
+                      ${equipments[8].totalPrice}
+          			</td> 
                  <td class="tdname">
-                     <%=request.getAttribute("E71")%>
-          			</td>     
+                     ${equipments[8].location}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E72")%>
-          			</td>  
+                      ${equipments[8].relationship}
+          			</td> 
+                </tr>
+                
+                 <tr>
+                 <td class="tdname">
+                       ${equipments[9].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[9].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[9].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[9].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[9].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[9].relationship}
+          			</td> 
+                </tr>
+                
+               <tr>
+                 <td class="tdname">
+                       ${equipments[10].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[10].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[10].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[10].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[10].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[10].relationship}
+          			</td> 
                 </tr>
                 
                 <tr>
-                 <td class="tdname">累计：</td>    
                  <td class="tdname">
-                      <%=request.getAttribute("E73")%>
-          			</td>  
+                       ${equipments[11].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[11].singlePrice}
+          			</td> 
                   <td class="tdname">
-                     <%=request.getAttribute("E74")%>
-          			</td>     
+                       ${equipments[11].number}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E75")%>
-          			</td>  
+                      ${equipments[11].totalPrice}
+          			</td> 
                  <td class="tdname">
-                      <%=request.getAttribute("E76")%>
-          			</td>     
+                     ${equipments[11].location}
+          			</td>   
                  <td class="tdname">
-                      <%=request.getAttribute("E77")%>
-          			</td>  
+                      ${equipments[11].relationship}
+          			</td> 
+                </tr>
+                
+               <tr>
+                 <td class="tdname">
+                       ${equipments[12].name}
+          			</td>    
+                 <td class="tdname">
+                       ${equipments[12].singlePrice}
+          			</td> 
+                  <td class="tdname">
+                       ${equipments[12].number}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[12].totalPrice}
+          			</td> 
+                 <td class="tdname">
+                     ${equipments[12].location}
+          			</td>   
+                 <td class="tdname">
+                      ${equipments[12].relationship}
+          			</td> 
                 </tr>
            </table>
          
@@ -1851,7 +1838,7 @@ $(document).ready(function(){
              <tr>             
             	 <td  align="center" height="400px" >
 	            	 <div class="tdcontent4">
-		               <%=request.getAttribute("F1")%>
+		               ${detail.fujianDescription}
           			
 		             </div>
 		         </td>

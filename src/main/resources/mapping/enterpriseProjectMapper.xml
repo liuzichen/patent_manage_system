@@ -154,5 +154,19 @@
 		</set>
 		where id=#{id}
 	</update>
+	
+	<select id="getEnterpriseProjectsByID" resultMap="enterpriseProjectMap">
+	 	select * from enterpriseproject
+	<where>
+ 		enterpriseId=#{id}
+	</where>
+	</select>
+	
+	<select id="getSetEnterpriseProjectsByID" resultMap="enterpriseProjectMap">
+	 	select * from enterpriseproject
+	<where>
+ 		enterpriseId=#{id} and state= "项目立项评审"
+	</where>
+	</select>
 </mapper>
 

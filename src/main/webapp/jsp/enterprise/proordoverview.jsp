@@ -40,8 +40,9 @@ $(function () {
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'TITLE', title : '项目名称',width :336,align:'center'},
+				{field : 'TYPE', title : '项目类别',width :336,align:'center'},
 				{field : 'FIELD',title : '技术领域',width : 208,align:'center'},
 				{field : 'YEAR',title : '计划年度',width : 160,align:'center',sortable:true},
 				
