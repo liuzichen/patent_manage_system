@@ -389,4 +389,11 @@
 			projectId=#{id}
 		</where>
 	</delete>
+	
+	<select id="getInfoByLoginName" resultMap="enterpriseMap"> 
+		select * from enterprise
+		<where>
+		loginname=#{loginname}
+		</where>
+	</select>
 </mapper>

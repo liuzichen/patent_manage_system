@@ -165,31 +165,34 @@ function sub(){
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
                 <tr >
                     <td class="tdname">项目名称：</td>                    
-                    <td class="tdcontent1"></td>
+                    <td class="tdcontent1">${pcf.g1 }</td>
                     <td class="tdname">承担单位：</td>
-                    <td class="tdcontent2"></td>
+                    <td class="tdcontent2">${pcf.g2 }</td>
                 </tr>
                 <tr >
                     <td class="tdname">项目编号：</td>
-                    <td class="tdcontent1"></td>
+                    <td class="tdcontent1">${pcf.g3 }</td>
                     <td class="tdname">技术领域：</td>
-                    <td class="tdcontent2"></td>                    
+                    <td class="tdcontent2">${pcf.g4 }</td>                    
                 </tr>
                 <tr>
                     <td class="tdname">归口管理部门：</td>
-                    <td class="tdcontent1"></td>
+                    <td class="tdcontent1">${pcf.g5 }</td>
                     <td class="tdname">起止日期：</td>
-                    <td class="tdcontent2"></td>
+                    <td class="tdcontent2">${pcf.g6 }</td>
                 </tr>
                 <tr >
                     <td class="tdname">联系人：</td>
-                    <td class="tdcontent1"></td>
+                    <td class="tdcontent1">${pcf.g7 }</td>
                     <td class="tdname">电话：</td>
-                    <td class="tdcontent2"></td>                    
+                    <td class="tdcontent2">${pcf.g8 }</td>                    
                 </tr>
                 <tr>
                 <td class="tdname" rowspan="4">附件清单：</td>
                    <td colspan="3" >
+                    <div style="word-wrap:break-word;word-break:break-all;margin:0 auto;width:95%;">
+	     					<pre style="width:100%;white-space:pre-wrap; font-size:16px">${pcf.g9 }</pre>
+	    				 </div>
                    		
                    </td>
                 </tr>
@@ -204,15 +207,15 @@ function sub(){
 	   			</tr>
                 <tr >
                     <td class="tdname">项目名称：</td>                    
-                    <td class="tdcontent1"></td>
+                    <td class="tdcontent1">${pci.k1 }</td>
                     <td class="tdname">承担单位：</td>
-                    <td class="tdcontent2"></td>
+                    <td class="tdcontent2">${pci.k2 }</td>
                 </tr>
                 <tr >
                     <td class="tdname">计划文号：</td>
-                    <td class="tdcontent1"></td>
+                    <td class="tdcontent1">${pci.k3 }</td>
                     <td class="tdname">项目编号：</td>
-                    <td class="tdcontent2"></td>                    
+                    <td class="tdcontent2">${pci.k4 }</td>                    
                 </tr>
                 </table>
                 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA" >
@@ -222,7 +225,7 @@ function sub(){
 	   			</tr>
 	   			 <tr >
                     <td class="tdname">进展情况：</td>                    
-                    <td class="tdcontent2" ></td>
+                    <td class="tdcontent2" >${pci.k5 }</td>
                     
                 </tr>
                 </table>
@@ -238,33 +241,33 @@ function sub(){
                 </tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">单位自筹：</td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;">${pci.k6 }</td>
+                	<td style="text-align:center;">${pci.k7 }</td>
+                	<td style="text-align:center;">${pci.k8 }</td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">市财政拨款：</td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;">${pci.k9 }</td>
+                	<td style="text-align:center;">${pci.k10 }</td>
+                	<td style="text-align:center;">${pci.k11 }</td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">国家、省财政拨款：</td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;">${pci.k12 }</td>
+                	<td style="text-align:center;">${pci.k13 }</td>
+                	<td style="text-align:center;">${pci.k14 }</td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">其他：</td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;">${pci.k15 }</td>
+                	<td style="text-align:center;">${pci.k16 }</td>
+                	<td style="text-align:center;">${pci.k17 }</td>
                 <tr>
                 <tr>
                 	<td style="height:35px;text-align:center;background-color:#F2F2F2;">合计：</td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
-                	<td style="text-align:center;"></td>
+                	<td style="text-align:center;">${pci.k18 }</td>
+                	<td style="text-align:center;">${pci.k19 }</td>
+                	<td style="text-align:center;">${pci.k20 }</td>
                 <tr>
              </table>
               <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
@@ -273,153 +276,153 @@ function sub(){
 	   			</tr>
 	   			 <tr >
                     <td class="tdname">总投入：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k21 }
                       万元
                     </td>
                     <td class="tdname">总产值：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k22 }
                        万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">产品销售收入：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k23 }
                       万元
                     </td>
                     <td class="tdname">工业增加值：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k24 }
                       万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">净利润：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k25 }
                       万元
                     </td>
                     <td class="tdname">缴税总额：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k26 }
                        万元
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">创汇：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k27 }
                       万美元
                     </td>
                     <td class="tdname">新增就业人数：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k28 }
                        人
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">专利申请：</td>                    
-                    <td class="tdcontent1" colspan="3">
+                    <td class="tdcontent1" colspan="3">${pci.k29 }
                       项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中发明专利：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k30 }
                       项
                     </td>
                     <td class="tdname">其中PCT专利：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k31 }
                        项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">专利授权：</td>                    
-                    <td class="tdcontent1" colspan="3">
+                    <td class="tdcontent1" colspan="3">${pci.k32 }
                       项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中发明专利：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k33 }
                       项
                     </td>
                     <td class="tdname">其中PCT专利：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k34 }
                        项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">软件产品登记：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k35 }
                       项
                     </td>
                     <td class="tdname">软件著作权登记：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k36 }
                       项
                     </td>
                 </tr>
                  <tr >
                     <td class="tdname">发表科技论文：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k37 }
                     篇
                     </td>
                     <td class="tdname">出版专著：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k38 }
                       万字
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">形成新产品、新工艺等：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k39 }
                       项
                     </td>
                     <td class="tdname">其中国家重点新产品：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k40 }
                        项
                     </td>
                 </tr>
                  <tr >
                     <td class="tdname">科技奖励：</td>                    
-                    <td class="tdcontent1" colspan="3">
+                    <td class="tdcontent1" colspan="3">${pci.k41 }
                       项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中国家级：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k42 }
                     项
                     </td>
                     <td class="tdname">其中省、市级：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k43 }
                        项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname">制定标准：</td>                    
-                    <td class="tdcontent1" colspan="3">
+                    <td class="tdcontent1" colspan="3">${pci.k44 }
                     项
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname">其中国家：</td>                    
-                    <td class="tdcontent1">
+                    <td class="tdcontent1">${pci.k45 }
                       项
                     </td>
                     <td class="tdname">其中行业：</td>
-                    <td class="tdcontent2">
+                    <td class="tdcontent2">${pci.k46 }
                        项
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">建立示范基地、中试平台：</td>                    
-                    <td class="tdcontent1" colspan="2">
+                    <td class="tdcontent1" colspan="2">${pci.k47 }
                       个
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">建立实验室、工程技术研究中心：</td>                    
-                    <td class="tdcontent1" colspan="2">
+                    <td class="tdcontent1" colspan="2">${pci.k48 }
                       个
                     </td>                
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">市级以上科技人才与创新团队：</td>                    
-                    <td class="tdcontent1" colspan="2">
+                    <td class="tdcontent1" colspan="2">${pci.k49 }
                       个
                     </td>                
                 </tr>
@@ -433,11 +436,11 @@ function sub(){
                 <tr >
                     <td class="tdname">项目名称：</td>                    
                     <td class="tdcontent1" colspan="2">
-                      
+                      ${pcb.i1 }
                     </td>
                     <td class="tdname">承担单位：</td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i2}
                     </td>
                 </tr>
                 <tr >
@@ -451,37 +454,37 @@ function sub(){
                 <tr >
                     <td class="tdname" colspan="2">合计</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i3 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i4 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">市科技计划拨款</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i5 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	I6" >
+                    	${pcb.i6 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">单位自筹</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i7 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i8 }
                     </td>
                 </tr>
                 <tr >
-                    <td class="tdname" colspan="2">自筹</td>                                    
+                    <td class="tdname" colspan="2">其他</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i9 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i10 }
                     </td>
                 </tr>    
                 <tr >
@@ -495,146 +498,146 @@ function sub(){
                 <tr >
                     <td class="tdname" colspan="2">合计</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i11 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i12 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">1．设备费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i13 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i14 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">（1）购置设备费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i15 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i16 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">（2）试制设备费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i17 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i18 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">（3）设备改造与租赁费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i19 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i20 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">2.材料费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i21 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i22 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">3.测试化验加工费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i23 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i24 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">4.燃料动力费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i25 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i26 }
                     </td>
                 </tr>
                 
                 <tr >
                     <td class="tdname" colspan="2">5．差旅费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i27}
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i28 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">6．会议费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i29 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i30 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">7．国际合作与交流费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i31 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i32 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">8．出版/文献/信息传播/知识产权事务费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i33 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i34 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">9．劳务费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i35 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i36 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">10．专家咨询费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i37 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i38 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">11．管理费</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i39 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i40 }
                     </td>
                 </tr>
                 <tr >
                     <td class="tdname" colspan="2">12．其他</td>                                    
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i41 }
                     </td>
                     <td class="tdcontent2" colspan="2">
-                    	
+                    	${pcb.i42 }
                     </td>
                 </tr>
              <tr>

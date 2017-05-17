@@ -29,8 +29,10 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
+                sortName: 'qTime',
+                sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'id',
+                idField: 'RoleCode',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
@@ -40,12 +42,12 @@ $(function () {
 				//{field : 'id', title : '编号',width :160,align:'center'},
 				{field : 'title', title : '标题',width :336,align:'center'},
 				{field : 'area',title : '技术领域',width : 160,align:'center'}, 
-				{field : 'askTime',title : '提问时间',width : 208,align:'center'},
+				{field : 'askTime',title : '提问时间',width : 208,align:'center',sortable:true},
 				{field : 'state',title : '回复状态',width : 160,align:'center'}, 
 				
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/question/myQADetail?id="+ row.id +"' >查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/enterprise/answerView?id="+row.id+"' >查看详情</a>";  
                     }
                 }
               
@@ -53,7 +55,30 @@ $(function () {
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
-                	sear();
+                	var opts = $('#roleList').datagrid('options');
+                	var page=opts.pageNumber;
+                	var size=opts.pageSize;
+                	$.ajax({
+                        url:'<%=request.getContextPath()%>/enterprise/questionoverview',
+                        data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
+                        type: 'post',
+                        dataType : "text",
+                    	error: function(XMLHttpRequest, textStatus, errorThrown) {
+        	       			alert(XMLHttpRequest.status);
+        	       			alert(XMLHttpRequest.readyState);
+        	       			alert(textStatus);
+        	       		},
+               			   
+                        success: function (msg) {
+                        	
+                        	var result = eval("("+msg+")");
+        					
+         						$("#roleList").datagrid("loadData",result);
+         					
+                            
+                     
+                        }
+                    });
                 },
                 onLoadSuccess: function () {
                 	
@@ -61,7 +86,32 @@ $(function () {
                     $('#txtSearch').show();
                 }
             });
-            sear();
+            var opts = $('#roleList').datagrid('options');
+        	var page=opts.pageNumber;
+        	var size=opts.pageSize;
+        	var sort=opts.sortName;
+        	var order=opts.sortOrder;
+            $.ajax({
+                url:'<%=request.getContextPath()%>/enterprise/questionoverview',
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
+                type: 'post',
+                dataType : "text",
+            	error: function(XMLHttpRequest, textStatus, errorThrown) {
+	       			alert(XMLHttpRequest.status);
+	       			alert(XMLHttpRequest.readyState);
+	       			alert(textStatus);
+	       		},
+       			   
+                success: function (msg) {
+                	
+                	var result = eval("("+msg+")");
+					
+ 						$("#roleList").datagrid("loadData",result);
+ 					
+                    
+             
+                }
+            });
         	$('#roleList').datagrid('getPager').pagination( {
         		pageList: [10, 20,30,50],
                 pageSize: 10,
@@ -76,23 +126,28 @@ $(function () {
 					var gridOpts = $('#roleList').datagrid('options');
 					gridOpts.pageNumber = pageNum; 
 					gridOpts.pageSize = pageSize;
-					sear();
+					getDataUpdate(pageNum, pageSize);
 				}
 				
 
-			});                                  
+			});
+                                                 
             });
-		function sear(){
-			 var opts = $('#roleList').datagrid('options');
-	        	var pageNum=opts.pageNumber;
-	        	var pageSize=opts.pageSize;
-	        	var sort=opts.sortName;
-	        	var order=opts.sortOrder;
-	        	var userId=<%=session.getAttribute("userId")%>;
-	        	var type="<%=session.getAttribute("type")%>";
+        function getSelections() {
+            var ids = [];
+            var rows = $('#roleList').datagrid('getSelections');
+            for (var i = 0; i < rows.length; i++) {
+                ids.push(rows[i].RoleCode);
+            }
+            return ids.join(',');
+        }
+		function getDataUpdate(pageNum, pageSize){
+			var opts = $('#roleList').datagrid('options');
+        	var sort=opts.sortName;
+        	var order=opts.sortOrder;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/question/myQuestionList',
-                data:{"pageNum":pageNum,"pageSize":pageSize,"userId":userId,"type":type},
+                url:'<%=request.getContextPath()%>/enterprise/questionoverview',
+                data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {

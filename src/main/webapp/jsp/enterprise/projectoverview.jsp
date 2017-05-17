@@ -41,11 +41,11 @@ $(function () {
 				]],
 				columns: [[
 				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '科技项目名称',width :336,align:'center'},
-				{field : 'PROJECT',title : '计划类别',width : 208,align:'center',sortable:true},
-				{field : 'FIELD',title : '技术领域',width : 160,align:'center'},  
-				{field : 'YEAR',title : '计划年度',width : 160,align:'center',sortable:true},
-				{field : 'STATE',title : '项目进度',width : 160,align:'center'}, 
+				{field : 'title', title : '科技项目名称',width :336,align:'center'},
+				{field : 'type',title : '计划类别',width : 208,align:'center',sortable:true},
+				{field : 'field',title : '技术领域',width : 160,align:'center'},  
+				{field : 'year',title : '计划年度',width : 160,align:'center',sortable:true},
+				{field : 'state',title : '项目进度',width : 160,align:'center'}, 
           		]],
                 pagination: true,
                 rownumbers: true,
@@ -54,7 +54,7 @@ $(function () {
                 	var page=opts.pageNumber;
                 	var size=opts.pageSize;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
+                        url:'<%=request.getContextPath()%>/enterprise/enterpriseProjectOverview',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                         type: 'post',
                         dataType : "text",
@@ -87,7 +87,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/enterprise/enterpriseProjectOverview',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
@@ -141,7 +141,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/enterprise/enterpriseProjectOverview',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",

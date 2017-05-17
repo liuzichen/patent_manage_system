@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.EnterpriseWholeyearDao">	 
+	<resultMap id="enterpriseWholeyearTitleMap" type="com.web.project.model.enterprise.EnterpriseWholeyearTitle" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="project_id" property="project_id" jdbcType="INTEGER" /> 
+		<result column="project_name" property="project_name" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="responsible_unit" property="responsible_unit" jdbcType="VARCHAR" />
+		<result column="principal" property="principal" jdbcType="VARCHAR" />
+		<result column="informant" property="informant" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="date" property="date" jdbcType="DATE" />
+		<result column="isSubmit" property="isSubmit" jdbcType="INTEGER" />	
+		<result column="enterpriseid" property="enterpriseid" jdbcType="INTEGER" />
+		<result column="isEvaluate" property="isEvaluate" jdbcType="INTEGER" />	
+	</resultMap>    
+
+	<resultMap id="enterpriseWholeyearInformationMap" type="com.web.project.model.enterprise.EnterpriseWholeyearInformation" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 		
+		<result column="k1" property="k1" jdbcType="VARCHAR" />
+		<result column="k2" property="k2" jdbcType="VARCHAR" />
+		<result column="k3" property="k3" jdbcType="VARCHAR" />
+		<result column="k4" property="k4" jdbcType="VARCHAR" />
+		<result column="k5" property="k5" jdbcType="VARCHAR" />
+		<result column="k6" property="k6" jdbcType="VARCHAR" />
+		<result column="k7" property="k7" jdbcType="VARCHAR" />
+		<result column="k8" property="k8" jdbcType="VARCHAR" />
+		<result column="k9" property="k9" jdbcType="VARCHAR" />
+		<result column="k11" property="k11" jdbcType="VARCHAR" />
+		<result column="k12" property="k12" jdbcType="VARCHAR" />
+		<result column="k13" property="k13" jdbcType="VARCHAR" />
+		<result column="k14" property="k14" jdbcType="VARCHAR" />
+		<result column="k15" property="k15" jdbcType="VARCHAR" />
+		<result column="k16" property="k16" jdbcType="VARCHAR" />
+		<result column="k17" property="k17" jdbcType="VARCHAR" />
+		<result column="k18" property="k18" jdbcType="VARCHAR" />
+		<result column="k19" property="k19" jdbcType="VARCHAR" />
+		<result column="k10" property="k10" jdbcType="VARCHAR" />
+		<result column="k20" property="k20" jdbcType="VARCHAR" />
+		<result column="k21" property="k21" jdbcType="VARCHAR" />
+		<result column="k22" property="k22" jdbcType="VARCHAR" />
+		<result column="k23" property="k23" jdbcType="VARCHAR" />
+		<result column="k24" property="k24" jdbcType="VARCHAR" />
+		<result column="k25" property="k25" jdbcType="VARCHAR" />
+		<result column="k26" property="k26" jdbcType="VARCHAR" />
+		<result column="k27" property="k27" jdbcType="VARCHAR" />
+		<result column="k28" property="k28" jdbcType="VARCHAR" />
+		<result column="k29" property="k29" jdbcType="VARCHAR" />
+		<result column="k30" property="k30" jdbcType="VARCHAR" />
+		<result column="k31" property="k31" jdbcType="VARCHAR" />
+		<result column="k32" property="k32" jdbcType="VARCHAR" />
+		<result column="k33" property="k33" jdbcType="VARCHAR" />
+		<result column="k34" property="k34" jdbcType="VARCHAR" />
+		<result column="k35" property="k35" jdbcType="VARCHAR" />
+		<result column="k36" property="k36" jdbcType="VARCHAR" />
+		<result column="k37" property="k37" jdbcType="VARCHAR" />
+		<result column="k38" property="k38" jdbcType="VARCHAR" />
+		<result column="k39" property="k39" jdbcType="VARCHAR" />
+		<result column="k40" property="k40" jdbcType="VARCHAR" />
+		<result column="k41" property="k41" jdbcType="VARCHAR" />
+		<result column="k42" property="k42" jdbcType="VARCHAR" />
+		<result column="k43" property="k43" jdbcType="VARCHAR" />
+		<result column="k44" property="k44" jdbcType="VARCHAR" />
+		<result column="k45" property="k45" jdbcType="VARCHAR" />
+		<result column="k46" property="k46" jdbcType="VARCHAR" />
+		<result column="k47" property="k47" jdbcType="VARCHAR" />
+		<result column="k48" property="k48" jdbcType="VARCHAR" />
+		<result column="k49" property="k49" jdbcType="VARCHAR" />
+		<result column="k50" property="k50" jdbcType="VARCHAR" />
+		<result column="k51" property="k51" jdbcType="VARCHAR" />
+		<result column="k52" property="k52" jdbcType="VARCHAR" />
+		<result column="k53" property="k53" jdbcType="VARCHAR" />
+		<result column="k54" property="k54" jdbcType="VARCHAR" />
+		<result column="k55" property="k55" jdbcType="VARCHAR" />
+		<result column="k56" property="k56" jdbcType="VARCHAR" />
+		<result column="k57" property="k57" jdbcType="VARCHAR" />
+		<result column="k58" property="k58" jdbcType="VARCHAR" />
+		<result column="k59" property="k59" jdbcType="VARCHAR" />		
+		<result column="k60" property="k60" jdbcType="VARCHAR" />
+		<result column="k61" property="k61" jdbcType="VARCHAR" />
+		<result column="k62" property="k62" jdbcType="VARCHAR" />
+		<result column="k63" property="k63" jdbcType="VARCHAR" />
+		<result column="k64" property="k64" jdbcType="VARCHAR" />
+		<result column="k65" property="k65" jdbcType="VARCHAR" />
+		<result column="k66" property="k66" jdbcType="VARCHAR" />
+		<result column="k67" property="k67" jdbcType="VARCHAR" />
+		<result column="k68" property="k68" jdbcType="VARCHAR" />
+		<result column="k69" property="k69" jdbcType="VARCHAR" />		
+		<result column="k70" property="k70" jdbcType="VARCHAR" />
+		<result column="k71" property="k71" jdbcType="VARCHAR" />
+		<result column="k72" property="k72" jdbcType="VARCHAR" />
+		<result column="k73" property="k73" jdbcType="VARCHAR" />
+		<result column="k74" property="k74" jdbcType="VARCHAR" />
+		<result column="k75" property="k75" jdbcType="VARCHAR" />
+		<result column="k76" property="k76" jdbcType="VARCHAR" />
+		<result column="k77" property="k77" jdbcType="VARCHAR" />
+		<result column="k78" property="k78" jdbcType="VARCHAR" />
+		<result column="k79" property="k79" jdbcType="VARCHAR" />		
+		<result column="k80" property="k80" jdbcType="VARCHAR" />
+		<result column="k81" property="k81" jdbcType="VARCHAR" />
+		<result column="k82" property="k82" jdbcType="VARCHAR" />
+		<result column="k83" property="k83" jdbcType="VARCHAR" />
+		<result column="k84" property="k84" jdbcType="VARCHAR" />
+		<result column="k85" property="k85" jdbcType="VARCHAR" />
+		<result column="k86" property="k86" jdbcType="VARCHAR" />
+		<result column="k87" property="k87" jdbcType="VARCHAR" />
+		<result column="k88" property="k88" jdbcType="VARCHAR" />
+		<result column="k89" property="k89" jdbcType="VARCHAR" />		
+		<result column="k90" property="k90" jdbcType="VARCHAR" />
+		<result column="k91" property="k91" jdbcType="VARCHAR" />
+		<result column="k92" property="k92" jdbcType="VARCHAR" />
+		<result column="k93" property="k93" jdbcType="VARCHAR" />
+		<result column="k94" property="k94" jdbcType="VARCHAR" />
+		<result column="k95" property="k95" jdbcType="LONGVARCHAR" />
+	</resultMap> 
+ 	<select id="getEnterpriseWholeyearTitleByID" resultMap="enterpriseWholeyearTitleMap">
+	 	select * from enterprise_wholeyear_title
+	<where>
+ 		id=#{id}
+	</where>
+	</select>
+
+	
+	<select id="getEnterpriseWholeyearInfoByID" resultMap="enterpriseWholeyearInformationMap">
+	 	select * from enterprise_wholeyear_information
+	<where>
+ 		id=#{id}
+	</where>
+	</select>
+
+ 	<select id="getEnterpriseWholeyearTitleByEnterprise" resultMap="enterpriseWholeyearTitleMap">
+	 	select * from enterprise_wholeyear_title
+	<where>
+ 		enterpriseid=#{id}
+	</where>
+	
+	</select>
+	
+		<update id="saveenterprisewholeyearTitle" parameterType="com.web.project.model.enterprise.EnterpriseWholeyearTitle">
+		update enterprise_wholeyear_title
+		<set>
+		isSubmit=#{isSubmit},
+		informant=#{informant},
+		date=#{date},
+		phone=#{phone}
+		</set>
+		where id=#{id}
+	</update>
+	<update id="saveenterprisewholeyearInformation" parameterType="com.web.project.model.enterprise.EnterpriseWholeyearInformation">
+		update enterprise_wholeyear_information
+		<set>
+		k5=#{k5},k6=#{k6},k7=#{k7},k8=#{k8},k9=#{k9},k10=#{k10},k11=#{k11},k12=#{k12},
+		k13=#{k13},k14=#{k14},k15=#{k15},k16=#{k16},k17=#{k17},k18=#{k18},k19=#{k19},k20=#{k20},k21=#{k21},k22=#{k22},k23=#{k23},
+		k24=#{k24},k25=#{k25},k26=#{k26},k27=#{k27},k28=#{k28},k29=#{k29},k30=#{k30},k31=#{k31},k32=#{k32},k33=#{k33},
+		k34=#{k34},k35=#{k35},k36=#{k36},k37=#{k37},k38=#{k38},k39=#{k39},k40=#{k40},k41=#{k41},k42=#{k42},k43=#{k43},
+		k44=#{k44},k45=#{k45},k46=#{k46},k47=#{k47},k48=#{k48},k49=#{k49},k50=#{k50},k51=#{k51},k52=#{k52},k53=#{k53},
+		k54=#{k54},k55=#{k55},k56=#{k56},k57=#{k57},k58=#{k58},k59=#{k59},k60=#{k60},k61=#{k61},k62=#{k62},k63=#{k63},
+		k64=#{k64},k65=#{k65},k66=#{k66},k67=#{k67},k68=#{k68},k69=#{k69},k70=#{k70},k71=#{k71},k72=#{k72},k73=#{k73},
+		k74=#{k74},k75=#{k75},k76=#{k76},k77=#{k77},k78=#{k78},k79=#{k79},k80=#{k80},k81=#{k81},k82=#{k82},k83=#{k83},
+		k84=#{k84},k85=#{k85},k86=#{k86},k87=#{k87},k88=#{k88},k89=#{k89},k90=#{k90},k91=#{k91},k92=#{k92},k93=#{k93},
+		k94=#{k94},k95=#{k95}
+		</set>
+		where id=#{id}
+	</update>
+</mapper>

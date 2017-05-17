@@ -39,15 +39,17 @@ $(function () {
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '科技项目名称',width :336,align:'center'},
-				{field : 'PROJECT',title : '计划类别',width : 208,align:'center',sortable:true},
-				{field : 'FIELD',title : '技术领域',width : 160,align:'center'},  
-				{field : 'YEAR',title : '计划年度',width : 160,align:'center',sortable:true},
-				{field : 'STATE',title : '状态',width : 160,align:'center'}, 
+				//{field : 'EnterpriseProjectID', title : '编号',width :160,align:'center'},
+				//{field : 'ID', title : '编号',width :160,align:'center'},
+				{field : 'g1', title : '科技项目名称',width :336,align:'center'},
+				//{field : 'PROJECT',title : '计划类别',width : 208,align:'center',sortable:true},
+				{field : 'g4',title : '技术领域',width : 160,align:'center'},  
+				{field : 'g5',title : '计划年度',width : 160,align:'center',sortable:true},
+				{field : 'submit',title : '是否提交',width : 160,align:'center'}, 
+				{field : 'evaluate',title : '是否评审',width : 160,align:'center'},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/enterprise/endprojectreview.jsp'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/enterprise/endprojectView?id="+row.ID+"'>查看详情</a>";  
                     }//编辑、待修改状态进填表页面
                 }
               
@@ -108,7 +110,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/enterprise/endoverview',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",

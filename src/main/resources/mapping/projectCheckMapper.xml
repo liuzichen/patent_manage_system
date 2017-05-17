@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ProjectCheckDao">	 
+	<resultMap id="projectCheckBudgetMap" type="com.web.project.model.enterprise.ProjectCheckBudget" >
+		<id column="ID" property="ID" jdbcType="INTEGER" />
+		<result column="i1" property="i1" jdbcType="VARCHAR" />
+		<result column="i2" property="i2" jdbcType="VARCHAR" />
+		<result column="i3" property="i3" jdbcType="VARCHAR" />
+		<result column="i4" property="i4" jdbcType="VARCHAR" />
+		<result column="i5" property="i5" jdbcType="VARCHAR" />
+		<result column="i6" property="i6" jdbcType="VARCHAR" />
+		<result column="i7" property="i7" jdbcType="VARCHAR" />
+		<result column="i8" property="i8" jdbcType="VARCHAR" />
+		<result column="i9" property="i9" jdbcType="VARCHAR" />
+		<result column="i10" property="i10" jdbcType="VARCHAR" />
+		<result column="i11" property="i11" jdbcType="VARCHAR" />
+		<result column="i12" property="i12" jdbcType="VARCHAR" />
+		<result column="i13" property="i13" jdbcType="VARCHAR" />
+		<result column="i14" property="i14" jdbcType="VARCHAR" />
+		<result column="i15" property="i15" jdbcType="VARCHAR" />
+		<result column="i16" property="i16" jdbcType="VARCHAR" />
+		<result column="i17" property="i17" jdbcType="VARCHAR" />
+		<result column="i18" property="i18" jdbcType="VARCHAR" />
+		<result column="i19" property="i19" jdbcType="VARCHAR" />
+		<result column="i20" property="i20" jdbcType="VARCHAR" />
+		<result column="i21" property="i21" jdbcType="VARCHAR" />
+		<result column="i22" property="i22" jdbcType="VARCHAR" />
+		<result column="i23" property="i23" jdbcType="VARCHAR" />
+		<result column="i24" property="i24" jdbcType="VARCHAR" />
+		<result column="i25" property="i25" jdbcType="VARCHAR" />
+		<result column="i26" property="i26" jdbcType="VARCHAR" />
+		<result column="i27" property="i27" jdbcType="VARCHAR" />
+		<result column="i28" property="i28" jdbcType="VARCHAR" />
+		<result column="i29" property="i29" jdbcType="VARCHAR" />
+		<result column="i30" property="i30" jdbcType="VARCHAR" />
+		<result column="i31" property="i31" jdbcType="VARCHAR" />
+		<result column="i32" property="i32" jdbcType="VARCHAR" />
+		<result column="i33" property="i33" jdbcType="VARCHAR" />
+		<result column="i34" property="i34" jdbcType="VARCHAR" />
+		<result column="i35" property="i35" jdbcType="VARCHAR" />
+		<result column="i36" property="i36" jdbcType="VARCHAR" />
+		<result column="i37" property="i37" jdbcType="VARCHAR" />
+		<result column="i38" property="i38" jdbcType="VARCHAR" />
+		<result column="i39" property="i39" jdbcType="VARCHAR" />
+		<result column="i40" property="i40" jdbcType="VARCHAR" />
+		<result column="i41" property="i41" jdbcType="VARCHAR" />
+		<result column="i42" property="i42" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="projectCheckInfoMap" type="com.web.project.model.enterprise.ProjectCheckInfo" >
+		<id column="ID" property="ID" jdbcType="INTEGER" />
+		<result column="k1" property="k1" jdbcType="VARCHAR" />
+		<result column="k2" property="k2" jdbcType="VARCHAR" />
+		<result column="k3" property="k3" jdbcType="VARCHAR" />
+		<result column="k4" property="k4" jdbcType="VARCHAR" />
+		<result column="k5" property="k5" jdbcType="VARCHAR" />
+		<result column="k6" property="k6" jdbcType="VARCHAR" />
+		<result column="k7" property="k7" jdbcType="VARCHAR" />
+		<result column="k8" property="k8" jdbcType="VARCHAR" />
+		<result column="k9" property="k9" jdbcType="VARCHAR" />
+		<result column="k10" property="k10" jdbcType="VARCHAR" />
+		<result column="k11" property="k11" jdbcType="VARCHAR" />
+		<result column="k12" property="k12" jdbcType="VARCHAR" />
+		<result column="k13" property="k13" jdbcType="VARCHAR" />
+		<result column="k14" property="k14" jdbcType="VARCHAR" />
+		<result column="k15" property="k15" jdbcType="VARCHAR" />
+		<result column="k16" property="k16" jdbcType="VARCHAR" />
+		<result column="k17" property="k17" jdbcType="VARCHAR" />
+		<result column="k18" property="k18" jdbcType="VARCHAR" />
+		<result column="k19" property="k19" jdbcType="VARCHAR" />
+		<result column="k20" property="k20" jdbcType="VARCHAR" />
+		<result column="k21" property="k21" jdbcType="VARCHAR" />
+		<result column="k22" property="k22" jdbcType="VARCHAR" />
+		<result column="k23" property="k23" jdbcType="VARCHAR" />
+		<result column="k24" property="k24" jdbcType="VARCHAR" />
+		<result column="k25" property="k25" jdbcType="VARCHAR" />
+		<result column="k26" property="k26" jdbcType="VARCHAR" />
+		<result column="k27" property="k27" jdbcType="VARCHAR" />
+		<result column="k28" property="k28" jdbcType="VARCHAR" />
+		<result column="k29" property="k29" jdbcType="VARCHAR" />
+		<result column="k30" property="k30" jdbcType="VARCHAR" />
+		<result column="k31" property="k31" jdbcType="VARCHAR" />
+		<result column="k32" property="k32" jdbcType="VARCHAR" />
+		<result column="k33" property="k33" jdbcType="VARCHAR" />
+		<result column="k34" property="k34" jdbcType="VARCHAR" />
+		<result column="k35" property="k35" jdbcType="VARCHAR" />
+		<result column="k36" property="k36" jdbcType="VARCHAR" />
+		<result column="k37" property="k37" jdbcType="VARCHAR" />
+		<result column="k38" property="k38" jdbcType="VARCHAR" />
+		<result column="k39" property="k39" jdbcType="VARCHAR" />
+		<result column="k40" property="k40" jdbcType="VARCHAR" />
+		<result column="k41" property="k41" jdbcType="VARCHAR" />
+		<result column="k42" property="k42" jdbcType="VARCHAR" />
+		<result column="k43" property="k43" jdbcType="VARCHAR" />
+		<result column="k44" property="k44" jdbcType="VARCHAR" />
+		<result column="k45" property="k45" jdbcType="VARCHAR" />
+		<result column="k46" property="k46" jdbcType="VARCHAR" />
+		<result column="k47" property="k47" jdbcType="VARCHAR" />
+		<result column="k48" property="k48" jdbcType="VARCHAR" />
+		<result column="k49" property="k49" jdbcType="VARCHAR" />
+	</resultMap>	
+	
+	<resultMap id="projectCheckFormMap" type="com.web.project.model.enterprise.ProjectCheckForm" >
+		<id column="ID" property="ID" jdbcType="INTEGER" />
+		<result column="g1" property="g1" jdbcType="VARCHAR" />
+		<result column="g2" property="g2" jdbcType="VARCHAR" />
+		<result column="g3" property="g3" jdbcType="VARCHAR" />
+		<result column="g4" property="g4" jdbcType="VARCHAR" />
+		<result column="g5" property="g5" jdbcType="VARCHAR" />
+		<result column="g6" property="g6" jdbcType="VARCHAR" />
+		<result column="g7" property="g7" jdbcType="VARCHAR" />
+		<result column="g8" property="g8" jdbcType="VARCHAR" />
+		<result column="g9" property="g9" jdbcType="LONGVARCHAR" />
+		<result column="enterpriseProjectID" property="enterpriseProjectID" jdbcType="INTEGER" />
+		<result column="enterpriseID" property="enterpriseID" jdbcType="INTEGER" />
+		<result column="governmentID" property="governmentID" jdbcType="INTEGER" />
+		<result column="state" property="state" jdbcType="VARCHAR" />
+		<result column="fujianName" property="fujianName" jdbcType="VARCHAR" />
+		<result column="fujianType" property="fujianType" jdbcType="VARCHAR" />	
+		<result column="fujian" property="fujian" jdbcType="BLOB" />	
+		<result column="isSubmit" property="isSubmit" jdbcType="INTEGER" />
+		<result column="isEvaluate" property="isEvaluate" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="getProjectFormsByEnterpriseID" resultMap="projectCheckFormMap">
+	 	select * from project_check_form
+	<where>
+ 		enterpriseID=#{id}
+	</where>
+	</select>
+	
+	<select id="getprojectcheckformByID" resultMap="projectCheckFormMap">
+	 	select * from project_check_form
+	<where>
+ 		ID=#{id}
+	</where>
+	</select>
+	
+	<select id="getprojectcheckinfoByID" resultMap="projectCheckInfoMap">
+	 	select * from project_check_info
+	<where>
+ 		ID=#{id}
+	</where>
+	</select>
+	
+	<select id="getprojectcheckbudgetByID" resultMap="projectCheckBudgetMap">
+	 	select * from project_check_budget
+	<where>
+ 		ID=#{id}
+	</where>
+	</select>
+	
+	<update id="saveProjectCheckForm" parameterType="com.web.project.model.enterprise.ProjectCheckForm">
+		update project_check_form
+		<set>
+		g1=#{g1},g2=#{g2},g3=#{g3},g4=#{g4},g5=#{g5},g6=#{g6},g7=#{g7},g8=#{g8},g9=#{g9},isSubmit=#{isSubmit}
+		</set>
+		where id=#{ID}
+	</update>
+	
+	<update id="saveProjectCheckInfo" parameterType="com.web.project.model.enterprise.ProjectCheckInfo">
+		update project_check_info
+		<set>
+		k1=#{k1},k2=#{k2},k3=#{k3},k4=#{k4},k5=#{k5},k6=#{k6},k7=#{k7},k8=#{k8},k9=#{k9},k10=#{k10},k11=#{k11},k12=#{k12},
+		k13=#{k13},k14=#{k14},k15=#{k15},k16=#{k16},k17=#{k17},k18=#{k18},k19=#{k19},k20=#{k20},k21=#{k21},k22=#{k22},k23=#{k23},
+		k24=#{k24},k25=#{k25},k26=#{k26},k27=#{k27},k28=#{k28},k29=#{k29},k30=#{k30},k31=#{k31},k32=#{k32},k33=#{k33},
+		k34=#{k34},k35=#{k35},k36=#{k36},k37=#{k37},k38=#{k38},k39=#{k39},k40=#{k40},k41=#{k41},k42=#{k42},k43=#{k43},
+		k44=#{k44},k45=#{k45},k46=#{k46},k47=#{k47},k48=#{k48},k49=#{k49},
+		</set>
+		where id=#{ID}
+	</update>
+
+	<update id="saveProjectCheckBudget" parameterType="com.web.project.model.enterprise.ProjectCheckBudget">
+		update project_check_budget
+		<set>
+		i1=#{i1},i2=#{i2},i3=#{i3},i4=#{i4},i5=#{i5},i6=#{i6},i7=#{i7},i8=#{i8},i9=#{i9},i10=#{i10},i11=#{i11},i12=#{i12},
+		i13=#{i13},i14=#{i14},i15=#{i15},i16=#{i16},i17=#{i17},i18=#{i18},i19=#{i19},i20=#{i20},i21=#{i21},i22=#{i22},i23=#{i23},
+		i24=#{i24},i25=#{i25},i26=#{i26},i27=#{i27},i28=#{i28},i29=#{i29},i30=#{i30},i31=#{i31},i32=#{i32},i33=#{i33},
+		i34=#{i34},i35=#{i35},i36=#{i36},i37=#{i37},i38=#{i38},i39=#{i39},i40=#{i40},i41=#{i41},i42=#{i42}
+		</set>
+		where id=#{ID}
+	</update>
+</mapper>

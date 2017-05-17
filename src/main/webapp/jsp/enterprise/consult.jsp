@@ -14,7 +14,7 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 function sub(){
-	var field=$("#field").val();
+	var field=$("#field").val()+"s";
 	var title=$("#title").val();
 	var question=$("#qDescription").val();
 	if(title==""){
@@ -50,9 +50,8 @@ function sub(){
 		 
     <div class="context">
        <div class="titlebox"><span class="title">咨询问题</span></div>
-       <form action="<%=request.getContextPath()%>/question/insertQA" name="Form1" id="Form1">
-       <input type="hidden" id="userid" name="userid" value=<%=session.getAttribute("userId")%>>
-       <input type="hidden" id="usertype" name="usertype" value="<%=session.getAttribute("type")%>">
+
+       <form action="<%=request.getContextPath() %>/enterprise/setconsult" name="Form1" id="Form1">
        <div style="width:100%">
 	   	<table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
                 <tr >

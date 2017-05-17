@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.EnterpriseMiddleDao">	 
+	<resultMap id="enterpriseMiddleTitleMap" type="com.web.project.model.enterprise.EnterpriseMiddleTitle" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="project_id" property="project_id" jdbcType="INTEGER" /> 
+		<result column="project_name" property="project_name" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="responsible_unit" property="responsible_unit" jdbcType="VARCHAR" />
+		<result column="principal" property="principal" jdbcType="VARCHAR" />
+		<result column="expert_leader" property="expert_leader" jdbcType="VARCHAR" />
+		<result column="date" property="date" jdbcType="DATE" />
+		<result column="isSubmit" property="isSubmit" jdbcType="INTEGER" />	
+		<result column="enterpriseid" property="enterpriseid" jdbcType="INTEGER" />
+		<result column="isEvaluate" property="isEvaluate" jdbcType="INTEGER" />	
+	</resultMap>    
+
+	<resultMap id="enterpriseMiddleInformationMap" type="com.web.project.model.enterprise.EnterpriseMiddleInformation" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="project_id" property="project_id" jdbcType="INTEGER" /> 	
+		<result column="project_name" property="project_name" jdbcType="VARCHAR" />
+		<result column="responsible_unit" property="responsible_unit" jdbcType="VARCHAR" />
+		<result column="plan_approval" property="plan_approval" jdbcType="VARCHAR" />
+		<result column="project_number" property="project_number" jdbcType="VARCHAR" />
+		<result column="project_progress" property="project_progress" jdbcType="VARCHAR" />
+		<result column="unit_self_raised_plan" property="unit_self_raised_plan" jdbcType="VARCHAR" />
+		<result column="unit_self_raised_real" property="unit_self_raised_real" jdbcType="VARCHAR" />
+		<result column="unit_self_raised_total" property="unit_self_raised_total" jdbcType="VARCHAR" />
+		<result column="municipal_finance_plan" property="municipal_finance_plan" jdbcType="VARCHAR" />
+		<result column="municipal_finance_real" property="municipal_finance_real" jdbcType="VARCHAR" />
+		<result column="municipal_finance_total" property="municipal_finance_total" jdbcType="VARCHAR" />
+		<result column="state_funding_plan" property="state_funding_plan" jdbcType="VARCHAR" />
+		<result column="state_funding_real" property="state_funding_real" jdbcType="VARCHAR" />
+		<result column="state_funding_total" property="state_funding_total" jdbcType="VARCHAR" />
+		<result column="other_plan" property="other_plan" jdbcType="VARCHAR" />
+		<result column="other_real" property="other_real" jdbcType="VARCHAR" />
+		<result column="other_total" property="other_total" jdbcType="VARCHAR" />
+		<result column="sum_plan" property="sum_plan" jdbcType="VARCHAR" />
+		<result column="sum_real" property="sum_real" jdbcType="VARCHAR" />
+		<result column="sum_total" property="sum_total" jdbcType="VARCHAR" />
+		<result column="total_investment" property="total_investment" jdbcType="VARCHAR" />
+		<result column="total_output" property="total_output" jdbcType="VARCHAR" />
+		<result column="sales_revenue" property="sales_revenue" jdbcType="VARCHAR" />
+		<result column="added_value" property="added_value" jdbcType="VARCHAR" />
+		<result column="net_profit" property="net_profit" jdbcType="VARCHAR" />
+		<result column="total_tax" property="total_tax" jdbcType="VARCHAR" />
+		<result column="exchange_earning" property="exchange_earning" jdbcType="VARCHAR" />
+		<result column="new_employment" property="new_employment" jdbcType="VARCHAR" />
+		<result column="patent_application" property="patent_application" jdbcType="VARCHAR" />
+		<result column="invention_patent" property="invention_patent" jdbcType="VARCHAR" />
+		<result column="pct_patent" property="pct_patent" jdbcType="VARCHAR" />
+		<result column="patent_license" property="patent_license" jdbcType="VARCHAR" />
+		<result column="invention_licence" property="invention_licence" jdbcType="VARCHAR" />
+		<result column="pct_licence" property="pct_licence" jdbcType="VARCHAR" />
+		<result column="software_registration" property="software_registration" jdbcType="VARCHAR" />
+		<result column="software_copyright_registration" property="software_copyright_registration" jdbcType="VARCHAR" />
+		<result column="published_papers" property="published_papers" jdbcType="VARCHAR" />
+		<result column="published_books" property="published_books" jdbcType="VARCHAR" />
+		<result column="develop_new_product" property="develop_new_product" jdbcType="VARCHAR" />
+		<result column="national_new_products" property="national_new_products" jdbcType="VARCHAR" />
+		<result column="award" property="award" jdbcType="VARCHAR" />
+		<result column="award_nation" property="award_nation" jdbcType="VARCHAR" />
+		<result column="award_province" property="award_province" jdbcType="VARCHAR" />
+		<result column="standards" property="standards" jdbcType="VARCHAR" />
+		<result column="standards_nation" property="standards_nation" jdbcType="VARCHAR" />
+		<result column="standards_industry" property="standards_industry" jdbcType="VARCHAR" />
+		<result column="demonstration_base" property="demonstration_base" jdbcType="VARCHAR" />
+		<result column="lab" property="lab" jdbcType="VARCHAR" />
+		<result column="technological_team" property="technological_team" jdbcType="VARCHAR" />
+		<result column="opinion" property="opinion" jdbcType="VARCHAR" />
+	</resultMap> 
+	   
+	<resultMap id="enterpriseMiddleOpinionMap" type="com.web.project.model.enterprise.EnterpriseMiddleOpinion" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="project_id" property="project_id" jdbcType="INTEGER" /> 		
+		<result column="project_name" property="project_name" jdbcType="VARCHAR" />
+		<result column="responsible_unit" property="responsible_unit" jdbcType="VARCHAR" />
+		<result column="plan_approval" property="plan_approval" jdbcType="VARCHAR" />
+		<result column="project_number" property="project_number" jdbcType="VARCHAR" />
+		<result column="start_date" property="start_date" jdbcType="DATE" />
+		<result column="end_date" property="end_date" jdbcType="DATE" />
+		<result column="check_date" property="check_date" jdbcType="DATE" />
+		<result column="case_review" property="case_review" jdbcType="VARCHAR" />
+		<result column="advice" property="advice" jdbcType="VARCHAR" />
+	</resultMap>    
+
+	<select id="getEnterpriseMiddleTitleByEnterprise" resultMap="enterpriseMiddleTitleMap">
+	 	select * from enterprise_middle_title
+	<where>
+ 		enterpriseid=#{id}
+	</where>
+	</select>
+	
+	<select id="getEnterpriseMiddleTitleByID" resultMap="enterpriseMiddleTitleMap">
+	 	select * from enterprise_middle_title
+	<where>
+ 		id=#{id}
+	</where>
+	</select>
+	
+	<select id="getEnterpriseMiddleOpinionByID" resultMap="enterpriseMiddleOpinionMap">
+	 	select * from enterprise_middle_opinion
+	<where>
+ 		id=#{id}
+	</where>
+	</select>
+	
+	<select id="getEnterpriseMiddleInfoByID" resultMap="enterpriseMiddleInformationMap">
+	 	select * from enterprise_middle_information
+	<where>
+ 		id=#{id}
+	</where>
+	</select>
+	
+	<update id="saveenterprisemiddleInformation" parameterType="com.web.project.model.enterprise.EnterpriseMiddleInformation">
+		update enterprise_middle_information
+		<set>
+		project_name=#{project_name},
+		responsible_unit=#{responsible_unit},
+		plan_approval=#{plan_approval},
+		project_number=#{project_number},
+		project_progress=#{project_progress},
+		unit_self_raised_plan=#{unit_self_raised_plan},
+		unit_self_raised_real=#{unit_self_raised_real},
+		unit_self_raised_total=#{unit_self_raised_total},
+		municipal_finance_plan=#{municipal_finance_plan},
+		municipal_finance_real=#{municipal_finance_real},
+		municipal_finance_total=#{municipal_finance_total},
+		state_funding_plan=#{state_funding_plan},
+		state_funding_real=#{state_funding_real},
+		state_funding_total=#{state_funding_total},
+		other_plan=#{other_plan},
+		other_real=#{other_real},
+		other_total=#{other_total},
+		sum_plan=#{sum_plan},
+		sum_real=#{sum_real},
+		sum_total=#{sum_total},
+		total_investment=#{total_investment},
+		total_output=#{total_output},
+		sales_revenue=#{sales_revenue},
+		added_value=#{added_value},
+		net_profit=#{net_profit},
+		total_tax=#{total_tax},
+		exchange_earning=#{exchange_earning},
+		new_employment=#{new_employment},
+		patent_application=#{patent_application},
+		invention_patent=#{invention_patent},
+		pct_patent=#{pct_patent},
+		patent_license=#{patent_license},
+		invention_licence=#{invention_licence},
+		pct_licence=#{pct_licence},
+		software_registration=#{software_registration},
+		software_copyright_registration=#{software_copyright_registration},
+		published_papers=#{published_papers},
+		published_books=#{published_books},
+		develop_new_product=#{develop_new_product},
+		national_new_products=#{national_new_products},
+		award=#{award},
+		award_nation=#{award_nation},
+		award_province=#{award_province},
+		standards=#{standards},
+		standards_nation=#{standards_nation},
+		standards_industry=#{standards_industry},
+		demonstration_base=#{demonstration_base},
+		lab=#{lab},
+		technological_team=#{technological_team},
+		</set>
+		where id=#{id}
+	</update>
+	
+	<update id="saveenterprisemiddleTitle" parameterType="com.web.project.model.enterprise.EnterpriseMiddleTitle">
+		update enterprise_middle_title
+		<set>
+		isSubmit=#{isSubmit},
+		date=#{date},
+		expert_leader=#{expert_leader}
+		</set>
+		where id=#{id}
+	</update>
+</mapper>

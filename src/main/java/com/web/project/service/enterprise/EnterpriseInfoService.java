@@ -19,6 +19,7 @@ import com.web.project.model.enterprise.EnterprisePeopleInCharge;
 import com.web.project.model.enterprise.EnterpriseProInvestmentBudget;
 import com.web.project.model.enterprise.EnterpriseProjectEquipment;
 import com.web.project.model.enterprise.EnterpriseShareholder;
+import com.web.project.model.expert.ExpertInfo;
 
 /**
  * @author 子晨
@@ -137,6 +138,19 @@ public class EnterpriseInfoService {
 	public void deleteEnterpriseCorporators(int id){
 		enterpriseInfoDao.deleteEnterpriseCorporators(id);
 	}
+	public boolean isExist(String loginName, String passWord) {
+		Enterprise info = enterpriseInfoDao.getInfoByLoginName(loginName);
+		if (null == info) {
+			return false;
+		} else {
+			if (info.getPassWord().equals(passWord))
+				return true;
+		}
+		return false;
+	}
 	
+	public Enterprise getEnterpriseInfoByLoginName(String loginName){
+		return enterpriseInfoDao.getInfoByLoginName(loginName);
+	}
 
 }

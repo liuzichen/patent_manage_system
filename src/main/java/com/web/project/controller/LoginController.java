@@ -22,7 +22,9 @@ import com.web.project.model.maker.MakerCommonWorks;
 import com.web.project.model.maker.MakerProject;
 import com.web.project.service.RePasswordService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
+import com.web.project.service.enterprise.EnterpriseInfoService;
 import com.web.project.service.expertService.CommentService;
+
 import com.web.project.service.expertService.ExpertInfoService;
 import com.web.project.service.maker.MakerInfoService;
 import com.web.project.service.makerService.MakerProjectService;
@@ -56,6 +58,9 @@ public class LoginController {
 	RePasswordService rePasswordService;
 	
 	@Autowired
+	EnterpriseInfoService enterpriseInfoService;
+
+  @Autowired
 	CommentService commentService;
   
   @Autowired
@@ -88,6 +93,23 @@ public class LoginController {
 			}else {
 				request.getSession().setAttribute("isExist", "1");
 			}
+		}		
+		
+		if(new String(type.getBytes("iso-8859-1"), "utf-8").equals("企业用户") ){
+			if(enterpriseInfoService.isExist(username, password)==true){	
+				session.setAttribute("userId", enterpriseInfoService.getEnterpriseInfoByLoginName(username).getId());
+				session.setAttribute("companyCode", enterpriseInfoService.getEnterpriseInfoByLoginName(username).getCompanyCode());
+				session.setAttribute("type", "enterprise");
+				session.setAttribute("userName", username);
+				session.setAttribute("usertype", "企业用户");
+				session.setAttribute("table", "enterprise");
+				session.setAttribute("password", password);
+				return "index";
+			}else {
+				request.getSession().setAttribute("isExist", "1");
+			}
+		}		
+    
 		}
 		if(new String(type.getBytes("iso-8859-1"), "utf-8").equals("创客用户")){
 			if(makerInfoService.isExist(username, password)==true){
@@ -209,6 +231,9 @@ public class LoginController {
 		case "expert":
 			rePasswordService.rePassword(Integer.parseInt(session.getAttribute("userId").toString()), password,  "expert");
 			break;
+		case "enterprise":
+			rePasswordService.rePassword(Integer.parseInt(session.getAttribute("userId").toString()), password,  "enterprise");
+		  break;
 		case "maker":
 			rePasswordService.rePassword(Integer.parseInt(session.getAttribute("userId").toString()), password, "maker");
 			break;

@@ -26,6 +26,10 @@ public class EnterpriseProjectService {
 		return enterpriseProjectDao.getEnterpriseProjectsByState(state);
 	}
 	
+	public ArrayList<EnterpriseProject> getEnterpriseProjectsByID(Integer id){
+		return enterpriseProjectDao.getEnterpriseProjectsByID(id);
+	}
+	
 	public EnterpriseProject getEnterpriseProjectDetail(int id){
 		return enterpriseProjectDao.getEnterpriseProjectDetail(id);
 	}
@@ -60,6 +64,10 @@ public class EnterpriseProjectService {
 	
 	public void  updateEnterpriseProjectById(EnterpriseProject project){
 		enterpriseProjectDao.updateEnterpriseProjectById(project);
+	}
+
+	public ArrayList<EnterpriseProject> getSetEnterpriseProjectsByID(Integer id){
+		return enterpriseProjectDao.getSetEnterpriseProjectsByID(id);
 	}
 	
 }
