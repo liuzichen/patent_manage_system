@@ -19,6 +19,61 @@ public class EnterpriseCommonProject {
 	String evaluation;
 	Long evaluateTime;
 	boolean isEvaluated;
+	String fujianType;
+	String fujianName;
+	byte[] fujian;
+	String Description;
+	String field;
+	boolean isAssigned;
+	
+	public String getFujianType() {
+		return fujianType;
+	}
+
+	public void setFujianType(String fujianType) {
+		this.fujianType = fujianType;
+	}
+
+	public String getFujianName() {
+		return fujianName;
+	}
+
+	public void setFujianName(String fujianName) {
+		this.fujianName = fujianName;
+	}
+
+	public byte[] getFujian() {
+		return fujian;
+	}
+
+	public void setFujian(byte[] fujian) {
+		this.fujian = fujian;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
+
+	public String getField() {
+		return field;
+	}
+
+	public void setField(String field) {
+		this.field = field;
+	}
+
+	public boolean isAssigned() {
+		return isAssigned;
+	}
+
+	public void setAssigned(boolean isAssigned) {
+		this.isAssigned = isAssigned;
+	}
+
 	
 	public Long getSubmitTime() {
 		return submitTime;

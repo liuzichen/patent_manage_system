@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ManageExpertInfoDao">	 
+	<resultMap id="expertInfoMap" type="com.web.project.model.BackManage.ExpertInfo" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+		<result column="company" property="company" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="major" property="major" jdbcType="VARCHAR" />
+		<result column="education" property="education" jdbcType="VARCHAR" />
+		<result column="cellphone" property="cellPhone" jdbcType="VARCHAR" />
+		<result column="telephone" property="telePhone" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="achievement" property="achievement" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="loginname" property="loginName" jdbcType="VARCHAR" />
+		<result column="password" property="passWord" jdbcType="VARCHAR" />
+		<result column="roleid" property="roleId" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="getExpertList"  resultMap="expertInfoMap">        
+        select * from expert   	       
+	</select>        
+	<select id="getInfoById" resultMap="expertInfoMap"> 
+		select * from expert
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	<select id="getExpertNameList" resultMap="expertInfoMap"> 
+		select * from expert
+		<where>
+		name=#{name}
+		</where>
+	</select>
+	<update id="updateExpertInfo" >
+		update expert
+		<set>			
+			achievement=#{1},
+		</set>
+		where id=#{0}
+	</update>
+	
+	<insert id="insertExpertInfo" >
+	    insert into expert(name,age,company,title,major,cellphone,telephone,email,type,achievement)
+	    
+	    values (#{0},#{1},#{2},#{3},#{4},#{5},#{6},#{7},#{8},#{9})
+
+    </insert>
+    	<delete id="deleteExpertInfoById"  parameterType="java.util.List">
+		delete from expert
+		<where>
+			id in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+	
+</mapper>

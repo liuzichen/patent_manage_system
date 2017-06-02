@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ManageEnterpriseDao">	 
+	<resultMap id="manageEnterpriseMap" type="com.web.project.model.BackManage.ManageEnterprise" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="companyCode" property="companyCode" jdbcType="VARCHAR" />
+		<result column="applyType" property="applyType" jdbcType="VARCHAR" />
+		<result column="legalPerson" property="legalPerson" jdbcType="VARCHAR" />
+		<result column="loginName" property="loginName" jdbcType="VARCHAR" />
+		<result column="passWord" property="passWord" jdbcType="VARCHAR" />
+		<result column="registrationTime" property="registrationTime" jdbcType="DATE" />
+		<result column="registeredCapital" property="registeredCapital" jdbcType="VARCHAR" />	
+		<result column="registrationMoney" property="registrationMoney" jdbcType="VARCHAR" />	
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="postcode" property="postcode" jdbcType="VARCHAR" />
+		<result column="channel1" property="channel1" jdbcType="VARCHAR" />
+		<result column="channel2" property="channel2" jdbcType="VARCHAR" />		
+		<result column="mobilePhone" property="mobilePhone" jdbcType="VARCHAR" />
+		<result column="cellPhone" property="cellPhone" jdbcType="VARCHAR" />
+		<result column="fax"  property="fax" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="bank" property="bank" jdbcType="VARCHAR" />
+		<result column="creditRating" property="creditRating" jdbcType="VARCHAR" />	
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="property" property="property" jdbcType="VARCHAR" />
+		<result column="size" property="size" jdbcType="VARCHAR" />
+		<result column="productAndService" property="productAndService" jdbcType="VARCHAR" />
+		<result column="patents" property="patents" jdbcType="INTEGER" />
+		<result column="utilityModel" property="utilityModel" jdbcType="INTEGER" />
+		<result column="softwareCopyright" property="softwareCopyright" jdbcType="INTEGER" />
+		<result column="pCTpatent" property="pCTpatent" jdbcType="INTEGER" />
+		<result column="others" property="others" jdbcType="INTEGER" />
+		<result column="innovationBaseConstruction" property="innovationBaseConstruction" jdbcType="VARCHAR" />
+		<result column="supportedByST" property="supportedByST" jdbcType="VARCHAR" />
+		<result column="techAward" property="techAward" jdbcType="VARCHAR" />
+	    <result column="peoleNumber" property="peoleNumber" jdbcType="VARCHAR" />
+		<result column="juniorCollege" property="juniorCollege" jdbcType="VARCHAR" />
+		<result column="doctor" property="doctor" jdbcType="VARCHAR" />
+		<result column="master" property="master" jdbcType="VARCHAR" />
+		<result column="highPosition" property="highPosition" jdbcType="VARCHAR" />
+		<result column="midPostion" property="midPostion" jdbcType="VARCHAR" />
+		<result column="overseas" property="overseas" jdbcType="VARCHAR" />		
+		<result column="roleID" property="roleID" jdbcType="INTEGER" />
+	</resultMap>    
+	
+	
+	<select id="getManageEnterpriseList" resultMap="manageEnterpriseMap"> 
+		select* from enterprise
+		order by id asc
+	</select>
+
+	<select id="getManageEnterpriseById" resultMap="manageEnterpriseMap"> 
+		select* from enterprise
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	
+		<select id="getEnterpriseNameList" resultMap="manageEnterpriseMap"> 
+		select* from enterprise
+		<where>
+		name=#{name}
+		</where>
+	</select>
+	
+	<insert id="insertEnterpriseInfo" >
+	    insert into enterprise(name ,legalPerson, registrationTime,registrationMoney,applyType, cellPhone, channel1,channel2, email, loginName,postcode)
+	    
+	    values (#{0},#{1},#{2},#{3},#{4},#{5},#{6},#{7},#{8},#{9},#{10})
+
+    </insert>
+    	<delete id="deleteEnterpriseInfoById"  parameterType="java.util.List">
+		delete from enterprise
+		<where>
+			id in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+</mapper>

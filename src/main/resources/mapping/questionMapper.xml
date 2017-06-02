@@ -1,37 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.web.project.dao.QuestionDao">	 
-	<resultMap id="questionMap" type="com.web.project.model.Question" >
+<mapper namespace="com.web.project.dao.QuestionDao">
+	<resultMap id="questionMap" type="com.web.project.model.Question">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="askerId" property="askerId" jdbcType="VARCHAR" />
 		<result column="expertId" property="expertId" jdbcType="VARCHAR" />
 		<result column="detail" property="content" jdbcType="VARCHAR" />
-		<result column="title" property="title" jdbcType="VARCHAR" />	
+		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="answer" property="answer" jdbcType="VARCHAR" />
-		<result column="title" property="title" jdbcType="TINYINT" />
-		<result column="area" property="area" jdbcType="VARCHAR" />		
+		<result column="isAnswered" property="isAnswered" jdbcType="TINYINT" />
+		<result column="area" property="area" jdbcType="VARCHAR" />
+		<result column="askertype" property="askertype" jdbcType="VARCHAR" />
 	</resultMap>
-	<select id="getQuestionById"  resultMap="questionMap">        
-        select * from question 
-        <where>
-		id=#{id}
-		</where> 	       
-	</select>        
-	<select id="getQuestionByExpertID" resultMap="questionMap"> 
+
+	<select id="getQuestionById" resultMap="questionMap">
 		select * from question
 		<where>
-		expertid=#{0} and isAnswered=0
+			id=#{id}
+		</where>
+	</select>
+	<select id="getQuestionByExpertID" resultMap="questionMap">
+		select * from question
+		<where>
+			expertid=#{0} and isAnswered=0
 		</where>
 		order by askTime DESC;
 	</select>
-	<update id="addResponse" >
+	<update id="addResponse">
 		update question
-		<set>			
+		<set>
 			answer=#{2},
 			isAnswered=#{1},
 			answerTime=#{3},
 		</set>
 		where id=#{0}
 	</update>
+	<select id="getQuestionsByUserId" resultMap="questionMap">
+		select * from question
+		<where>
+			askerId=#{0} and askertype=#{1}
+		</where>
+	</select>
+	<insert id="insertQuestion" parameterType="com.web.project.model.Question"
+		keyProperty="id" useGeneratedKeys="true">
+		insert into question(askerId,detail,title,area,askertype,isAnswered,askTime
+		)
+		VALUES
+		(#{askerId},#{content},#{title},#{area},#{askertype},0,#{askTime}
+		)
+	</insert>
 </mapper>

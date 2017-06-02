@@ -21,35 +21,9 @@ $(document).ready(function(){
 	
 });
 function sub(){
-	var Title=document.getElementById("Title").value;
-	var Content=document.getElementById("Content").value;
-	var Content1=document.getElementById("Content1").value;
-	var Content2=document.getElementById("Content2").value;
-	var Content3=document.getElementById("Content3").value;
-	var Content4=document.getElementById("Content4").value;
-	if(Title==""){
+	var name=document.getElementById("name").value;
+	if(name==""){
 		alert("提示：\n\n请填写公告标题！");
-		return false;
-	}
-	
-	if(Content==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content1==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content2==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content3==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content4==""){
-		alert("提示：\n\n请填写内容！");
 		return false;
 	}
 	
@@ -61,46 +35,6 @@ function sub(){
 	}
 }
 
-function tianjia(){
-	var Title=document.getElementById("Title").value;
-	var Content=document.getElementById("Content").value;
-	var Content1=document.getElementById("Content1").value;
-	var Content2=document.getElementById("Content2").value;
-	var Content3=document.getElementById("Content3").value;
-	var Content4=document.getElementById("Content4").value;
-	if(Title==""){
-		alert("提示：\n\n请填写公告标题！");
-		return false;
-	}
-	
-	if(Content==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content1==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content2==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content3==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	else if(Content4==""){
-		alert("提示：\n\n请填写内容！");
-		return false;
-	}
-	
-	if(confirm("确认追加更多内容？")){
-		return true;
-		window.load.href("<%=request.getContextPath()%>/jsp/blackManage/sysManagement/shujuweihutianjiaDeliver.jsp");
-	}
-	else{
-		return false;
-	}
 	
 	
 }
@@ -118,31 +52,15 @@ function tianjia(){
       <div class="context">
          <div class="titlebox"><span class="title">数据库新</span></div>
 	     <div >
-	     	 <form action="" name="Form1" id="Form1">
+	     	 <form action="<%=request.getContextPath()%>/manageMajor/insertMajorInfo" name="Form1" id="Form1">
 	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
 	     	 		<td class="tdname">数据库名称：</td>
-	     	 		<td class="tdcontent2" ><input class="easyui-textbox mydatebox" style="width:248px" type="text" name="Title" id="Title" ></td>
-	     	 	
+	     	 		<td class="tdcontent2" ><select style="width:150px;" id="state"  name="state"><option value="f">领域信息表</option><option value="m">专业表</option></select></td>
+	     	 		<td class="tdname">字段名称：</td>
+	     	 	    <td class="tdcontent2" ><input class="easyui-textbox mydatebox" style="width:248px" type="text" name="name" id="name" >
 	     	 	</tr>
 	     	 	<tr>
-	     	 		<td class="tdname" rowspan="7">内容填写：</td>
-	     	 	<tr>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" style="width:248px" type="text" name="Content" id="Content" ></td></tr>
-	     	 	<tr>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" style="width:248px" type="text" name="Content1" id="Content1" ></td></tr>
-	     	    <tr>	
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" style="width:248px" type="text" name="Content2" id="Content2" ></td></tr>
-	     	 	<tr>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" style="width:248px" type="text" name="Content3" id="Content3" ></td></tr>
-	     	 	<tr>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" style="width:248px" type="text" name="Content4" id="Content4" ></td></tr>
-	     	 	<tr>
-	     	 		<td class="tdcontent2"><div style="margin-top:5px;margin-left:auto;margin-right:auto; margin-bottom:5px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:25px;width:120px;font-size:16px;" class="easyui-linkbutton button" onclick="return tianjia();">追加更多的内容</a></div></td></tr>	
-	     	 
-	     	 	      
-             <tr>
 	             <td align="center" colspan="4">
 	             	<div style="margin-top:10px;margin-left:auto;margin-right:auto; margin-bottom:10px" >
 	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">保&nbsp;&nbsp;存</a>

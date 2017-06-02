@@ -73,27 +73,27 @@ function sub(){
 	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
 	     	 		<td class="tdname" >专家姓名：</td>
-	     	 		<td class="tdcontent1"><input class="easyui-textbox mydatebox" type="text" name="Name" id="Name" ></td>
+	     	 		<td class="tdcontent1">${detail.name}</td>
 	     	 		<td class="tdname">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" type="text" name="Age" id="Age" ></td>
+	     	 		<td class="tdcontent2">${detail.age}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">工作单位：</td>
-	     	 		<td class="tdcontent1"><input class="easyui-textbox mydatebox" type="text" name="Company" id="Company" ></td>
+	     	 		<td class="tdcontent1">${detail.company}</td>
 	     	 		<td class="tdname">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" type="text" name="Title" id="Title" ></td>
+	     	 		<td class="tdcontent2">${detail.title}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</td>
-	     	 		<td class="tdcontent1"  ><input class="easyui-textbox mydatebox" type="text" name="Major" id="Major"></td>
+	     	 		<td class="tdcontent1"  >${detail.major}</td>
 	     	 		<td class="tdname">联系电话：</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" type="text" name="Cellphone" id="Cellphone" ></td>
+	     	 		<td class="tdcontent2">${detail.cellPhone}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">办公室电话：</td>
-	     	 		<td class="tdcontent1"><input class="easyui-textbox mydatebox" type="text" name="Telephone" id="Telephone" ></td>
+	     	 		<td class="tdcontent1">${detail.tellPhone}</td>
 	     	 		<td class="tdname">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" type="text" name="Email" id="Email"></td>
+	     	 		<td class="tdcontent2">${detail.email}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">第一领域:</td>
@@ -117,14 +117,14 @@ function sub(){
 
 	     	 		<td class="tdname">所属类别：</td>
 	     	 		<td class="tdcontent2" colspan="3">
-					<input class="easyui-textbox mydatebox" type="text" name="Type" id="Type">
+					${detail.type}
 					</td>
 	     	 	</tr>
 	     	 	<tr>
              	 <td  class="tdname" align="center" >学术科研成就简介</td>
             	 <td  align="center" height="400px" colspan="3">
 	            	 <div class="tdcontent3">
-		               <textarea id="Acievement" name="Achiement" cols="40" rows="12" style="margin-top:10px;width:90%;height:90%;"></textarea>
+		               <textarea id="Acievement" name="Achiement" cols="40" rows="12" style="margin-top:10px;width:90%;height:90%;">${detail.achievement}</textarea>
 		             </div> 
                  </td>
                 </tr>
@@ -132,7 +132,7 @@ function sub(){
                 <tr>
 	             <td align="center" colspan="4">
 	             	<div style="margin-top:20px;margin-left:auto;margin-right:auto; margin-bottom:20px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">保&nbsp;&nbsp;存</a>
+	             		<a href="<%=request.getContextPath()%>/manageExpert/toExpertInfoList" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">保&nbsp;&nbsp;存</a>
 	             	</div>
 		        </td>
 	        </tr>

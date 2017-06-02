@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ExpertFeeDao">
+	<resultMap id="enterpriseMap" type="com.web.project.model.enterprise.Enterprise">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="isGive" property="isGive" jdbcType="TINYINT" />
+		<result column="commentType" property="commentType" jdbcType="VARCHAR" />
+		<result column="commentId" property="commentId" jdbcType="INTEGER" />
+		<result column="fee" property="fee" jdbcType="DOUBLE" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="techField" property="techField" jdbcType="VARCHAR" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+	</resultMap>
+
+<resultMap id="enterpriseFeeMap" type="com.web.project.model.expert.ExpertFee">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="isGive" property="isGive" jdbcType="TINYINT" />
+		<result column="commentType" property="commentType" jdbcType="VARCHAR" />
+		<result column="commentId" property="commentId" jdbcType="INTEGER" />
+		<result column="fee" property="fee" jdbcType="DOUBLE" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="field" property="field" jdbcType="VARCHAR" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	
+		<update id="updateExpertFee" parameterType="com.web.project.model.expert.ExpertFee">
+		update expertFee
+		<set>
+			isGive=1
+		</set>
+		where id=#{id}
+	</update>
+	<insert id="insertExpertFee" parameterType="java.util.List">
+		insert into expertfee(isGive,commentType,commentId,fee)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(0,#{item.commentType},#{item.commentId},#{item.fee})
+		</foreach>
+	</insert>
+	
+		<select id="getExpertFeeInfoList" resultMap="enterpriseFeeMap">
+		select expertfee.id,expertfee.fee,expertfee.isGive,expertfee.commentId, enterprisecommomproject.title,enterprisecommomproject.field,expert.name,comment_entercommonproject.comment
+		from expertfee,comment_entercommonproject,enterprisecommomproject,expert
+		<where>
+			expertfee.commentId=comment_entercommonproject.id and comment_entercommonproject.enterCommmonId=enterprisecommomproject.enterpriseId
+			and comment_entercommonproject.expertId=expert.ID and expertfee.commentType="comment_entercommonproject" and comment_entercommonproject.isComment=1
+		</where>
+	</select>
+	
+	<select id="getExpertFeeWorkList" resultMap="enterpriseFeeMap">
+		select expertfee.id,expertfee.fee,expertfee.isGive,expertfee.commentId, makercommonworks.title,makercommonworks.field,expert.name,comment_makercommonworks.comment
+		from expertfee,comment_makercommonworks,makercommonworks,expert
+		<where>
+			expertfee.commentId=comment_makercommonworks.id and comment_makercommonworks.makercommonworksId=makercommonworks.ID
+			and comment_makercommonworks.expertId=expert.ID and expertfee.commentType="comment_makercommonworks" and comment_makercommonworks.isComment=1
+		</where>
+	</select>
+	<select id="getExpertFeeMKWorkList" resultMap="enterpriseFeeMap">
+		select expertfee.id,expertfee.fee,expertfee.isGive,expertfee.commentId,makerworks.title,makerworks.field,expert.name,comment_makerworks.comment
+		from expertfee,comment_makerworks,makerworks,expert
+		<where>
+			expertfee.commentId=comment_makerworks.id and comment_makerworks.makerworksId=makerworks.ID
+			and comment_makerworks.expertId=expert.ID and expertfee.commentType="comment_makerworks" and comment_makerworks.isComment=1
+		</where>
+	</select>
+	<select id="getExpertFeeEKWorkList" resultMap="enterpriseFeeMap">
+		select expertfee.id,expertfee.fee,expertfee.isGive,expertfee.commentId, enterpriseproject.title,enterpriseproject.techfield,expert.name,comment_enterproject.comment
+		from expertfee,comment_enterproject,enterpriseproject,expert
+		<where>
+			expertfee.commentId=comment_enterproject.id and comment_enterproject.enterprojectId=enterpriseproject.id
+			and comment_enterproject.expertId=expert.ID and expertfee.commentType="comment_enterproject" and comment_enterproject.isComment=1
+		</where>
+	</select>
+</mapper>	 

@@ -18,7 +18,6 @@
 $(function () {
             
             
-            
             $('#roleList').datagrid({
             	
                 title: '',
@@ -29,25 +28,24 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
+                sortName: 'name',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'RoleCode',
+                idField: 'id',
                 checkOnSelect:false, 
-                singleSelect:true, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'Name', title : '专家姓名',width :336,align:'center'},
-				{field : 'Major',title : '领域专长',width : 208,align:'center',sortable:true},
-				{field : 'Telephone',title :'联系方式',width : 160,align:'center'},  
-				{field : 'Email',title : '电子邮箱',width : 160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
+				{field : 'name', title : '专家姓名',width :336,align:'center'},
+				{field : 'major',title : '领域专长',width : 208,align:'center',sortable:true},
+				{field : 'telephone',title :'联系方式',width : 160,align:'center'},  
+				{field : 'email',title : '电子邮箱',width : 160,align:'center'},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='javascript:void(document.Form1.submit())' onclick='return sub("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/manageExpert/expertInfoDetail?id="+row.id+"'>查看详情</a>";  
                     }
                 }
               
@@ -70,51 +68,45 @@ $(function () {
                 	  {
                       	  text: "添加专家用户",
                       	  iconCls: "icon-add ",
-                      	  handler: function () {
-                      		window.location.href=""; 
+                      	handler: function () {
+                      		window.location.href='<%=request.getContextPath()%>/jsp/blackManage/userPageManage/addExpert.jsp';
                       	  }
                         },'-',
                 	  {
-                      	  text: "删除专家用户",
-                      	  iconCls: "icon-cut",
-                      	  handler: function () {
-                      		  var post= $('#roleList').datagrid('getSelections');
-                      		  var id = new Array([post.length]);
-                      		  for(var i=0;i<post.length;i++){
-                      			  id[i]=post[i].CODE;
-                      			  alert(id[i]);
-                      		  }
-                      		var opts = $('#roleList').datagrid('options');
-                        	var page=opts.pageNumber;
-                        	var size=opts.pageSize;
-                        	var sort=opts.sortName;
-                        	var order=opts.sortOrder;
-                            $.ajax({
-                                url:'<%=request.getContextPath()%>/test/test9.json',
-                                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"remove":id},
-                                type: 'post',
-                                dataType : "text",
-                                traditional:true,
-                            	error: function(XMLHttpRequest, textStatus, errorThrown) {
-                	       			alert(XMLHttpRequest.status);
-                	       			alert(XMLHttpRequest.readyState);
-                	       			alert(textStatus);
-                	       		},
-                       			   
-                                success: function (msg) {
-                                	
-                                	var result = eval("("+msg+")");
-                					
-                 						$("#roleList").datagrid("loadData",result);
-                 					
-                                    
-                             
-                                }
-                            });
-                            $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
-                      	  }                  
-                        }
-                  ],
+                        	text: "删除专家用户",
+                        	  iconCls: "icon-cut",
+                        	  handler: function () {
+                        		  var post= $('#roleList').datagrid('getChecked');
+                        		  if(post.length==0){
+                        			  alert("提示：\n\n请选择删除对象");
+                        		  }
+                        		  else{
+                        		  var id = new Array(post.length);
+                        		  for(var i=0;i<post.length;i++){
+                        			  id[i]=post[i].id;
+                        		  }              		
+                              $.ajax({
+                                  url:'<%=request.getContextPath()%>/manageExpert/deleteExpertInfo',
+                                  data:{"remove":id},
+                                  type: 'post',
+                                  dataType : "text",
+                                  traditional:true,
+                                  error: function(XMLHttpRequest, textStatus, errorThrown) {
+                  	       			alert(XMLHttpRequest.status);
+                  	       			alert(XMLHttpRequest.readyState);
+                  	       			alert(textStatus);
+                  	       		},
+                         			   
+                                  success: function (msg) {
+                                  	
+                                  	sear();
+                   				
+                                  }
+                              });
+                              $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
+                        	  }
+                        	  }                  
+                          }],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -123,7 +115,7 @@ $(function () {
                 	var size=opts.pageSize;
                 	var state=document.getElementById("state").value;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test10.json',
+                        url:'<%=request.getContextPath()%>/manageExpert/ExpertInfoList',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                         type: 'post',
                         dataType : "text",
@@ -137,9 +129,7 @@ $(function () {
                         	
                         	var result = eval("("+msg+")");
         					
-         						$("#roleList").datagrid("loadData",result);
-         					
-                            
+         						$("#roleList").datagrid("loadData",result); 
                      
                         }
                     });
@@ -150,6 +140,16 @@ $(function () {
                     $('#txtSearch').show();
                 }
             });
+            
+            var user="v";
+            if(user=="v"){
+               //隐藏第一个按钮
+            	$('div.datagrid-toolbar').eq(0).show();
+               }
+            else{
+            	$('div.datagrid-toolbar').eq(0).hide();
+            }
+            
             var opts = $('#roleList').datagrid('options');
         	var page=opts.pageNumber;
         	var size=opts.pageSize;
@@ -157,7 +157,7 @@ $(function () {
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/manageExpert/ExpertInfoList',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
@@ -204,6 +204,7 @@ function sub(rowIndex){
    document.getElementById("id").value=row.CODE;
    return true;     
 }
+
 function sear(){
 	var opts = $('#roleList').datagrid('options');
 	var page=opts.pageNumber;
@@ -212,7 +213,7 @@ function sear(){
 	var order=opts.sortOrder;
 	var state=document.getElementById("state").value;
     $.ajax({
-        url:'<%=request.getContextPath()%>/test/test10.json',
+        url:'<%=request.getContextPath()%>/manageExpert/ExpertInfoList',
         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
         type: 'post',
         dataType : "text",
@@ -232,15 +233,17 @@ function sear(){
      
         }
     });
+
 }
-  
+
+
 function getDataUpdate(pageNum, pageSize){
 			var opts = $('#roleList').datagrid('options');
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/manageExpert/ExpertInfoList',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",

@@ -32,22 +32,21 @@ $(function () {
                 sortName: 'DATE',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'RoleCode',
+                idField: 'makerID',
                 checkOnSelect:false, 
-                singleSelect:true, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '企业用户名称',width :336,align:'center'},
-				{field : 'PROJECT',title : '企业性质',width : 208,align:'center',sortable:true},
-				{field : 'FIELD',title : '联系方式',width : 160,align:'center'},  
-				{field : 'YEAR',title : '电子邮箱',width : 160,align:'center',sortable:true},
+				//{field : 'makerID', title : '编号',width :160,align:'center'},
+				{field : 'loginName', title : '用户名称',width :336,align:'center'},
+				{field : 'team',title : '团队名称',width : 208,align:'center',sortable:true},
+				{field : 'phone',title : '联系方式',width : 160,align:'center'},  
+				{field : 'email',title : '电子邮箱',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='javascript:void(document.Form1.submit())' onclick='return sub("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/makerinfo/makerInfoDetail?makerID="+row.makerID+"'>查看详情</a>";  
                     }
                 }
               
@@ -62,8 +61,52 @@ $(function () {
                   	  handler: function () {
                   		  sear();
                   	  }
-                	  }
-                  ],
+                	  },{
+                		  text:'<div style="float:right;width:600px;visibility:hidden"></div>'
+                		  
+                	  },
+                	  {
+                      	  text: "添加创客用户",
+                      	  iconCls: "icon-add ",
+                      	handler: function () {
+                      		window.location.href='<%=request.getContextPath()%>/jsp/blackManage/userPageManage/addchuang.jsp';
+                      	  }
+                        },'-',
+                	  {
+                        	text: "删除创客用户",
+                        	  iconCls: "icon-cut",
+                        	  handler: function () {
+                        		  var post= $('#roleList').datagrid('getChecked');
+                        		  if(post.length==0){
+                        			  alert("提示：\n\n请选择删除对象");
+                        		  }
+                        		  else{
+                        		  var makerID = new Array(post.length);
+                        		  for(var i=0;i<post.length;i++){
+                        			  makerID[i]=post[i].makerID;
+                        		  }              		
+                              $.ajax({
+                                  url:'<%=request.getContextPath()%>/makerinfo/deleteMakerInfo',
+                                  data:{"remove":makerID},
+                                  type: 'post',
+                                  dataType : "text",
+                                  traditional:true,
+                                  error: function(XMLHttpRequest, textStatus, errorThrown) {
+                	       			alert(XMLHttpRequest.status);
+                	       			alert(XMLHttpRequest.readyState);
+                	       			alert(textStatus);
+                	       		},
+                       			   
+                                success: function (msg) {
+                                	
+                                	sear();
+                 				
+                                }
+                            });
+                            $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
+                        	  }
+                        	  }                  
+                          }],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -72,7 +115,7 @@ $(function () {
                 	var size=opts.pageSize;
                 	var state=document.getElementById("state").value;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test10.json',
+                        url:'<%=request.getContextPath()%>/makerinfo/workList',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                         type: 'post',
                         dataType : "text",
@@ -106,7 +149,7 @@ $(function () {
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/makerinfo/workList',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
@@ -161,7 +204,7 @@ function sear(){
 	var order=opts.sortOrder;
 	var state=document.getElementById("state").value;
     $.ajax({
-        url:'<%=request.getContextPath()%>/test/test10.json',
+        url:'<%=request.getContextPath()%>/makerinfo/workList',
         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
         type: 'post',
         dataType : "text",
@@ -189,7 +232,7 @@ function getDataUpdate(pageNum, pageSize){
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/makerinfo/workList',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",

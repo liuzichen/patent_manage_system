@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.MajorDao">	 
+	<resultMap id="majorMap" type="com.web.project.model.BackManage.Major" >
+		<id column="MajorID" property="MajorID" jdbcType="INTEGER" /> 
+		<result column="Name" property="Name" jdbcType="VARCHAR" />
+	</resultMap>    
+	  
+	<select id="getMajorByName" resultMap="majorMap"> 
+		select * from major
+	</select>
+	
+
+	
+	<insert id="insertMajorInfo" >
+	    insert into major(name)
+	    values (#{0})
+    </insert>
+    <delete id="deleteMajorInfoById"  parameterType="java.util.List">
+		delete from major
+		<where>
+			MajorID in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+	
+</mapper>

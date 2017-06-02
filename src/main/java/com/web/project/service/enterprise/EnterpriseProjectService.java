@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.web.project.dao.EnterpriseProjectDao;
 import com.web.project.model.enterprise.EnterpriseCommonProject;
 import com.web.project.model.enterprise.EnterpriseProject;
+import com.web.project.model.maker.MakerCommonWorks;
 
 /**
  * @author 子晨
@@ -30,8 +31,16 @@ public class EnterpriseProjectService {
 		return enterpriseProjectDao.getEnterpriseProjectDetail(id);
 	}
 	
+	public ArrayList<EnterpriseCommonProject> getEnterpriseCommonProjectNALists(){
+		return enterpriseProjectDao.getEnterpriseCommonProjectNALists();
+	}
+	
 	public ArrayList<EnterpriseCommonProject> getEnterpriseCommonProjectLists(){
 		return enterpriseProjectDao.getEnterpriseCommonProjectLists();
+	}
+	
+	public ArrayList<EnterpriseCommonProject> getEnterpriseCommonProjectByState(int State){
+		return enterpriseProjectDao.getEnterpriseCommonProjectByState(State);
 	}
 
 	public EnterpriseCommonProject getEnterpriseCommonProjectById(int id){
@@ -60,6 +69,10 @@ public class EnterpriseProjectService {
 	
 	public void  updateEnterpriseProjectById(EnterpriseProject project){
 		enterpriseProjectDao.updateEnterpriseProjectById(project);
+	}
+	
+	public void updateAssignOfEnterCommonWork(EnterpriseCommonProject enterCommonWorks){
+		enterpriseProjectDao.updateAssignOfEnterCommonWork(enterCommonWorks);
 	}
 	
 }

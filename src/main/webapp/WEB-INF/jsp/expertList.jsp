@@ -127,7 +127,7 @@ $(function () {
 </head>
 
 <body>
-   
+
 	<div>
 		<div class="topnav">
 			<div class="path">
@@ -144,7 +144,7 @@ $(function () {
 			<table id="roleList" style="width: 100%;">
 
 			</table>
-               ${result}
+			${result}
 
 		</div>
 

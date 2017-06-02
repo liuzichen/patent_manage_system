@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ManageGovernmentInfoDao">	 
+	<resultMap id="GovernmentInfoMap" type="com.web.project.model.BackManage.Government" >
+		<id column="id" property="id" jdbcType="INTEGER" /> 
+		<result column="ParentID" property="ParentID" jdbcType="INTEGER" />
+		<result column="Governlevel" property="Governlevel" jdbcType="INTEGER" />
+		<result column="RoleID" property="RoleID" jdbcType="INTEGER" />
+		<result column="Name" property="Name" jdbcType="VARCHAR" />
+		<result column="LoginName" property="LoginName" jdbcType="VARCHAR" />
+		<result column="Password" property="Password" jdbcType="VARCHAR" />
+		<result column="Phone" property="Phone" jdbcType="VARCHAR" />
+		<result column="Email" property="Email" jdbcType="VARCHAR" />
+		<result column="Address" property="Address" jdbcType="VARCHAR" />
+		<result column="Postcode" property="Postcode" jdbcType="VARCHAR" />
+		<result column="Contactpeople" property="Contactpeople" jdbcType="VARCHAR" />
+	</resultMap>    
+	
+	
+	<select id="getGovernmentInfoList" resultMap="GovernmentInfoMap"> 
+		select* from government
+	</select>
+
+	<select id="getGovernmentInfoById" resultMap="GovernmentInfoMap"> 
+		select * from government
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	
+	<select id="getGovernmentInfoByName" resultMap="GovernmentInfoMap"> 
+		select * from government
+		<where>
+		Name=#{Name}
+		</where>
+	</select>
+	
+		<update id="updateGoverInfo" >
+		update government
+		<set>
+			contactpeople=#{1},
+			phone=#{2},
+			email=#{3},
+			address=#{4},
+			postcode=#{5},
+		</set>
+		where id=#{0}
+	</update>
+</mapper>

@@ -26,27 +26,24 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
+                sortName: 'name',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'CODE',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				{field : 'Type', title : '所属数据库',width:180,align:'center'},
-				{field : 'Content',title : '内容',width :320,align:'center'},
-				 { field: 'opt', title: '操作', width: 320, align: 'center',
-                    formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/blackManage/sysManagement/sysgonggaoDetail.jsp' onclick='editUser("+index+")'>修改</a>";  
-                   }
-                }
+//{field : 'id', title : '编号',width :160,align:'center'},         
+              
+				{field : 'name',title : '内容',width :439,align:'center'},
+				
               
           		]],
           		toolbar: [{
-             		text: '<select style="width:150px;" id="state"  name="state" form="Form1"><option value="领域信息表">领域信息表</option><option value="学历表">学历表</option><option value="区域表">区域表</option></select>',
+             		text: '<select style="width:150px;" id="state"  name="state" form="Form1"><option value="f">领域信息表</option><option value="m">专业表</option></select>',
            	  },
               {
                   id: 'btnSearch',
@@ -54,8 +51,7 @@ $(function () {
                   disabled: false,
                   iconCls: 'icon-search',
                   handler: function () {
-                      $('#roleList').datagrid('options').url = '../ashx/RoleHandler.ashx?value=' + escape($('#state').val());
-                      $('#roleList').datagrid("reload");
+                	  sear();
                   }
               },'--',
               {
@@ -63,7 +59,7 @@ $(function () {
               	  text: "新建数据",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		window.location.href="<%=request.getContextPath()%>/jsp/blackManage/sysManagement/sysgonggaoDeliver.jsp"; 
+              		window.location.href="<%=request.getContextPath()%>/jsp/blackManage/sysManagement/shujuweihuDeliver.jsp"; 
               	  }
                 },'-',
                 
@@ -72,24 +68,27 @@ $(function () {
                   id: 'btncut',
               	  text: "删除数据",
               	  iconCls: "icon-cut",
-              	  handler: function () {
-              		  var post= $('#roleList').datagrid('getChecked');
-              		  var id = new Array([post.length]);
-              		  for(var i=0;i<post.length;i++){
-              			  id[i]=post[i].CODE;
-              			  alert(id[i]);
-              		  }
-              		var opts = $('#roleList').datagrid('options');
-                	var page=opts.pageNumber;
-                	var size=opts.pageSize;
-                	var sort=opts.sortName;
-                	var order=opts.sortOrder;
-                    $.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
-                        data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"remove":id},
-                        type: 'post',
-                        dataType : "text",
-                        traditional:true,
+              	handler: function () {
+            		  var post= $('#roleList').datagrid('getChecked');
+            		  var state=$("#state").val();
+            		  if(post.length==0){
+            			  alert("提示：\n\n请选择删除对象");
+            		  }
+            		  else{
+            		  var id = new Array(post.length);
+            		 
+            			  for(var i=0;i<post.length;i++)
+            			  {
+            			  id[i]=post[i].id; 
+            			  } 
+            		  
+            		 
+                  $.ajax({
+                      url:'<%=request.getContextPath()%>/manageMajor/deleteMajorList',
+                      data:{"remove":id,"state":state},
+                      type: 'post',
+                      dataType : "text",
+                      traditional:true,
                     	error: function(XMLHttpRequest, textStatus, errorThrown) {
         	       			alert(XMLHttpRequest.status);
         	       			alert(XMLHttpRequest.readyState);
@@ -98,9 +97,7 @@ $(function () {
                			   
                         success: function (msg) {
                         	
-                        	var result = eval("("+msg+")");
-        					
-         						$("#roleList").datagrid("loadData",result);
+                        	sear();
          					
                             
                      
@@ -108,7 +105,7 @@ $(function () {
                     });
                     $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
               	  }                  
-                }],
+              	}}],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -169,23 +166,24 @@ $(function () {
         	var size=opts.pageSize;
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
+        	var state=document.getElementById("state").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
+                url:'<%=request.getContextPath()%>/manageMajor/MajorList',
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {
-	       			alert(XMLHttpRequest.status);
-	       			alert(XMLHttpRequest.readyState);
-	       			alert(textStatus);
-	       		},
-       			   
+           			alert(XMLHttpRequest.status);
+           			alert(XMLHttpRequest.readyState);
+           			alert(textStatus);
+           		},
+        			   
                 success: function (msg) {
                 	
                 	var result = eval("("+msg+")");
-					
- 						$("#roleList").datagrid("loadData",result);
- 					
+        			
+        					$("#roleList").datagrid("loadData",result);
+        				
                     
              
                 }
@@ -207,7 +205,7 @@ $(function () {
 	   </div>
      </div> 
 		 
-    <div class="context" style="width:870px;">
+    <div class="context" style="width:500px;">
      <div class="titlebox" style="width:100%; margin:0 auto;"><span class="title" >数据库维护</span></div>
        	<!-- 显示总览 -->
 		<table id="roleList" style="width:100%;" >

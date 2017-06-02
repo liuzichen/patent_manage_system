@@ -26,4 +26,12 @@ public class QuestionService {
 			Long answerTime) {
 		questionDao.addResponse(id, isanswered, answer, answerTime);
 	}
+	
+	public ArrayList<Question> getQuestionsByUserId(int id,String type){
+		return questionDao.getQuestionsByUserId(id, type);
+	}
+	
+	public void insertQuestion(Question question){
+		questionDao.insertQuestion(question);
+	}
 }

@@ -1,58 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.web.project.dao.EnterpriseProjectDao">	
-	<resultMap id="enterpriseProjectMap" type="com.web.project.model.enterprise.EnterpriseProject" >
+<mapper namespace="com.web.project.dao.EnterpriseProjectDao">
+	<resultMap id="enterpriseProjectMap"
+		type="com.web.project.model.enterprise.EnterpriseProject">
 		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="EnterpriseID" property="enterpriseId" jdbcType="VARCHAR" />		
-		<result column="title" property="title" jdbcType="VARCHAR" />	
+		<result column="EnterpriseID" property="enterpriseId" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="techfield" property="field" jdbcType="VARCHAR" />
 		<result column="contractor" property="contractor" jdbcType="VARCHAR" />
 		<result column="contact" property="contact" jdbcType="VARCHAR" />
 		<result column="year" property="year" jdbcType="VARCHAR" />
-		<result column="state" property="state" jdbcType="VARCHAR" />	
-		<result column="peopleInCharge" property="peopleInCharge" jdbcType="VARCHAR" />	
-		<result column="industryField" property="industryField" jdbcType="VARCHAR" />	
+		<result column="state" property="state" jdbcType="VARCHAR" />
+		<result column="peopleInCharge" property="peopleInCharge"
+			jdbcType="VARCHAR" />
+		<result column="industryField" property="industryField"
+			jdbcType="VARCHAR" />
 		<result column="subjectCode" property="subjectCode" jdbcType="VARCHAR" />
-		<result column="projectOrigin" property="projectOrigin" jdbcType="VARCHAR" />	
+		<result column="projectOrigin" property="projectOrigin"
+			jdbcType="VARCHAR" />
 		<result column="techOrigin" property="techOrigin" jdbcType="VARCHAR" />
-		<result column="developType" property="developType" jdbcType="VARCHAR" />	
-		<result column="productAdoption" property="productAdoption" jdbcType="VARCHAR" />	
+		<result column="developType" property="developType" jdbcType="VARCHAR" />
+		<result column="productAdoption" property="productAdoption"
+			jdbcType="VARCHAR" />
 		<result column="startTime" property="startTime" jdbcType="DATE" />
-		<result column="endtime" property="endtime" jdbcType="DATE" />	
-		<result column="IPRstatement" property="IPRstatement" jdbcType="VARCHAR" />	
-		<result column="award" property="award" jdbcType="VARCHAR" />	
-		<result column="techRightsandUsage" property="techRightsandUsage" jdbcType="VARCHAR" />	
-		<result column="descriptionAndGoals" property="descriptionAndGoals" jdbcType="VARCHAR" />	
-		<result column="contentAndIndication" property="contentAndIndication" jdbcType="VARCHAR" />
-		<result column="createPoints" property="createPoints" jdbcType="VARCHAR" />	
-		<result column="workBasis" property="workBasis" jdbcType="VARCHAR" />	
-		<result column="Schedule" property="schedule" jdbcType="VARCHAR" />	
-		<result column="corTypeAndName" property="corTypeAndName" jdbcType="VARCHAR" />	
-		<result column="corGoalsandInvest" property="corGoalsandInvest" jdbcType="VARCHAR" />	
-		<result column="corDepartmentandPerson" property="corDepartmentandPerson" jdbcType="VARCHAR" />	
-		<result column="corEmailandAddress" property="corEmailandAddress" jdbcType="VARCHAR" />	
-		<result column="serviceType" property="serviceType" jdbcType="VARCHAR" />	
-		<result column="serviceNumber" property="serviceNumber" jdbcType="INTEGER" />	
-		<result column="numberToserve" property="numberToserve" jdbcType="INTEGER" />	
-		<result column="Servicetypeorplatform" property="servicetypeorplatform" jdbcType="VARCHAR" />	
-		<result column="planServicetypeorplatform" property="planServicetypeorplatform" jdbcType="VARCHAR" />	
-		<result column="dealNumber" property="dealNumber" jdbcType="INTEGER" />	
-		<result column="applyTime" property="applyTime" jdbcType="INTEGER" />	
-		<result column="department" property="department" jdbcType="VARCHAR" />	
-		<result column="competentDepartment" property="competentDepartment" jdbcType="VARCHAR" />
-		<result column="contactPhoneNumber" property="contactPhoneNumber" jdbcType="VARCHAR" />	
-		<result column="fujianDescription" property="fujianDescription" jdbcType="VARCHAR" />	
-		<result column="fujianName" property="fujianName" jdbcType="VARCHAR" />	
-		<result column="fujian" property="fujian" jdbcType="BLOB" />	
-		<result column="isSubmit" property="isSubmit" jdbcType="TINYINT" />			
+		<result column="endtime" property="endtime" jdbcType="DATE" />
+		<result column="IPRstatement" property="IPRstatement" jdbcType="VARCHAR" />
+		<result column="award" property="award" jdbcType="VARCHAR" />
+		<result column="techRightsandUsage" property="techRightsandUsage"
+			jdbcType="VARCHAR" />
+		<result column="descriptionAndGoals" property="descriptionAndGoals"
+			jdbcType="VARCHAR" />
+		<result column="contentAndIndication" property="contentAndIndication"
+			jdbcType="VARCHAR" />
+		<result column="createPoints" property="createPoints" jdbcType="VARCHAR" />
+		<result column="workBasis" property="workBasis" jdbcType="VARCHAR" />
+		<result column="Schedule" property="schedule" jdbcType="VARCHAR" />
+		<result column="corTypeAndName" property="corTypeAndName"
+			jdbcType="VARCHAR" />
+		<result column="corGoalsandInvest" property="corGoalsandInvest"
+			jdbcType="VARCHAR" />
+		<result column="corDepartmentandPerson" property="corDepartmentandPerson"
+			jdbcType="VARCHAR" />
+		<result column="corEmailandAddress" property="corEmailandAddress"
+			jdbcType="VARCHAR" />
+		<result column="serviceType" property="serviceType" jdbcType="VARCHAR" />
+		<result column="serviceNumber" property="serviceNumber"
+			jdbcType="INTEGER" />
+		<result column="numberToserve" property="numberToserve"
+			jdbcType="INTEGER" />
+		<result column="Servicetypeorplatform" property="servicetypeorplatform"
+			jdbcType="VARCHAR" />
+		<result column="planServicetypeorplatform" property="planServicetypeorplatform"
+			jdbcType="VARCHAR" />
+		<result column="dealNumber" property="dealNumber" jdbcType="INTEGER" />
+		<result column="applyTime" property="applyTime" jdbcType="INTEGER" />
+		<result column="department" property="department" jdbcType="VARCHAR" />
+		<result column="competentDepartment" property="competentDepartment"
+			jdbcType="VARCHAR" />
+		<result column="contactPhoneNumber" property="contactPhoneNumber"
+			jdbcType="VARCHAR" />
+		<result column="fujianDescription" property="fujianDescription"
+			jdbcType="VARCHAR" />
+		<result column="fujianName" property="fujianName" jdbcType="VARCHAR" />
+		<result column="fujian" property="fujian" jdbcType="BLOB" />
+		<result column="isSubmit" property="isSubmit" jdbcType="TINYINT" />
 	</resultMap>
-	
-	<resultMap id="enterpriseCommonProjectMap" type="com.web.project.model.enterprise.EnterpriseCommonProject" >
+
+	<resultMap id="enterpriseCommonProjectMap"
+		type="com.web.project.model.enterprise.EnterpriseCommonProject">
 		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="EnterpriseID" property="enterpriseId" jdbcType="VARCHAR" />		
-		<result column="title" property="title" jdbcType="VARCHAR" />	
+		<result column="EnterpriseID" property="enterpriseId" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="techfield" property="techField" jdbcType="VARCHAR" />
 		<result column="year" property="year" jdbcType="VARCHAR" />
@@ -60,62 +80,88 @@
 		<result column="expertId" property="expertId" jdbcType="INTEGER" />
 		<result column="evaluation" property="evaluation" jdbcType="VARCHAR" />
 		<result column="evaluateTime" property="evaluateTime" jdbcType="INTEGER" />
+		<result column="fujianType" property="fujianType" jdbcType="VARCHAR" />
+		<result column="fujianName" property="fujianName" jdbcType="VARCHAR" />
+		<result column="fujian" property="fujian" jdbcType="BLOB" />
+		<result column="Description" property="Description" jdbcType="VARCHAR" />
+		<result column="field" property="field" jdbcType="VARCHAR" />
 		<result column="isEvaluated" property="isEvaluated" jdbcType="TINYINT" />
+		<result column="isAssigned" property="isAssigned" jdbcType="TINYINT" />
 	</resultMap>
+	
+		<update id="updateAssignOfEnterCommonWork" parameterType="com.web.project.model.enterprise.EnterpriseProject">
+		update enterprisecommomproject
+		<set>
+			isAssigned=1
+		</set>
+		where id=#{id}
+	</update>
 
-	<select id="getEnterpriseProjectsByState"  resultMap="enterpriseProjectMap">        
-        select * from enterpriseproject 
+	<select id="getEnterpriseProjectsByState" resultMap="enterpriseProjectMap">
+		select * from enterpriseproject
 		<where>
-		state=#{state}
-		</where> 	       
-	</select>   
-		    
+			state=#{state}
+		</where>
+	</select>
+
 	<select id="getEnterpriseProjectDetail" resultMap="enterpriseProjectMap">
-	 	select * from enterpriseproject
+		select * from enterpriseproject
 		<where>
-	 		id=#{id} 
+			id=#{id}
 		</where>
 	</select>
-	
+
 	<select id="getUnSubmitEnterpriseProjectById" resultMap="enterpriseProjectMap">
-	 	select * from enterpriseproject
+		select * from enterpriseproject
 		<where>
-	 		enterpriseId=#{id} and isSubmit = 0
+			enterpriseId=#{id} and isSubmit = 0
 		</where>
 	</select>
-	
-	<select id="getEnterpriseCommonProjectLists" resultMap="enterpriseCommonProjectMap">	 	
-	 	select * from enterpriseCommomproject	
+
+	<select id="getEnterpriseCommonProjectLists" resultMap="enterpriseCommonProjectMap">
+		select * from enterpriseCommomproject
 		<where>
-	     	isEvaluated=0 	 
-		</where>	
+			isEvaluated=0
+		</where>
 	</select>
-	
-	<select id="getEnterpriseCommonProjectById" resultMap="enterpriseCommonProjectMap">
-	 	select * from enterpriseCommomproject
+	<select id="getEnterpriseCommonProjectNALists" resultMap="enterpriseCommonProjectMap">
+		select * from enterpriseCommomproject
 		<where>
-	 		id=#{id} 
+			isAssigned=0
+		</where>
+	</select>
+
+     <select id="getEnterpriseCommonProjectByState" resultMap="enterpriseCommonProjectMap">
+		select * from enterpriseCommomproject
+		<where>
+			isEvaluated=#{state}
+		</where>
+	</select>
+	<select id="getEnterpriseCommonProjectById" resultMap="enterpriseCommonProjectMap">
+		select * from enterpriseCommomproject
+		<where>
+			id=#{id}
 		</where>
 	</select>
 
 	<select id="getUnSubmitEnterpriseProjectNumber" resultType="int">
-	 	select count(*) from enterpriseproject
+		select count(*) from enterpriseproject
 		<where>
-	 		enterpriseid=#{enterpriseId} and isSubmit = 0
+			enterpriseid=#{enterpriseId} and isSubmit = 0
 		</where>
 	</select>
-	
+
 	<select id="getUnSubmitEnterpriseProject" resultMap="enterpriseProjectMap">
-	 	select * from enterpriseproject
+		select * from enterpriseproject
 		<where>
-	 		enterpriseid=#{enterpriseId} and isSubmit = 0
+			enterpriseid=#{enterpriseId} and isSubmit = 0
 		</where>
 		limit 1
 	</select>
-	 
-	<update id="updateEnterpriseCommonProject" >
+
+	<update id="updateEnterpriseCommonProject">
 		update enterpriseCommomproject
-		<set>			
+		<set>
 			evaluation=#{2},
 			evaluatetime=#{3},
 			isevaluated=#{1},
@@ -123,34 +169,37 @@
 		where id=#{0}
 	</update>
 
-	<insert id="insertEnterpriseProject" parameterType="com.web.project.model.enterprise.EnterpriseProject" keyProperty="id" useGeneratedKeys="true">
-  		insert into enterpriseproject(enterpriseId,title,type,techfield,contractor,contact,state,peopleInCharge,industryField,subjectCode,
-  				projectOrigin,techOrigin,developType,productAdoption,IPRstatement,award,techRightsandUsage,startTime,endtime,
-  				corTypeAndName,corGoalsandInvest,corDepartmentandPerson,corEmailandAddress,serviceType,serviceNumber,numberToserve,
-  				Servicetypeorplatform,planServicetypeorplatform,descriptionAndGoals,contentAndIndication,createPoints,workBasis,Schedule,
-  				competentDepartment,contactPhoneNumber,applyTime,fujian，fujianName,fujianDescription,isSubmit,
-  				)
-		VALUES (#{enterpriseId},#{title},#{type},#{field},#{contractor},#{contact},#{state},#{peopleInCharge},#{industryField},#{subjectCode},
-				#{projectOrigin},#{techOrigin},#{developType},#{productAdoption},#{IPRstatement},#{award},#{techRightsandUsage},#{startTime},#{endtime},
-				#{corTypeAndName},#{corGoalsandInvest},#{corDepartmentandPerson},#{corEmailandAddress},#{serviceType},#{serviceNumber},#{numberToserve},
-				#{servicetypeorplatform},#{planServicetypeorplatform},#{descriptionAndGoals},#{contentAndIndication},#{createPoints},#{workBasis},#{schedule},
-				#{competentDepartment},#{contactPhoneNumber},#{applyTime},#{fujian},#{fujianName},#{fujianDescription},#{isSubmit}
-				)
+	<insert id="insertEnterpriseProject" parameterType="com.web.project.model.enterprise.EnterpriseProject"
+		keyProperty="id" useGeneratedKeys="true">
+		insert into
+		enterpriseproject(enterpriseId,title,type,techfield,contractor,contact,state,peopleInCharge,industryField,subjectCode,
+		projectOrigin,techOrigin,developType,productAdoption,IPRstatement,award,techRightsandUsage,startTime,endtime,
+		corTypeAndName,corGoalsandInvest,corDepartmentandPerson,corEmailandAddress,serviceType,serviceNumber,numberToserve,
+		Servicetypeorplatform,planServicetypeorplatform,descriptionAndGoals,contentAndIndication,createPoints,workBasis,Schedule,
+		competentDepartment,contactPhoneNumber,applyTime,fujian，fujianName,fujianDescription,isSubmit,
+		)
+		VALUES
+		(#{enterpriseId},#{title},#{type},#{field},#{contractor},#{contact},#{state},#{peopleInCharge},#{industryField},#{subjectCode},
+		#{projectOrigin},#{techOrigin},#{developType},#{productAdoption},#{IPRstatement},#{award},#{techRightsandUsage},#{startTime},#{endtime},
+		#{corTypeAndName},#{corGoalsandInvest},#{corDepartmentandPerson},#{corEmailandAddress},#{serviceType},#{serviceNumber},#{numberToserve},
+		#{servicetypeorplatform},#{planServicetypeorplatform},#{descriptionAndGoals},#{contentAndIndication},#{createPoints},#{workBasis},#{schedule},
+		#{competentDepartment},#{contactPhoneNumber},#{applyTime},#{fujian},#{fujianName},#{fujianDescription},#{isSubmit}
+		)
 	</insert>
-	
+
 	<update id="updateEnterpriseProjectById" parameterType="com.web.project.model.enterprise.EnterpriseProject">
 		update enterpriseproject
 		<set>
-			    enterpriseId=#{enterpriseId},title=#{title},type=#{type},techfield=#{field},contractor=#{contractor},contact=#{contact},state=#{state},
-			    peopleInCharge=#{peopleInCharge},industryField=#{industryField},subjectCode=#{subjectCode},
-  				projectOrigin=#{projectOrigin},techOrigin=#{techOrigin},developType=#{developType},productAdoption=#{productAdoption},IPRstatement=#{IPRstatement},
-  				award=#{award},techRightsandUsage=#{techRightsandUsage},startTime=#{startTime},endtime=#{endtime},
-  				corTypeAndName=#{corTypeAndName},corGoalsandInvest=#{corGoalsandInvest},corDepartmentandPerson=#{corDepartmentandPerson},
-  				corEmailandAddress=#{corEmailandAddress},serviceType=#{serviceType},serviceNumber=#{serviceNumber},numberToserve=#{numberToserve},
-  				Servicetypeorplatform=#{servicetypeorplatform},planServicetypeorplatform=#{planServicetypeorplatform},descriptionAndGoals=#{descriptionAndGoals},
-  				contentAndIndication=#{contentAndIndication},createPoints=#{createPoints},workBasis=#{workBasis},Schedule=#{schedule},fujian=#{fujian},
-  				competentDepartment=#{competentDepartment},contactPhoneNumber=#{contactPhoneNumber},applyTime=#{applyTime},fujianName=#{fujianName},
-  				fujianDescription=#{fujianDescription},isSubmit=#{isSubmit}
+			enterpriseId=#{enterpriseId},title=#{title},type=#{type},techfield=#{field},contractor=#{contractor},contact=#{contact},state=#{state},
+			peopleInCharge=#{peopleInCharge},industryField=#{industryField},subjectCode=#{subjectCode},
+			projectOrigin=#{projectOrigin},techOrigin=#{techOrigin},developType=#{developType},productAdoption=#{productAdoption},IPRstatement=#{IPRstatement},
+			award=#{award},techRightsandUsage=#{techRightsandUsage},startTime=#{startTime},endtime=#{endtime},
+			corTypeAndName=#{corTypeAndName},corGoalsandInvest=#{corGoalsandInvest},corDepartmentandPerson=#{corDepartmentandPerson},
+			corEmailandAddress=#{corEmailandAddress},serviceType=#{serviceType},serviceNumber=#{serviceNumber},numberToserve=#{numberToserve},
+			Servicetypeorplatform=#{servicetypeorplatform},planServicetypeorplatform=#{planServicetypeorplatform},descriptionAndGoals=#{descriptionAndGoals},
+			contentAndIndication=#{contentAndIndication},createPoints=#{createPoints},workBasis=#{workBasis},Schedule=#{schedule},fujian=#{fujian},
+			competentDepartment=#{competentDepartment},contactPhoneNumber=#{contactPhoneNumber},applyTime=#{applyTime},fujianName=#{fujianName},
+			fujianDescription=#{fujianDescription},isSubmit=#{isSubmit}
 		</set>
 		where id=#{id}
 	</update>

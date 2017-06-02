@@ -32,56 +32,44 @@ function sub(){
 	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
 	     	 		<td class="tdname">企业名称：</td>
-	     	 		<td class="tdcontent1">
-	     	 		<%=request.getAttribute("##1")%>
-	     	 		</td>
+	     	 		<td class="tdcontent1">${detail.name}</td>
 	     	 		<td class="tdname">法人代表：</td>
-	     	 		<td class="tdcontent2">
-	     	 		<%=request.getAttribute("#2")%>
-	     	 		</td>
+	     	 		<td class="tdcontent2">${detail.legalPerson}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">注册时间：</td>
-	     	 		<td class="tdcontent1">
-	     	 			<%=request.getAttribute("#5")%>
-	     	 		</td>
+	     	 		<td class="tdcontent1">${detail.registrationTime}</td>
 	     	 		<td class="tdname">注册资金：</td>
-	     	 		<td class="tdcontent2">
-	     	 		<%=request.getAttribute("#4")%>
-	     	 		</td>
+	     	 		<td class="tdcontent2">${detail.registrationMoney}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">单位性质：</td>
-	     	 		<td class="tdcontent1" colspan="3" >
-	     	 		<%=request.getAttribute("#5")%>
-	     	 		</td>
+	     	 		<td class="tdcontent1" colspan="3" >${detail.applyType}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">申报渠道：</td>
-	     	 		<td class="tdcontent1" colspan="3">
-				     <%=request.getAttribute("channel1")%>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<%=request.getAttribute("channel2")%>
+	     	 		<td class="tdcontent1" colspan="3">${detail.channel1}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.channel2}
 					</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">联系人：</td>
-	     	 		<td class="tdcontent1"><%=request.getAttribute("contact")%></td>
+	     	 		<td class="tdcontent1">${detail.legalPerson}</td>
 	     	 		<td class="tdname">电子邮箱：</td>
-	     	 		<td class="tdcontent2"><%=request.getAttribute("email")%>
+	     	 		<td class="tdcontent2">${detail.email}
 	     	 		</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">联系电话：</td>
-	     	 		<td class="tdcontent1"><%=request.getAttribute("phone")%>
+	     	 		<td class="tdcontent1">${detail.cellPhone}
 	     	 		</td>
 	     	 		<td class="tdname">邮政编码：</td>
-	     	 		<td class="tdcontent2"><%=request.getAttribute("postcode")%></td>
+	     	 		<td class="tdcontent2">${detail.postcode}</td>
 	     	 	</tr>
                 <tr>
 	             <td align="center" colspan="4">
 	             	<div style="margin-top:15px;margin-left:auto;margin-right:auto; margin-bottom:15px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="sub();">返&nbsp;&nbsp;回</a>
+	             		<a href="<%=request.getContextPath()%>/manageEnterprise/toManageEnterpriseList" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="sub();">返&nbsp;&nbsp;回</a>
 	             	</div>
 		        </td>
 	        </tr>

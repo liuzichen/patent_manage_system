@@ -29,31 +29,29 @@
 	     	 <table style="width:100%;" class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
 	     	 		<td class="tdname">公告标题：</td>
-	     	 		<td class="tdcontent1" colspan="3"><%=request.getAttribute("Title")%></td>
+	     	 		<td class="tdcontent1" colspan="3">${detail.title}</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">发布时间：</td>
-	     	 		<td class="tdcontent1"><%=request.getAttribute("Time")%></td>	     	 		
+	     	 		<td class="tdcontent1">${detail.time}</td>	     	 		
 	     	 		<td class="tdname">公告类型：</td>
-	     	 		<td class="tdcontent2">
-	     	 		<%=request.getAttribute("Type")%>
+	     	 		<td class="tdcontent2">${detail.type}
 	     	 		</td>
 	     	 	</tr>
 	     	 	
 	     	 	     	 	
             	 <tr>             
-             	 <td  class="tdname"  align="center" >作品简介</td>
+             	 <td  class="tdname"  align="center" >新闻简介</td>
             	 <td  align="center" height="400px"  colspan="3">
-	            	 <div class="tdcontent3"><%=request.getAttribute("Description")%>
+	            	 <div class="tdcontent3">${detail.content}
 		             </div> 
              </tr>
              <tr>
 	     	 		<td class="tdname">附件类型：</td>
-	     	 		<td class="tdcontent2">
-	     	 		<%=request.getAttribute("FujianType")%>
+	     	 		<td class="tdcontent2">${detail.fujianType}
 	     	 		</td>
 	     	 		<td class="tdname">附件标题：</td>
-	     	 		<td class="tdcontent1"><%=request.getAttribute("FujianName")%>
+	     	 		<td class="tdcontent1">${detail.fujianName}
 	     	 		</td>
 	     	 	</tr>
 	     	 	<tr>

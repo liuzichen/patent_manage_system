@@ -15,6 +15,7 @@ public class QuestionVo {
 	String askTime;
 	String answerTime;
 	String area;
+	String state;
 
 	public int getId() {
 		return id;
@@ -97,6 +98,15 @@ public class QuestionVo {
 		this.area = area;
 	}
 
+	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	public QuestionVo transfer(Question question){		
 		this.setId(question.getId());
 		this.setAskerId(question.getAskerId());
@@ -116,6 +126,12 @@ public class QuestionVo {
 			this.setAnswerTime(answerTime);
 		}else{
 			this.setAnswerTime("");
+		}
+		if(this.isAnswered()==true){
+			this.setState("宸插洖绛�");
+		}
+		else{
+			this.setState("鏈洖绛�");
 		}
 		return this;
 	}

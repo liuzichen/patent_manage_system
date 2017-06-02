@@ -20,7 +20,11 @@ public interface EnterpriseProjectDao {
 	
 	public ArrayList<EnterpriseCommonProject> getEnterpriseCommonProjectLists();
 	
+	public ArrayList<EnterpriseCommonProject> getEnterpriseCommonProjectNALists();
+	
 	public EnterpriseCommonProject getEnterpriseCommonProjectById(int id);
+	
+	public ArrayList<EnterpriseCommonProject> getEnterpriseCommonProjectByState(int State);
 	
 	public void updateEnterpriseCommonProject(int id,boolean isEvaluated,String evaluation,Long time);
 	
@@ -33,4 +37,6 @@ public interface EnterpriseProjectDao {
 	public EnterpriseProject getUnSubmitEnterpriseProject(int id);
 	
 	public void  updateEnterpriseProjectById(EnterpriseProject project);
+	
+	public void updateAssignOfEnterCommonWork(EnterpriseCommonProject enterCommonWorks);
 }
