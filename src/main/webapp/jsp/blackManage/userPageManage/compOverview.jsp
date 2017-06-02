@@ -32,7 +32,7 @@ $(function () {
                 sortName: 'DATE',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'RoleCode',
+                idField: 'id',
                 checkOnSelect:false, 
                 singleSelect:true, 
                 method:'get',
@@ -40,14 +40,14 @@ $(function () {
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '企业用户名称',width :336,align:'center'},
-				{field : 'PROJECT',title : '企业性质',width : 208,align:'center',sortable:true},
-				{field : 'FIELD',title : '联系方式',width : 160,align:'center'},  
-				{field : 'YEAR',title : '电子邮箱',width : 160,align:'center',sortable:true},
+				//{field : 'id', title : '编号',width :160,align:'center'},
+				{field : 'name', title : '企业用户名称',width :336,align:'center'},
+				{field : 'applyType',title : '企业性质',width : 208,align:'center',sortable:true},
+				{field : 'cellPhone',title : '联系方式',width : 160,align:'center'},  
+				{field : 'email',title : '电子邮箱',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='javascript:void(document.Form1.submit())' onclick='return sub("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/manageEnterprise/manageEnterpriseDetail?id="+row.id+"'>查看详情</a>";  
                     }
                 }
               
@@ -62,8 +62,8 @@ $(function () {
                   	  handler: function () {
                   		  sear();
                   	  }
-                	  }
-                  ],
+                	  }             
+                 ],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -72,7 +72,7 @@ $(function () {
                 	var size=opts.pageSize;
                 	var state=document.getElementById("state").value;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test10.json',
+                        url:'<%=request.getContextPath()%>/manageEnterprise/manageEnterpriseList',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                         type: 'post',
                         dataType : "text",
@@ -106,7 +106,7 @@ $(function () {
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/manageEnterprise/manageEnterpriseList',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
@@ -161,7 +161,7 @@ function sear(){
 	var order=opts.sortOrder;
 	var state=document.getElementById("state").value;
     $.ajax({
-        url:'<%=request.getContextPath()%>/test/test10.json',
+        url:'<%=request.getContextPath()%>/manageEnterprise/manageEnterpriseList',
         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
         type: 'post',
         dataType : "text",
@@ -189,7 +189,7 @@ function getDataUpdate(pageNum, pageSize){
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/manageEnterprise/manageEnterpriseList',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",

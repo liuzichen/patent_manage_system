@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.web.project.dao.CommentDao;
+import com.web.project.model.comment.EnterpriseComProjectComment;
 import com.web.project.model.comment.MakerComWorksComment;
 
 /**
@@ -23,13 +24,19 @@ public class CommentService {
 	public ArrayList<MakerComWorksComment> getMakerComWorksCommentsByWorkId(int id){
 		return commentDao.getMakerComWorksCommentsByWorkId(id);
 	}
-	
+	public ArrayList<EnterpriseComProjectComment> getEnterComWorksCommentsByWorkId(int id){
+		return commentDao.getEnterComWorksCommentsByWorkId(id);
+	}
 	public void insertMakerComWorksCommentList(ArrayList<MakerComWorksComment> makerComWorksComments){
 		commentDao.insertMakerComWorksCommentList(makerComWorksComments);
 	}
 	
 	public int insertMakerComWorksComment(MakerComWorksComment makerComWorksComment){
 		return commentDao.insertMakerComWorksComment(makerComWorksComment);
+	}
+	
+	public int insertEnterComWorksComment(EnterpriseComProjectComment enterComWorksComment){
+		return commentDao.insertEnterComWorksComment(enterComWorksComment);
 	}
 	
 }

@@ -22,4 +22,22 @@ public class ExpertFeeService {
 	public void insertExpertFee(ArrayList<ExpertFee> expertFees){
 		expertFeeDao.insertExpertFee(expertFees);
 	}
+	
+	public ArrayList<ExpertFee> getExpertFeeInfoList(){
+		return expertFeeDao.getExpertFeeInfoList();
+	}
+	
+	public ArrayList<ExpertFee> getExpertFeeWorkList(){
+		return expertFeeDao.getExpertFeeWorkList();
+	}
+	public ArrayList<ExpertFee> getExpertFeeMKWorkList(){
+		return expertFeeDao.getExpertFeeMKWorkList();
+	}
+	public ArrayList<ExpertFee> getExpertFeeEKWorkList(){
+		return expertFeeDao.getExpertFeeEKWorkList();
+	}
+	
+	public void updateExpertFee(int id){
+		expertFeeDao.updateExpertFee(id);
+	}
 }

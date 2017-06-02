@@ -1,17 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-import="java.util.*,java.lang.reflect.*"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	import="java.util.*,java.lang.reflect.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>项目成果提交</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css"/>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/table.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css" />
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var project="111";
@@ -70,75 +77,79 @@ function sub(){
 <%String b="123"; %>
 </head>
 <body>
-<div >
-	<div class="topnav"  >
-	   <div  class="path" >
-	      <span ><font>当前位置:</font></span>
-	      <span ><font >创客项目专家分配&nbsp;&nbsp; &gt;&nbsp;&nbsp;专家分配</font></span>
-	   </div>
-     </div>
-      <div class="context">
-         <div class="titlebox"><span class="title">项目作品提交</span></div>
-	     <div >
-	     	 <form action="" name="Form1" id="Form1">
-	     	 <input type="hidden" id="projectid" name="projectid" value="<%=b%>">
-	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-	     	 	<tr>
-	     	 		<td class="tdname">创客项目名称:</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox"  type="text" name="project" id="project" >
-					</td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">领域选择:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="field"  name="field" class="mydatebox">
-								<option value="">--请选择--</option> 
-								
-								<%-- <%List  list= (ArrayList)request.getAttribute("field");
+	<div>
+		<div class="topnav">
+			<div class="path">
+				<span><font>当前位置:</font></span> <span><font>创客项目专家分配&nbsp;&nbsp;
+						&gt;&nbsp;&nbsp;专家分配</font></span>
+			</div>
+		</div>
+		<div class="context">
+			<div class="titlebox">
+				<span class="title">项目作品提交</span>
+			</div>
+			<div>
+				<form action="" name="Form1" id="Form1">
+					<input type="hidden" id="projectid" name="projectid" value="<%=b%>">
+					<table class="persional" align="center" border="1" cellpadding="0"
+						cellspacing="0" bordercolor="#DEE5EA">
+						<tr>
+							<td class="tdname">创客项目名称:</td>
+							<td class="tdcontent2"><input
+								class="easyui-textbox mydatebox" type="text" name="project"
+								id="project"></td>
+						</tr>
+						<tr>
+							<td class="tdname">领域选择:</td>
+							<td class="tdcontent2"><select id="field" name="field"
+								class="mydatebox">
+									<option value="">--请选择--</option>
+
+									<%-- <%List  list= (ArrayList)request.getAttribute("field");
 								for(int i=0;i<list.size();i++){
 									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
 							 --%>
-							 </select>
-	     	 		</td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">领域专家1:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="field"  name="field" class="mydatebox">
-								<option value="">--请选择--</option> 
-								
-								<%-- <%List  list= (ArrayList)request.getAttribute("field");
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdname">领域专家1:</td>
+							<td class="tdcontent2"><select id="field" name="field"
+								class="mydatebox">
+									<option value="">--请选择--</option>
+
+									<%-- <%List  list= (ArrayList)request.getAttribute("field");
 								for(int i=0;i<list.size();i++){
 									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
 							 --%>
-							 </select>
-	     	 		</td>
-	     	 	</tr>
-	     	 		<tr>
-	     	 		<td class="tdname">领域专家2:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="field"  name="field" class="mydatebox">
-								<option value="">--请选择--</option> 
-								
-								<%-- <%List  list= (ArrayList)request.getAttribute("field");
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdname">领域专家2:</td>
+							<td class="tdcontent2"><select id="field" name="field"
+								class="mydatebox">
+									<option value="">--请选择--</option>
+
+									<%-- <%List  list= (ArrayList)request.getAttribute("field");
 								for(int i=0;i<list.size();i++){
 									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
 							 --%>
-							 </select>
-	     	 		</td>
-	     	 	</tr>
-	     	 	<tr>
-	             <td align="center" colspan="2">
-	             	<div style="margin-top:20px;margin-left:auto;margin-right:auto; margin-bottom:20px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
-	             	</div>
-		        </td>
-	        </tr>   
-	     	 </table>
-	     	 </form>
-	     </div>
-	  </div>
-	  
-</div>
+							</select></td>
+						</tr>
+						<tr>
+							<td align="center" colspan="2">
+								<div
+									style="margin-top: 20px; margin-left: auto; margin-right: auto; margin-bottom: 20px">
+									<a href="javascript:void(document.Form1.submit())"
+										style="height: 35px; width: 70px; font-size: 16px;"
+										class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.project.dao.MakerCooperationDao">
-	<resultMap id="makerCooperationMap" type="com.web.project.model.maker.MakerCooperation" >
+	<resultMap id="makerCooperationMap" type="com.web.project.model.maker.MakerCooperation">
 		<id column="cooperationid" property="id" jdbcType="INTEGER" />
 		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="makerid" property="makerId" jdbcType="INTEGER" />
@@ -14,47 +14,52 @@
 		<result column="detail" property="detail" jdbcType="VARCHAR" />
 		<result column="subtime" property="subTime" jdbcType="INTEGER" />
 	</resultMap>
-	<select id="getCooperationById"  resultMap="makerCooperationMap">        
-              select * from cooperation
-              <where>  
-              cooperationid=#{id} 	
-              </where>       
-	</select> 
-	
-	<select id="getCooperationList"  resultMap="makerCooperationMap">        
-              select * from cooperation 
-              order by ${param1} ${param2}    
+	<select id="getCooperationById" resultMap="makerCooperationMap">
+		select * from cooperation
+		<where>
+			cooperationid=#{id}
+		</where>
+	</select>
+
+	<select id="getCooperationList" resultMap="makerCooperationMap">
+		select * from cooperation
+		order by ${param1} ${param2}
 	</select>
 
 	<select id="getCooperationListByUser" resultMap="makerCooperationMap">
 		select * from cooperation
 		<where>
-		makerid=#{id}
+			makerid=#{id}
 		</where>
 		order by subtime DESC
-	</select>   
-	
-	<delete id="deleteCooperationById"  parameterType="java.util.List">
+	</select>
+
+	<delete id="deleteCooperationById" parameterType="java.util.List">
 		delete from cooperation
 		<where>
-			cooperationid in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			cooperationid in
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
 				#{item}
 			</foreach>
 		</where>
 	</delete>
-	
+
 	<update id="updateCooperationById" parameterType="com.web.project.model.maker.MakerCooperation">
 		update cooperation
-		<set>			
+		<set>
 			contact=#{contact},phone=#{phone},teamintro=#{teamIntro},detail=#{detail},
 		</set>
 		where cooperationid=#{id}
 	</update>
-	
-	<insert id="insertCooperation" parameterType="com.web.project.model.maker.MakerCooperation" keyProperty="id" useGeneratedKeys="true">
-  		insert into cooperation(title,makerid,team,field,contact,phone,teamintro,detail,subtime
-  				)
-		VALUES (#{title},#{makerId},#{team},#{field},#{contact},#{phone},#{teamIntro},#{detail},#{subTime}
-				)
+
+	<insert id="insertCooperation" parameterType="com.web.project.model.maker.MakerCooperation"
+		keyProperty="id" useGeneratedKeys="true">
+		insert into
+		cooperation(title,makerid,team,field,contact,phone,teamintro,detail,subtime
+		)
+		VALUES
+		(#{title},#{makerId},#{team},#{field},#{contact},#{phone},#{teamIntro},#{detail},#{subTime}
+		)
 	</insert>
 </mapper>

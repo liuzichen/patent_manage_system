@@ -1,18 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-import="java.util.*,java.lang.reflect.*"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	import="java.util.*,java.lang.reflect.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>创客项目待专家分配</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css"/>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/table.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css" />
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -156,116 +163,122 @@ function checkSelect(){
 </script>
 </head>
 <body>
-<div >
-	<div class="topnav"  >
-	   <div  class="path" >
-	      <span ><font>当前位置:</font></span>
-	      <span ><font >创客项目专家分配&nbsp;&nbsp; &gt;&nbsp;&nbsp;分配专家</font></span>
-	   </div>
-     </div>
-      <div class="context">
-         <div class="titlebox"><span class="title">分配专家</span></div>
-	     <div >
-	     	 <form action="<%=request.getContextPath()%>/maker/AssignExpertForMakerCommonWork" name="Form1" id="Form1">
-	     	 <input type="hidden" id="projectid" name="projectid" value=${detail.id}>
-	     	 <input type="hidden" id="commentType" name="commentType" value="comment_makercommonworks">
-	     	 <input type="hidden" id="flag" name="flag">
-	     	 <input type="hidden" id="num" name="num">
-	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-	     	 	<tr>
-	     	 		<td class="tdname">创客项目名称:</td>
-	     	 		<td class="tdcontent2" colspan="2">${detail.title }
-					</td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">领域选择:</td>
-	     	 		<td class="tdcontent2" colspan="2">
-	     	 		<select id="field"  name="field" class="mydatebox" onchange="getExpert()">
-								<option value="">--请选择--</option> 								
-								<c:forEach items="${fieldList}" var="map">
-									<option value=${map.name}>${map.name}</option>
-								</c:forEach>
-							 </select>
-	     	 		</td>
-	     	 		
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">领域专家1:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="ExpertID1"  name="ExpertID1" class="mydatebox" onchange="checkSelect()">
-								<option value="0">--请选择--</option> 
-								
-								
-							 </select>
-	     	 		</td>
-	     	 		<td class="tdcontent1">
-	     	 		<input class="easyui-textbox mydatebox"  type="text" name="fee1" id="fee1" value="0">元
-	     	 		</td>
-	     	 	</tr>
-	     	 		<tr>
-	     	 		<td class="tdname">领域专家2:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="ExpertID2"  name="ExpertID2" class="mydatebox" onchange="checkSelect()" disabled>
-								<option value="0">--请选择--</option> 
-								
-								
-							 </select>
-	     	 		</td>
-	     	 		<td class="tdcontent1">
-	     	 		<input class="easyui-textbox mydatebox"  type="text" name="fee2" id="fee2" value="0">元
-	     	 		</td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">领域专家3:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="ExpertID3"  name="ExpertID3" class="mydatebox" onchange="checkSelect()" disabled>
-								<option value="0">--请选择--</option> 
-								
-								
-							 </select>
-	     	 		</td>
-	     	 		<td class="tdcontent1">
-	     	 		<input class="easyui-textbox mydatebox"  type="text" name="fee3" id="fee3" value="0">元
-	     	 		</td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">领域专家4:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="ExpertID4"  name="ExpertID4" class="mydatebox" onchange="checkSelect()" disabled>
-								<option value="0">--请选择--</option> 
-								
-								
-							 </select>
-	     	 		</td>
-	     	 		<td class="tdcontent1">
-	     	 		<input class="easyui-textbox mydatebox"  type="text" name="fee4" id="fee4" value="0">元
-	     	 		</td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">领域专家5:</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="ExpertID5"  name="ExpertID5" class="mydatebox" onchange="checkSelect()" disabled>
-								<option value="0">--请选择--</option> 
-								
-								
-							 </select>
-	     	 		</td>
-	     	 		<td class="tdcontent1">
-	     	 		<input class="easyui-textbox mydatebox"  type="text" name="fee5" id="fee5" value="0">元
-	     	 		</td>
-	     	 	</tr>
-	     	 	<tr>
-	             <td align="center" colspan="3">
-	             	<div style="margin-top:5px;margin-left:auto;margin-right:auto; margin-bottom:5px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:30px;width:90px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
-	             	</div>
-		        </td>
-	        </tr>   
-	     	 </table>
-	     	 </form>
-	     </div>
-	  </div>
-	  
-</div>
+	<div>
+		<div class="topnav">
+			<div class="path">
+				<span><font>当前位置:</font></span> <span><font>创客项目专家分配&nbsp;&nbsp;
+						&gt;&nbsp;&nbsp;分配专家</font></span>
+			</div>
+		</div>
+		<div class="context">
+			<div class="titlebox">
+				<span class="title">分配专家</span>
+			</div>
+			<div>
+				<form
+					action="<%=request.getContextPath()%>/maker/AssignExpertForMakerCommonWork"
+					name="Form1" id="Form1">
+					<input type="hidden" id="projectid" name="projectid"
+						value=${detail.id}> <input type="hidden" id="commentType"
+						name="commentType" value="comment_makercommonworks"> <input
+						type="hidden" id="flag" name="flag"> <input type="hidden"
+						id="num" name="num">
+					<table class="persional" align="center" border="1" cellpadding="0"
+						cellspacing="0" bordercolor="#DEE5EA">
+						<tr>
+							<td class="tdname">创客项目名称:</td>
+							<td class="tdcontent2" colspan="2">${detail.title }</td>
+						</tr>
+						<tr>
+							<td class="tdname">领域选择:</td>
+							<td class="tdcontent2" colspan="2"><select id="field"
+								name="field" class="mydatebox" onchange="getExpert()">
+									<option value="">--请选择--</option>
+									<c:forEach items="${fieldList}" var="map">
+										<option value=${map.name}>${map.name}</option>
+									</c:forEach>
+							</select></td>
+
+						</tr>
+						<tr>
+							<td class="tdname">领域专家1:</td>
+							<td class="tdcontent2"><select id="ExpertID1"
+								name="ExpertID1" class="mydatebox" onchange="checkSelect()">
+									<option value="0">--请选择--</option>
+
+
+							</select></td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="fee1"
+								id="fee1" value="0">元</td>
+						</tr>
+						<tr>
+							<td class="tdname">领域专家2:</td>
+							<td class="tdcontent2"><select id="ExpertID2"
+								name="ExpertID2" class="mydatebox" onchange="checkSelect()"
+								disabled>
+									<option value="0">--请选择--</option>
+
+
+							</select></td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="fee2"
+								id="fee2" value="0">元</td>
+						</tr>
+						<tr>
+							<td class="tdname">领域专家3:</td>
+							<td class="tdcontent2"><select id="ExpertID3"
+								name="ExpertID3" class="mydatebox" onchange="checkSelect()"
+								disabled>
+									<option value="0">--请选择--</option>
+
+
+							</select></td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="fee3"
+								id="fee3" value="0">元</td>
+						</tr>
+						<tr>
+							<td class="tdname">领域专家4:</td>
+							<td class="tdcontent2"><select id="ExpertID4"
+								name="ExpertID4" class="mydatebox" onchange="checkSelect()"
+								disabled>
+									<option value="0">--请选择--</option>
+
+
+							</select></td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="fee4"
+								id="fee4" value="0">元</td>
+						</tr>
+						<tr>
+							<td class="tdname">领域专家5:</td>
+							<td class="tdcontent2"><select id="ExpertID5"
+								name="ExpertID5" class="mydatebox" onchange="checkSelect()"
+								disabled>
+									<option value="0">--请选择--</option>
+
+
+							</select></td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="fee5"
+								id="fee5" value="0">元</td>
+						</tr>
+						<tr>
+							<td align="center" colspan="3">
+								<div
+									style="margin-top: 5px; margin-left: auto; margin-right: auto; margin-bottom: 5px">
+									<a href="javascript:void(document.Form1.submit())"
+										style="height: 30px; width: 90px; font-size: 16px;"
+										class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>

@@ -29,10 +29,10 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
+                sortName: 'name',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'RoleCode',
+                idField: 'id',
                 checkOnSelect:false, 
                 singleSelect:true, 
                 method:'get',
@@ -40,21 +40,21 @@ $(function () {
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '科技项目名称',width :336,align:'center'},
-				{field : 'PROJECT',title : '计划类别',width : 208,align:'center',sortable:true},
-				{field : 'FIELD',title : '技术领域',width : 160,align:'center'},  
-				{field : 'YEAR',title : '计划年度',width : 160,align:'center',sortable:true},
+				//{field : 'id', title : '编号',width :160,align:'center'},
+				{field : 'name', title : '政府名称',width :336,align:'center'},
+				{field : 'email',title : '邮箱',width : 208,align:'center',sortable:true},
+				{field : 'phone',title : '电话',width : 160,align:'center'},  
+				{field : 'contact',title : '简介',width : 160,align:'center',sortable:true},
 				 { field: 'opt', title: '详情了解', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='javascript:void(document.Form1.submit())' onclick='return sub("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/govinfo/goverInfoDetail?id="+row.id+"'>查看详情</a>";  
                     }
                 }
               
           		]],
           		toolbar: [
                 	  {
-                		text: '<select style="width:150px;" id="state"  name="state" form="Form1"><option value="项目立项评审">项目立项评审</option><option value="项目中期评审">项目中期评审</option><option value="项目结题评审">项目结题评审</option></select>',
+                		  text: '<input  type="text" style="width:150px;margin-right:20px" id="state"  name="state" form="Form1" placeholder="请输入政府名查询">',
                 	  },
                 	  {
                 		text: "搜索",
@@ -62,8 +62,7 @@ $(function () {
                   	  handler: function () {
                   		  sear();
                   	  }
-                	  }
-                  ],
+                	  }],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -72,7 +71,7 @@ $(function () {
                 	var size=opts.pageSize;
                 	var state=document.getElementById("state").value;
                 	$.ajax({
-                        url:'<%=request.getContextPath()%>/test/test10.json',
+                        url:'<%=request.getContextPath()%>/govinfo/workList',
                         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                         type: 'post',
                         dataType : "text",
@@ -106,7 +105,7 @@ $(function () {
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/govinfo/workList',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
@@ -161,7 +160,7 @@ function sear(){
 	var order=opts.sortOrder;
 	var state=document.getElementById("state").value;
     $.ajax({
-        url:'<%=request.getContextPath()%>/test/test10.json',
+        url:'<%=request.getContextPath()%>/govinfo/workList',
         data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
         type: 'post',
         dataType : "text",
@@ -189,7 +188,7 @@ function getDataUpdate(pageNum, pageSize){
         	var order=opts.sortOrder;
         	var state=document.getElementById("state").value;
 			$.ajax({
-                url:'<%=request.getContextPath()%>/test/test10.json',
+                url:'<%=request.getContextPath()%>/govinfo/workList',
                 data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
@@ -220,13 +219,13 @@ function getDataUpdate(pageNum, pageSize){
      <div class="topnav"  >
 	   <div  class="path" >
 	      <span ><font>当前位置:</font></span>
-	      <span ><font >企业项目管理&nbsp;&nbsp; &gt;&nbsp;&nbsp; 企业项目总览</font></span>
+	      <span ><font >管理员&nbsp;&nbsp; &gt;&nbsp;&nbsp; 企业项目总览</font></span>
 	   </div>
      </div> 
 	<form action="" name="Form1" id="Form1">
        	<input type="hidden" id="id" name="id">	 
     <div class="context" style="width:1085px">
-     <div class="titlebox" style="width:100%; margin:0 auto;"><span class="title" >企业科技项目总览</span></div>
+     <div class="titlebox" style="width:100%; margin:0 auto;"><span class="title" >政府总览</span></div>
 		<table id="roleList" style="width:100%;" >
 	    
 	    </table>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ManageMakerInfoDao">	 
+	<resultMap id="MakerInfoMap" type="com.web.project.model.BackManage.Maker" >
+		<id column="MakerID" property="MakerID" jdbcType="INTEGER" /> 
+		<result column="RoleID" property="RoleID" jdbcType="INTEGER" />
+		<result column="LoginName" property="LoginName" jdbcType="VARCHAR" />
+		<result column="Email" property="Email" jdbcType="VARCHAR" />
+		<result column="Contact" property="Contact" jdbcType="VARCHAR" />
+		<result column="Phone" property="Phone" jdbcType="VARCHAR" />
+		<result column="Team" property="Team" jdbcType="VARCHAR" />
+		<result column="Address" property="Address" jdbcType="VARCHAR" />
+		<result column="TeamIntro" property="TeamIntro" jdbcType="VARCHAR" />	
+		<result column="Achievement" property="Achievement" jdbcType="VARCHAR" />	
+		<result column="Field1" property="Field1" jdbcType="VARCHAR" />
+		<result column="Field2" property="Field2" jdbcType="VARCHAR" />
+
+	</resultMap>    
+	
+	
+	<select id="getMakerInfoList" resultMap="MakerInfoMap"> 
+		select * from maker
+	</select>
+
+	<select id="getMakerInfoById" resultMap="MakerInfoMap"> 
+		select* from maker
+		<where>
+		MakerID=#{MakerID}
+		</where>
+	</select>
+	
+		<select id="getMakerInfoByName" resultMap="MakerInfoMap"> 
+		select* from maker
+		<where>
+		LoginName=#{name}
+		</where>
+	</select>
+	
+		<insert id="insertMakerInfo" >
+	    insert into maker(loginName ,team, address, teamIntro, field1, field2,phone, email,achievement)
+	    
+	    values (#{0},#{1},#{2},#{3},#{4},#{5},#{6},#{7},#{8})
+
+    </insert>
+    	<delete id="deleteMakerInfoById"  parameterType="java.util.List">
+		delete from maker
+		<where>
+			MakerID in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+</mapper>

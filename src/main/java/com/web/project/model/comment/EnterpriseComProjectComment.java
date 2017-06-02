@@ -13,8 +13,24 @@ public class EnterpriseComProjectComment {
 	int enterCommmonId;
 	int expertId;
 	String comment;
-	int commentTime;
-	boolean isComment;
+	long  commentTime;
+	boolean iscomment;
+
+	public boolean isIscomment() {
+		return iscomment;
+	}
+
+	public void setIscomment(boolean iscomment) {
+		this.iscomment = iscomment;
+	}
+
+	public long getCommentTime() {
+		return commentTime;
+	}
+
+	public void setCommentTime(long commentTime) {
+		this.commentTime = commentTime;
+	}
 
 	public int getId() {
 		return id;
@@ -48,19 +64,5 @@ public class EnterpriseComProjectComment {
 		this.comment = comment;
 	}
 
-	public int getCommentTime() {
-		return commentTime;
-	}
 
-	public void setCommentTime(int commentTime) {
-		this.commentTime = commentTime;
-	}
-
-	public boolean isComment() {
-		return isComment;
-	}
-
-	public void setComment(boolean isComment) {
-		this.isComment = isComment;
-	}
 }

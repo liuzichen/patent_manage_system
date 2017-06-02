@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ManageAdministratorDao">	 
+	<resultMap id="administratorInfoMap" type="com.web.project.model.BackManage.AdministratorInfo" >
+		<id column="AdministratorID" property="AdministratorID" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="roleiD" property="roleID" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="getAdministratorList"  resultMap="administratorInfoMap">        
+        select * from administrator   	       
+	</select>        
+	
+	<select id="getInfoByLoginName"  resultMap="administratorInfoMap">        
+        select * from administrator
+        <where>
+		name=#{name}
+		</where>   	       
+	</select> 
+	
+	<insert id="insertAdministratorInfo" >
+	    insert into administrator(name,password,roleID)
+	    
+	    values (#{0},#{1},#{2})
+
+    </insert>
+    	<delete id="deleteAdministratorInfoById"  parameterType="java.util.List">
+		delete from administrator
+		<where>
+			AdministratorID in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+	
+</mapper>

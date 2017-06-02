@@ -128,10 +128,10 @@ public class QuestionVo {
 			this.setAnswerTime("");
 		}
 		if(this.isAnswered()==true){
-			this.setState("已回答");
+			this.setState("宸插洖绛�");
 		}
 		else{
-			this.setState("未回答");
+			this.setState("鏈洖绛�");
 		}
 		return this;
 	}

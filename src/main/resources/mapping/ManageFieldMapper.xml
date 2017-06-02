@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ManageFieldDao">
+	<resultMap id="fieldMap" type="com.web.project.model.BackManage.Field">
+		<id column="fieldID" property="fieldID" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getField" resultMap="fieldMap">
+		select * from field
+	</select>
+	
+		<insert id="insertFieldInfo" >
+	    insert into field(name)
+	    values (#{0})
+    </insert>
+    	<delete id="deleteFieldInfoById"  parameterType="java.util.List">
+		delete from field
+		<where>
+			FieldID in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+</mapper>	 

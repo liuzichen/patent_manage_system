@@ -6,133 +6,178 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title> </title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-    
-   <style type="text/css">
-   
-    body {margin:0;padding:15px 15px 0px 15px; font:12px "宋体", arial,sans-serif;}
-    
-    div,ul,li,form,input{padding:0; margin:0;}
-    form{margin-top:40px;}
-    table,td,tr{font-size:12px;}
-    td{margin-top:40px; margin-left:20px;}
-    ul,li{list-style-type:none;}
-    
-    img{border:0;}
-    
-    input{margin:0;padding:0}
-    
-    input,img{line-height:normal}
-    
-    em{font-style:normal;}
-    
-    .clear{clear:both;}
-    
-    a{color:#252525; text-decoration:none;}
-    
-    a:visited{text-decoration:none;}
-    
-    a:hover{color:#ff6600;text-decoration:underline;}
-    
-    a:active{color:#252525;}
-    
-    /*栏目导航*/
-    .maintitlebg{
-	    line-height:30px;
-	 	height:30px;background:url(<%=request.getContextPath()%>/image/35.jpg) repeat-x ; 
-	    color:#0060ae; font-weight:bold; font-size:16px;
-     }
-     
-   .maintitlebg span{
-	    float:right; 
-	    margin-right:5px; color:#c3c3c3;
-	    font-size:14px;
-	    font-weight:normal
-    }
-    
-    
-   .maintitlebg b{
-	    background:url(images/dataicon.png); 
-	    width:17px; 
-	    height:20px; 
-	    display:block;
-	    margin-left:5px;
-     }
-     
-     
-     
-   .title1icon{
-	    background:url(<%=request.getContextPath()%>/image/31.jpg) no-repeat;
-	    width:30px; 
-	    height:30px; 
-	    margin-right:10px;
-	    margin-left:0px;
-	    float:left;
-     }
-     
+<head>
+<base href="<%=basePath%>">
 
-    /*列表*/
-    
-    .titlebox{
-	     margin:auto;
-	     height:156px; 
-	     margin-top:5px
-     }
-    
-    
-    .titlebox li{
-	    background:url(<%=request.getContextPath()%>/image/46.jpg) no-repeat 0px 12px ;
-	    border-bottom:1px dashed #e2e2e2;
-	    LINE-HEIGHT: 26px;
-		HEIGHT: 30px;padding-left:12px;
-	    font-size:14px;
-    }
-    
-    .titlebox li:hover{
-   		background:url(<%=request.getContextPath()%>/image/47.jpg) no-repeat 0px 12px 
-    }
-    
-    .titlebox li span{
-	    float:right;
-	    color:#b7b7b7;
-	    font-size:12px;    
-    }
-    
+<title></title>
 
-    /*快捷菜单*/
-    
-    .srortcut4box{padding:10px}
-    
-    .srortcut4box li{
-	    text-align:center; 
-	    width:15%; 
-	    height:45px;
-	    float:left;
-	    margin-left:80px;
-	    font-size:16px;
-	    font-family:"微软雅黑";
-	    font-weight:bold; 
-	    position:relative;
-    }
-   
-    .srortcut4box img{margin-bottom:8px;}
-    
-  </style>
-    
-    <link rel="stylesheet" type="text/css"  href="<%=request.getContextPath()%>/css/reset.css"/>
-   
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/tipsdiv.js"></script>
-    <script type="text/javascript">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 15px 15px 0px 15px;
+	font: 12px "宋体", arial, sans-serif;
+}
+
+div,ul,li,form,input {
+	padding: 0;
+	margin: 0;
+}
+
+form {
+	margin-top: 40px;
+}
+
+table,td,tr {
+	font-size: 12px;
+}
+
+td {
+	margin-top: 40px;
+	margin-left: 20px;
+}
+
+ul,li {
+	list-style-type: none;
+}
+
+img {
+	border: 0;
+}
+
+input {
+	margin: 0;
+	padding: 0
+}
+
+input,img {
+	line-height: normal
+}
+
+em {
+	font-style: normal;
+}
+
+.clear {
+	clear: both;
+}
+
+a {
+	color: #252525;
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ff6600;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #252525;
+}
+
+/*栏目导航*/
+.maintitlebg {
+	line-height: 30px;
+	height: 30px;
+	background: url(<%= request.getContextPath ()%>/image/35.jpg) repeat-x;
+	color: #0060ae;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.maintitlebg span {
+	float: right;
+	margin-right: 5px;
+	color: #c3c3c3;
+	font-size: 14px;
+	font-weight: normal
+}
+
+.maintitlebg b {
+	background: url(images/dataicon.png);
+	width: 17px;
+	height: 20px;
+	display: block;
+	margin-left: 5px;
+}
+
+.title1icon {
+	background: url(<%= request.getContextPath ()%>/image/31.jpg) no-repeat;
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	margin-left: 0px;
+	float: left;
+}
+
+/*列表*/
+.titlebox {
+	margin: auto;
+	height: 156px;
+	margin-top: 5px
+}
+
+.titlebox li {
+	background: url(<%= request.getContextPath ()%>/image/46.jpg) no-repeat
+		0px 12px;
+	border-bottom: 1px dashed #e2e2e2;
+	LINE-HEIGHT: 26px;
+	HEIGHT: 30px;
+	padding-left: 12px;
+	font-size: 14px;
+}
+
+.titlebox li:hover {
+	background: url(<%= request.getContextPath ()%>/image/47.jpg) no-repeat
+		0px 12px
+}
+
+.titlebox li span {
+	float: right;
+	color: #b7b7b7;
+	font-size: 12px;
+}
+
+/*快捷菜单*/
+.srortcut4box {
+	padding: 10px
+}
+
+.srortcut4box li {
+	text-align: center;
+	width: 15%;
+	height: 45px;
+	float: left;
+	margin-left: 80px;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	position: relative;
+}
+
+.srortcut4box img {
+	margin-bottom: 8px;
+}
+</style>
+
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/reset.css" />
+
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/tipsdiv.js"></script>
+<script type="text/javascript">
         function setId(hrefId){
         	document.getElementById("newsId").value=hrefId;
         	return true;
@@ -140,13 +185,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 </head>
 <body>
- 
- <form method="post" action="#" id="form1" name="form1">
 
-   <input type="hidden" name="newId" id="newsId" value="" />
+	<form method="post" action="#" id="form1" name="form1">
 
-    <div>
-       <%--  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<input type="hidden" name="newId" id="newsId" value="" />
+
+		<div>
+			<%--  <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td style="vertical-align:top">
                     
@@ -256,8 +301,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                
             </tr>
         </table> --%>
-    </div>
+		</div>
 
-    </form>
+	</form>
 </body>
 </html>

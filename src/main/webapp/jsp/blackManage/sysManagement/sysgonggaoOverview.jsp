@@ -29,23 +29,23 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
+                sortName: 'type',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'CODE',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'TITLE', title : '标题',width :336,align:'center'},
-				{field : 'TIME',title : '发布时间',width : 160,align:'center'},
-				{field : 'TYPE',title : '新闻类型',width : 160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
+				{field : 'title', title : '标题',width :336,align:'center'},
+				{field : 'time',title : '发布时间',width : 160,align:'center'},
+				{field : 'type',title : '新闻类型',width : 160,align:'center'},
 				 { field: 'opt', title: '操作', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/blackManage/sysManagement/sysgonggaoDetail.jsp' onclick='alert("+index+")'>查看详情</a>";  
+                    	return "<a href='<%=request.getContextPath()%>/ManageNews/detail?id="+row.id+"'>查看详情</a>";  
                     }
                 }
               
@@ -54,31 +54,29 @@ $(function () {
               	  text: "新建系统公告",
               	  iconCls: "icon-add",
               	  handler: function () {
-              		window.location.href="<%=request.getContextPath()%>/jsp/blackManage/sysManagement/sysgonggaoDeliver.jsp"; 
+              		window.location.href='<%=request.getContextPath()%>/jsp/blackManage/sysManagement/sysgonggaoDeliver.jsp'; 
               	  }
                 },'-',
                 {
-              	  text: "删除系统公告",
+                	text: "删除系统公告",
               	  iconCls: "icon-cut",
               	  handler: function () {
-              		  var post= $('#roleList').datagrid('getSelections');
-              		  var id = new Array([post.length]);
-              		  for(var i=0;i<post.length;i++){
-              			  id[i]=post[i].CODE;
-              			  alert(id[i]);
+              		  var post= $('#roleList').datagrid('getChecked');
+              		  if(post.length==0){
+              			  alert("提示：\n\n请选择删除对象");
               		  }
-              		var opts = $('#roleList').datagrid('options');
-                	var page=opts.pageNumber;
-                	var size=opts.pageSize;
-                	var sort=opts.sortName;
-                	var order=opts.sortOrder;
+              		  else{
+              		  var id = new Array(post.length);
+              		  for(var i=0;i<post.length;i++){
+              			  id[i]=post[i].id;
+              		  }              		
                     $.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
-                        data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"remove":id},
+                        url:'<%=request.getContextPath()%>/ManageNews/deleteNewsInfo',
+                        data:{"remove":id},
                         type: 'post',
                         dataType : "text",
                         traditional:true,
-                    	error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
         	       			alert(XMLHttpRequest.status);
         	       			alert(XMLHttpRequest.readyState);
         	       			alert(textStatus);
@@ -86,15 +84,12 @@ $(function () {
                			   
                         success: function (msg) {
                         	
-                        	var result = eval("("+msg+")");
-        					
-         						$("#roleList").datagrid("loadData",result);
-         					
-                            
-                     
+                        	sear();
+         				
                         }
                     });
                     $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
+              	  }
               	  }                  
                 }],
                 pagination: true,
@@ -145,7 +140,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/ManageNews/list',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",
@@ -166,6 +161,29 @@ $(function () {
                 }
             });
         }
+        
+        function getDataUpdate(pageNum, pageSize){
+			var opts = $('#roleList').datagrid('options');
+        	var sort=opts.sortName;
+        	var order=opts.sortOrder;
+			$.ajax({
+                url:'<%=request.getContextPath()%>/ManageNews/list',
+                data:{"pageNum":pageNum,"pageSize":pageSize,"sort":sort,"order":order},
+                type: 'post',
+                dataType : "text",
+            	error: function(XMLHttpRequest, textStatus, errorThrown) {
+	       			alert(XMLHttpRequest.status);
+	       			alert(XMLHttpRequest.readyState);
+	       			alert(textStatus);
+	       		},
+       			   
+                success: function (msg) {
+                	var result = eval("("+msg+")");
+                	
+ 						$("#roleList").datagrid("loadData",result);
+                }
+            });
+		}
  </script>
 	
 	

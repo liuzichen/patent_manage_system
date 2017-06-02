@@ -15,13 +15,6 @@
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var team="123";
-	var contact="123";
-	var phone="123456";
-	var email="123@";
-	var address="谁知道住哪";
-	var field1="2";
-	var field2="";
 	$("#team").textbox("setValue", team);
 	$("#contact").textbox("setValue", contact); 
 	$("#phone").textbox("setValue", phone); 
@@ -46,38 +39,38 @@ $(document).ready(function(){
 	     	 <form action="" name="Form1" id="Form1">
 	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
-	     	 		<td class="tdname">团队名称：</td>
+	     	 		<td class="tdname">用户名称：</td>
 	     	 		<td class="tdcontent1">
-	     	 		<%=request.getAttribute("team")%>
+	     	 		${detail.loginName}
 	     	 		</td>
-	     	 		<td class="tdname">负责人：</td>
+	     	 		<td class="tdname">团队：</td>
 	     	 		<td class="tdcontent2">
-	     	 		<%=request.getAttribute("contact")%>
+	     	 		${detail.team}
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">联系电话：</td>
 	     	 		<td class="tdcontent1">
-	     	 		<%=request.getAttribute("phone")%>
+	     	 		${detail.phone}
 	     	 		</td>
 	     	 		<td class="tdname">电子邮箱：</td>
 	     	 		<td class="tdcontent2">
-	     	 		<%=request.getAttribute("email")%>
+	     	 		${detail.email}
 	     	 		</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">通讯地址：</td>
 	     	 		<td class="tdcontent1" colspan="3" >
-	     	 		<%=request.getAttribute("address")%>
+	     	 		${detail.address}
 	     	 		</td>
 	     	 	</tr>
 	     	 	<tr>
 	     	 		<td class="tdname">第一领域：</td>
 	     	 		<td class="tdcontent1">
-					<%=request.getAttribute("field1")%>
+					${detail.field1}
 					</td>
 	     	 		<td class="tdname">第二领域：</td>
 	     	 		<td class="tdcontent2">
-	     	 		<%=request.getAttribute("field1")%>
+	     	 		${detail.field2}
 	     	 		</td>
 	     	 	</tr>
 	     	 	<tr>
@@ -85,7 +78,7 @@ $(document).ready(function(){
             	 <td  align="center" height="400px" colspan="3">
 	            	 <div class="tdcontent3">
 		               <textarea id="teamIntro" name="teamIntro" cols="40" rows="12" style="width:90%;height:90%;">
-		               <%=request.getAttribute("teamIntro")%>
+		               ${detail.teamIntro}
 		               </textarea>
 		             </div> 
                  </td>
@@ -95,7 +88,7 @@ $(document).ready(function(){
             	 <td  align="center" height="400px" colspan="3">
 	            	 <div class="tdcontent3">
 		               <textarea id="achievement" name="achievement" cols="40" rows="12" style="width:90%;height:90%;">
-		                  <%=request.getAttribute("achievement")%>
+		                   ${detail.achievement}
 		               </textarea>
 		             </div> 
                  </td>

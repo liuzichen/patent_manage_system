@@ -1,16 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>企业信息维护</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css"/>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css" />
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var channel1="行业主管部门";
@@ -95,72 +103,86 @@ function getEachScienceOffice(){
 </script>
 </head>
 <body>
-<div >
-	<div class="topnav"  >
-	   <div  class="path" >
-	      <span ><font>当前位置:</font></span>
-	      <span ><font >基本信息管理&nbsp;&nbsp; &gt;&nbsp;&nbsp; 基本信息维护</font></span>
-	   </div>
-     </div>
-      <div class="context">
-         <div class="titlebox"><span class="title">企业基本信息</span></div>
-	     <div >
-	     	 <form action="" name="Form1" id="Form1">
-	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-	     	 	<tr>
-	     	 		<td class="tdname">企业名称：</td>
-	     	 		<td class="tdcontent1"></td>
-	     	 		<td class="tdname">法人代码：</td>
-	     	 		<td class="tdcontent2"></td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">注册时间：</td>
-	     	 		<td class="tdcontent1"></td>
-	     	 		<td class="tdname">注册资金：</td>
-	     	 		<td class="tdcontent2"></td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">单位性质：</td>
-	     	 		<td class="tdcontent1" colspan="3" ></td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">申报渠道：</td>
-	     	 		<td class="tdcontent1" colspan="3">
-								<select id="channel1"  name="channel1" onchange="getEachScienceOffice()" style="width:40%">
-								<option value="">--请选择--</option> 
-								<option value="区市县科技局">区市县科技局</option>
-								<option value="高校">高校</option>
-								<option value="行业主管部门">行业主管部门</option>
-								<option value="市科技局">市科技局</option>
-							</select>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	     	 		<select id="channel2"  name="channel2" style="width:40%"> 
-					</select></td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">联系人：</td>
-	     	 		<td class="tdcontent1"><input class="easyui-textbox mydatebox" type="text" name="contact" id="contact" ></td>
-	     	 		<td class="tdname">电子邮箱：</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" type="text" name="email" id="email" ></td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">联系电话：</td>
-	     	 		<td class="tdcontent1"><input class="easyui-textbox mydatebox" type="text" name="phone" id="phone" ></td>
-	     	 		<td class="tdname">邮政编码：</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox" type="text" name="postcode" id="postcode" ></td>
-	     	 	</tr>
-                <tr>
-	             <td align="center" colspan="4">
-	             	<div style="margin-top:15px;margin-left:auto;margin-right:auto; margin-bottom:15px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">保&nbsp;&nbsp;存</a>
-	             	</div>
-		        </td>
-	        </tr>
-	     	 </table>
-	     	 </form>
-	     </div>
-	  </div>
-	  
-</div>
+	<div>
+		<div class="topnav">
+			<div class="path">
+				<span><font>当前位置:</font></span> <span><font>基本信息管理&nbsp;&nbsp;
+						&gt;&nbsp;&nbsp; 基本信息维护</font></span>
+			</div>
+		</div>
+		<div class="context">
+			<div class="titlebox">
+				<span class="title">企业基本信息</span>
+			</div>
+			<div>
+				<form action="" name="Form1" id="Form1">
+					<table class="persional" align="center" border="1" cellpadding="0"
+						cellspacing="0" bordercolor="#DEE5EA">
+						<tr>
+							<td class="tdname">企业名称：</td>
+							<td class="tdcontent1"></td>
+							<td class="tdname">法人代码：</td>
+							<td class="tdcontent2"></td>
+						</tr>
+						<tr>
+							<td class="tdname">注册时间：</td>
+							<td class="tdcontent1"></td>
+							<td class="tdname">注册资金：</td>
+							<td class="tdcontent2"></td>
+						</tr>
+						<tr>
+							<td class="tdname">单位性质：</td>
+							<td class="tdcontent1" colspan="3"></td>
+						</tr>
+						<tr>
+							<td class="tdname">申报渠道：</td>
+							<td class="tdcontent1" colspan="3"><select id="channel1"
+								name="channel1" onchange="getEachScienceOffice()"
+								style="width: 40%">
+									<option value="">--请选择--</option>
+									<option value="区市县科技局">区市县科技局</option>
+									<option value="高校">高校</option>
+									<option value="行业主管部门">行业主管部门</option>
+									<option value="市科技局">市科技局</option>
+							</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="channel2"
+								name="channel2" style="width: 40%">
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdname">联系人：</td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="contact"
+								id="contact"></td>
+							<td class="tdname">电子邮箱：</td>
+							<td class="tdcontent2"><input
+								class="easyui-textbox mydatebox" type="text" name="email"
+								id="email"></td>
+						</tr>
+						<tr>
+							<td class="tdname">联系电话：</td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="phone"
+								id="phone"></td>
+							<td class="tdname">邮政编码：</td>
+							<td class="tdcontent2"><input
+								class="easyui-textbox mydatebox" type="text" name="postcode"
+								id="postcode"></td>
+						</tr>
+						<tr>
+							<td align="center" colspan="4">
+								<div
+									style="margin-top: 15px; margin-left: auto; margin-right: auto; margin-bottom: 15px">
+									<a href="javascript:void(document.Form1.submit())"
+										style="height: 35px; width: 70px; font-size: 16px;"
+										class="easyui-linkbutton button" onclick="return sub();">保&nbsp;&nbsp;存</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>

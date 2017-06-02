@@ -20,6 +20,7 @@ import com.web.project.model.enterprise.EnterpriseCommonProject;
 import com.web.project.model.enterprise.EnterpriseProject;
 import com.web.project.model.maker.MakerProject;
 import com.web.project.service.RePasswordService;
+import com.web.project.service.BackManage.ManageAdministratorService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
 import com.web.project.service.expertService.ExpertInfoService;
 import com.web.project.service.maker.MakerInfoService;
@@ -55,6 +56,9 @@ public class LoginController {
 	@Autowired
 	MakerProjectService makerProjectService;
 	
+	@Autowired
+	ManageAdministratorService administratorService;
+	
 	/**
 	 * 登录验证
 	 */
@@ -67,7 +71,7 @@ public class LoginController {
 		if (!request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY)
 				.toString().equals(new String(code.getBytes("iso-8859-1"), "utf-8"))) {
 			request.getSession().setAttribute("isExist", "2");
-			return "login";
+			return "blackManage/login";
 		}
 		
 		if(new String(type.getBytes("iso-8859-1"), "utf-8").equals("专家用户") ){
@@ -90,6 +94,17 @@ public class LoginController {
 				session.setAttribute("userName", username);
 				session.setAttribute("usertype", "创客用户");
 				session.setAttribute("table", "maker");
+				session.setAttribute("password", password);
+				return "index";
+			}
+		}
+		if(new String(type.getBytes("iso-8859-1"), "utf-8").equals("管理员用户")){
+			if(administratorService.isExist(username, password)==true){
+				session.setAttribute("userId", administratorService.getInfoByLoginName(username).getRoleID());
+				session.setAttribute("type", "blackManage");
+				session.setAttribute("userName", username);
+				session.setAttribute("usertype", "管理员用户");
+				session.setAttribute("table", "administrator");
 				session.setAttribute("password", password);
 				return "index";
 			}
@@ -178,6 +193,47 @@ public class LoginController {
 		}
 		model.put("news3", news);
 		return "maker/loging";
+	}
+	
+	/**
+	 * 登陆成功后，管理员主页显示的信息
+	 */
+	@RequestMapping("blackManage")
+	public String Tologin(ModelMap model, HttpServletRequest request){
+		//系统公告
+				ArrayList<News> newsList = newsService.getNewsByType("系统公告");
+				ArrayList<NewsVo> news = new ArrayList<NewsVo>();		
+				for(int i=0;i< (newsList.size()<4?newsList.size():4);i++){
+					NewsVo newsVo = new NewsVo();
+					newsVo.transfer(newsList.get(i));
+					newsVo.setTime(newsVo.getTime().substring(0, 10));
+					news.add(newsVo);
+				}
+				model.put("news", news);
+				
+				//企业一般项目
+				ArrayList<EnterpriseCommonProject> projectsList = enterpriseProjectService.getEnterpriseCommonProjectLists();
+				ArrayList<EnterpriseCommonProjectVo> commonProjects = new ArrayList<>();
+				for(int i=0;i< (projectsList.size()<4?projectsList.size():4);i++){
+					EnterpriseCommonProjectVo vo = new EnterpriseCommonProjectVo();
+					vo.transfer(projectsList.get(i));
+					vo.setSubmitTime(vo.getSubmitTime().substring(0, 10));
+					commonProjects.add(vo);
+				}
+				model.put("commonProjects", commonProjects);
+				HttpSession session = request.getSession();
+				int id = Integer.parseInt(session.getAttribute("userId").toString());
+				//咨询问题回复
+				ArrayList<Question> questionList = questionService.getQuestionByExpertID(id);
+				ArrayList<QuestionVo> questions = new ArrayList<>();
+				for(int i=0;i< (questionList.size()<4?questionList.size():4);i++){
+					QuestionVo vo = new QuestionVo();
+					vo.transfer(questionList.get(i));
+					vo.setAskTime(vo.getAskTime().substring(0, 10));
+					questions.add(vo);
+				}
+				model.put("questions", questions);	
+		return "blackManage/loging";
 	}
 	
 	/**

@@ -1,18 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>专家评审费发放管理一览表</title>
-	
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css"/>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
-	
+
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/table.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css" />
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
+
 <script type="text/javascript">
 
 $(function () {
@@ -32,26 +40,47 @@ $(function () {
                 sortName: 'DATE',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'CODE',
+                idField: 'id',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
+				//{field : 'id', title : '编号',width :160,align:'center'},
+				//{field : 'give', title : '发放',width :160,align:'center'},
 				{field : 'title', title : '项目名称',width :336,align:'center'},
-				{field : 'time',title : '项目所属领域',width : 160,align:'center'},
-				{field : 'Result',title : '评审结果',width : 160,align:'center'},
-				{field : 'ExpertID',title : '评审专家',width : 160,align:'center'},
-				{field : 'isPayed',title : '评审费发放状态',width : 160,align:'center'},
+				{field : 'field',title : '项目所属领域',width : 160,align:'center'},
+				{field : 'commentType',title : '评审结果',width : 160,align:'center',
+					formatter: function (value,row,index) {        	
+                	return "已评审";
+                }},
+				{field : 'name',title : '评审专家',width : 160,align:'center'},
+				{field : 'fee',title : '评审费金额',width : 160,align:'center'},
 				{field: 'opt', title: '操作', width: 160, align: 'center',
                     formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/blackManage/expertPageManage/pingshengFreeDeliverOPer.jsp' onclick='alert("+index+")'>评审费发放</a>";  
+<%--                     	return "<a href='<%=request.getContextPath()%>/jsp/blackManage/expertPageManage/pingshengFreeDeliverOPer.jsp' onclick='alert("+index+")'>评审费发放</a>";  --%>
+                    	if(row.give==false){
+                    		return "<a href='<%=request.getContextPath()%>/manageExpert/UpdateExpertFee?id="+ row.id +"'>评审费发放</a>";
+                    	}
+                    	else{
+                    	return "评审费已发放";
+                    	}
                     }
                 }
               
           		]],
+          		toolbar: [
+                    	  {
+                    		  text: '<select style="width:230px;" id="state"  name="state"><option value="0">企业一般项目</option><option value="1">创客原创作品</option><option value="2">创客项目作品</option><option value="3">企业科技项目</option></select>',
+                    	  },
+                    	  {
+                    		text: "搜索",
+                      	  iconCls: "icon-search",
+                      	  handler: function () {
+                      		  sear();
+                      	  }
+                    	  }],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -99,9 +128,10 @@ $(function () {
         	var size=opts.pageSize;
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
+        	var state=document.getElementById("state").value;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
-                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
+                url:'<%=request.getContextPath()%>/manageExpert/ExpertFeeList',
+                data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"state":state},
                 type: 'post',
                 dataType : "text",
             	error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -122,31 +152,33 @@ $(function () {
             });
         }
  </script>
-	
-	
-	
+
+
+
 </head>
 
 <body>
 
- <div>
-     <div class="topnav"  >
-	   <div  class="path" >
-	      <span ><font>当前位置:</font></span>
-	      <span ><font >专家评审费发放管理&nbsp;&nbsp; &gt;&nbsp;&nbsp;专家评审费发放管理一览表</font></span>
-	   </div>
-     </div> 
-		 
-    <div class="context" style="width:90%;">
-     <div class="titlebox" style="width:100%; margin:0 auto;"><span class="title" >专家评审费发放管理一览表</span></div>
-       	<!-- 显示总览 -->
-		<table id="roleList" style="width:100%;" >
-	    
-	    </table>
-	    
-	
-   </div>   
- 	     
- </div>
+	<div>
+		<div class="topnav">
+			<div class="path">
+				<span><font>当前位置:</font></span> <span><font>专家评审费发放管理&nbsp;&nbsp;
+						&gt;&nbsp;&nbsp;专家评审费发放管理一览表</font></span>
+			</div>
+		</div>
+
+		<div class="context" style="width: 90%;">
+			<div class="titlebox" style="width: 100%; margin: 0 auto;">
+				<span class="title">专家评审费发放管理一览表</span>
+			</div>
+			<!-- 显示总览 -->
+			<table id="roleList" style="width: 100%;">
+
+			</table>
+
+
+		</div>
+
+	</div>
 </body>
 </html>

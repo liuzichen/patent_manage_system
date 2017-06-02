@@ -29,74 +29,68 @@ $(function () {
                	
                 pageList: [10, 20,30,50],
                 pageSize: 10,
-                sortName: 'DATE',
+                sortName: 'name',
                 sortOrder: 'asc',
                 remoteSort: true,
-                idField: 'CODE',
+                idField: 'administratorID',
                 checkOnSelect:false, 
                 method:'get',
                 frozenColumns :[[
 					{field :'ck',checkbox : true}, 
 				]],
 				columns: [[
-				//{field : 'CODE', title : '编号',width :160,align:'center'},
-				{field : 'Name', title : '登录名',width :336,align:'center'},
-				{field : 'RoleID',title : '管理用户组',width : 160,align:'center'},
-				{field : 'Password',title : '密码',width : 160,align:'center'},
+				//{field : 'administratorID', title : '编号',width :160,align:'center'},
+				{field : 'name', title : '登录名',width :336,align:'center'},
+				{field : 'roleID',title : '管理用户组',width : 160,align:'center'},
+				{field : 'password',title : '密码',width : 160,align:'center'},
 				 { field: 'opt', title: '操作', width: 160, align: 'center',
-                    formatter: function (value,row,index) {
-                    	return "<a href='<%=request.getContextPath()%>/jsp/blackManage/sysManagement/guanliyuanUpdate.jsp' onclick='alert("+index+")'>更改系统管理用户</a>";  
-                    }
-                }
-              
+	                    formatter: function (value,row,index) {
+	                    	  
+	                    }
+	                }
           		]],
-          		toolbar: [{//在dategrid表单的头部添加按钮
-              	  text: "新建系统管理用户",
-              	  iconCls: "icon-add",
-              	  handler: function () {
-              	  window.location.href="<%=request.getContextPath()%>/jsp/blackManage/sysManagement/guanliyuanCreate.jsp"; 
-              	  }
-                },'-',
-                {
-              	  text: "删除系统管理用户",
-              	  iconCls: "icon-cut",
-              	  handler: function () {
-              		  var post= $('#roleList').datagrid('getSelections');
-              		  var id = new Array([post.length]);
-              		  for(var i=0;i<post.length;i++){
-              			  id[i]=post[i].CODE;
-              			  alert(id[i]);
-              		  }
-              		var opts = $('#roleList').datagrid('options');
-                	var page=opts.pageNumber;
-                	var size=opts.pageSize;
-                	var sort=opts.sortName;
-                	var order=opts.sortOrder;
-                    $.ajax({
-                        url:'<%=request.getContextPath()%>/test/test9.json',
-                        data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order,"remove":id},
-                        type: 'post',
-                        dataType : "text",
-                        traditional:true,
-                    	error: function(XMLHttpRequest, textStatus, errorThrown) {
-        	       			alert(XMLHttpRequest.status);
-        	       			alert(XMLHttpRequest.readyState);
-        	       			alert(textStatus);
-        	       		},
-               			   
-                        success: function (msg) {
-                        	
-                        	var result = eval("("+msg+")");
-        					
-         						$("#roleList").datagrid("loadData",result);
-         					
-                            
-                     
-                        }
-                    });
-                    $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
-              	  }                  
-                }],
+          		toolbar: [{
+                    	  text: "添加系统管理员",
+                    	  iconCls: "icon-add ",
+                    	handler: function () {
+                    		window.location.href='<%=request.getContextPath()%>/jsp/blackManage/sysManagement/guanliyuanCreate.jsp';
+                    	  }
+                      },'-',
+              	  {
+                      	text: "删除系统管理员",
+                      	  iconCls: "icon-cut",
+                      	  handler: function () {
+                      		  var post= $('#roleList').datagrid('getChecked');
+                      		  if(post.length==0){
+                      			  alert("提示：\n\n请选择删除对象");
+                      		  }
+                      		  else{
+                      		  var administratorID = new Array(post.length);
+                      		  for(var i=0;i<post.length;i++){
+                      			administratorID[i]=post[i].administratorID;
+                      		  }              		
+                            $.ajax({
+                                url:'<%=request.getContextPath()%>/administrator/deleteAdministratorInfo',
+                                data:{"remove":administratorID},
+                                type: 'post',
+                                dataType : "text",
+                                traditional:true,
+                                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                	       			alert(XMLHttpRequest.status);
+                	       			alert(XMLHttpRequest.readyState);
+                	       			alert(textStatus);
+                	       		},
+                       			   
+                                success: function (msg) {
+                                	
+                                	sear();
+                 				
+                                }
+                            });
+                            $('#roleList').datagrid('clearSelections').datagrid("clearChecked");
+                      	  }
+                      	  }                  
+                        }],
                 pagination: true,
                 rownumbers: true,
                 onSortColumn:function(sort, order){
@@ -145,7 +139,7 @@ $(function () {
         	var sort=opts.sortName;
         	var order=opts.sortOrder;
             $.ajax({
-                url:'<%=request.getContextPath()%>/test/test9.json',
+                url:'<%=request.getContextPath()%>/administrator/administratorInfoList',
                 data:{"pageNum":page,"pageSize":size,"sort":sort,"order":order},
                 type: 'post',
                 dataType : "text",

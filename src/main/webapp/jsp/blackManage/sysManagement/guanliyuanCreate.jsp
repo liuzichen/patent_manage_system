@@ -4,188 +4,73 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加系统管理员</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css">
+<title>管理员信息维护</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css"/>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
-<style type="text/css">
-	body{
-		margin:0;
-		padding:0; 
-		font:12px "宋体", arial,sans-serif;
-	}
-	.star{
-		color:#CD0000;
-		width:120px
-	}
-	.box{width:240px;}
-</style>
-
 <script type="text/javascript">
+function sub(){
+	var name=document.getElementById("name").value;
+	var roleID=document.getElementById("roleID").value;
+	var password=document.getElementById("password").value;
 
-$(document).ready(function(){
-	var isExist ="<%=request.getSession().getAttribute("isExist")%>";
-	if(isExist=="1"){
-		alert("提示：\n\n注册成功！");
-		window.location.href="#"; 
+	if(name==""){
+		alert("提示：\n\n请填写管理员姓名！");
+		return false;
 	}
-	if(isExist=="2"){
-		alert("提示：\n\n注册失败！");
+	if(password==""){
+		alert("提示：\n\n请填写密码！");
+		return false;
 	}
-});
-
-
-var ajaxstate=0;
-function txtisnull(id){
-	var txt=document.getElementById(id).value;
-	if(txt=="")
-	{
+	if(roleID==""){
+		alert("提示：\n\n请填写管理权限组！");
+		return false;
+	}
+	if(confirm("确认保存更改？")){
 		return true;
+    }
+  else
+    {
+	    return false;
 	}
-	else{
-		return false;
-	}
-}
-
-
-function checkForm()
-{
-	var num=0;
-	if(txtisnull("AdministratorID")){num++;}
-	if(txtisnull("Name"))
-	{
-		num++;
-	}
-	if(txtisnull("Password"))
-	{
-		num++;
-	}
-	if(txtisnull("Password"))
-	{
-		num++;
-	}
-	
-	if(txtisnull("RoleID")){num++;}
-	
-
-		
-	if(num!=0)
-	{
-		alert("您有必填信息没有填写！");
-		return false;
-	}
-	if(!($("#Name").val().length>5&&$("#Name").val().length<41))
-	{
-		alert("提示：\n\n用户名位数错误！"); 
-		return false; 
-	}
-	if(!($("#Password").val().length>4&&$("#Password").val().length<20))
-	{
-		alert("提示：\n\n密码位数错误！"); 
-		return false;  
-	}
-	if($("#Password").val()!=$("#Password").val())
-	{
-		alert("提示：\n\n两次密码输入不一致！"); 
-		return false;  
-	}
-	usernameajax('Name');
-	if(ajaxstate==1){
-		alert("提示：\n\n用户名不可用！"); 
-		return false;
-	}
-	else{
-		$("#Form1").submit();
-	}
-}
-function usernameajax(objid)
-{
-	var txtval=$("#"+objid).val();
-	$.ajax({
-		type: "POST",
-		async: false,
-		url: "",    
-		data: {username:txtval},   
-		dataType : "text",
-		success: function(msg){
-				if(msg=="success")
-				{
-					ajaxstate=0; //验证成功
-				}
-				else
-				{
-					ajaxstate=1;
-				}
-			}     
-	}); 
 }
 </script>
-
 </head>
 <body>
-<%request.getSession().setAttribute("isExist","0");%>
 <div >
 	<div class="topnav"  >
 	   <div  class="path" >
 	      <span ><font>当前位置:</font></span>
-	      <span ><font >系统管理&nbsp;&nbsp; &gt;&nbsp;&nbsp; 添加系统管理员</font></span>
+	      <span ><font >管理员信息查看&nbsp;&nbsp; &gt;&nbsp;&nbsp;管理员添加</font></span>
 	   </div>
      </div>
       <div class="context">
-         <div class="titlebox"><span class="title">添加系统管理员</span></div>
+         <div class="titlebox"><span class="title">企业基本信息</span></div>
 	     <div >
-	     	 <form action="" name="Form1" id="Form1">
-	     	 <table class="persional"  border="0" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
+	     	 <form action="<%=request.getContextPath()%>/administrator/insertAdministratorInfo" name="Form1" id="Form1">
+	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
 	     	 	<tr>
-	     	 		<td class="tdname" style="background-color:white">用户登录ID：</td>
-	     	 		<td class="tdcontent1" colspan="3"><input class="easyui-textbox box"  type="text" name="AdministratorID" id="AdministratorID" ></td>
-	     	 		<td class="star">*&nbsp;请确保长度为6~40</td>
-	     	 	</tr>
-	     	 	
-	     	 	<tr>
-	     	 		<td class="tdname" style="background-color:white">用户名：</td>
-	     	 		<td class="tdcontent1" colspan="3"><input class="easyui-textbox box" type="text" name="Name" id="Name" ></td>
-	     	 		<td class="star">*&nbsp;请确保长度为6~40</td>
-	     	 	</tr>
-	     	 	
-	     	 	<tr>
-	     	 		<td class="tdname" style="background-color:white">设置密码：</td>
-	     	 		<td class="tdcontent1" colspan="3"><input class="easyui-textbox box" type="text" name="Password" id="Password" ></td>
-	     	 		<td class="star">*&nbsp;请确保长度为6~40</td>
+	     	 		<td class="tdname" colspan = "2">管理员名称：</td>
+	     	 		<td class="tdcontent1" colspan = "2"><input class="easyui-textbox mydatebox" type="text" name="name" id="name" ></td>
 	     	 	</tr>
 	     	 	<tr>
-	     	 		<td class="tdname" style="background-color:white">确认密码：</td>
-	     	 		<td class="tdcontent1" colspan="3"><input class="easyui-textbox box" type="text" name="Password" id="Password" ></td>
-	     	 		<td class="star">*&nbsp;请确保长度为6~40</td>
+	     	 		<td class="tdname" colspan = "2">管理员权限组：</td>
+	     	 		<td class="tdcontent1" colspan = "2"><input class="easyui-textbox mydatebox" type="text" name="roleID" id="roleID" ></td>
 	     	 	</tr>
 	     	 	<tr>
-	     	 		<td class="tdname" style="background-color:white">用户组选择：</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="RoleID"  name="RoleID" style="width:245px;margin-left:100px;">
-								<option value="">--请选择--</option> 
-								<%-- <%List  list= (ArrayList)request.getAttribute("RoleID");
-								for(int i=0;i<list.size();i++){
-									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%> --%>
-							</select>
-	     	 		</td>
+	     	 		<td class="tdname" colspan = "2">密码：</td>
+	     	 		<td class="tdcontent1" colspan = "2"><input class="easyui-textbox mydatebox" type="text" name="password" id="password" ></td>
 	     	 	</tr>
-	     	 	
-	     	 	     	 	
-            	
-            </table>
-            <table class="persional" style="width:100%;background-color:#F2F2F2" border="0" cellpadding="0" cellspacing="0"  bordercolor="#DEE5EA">
-             <tr>
-	             <td align="center" style="width:100%;" >
-	             	<div style="margin-top:10px;margin-left:auto;margin-right:auto; margin-bottom:10px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;align:center;" class="easyui-linkbutton button" onclick="return checkForm();">增加用户</a>
+                <tr>
+	             <td align="center" colspan="4">
+	             	<div style="margin-top:15px;margin-left:auto;margin-right:auto; margin-bottom:15px" >
+	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">保&nbsp;&nbsp;存</a>
 	             	</div>
 		        </td>
 	        </tr>
-	        
-	           
 	     	 </table>
 	     	 </form>
 	     </div>

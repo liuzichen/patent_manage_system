@@ -83,7 +83,7 @@ function sub(){
 				<form method="post" action=<%=urlString%> name="Form1" id="Form1">
 					<input type="hidden" name="sort" id="sort">
 					<table class="persional" align="center" border="1" cellpadding="0"
-						cellspacing="0" bordercolor="#DEE5EA" >
+						cellspacing="0" bordercolor="#DEE5EA">
 						<tr>
 							<td class="tdname">创新成果名称：</td>
 							<td class="tdcontent1">${detail.title}</td>

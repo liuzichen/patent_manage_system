@@ -1,16 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>合作需求申报</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css"/>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/table.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/themes/gray/easyui.css" />
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/jquery.easyui.min.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var title="1";
@@ -65,63 +73,78 @@ function sub(){
 
 </head>
 <body>
-<div >
-	<div class="topnav"  >
-	   <div  class="path" >
-	      <span ><font>当前位置:</font></span>
-	      <span ><font >合作需求&nbsp;&nbsp; &gt;&nbsp;&nbsp; 我的合作意向</font></span>
-	   </div>
-     </div>
-      <div class="context">
-         <div class="titlebox"><span class="title">合作意向提交</span></div>
-	     <div >
-	     	 <form action="" name="Form1" id="Form1">
-	     	 <table class="persional" align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#DEE5EA">
-	     	 	<tr>
-	     	 		<td class="tdname">标题：</td>
-	     	 		<td class="tdcontent1" ><input class="easyui-textbox mydatebox"  type="text" name="title" id="title" ></td>	     	 		
-	     	 		<td class="tdname">合作领域：</td>
-	     	 		<td class="tdcontent2">
-	     	 		<select id="field"  name="field" class="mydatebox">
-								<option value="">--请选择--</option> 
-								<%List  list= (ArrayList)request.getAttribute("field");
+	<div>
+		<div class="topnav">
+			<div class="path">
+				<span><font>当前位置:</font></span> <span><font>合作需求&nbsp;&nbsp;
+						&gt;&nbsp;&nbsp; 我的合作意向</font></span>
+			</div>
+		</div>
+		<div class="context">
+			<div class="titlebox">
+				<span class="title">合作意向提交</span>
+			</div>
+			<div>
+				<form action="" name="Form1" id="Form1">
+					<table class="persional" align="center" border="1" cellpadding="0"
+						cellspacing="0" bordercolor="#DEE5EA">
+						<tr>
+							<td class="tdname">标题：</td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="title"
+								id="title"></td>
+							<td class="tdname">合作领域：</td>
+							<td class="tdcontent2"><select id="field" name="field"
+								class="mydatebox">
+									<option value="">--请选择--</option>
+									<%List  list= (ArrayList)request.getAttribute("field");
 								for(int i=0;i<list.size();i++){
-									Field fd = (Field)list.get(i);%><option value="<%=fd.getFieldId()%>"><%=fd.getName()%></option><%}%>
-							</select>
-	     	 		</td>
-	     	 	</tr>
-	     	 	<tr>
-	     	 		<td class="tdname">联系人：</td>
-	     	 		<td class="tdcontent1"><input class="easyui-textbox mydatebox"  type="text" name="contact" id="contact" ></td>
-	     	 		<td class="tdname">联系电话：</td>
-	     	 		<td class="tdcontent2"><input class="easyui-textbox mydatebox"  type="text" name="phone" id="phone" ></td>
-	     	 	</tr>
-	     	 	<tr>             
-             	 <td  class="tdname"  align="center" >团队简介</td>
-            	 <td  align="center" height="400px"  colspan="3">
-	            	<div class="tdcontent3">
-		               <textarea id="teamIntro" name="teamIntro" cols="40" rows="12" style="width:90%;height:100%;">1111</textarea>
-		             </div> 
-             </tr>	     	 	
-            	 <tr>             
-             	 <td  class="tdname"  align="center" >合作内容详情</td>
-            	 <td  align="center" height="400px"  colspan="3">
-	            	 <div class="tdcontent3">
-		               <textarea id="description" name="description" cols="40" rows="12" style="width:90%;height:100%;"></textarea>
-		             </div> 
-             </tr>
-             <tr>
-	             <td align="center" colspan="4">
-	             	<div style="margin-top:20px;margin-left:auto;margin-right:auto; margin-bottom:20px" >
-	             		<a href="javascript:void(document.Form1.submit())" style="height:35px;width:70px;font-size:16px;" class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
-	             	</div>
-		        </td>
-	        </tr>   
-	     	 </table>
-	     	 </form>
-	     </div>
-	  </div>
-	  
-</div>
+									Field fd = (Field)list.get(i);%><option
+										value="<%=fd.getFieldId()%>"><%=fd.getName()%></option>
+									<%}%>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdname">联系人：</td>
+							<td class="tdcontent1"><input
+								class="easyui-textbox mydatebox" type="text" name="contact"
+								id="contact"></td>
+							<td class="tdname">联系电话：</td>
+							<td class="tdcontent2"><input
+								class="easyui-textbox mydatebox" type="text" name="phone"
+								id="phone"></td>
+						</tr>
+						<tr>
+							<td class="tdname" align="center">团队简介</td>
+							<td align="center" height="400px" colspan="3">
+								<div class="tdcontent3">
+									<textarea id="teamIntro" name="teamIntro" cols="40" rows="12"
+										style="width: 90%; height: 100%;">1111</textarea>
+								</div>
+						</tr>
+						<tr>
+							<td class="tdname" align="center">合作内容详情</td>
+							<td align="center" height="400px" colspan="3">
+								<div class="tdcontent3">
+									<textarea id="description" name="description" cols="40"
+										rows="12" style="width: 90%; height: 100%;"></textarea>
+								</div>
+						</tr>
+						<tr>
+							<td align="center" colspan="4">
+								<div
+									style="margin-top: 20px; margin-left: auto; margin-right: auto; margin-bottom: 20px">
+									<a href="javascript:void(document.Form1.submit())"
+										style="height: 35px; width: 70px; font-size: 16px;"
+										class="easyui-linkbutton button" onclick="return sub();">提&nbsp;&nbsp;交</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>
