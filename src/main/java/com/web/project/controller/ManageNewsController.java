@@ -1,4 +1,9 @@
 package com.web.project.controller;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,6 +80,7 @@ public class ManageNewsController {
 			@RequestParam(value="type")String type,
 			@RequestParam(value="content")String content,
 			@RequestParam(value="fujianType")String fujianType,
+			@RequestParam(value = "upload") String filePath,
 			@RequestParam(value="fujianName")String fujianName,ModelMap model) throws UnsupportedEncodingException{
 		
         title = new String(title.getBytes("iso-8859-1"), "utf-8");
@@ -83,7 +89,27 @@ public class ManageNewsController {
         fujianType = new String(fujianType.getBytes("iso-8859-1"), "utf-8");
         fujianName = new String(fujianName.getBytes("iso-8859-1"), "utf-8");
         Long time = System.currentTimeMillis()/1000;
-        newsService.insertNewsInfo(title ,type, time, fujianType, fujianName,content);
+        filePath = new String(filePath.getBytes("iso-8859-1"), "utf-8");
+
+        byte[] buffer = null;  
+        try {  
+            File file = new File(filePath);  
+            FileInputStream fis = new FileInputStream(file);  
+            ByteArrayOutputStream bos = new ByteArrayOutputStream(1000);  
+            byte[] b = new byte[1000];  
+            int n;  
+            while ((n = fis.read(b)) != -1) {  
+                bos.write(b, 0, n);  
+            }  
+            fis.close();  
+            bos.close();  
+            buffer = bos.toByteArray();  
+        } catch (FileNotFoundException e) {  
+            e.printStackTrace();  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }
+        newsService.insertNewsInfo(title ,type, time,buffer, fujianType, fujianName,content);
 		return "blackManage/sysManagement/sysgonggaoOverview";
     }
 	

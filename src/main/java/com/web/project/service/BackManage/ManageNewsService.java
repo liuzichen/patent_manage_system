@@ -33,8 +33,8 @@ public class ManageNewsService {
 		return newsDao.getNewsInfo();
 	}
 	
-	public void insertNewsInfo(String title ,String type, Long  time, String fujianType, String fujianName,String content){
-		newsDao.insertNewsInfo(title ,type, time, fujianType, fujianName,content);
+	public void insertNewsInfo(String title ,String type, Long  time,byte [] fujian, String fujianType, String fujianName,String content){
+		newsDao.insertNewsInfo(title ,type, time,fujian, fujianType, fujianName,content);
 	}
 	
 	public void deleteNewsInfoById(ArrayList<Integer> id){

@@ -19,7 +19,7 @@ public interface ManageNewsDao {
 	
 	public News getNewsDetailById(int id);
 	
-	public void insertNewsInfo(String title ,String type, Long  time, String fujianType, String fujianName,String content);
+	public void insertNewsInfo(String title ,String type, Long  time,byte [] fujian, String fujianType, String fujianName,String content);
 	
 	public void deleteNewsInfoById(ArrayList<Integer> id);
 }

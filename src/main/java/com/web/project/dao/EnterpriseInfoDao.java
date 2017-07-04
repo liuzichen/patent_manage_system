@@ -24,6 +24,7 @@ public interface EnterpriseInfoDao {
 	
 	public Enterprise getEnterpriseInfoById(int id);
 	
+	
 	public String  getEnterpriseNamebyId(int id);
 
 	public EnterpriseFinance getEnterpriseFinanceByIdAndYear(int enterpriseId,int year);
@@ -75,4 +76,8 @@ public interface EnterpriseInfoDao {
 	public void insertEnterpriseCorporator(HashMap<String, List<EnterpriseCorporator>> corporatorMap);
 	
 	public void deleteEnterpriseCorporators(int id);
+
+	public Enterprise getEnterpriseInfoByName(String name);
+	
+	public void insertEnterInfo(Enterprise enter);
 }

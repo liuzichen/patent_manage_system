@@ -201,11 +201,47 @@
 		<result column="cellPhone" property="cellPhone" jdbcType="VARCHAR" />
 		<result column="mobilePhone" property="mobilePhone" jdbcType="VARCHAR" />
 	</resultMap>
-
+	
+<resultMap id="enterpriseMap2" type="com.web.project.model.enterprise.Enterprise">
+	<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="companyCode" property="companyCode" jdbcType="VARCHAR" />
+		<result column="applyType" property="applyType" jdbcType="VARCHAR" />
+		<result column="legalPerson" property="legalPerson" jdbcType="VARCHAR" />
+		<result column="loginName" property="loginName" jdbcType="VARCHAR" />
+		<result column="passWord" property="passWord" jdbcType="VARCHAR" />
+		<result column="registrationTime" property="registrationTime"
+			jdbcType="DATE" />
+		<result column="registeredCapital" property="registeredCapital"
+			jdbcType="VARCHAR" />
+		<result column="registrationMoney" property="registrationMoney"
+			jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="postcode" property="postcode" jdbcType="VARCHAR" />
+		<result column="channel1" property="channel1" jdbcType="VARCHAR" />
+		<result column="channel2" property="channel2" jdbcType="VARCHAR" />
+		<result column="mobilePhone" property="mobilePhone" jdbcType="VARCHAR" />
+		<result column="cellPhone" property="cellPhone" jdbcType="VARCHAR" />
+		</resultMap>
 	<select id="getEnterpriseInfoById" resultMap="enterpriseMap">
 		select * from enterprise
 		<where>
 			id=#{id}
+		</where>
+	</select>
+	
+	<insert id="insertEnterInfo" parameterType="com.web.project.model.enterprise.Enterprise"
+		keyProperty="id" useGeneratedKeys="true">
+		insert into
+		enterprise(loginName,passWord,name,companyCode,registrationTime,registrationMoney,applyType,channel1,channel2,contact,email,mobilePhone)
+		VALUES
+		(#{loginName},#{passWord},#{name},#{companyCode},#{registrationTime},#{registrationMoney},#{applyType},#{channel1},#{channel2},#{contact},#{email},#{mobilePhone}
+		)
+	</insert>
+	<select id="getEnterpriseInfoByName" resultMap="enterpriseMap">
+		select * from enterprise
+		<where>
+			loginname=#{name}
 		</where>
 	</select>
 

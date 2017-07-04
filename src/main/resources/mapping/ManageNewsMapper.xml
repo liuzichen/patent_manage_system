@@ -8,7 +8,7 @@
 		<result column="time" property="time" jdbcType="INTEGER" />
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="content" property="content" jdbcType="VARCHAR" />
-		<result column="fujian" property="fujian" jdbcType="VARCHAR" />
+		<result column="fujian" property="fujian" jdbcType="BLOB" />
 		<result column="fujiantype" property="fujianType" jdbcType="VARCHAR" />
 		<result column="fujianname" property="fujianName" jdbcType="VARCHAR" />		
 	</resultMap>    
@@ -34,9 +34,9 @@
 	</select>
 	
 		<insert id="insertNewsInfo" >
-	    insert into makernews(title ,type, time, fujianType, fujianName,content)
+	    insert into makernews(title ,type, time,fujian, fujianType, fujianName,content)
 	    
-	    values (#{0},#{1},#{2},#{3},#{4},#{5})
+	    values (#{0},#{1},#{2},#{3},#{4},#{5},#{6})
 
     </insert>
     	<delete id="deleteNewsInfoById"  parameterType="java.util.List">

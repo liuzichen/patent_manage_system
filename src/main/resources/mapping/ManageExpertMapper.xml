@@ -3,7 +3,7 @@
 	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.project.dao.ManageMakerInfoDao">	 
 	<resultMap id="MakerInfoMap" type="com.web.project.model.BackManage.Maker" >
-		<id column="MakerID" property="MakerID" jdbcType="INTEGER" /> 
+		<id column="id" property="MakerID" jdbcType="INTEGER" /> 
 		<result column="RoleID" property="RoleID" jdbcType="INTEGER" />
 		<result column="LoginName" property="LoginName" jdbcType="VARCHAR" />
 		<result column="Email" property="Email" jdbcType="VARCHAR" />
@@ -26,7 +26,7 @@
 	<select id="getMakerInfoById" resultMap="MakerInfoMap"> 
 		select* from maker
 		<where>
-		MakerID=#{MakerID}
+		id=#{MakerID}
 		</where>
 	</select>
 	
@@ -46,7 +46,7 @@
     	<delete id="deleteMakerInfoById"  parameterType="java.util.List">
 		delete from maker
 		<where>
-			MakerID in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			id in <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
 				#{item}
 			</foreach>
 		</where>

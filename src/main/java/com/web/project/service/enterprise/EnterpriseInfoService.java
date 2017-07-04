@@ -33,6 +33,9 @@ public class EnterpriseInfoService {
     public Enterprise getEnterpriseInfoById(int id){
     	return enterpriseInfoDao.getEnterpriseInfoById(id);
     }
+    public Enterprise getEnterpriseInfoByName(String name){
+    	return enterpriseInfoDao.getEnterpriseInfoByName(name);
+    }
 	
 	public String  getEnterpriseNamebyId(int id){
 		return enterpriseInfoDao.getEnterpriseNamebyId(id);
@@ -136,6 +139,10 @@ public class EnterpriseInfoService {
 	
 	public void deleteEnterpriseCorporators(int id){
 		enterpriseInfoDao.deleteEnterpriseCorporators(id);
+	}
+	
+    public void insertEnterInfo(Enterprise enter){
+		enterpriseInfoDao.insertEnterInfo(enter);
 	}
 	
 
