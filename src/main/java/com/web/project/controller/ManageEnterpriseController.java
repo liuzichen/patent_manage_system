@@ -23,16 +23,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.project.model.Field;
+import com.web.project.model.BackManage.Channel;
 import com.web.project.model.BackManage.ManageEnterprise;
 import com.web.project.model.comment.EnterpriseComProjectComment;
 import com.web.project.model.comment.MakerComWorksComment;
+import com.web.project.model.enterprise.Enterprise;
 import com.web.project.model.enterprise.EnterpriseCommonProject;
 import com.web.project.model.enterprise.EnterpriseProject;
 import com.web.project.model.expert.ExpertFee;
 import com.web.project.model.expert.ExpertInfo;
 import com.web.project.model.maker.MakerCommonWorks;
+import com.web.project.model.maker.MakerInfo;
 import com.web.project.service.FieldService;
+import com.web.project.service.BackManage.ManageChannelService;
 import com.web.project.service.BackManage.ManageEnterpriseService;
+import com.web.project.service.enterprise.EnterpriseInfoService;
 import com.web.project.service.enterprise.EnterpriseProjectService;
 import com.web.project.service.expertService.CommentService;
 import com.web.project.service.expertService.ExpertFeeService;
@@ -41,6 +46,7 @@ import com.web.project.vo.EnterComWorkCommentVo;
 import com.web.project.vo.EnterpriseCommonProjectVo;
 import com.web.project.vo.MakerComWorkCommentVo;
 import com.web.project.vo.MakerCommonWorksVo;
+import com.web.project.vo.ManageChannelVo;
 import com.web.project.vo.ManageEnterpriseVo;
 
 /**
@@ -71,6 +77,12 @@ public class ManageEnterpriseController {
 	
 	@Autowired
 	ExpertFeeService expertFeeService;
+	
+	@Autowired
+	ManageChannelService manageChannelService;
+	
+	@Autowired
+	EnterpriseInfoService enterpriseInfoService;
 	/**
 	 * 鍒涘椤圭洰浣滃搧鍒楄〃
 	 */
@@ -425,5 +437,83 @@ public class ManageEnterpriseController {
 			model.put("fieldList", fields);
 			return "blackManage/expertPageManage/qiyeyibanExpertSperate";
 		}
+	}
+	
+	@RequestMapping("getchannel2List")
+	@ResponseBody
+	public String getchannel2List(
+			@RequestParam(value = "first") final String txtval,ModelMap model){
+		ArrayList<Channel> channel=manageChannelService.getChannel(txtval);
+//		model.put("detail", channel);
+		ArrayList<ManageChannelVo> manageChannelVos = new ArrayList<ManageChannelVo>();
+
+		for (int i=0 ; i < channel.size(); i++) {
+			ManageChannelVo manageChannelVo = new ManageChannelVo();
+			manageChannelVo.transfer(channel.get(i));
+			manageChannelVos.add(manageChannelVo);
+		}
+		HashMap hashMap = new HashMap();
+		hashMap.put("msg", manageChannelVos);
+		String result1 = JSONArray.fromObject(hashMap).toString();
+		
+		String result = result1.substring(1, result1.length() - 1);
+		System.out.println(result);
+		return result;
+//		return "register_company";
+	}	
+	@RequestMapping("loginNameIsExist")
+	@ResponseBody
+	public String loginNameIsExist(@RequestParam(value = "username")String loginName){
+		Enterprise enter=enterpriseInfoService.getEnterpriseInfoByName(loginName);
+		if(enter==null){
+			return "success";
+		}
+		else{
+			
+			return "false";
+		}		
+	}
+	@RequestMapping("enterRegister")
+	public String insertEnterInfo(
+			@RequestParam(value="register_username") String username,
+			@RequestParam(value="register_password") String password,
+			@RequestParam(value="register_company") String company,
+			@RequestParam(value="register_time") String time,
+			@RequestParam(value="register_code") String code,
+			@RequestParam(value="register_money") String money,
+			@RequestParam(value="register_sort") String sort,
+			@RequestParam(value="register_channel1") String channel1,
+			@RequestParam(value="register_channel2") String channel2,
+			@RequestParam(value="register_contact") String contact,
+			@RequestParam(value="register_email") String email,
+			@RequestParam(value="register_phone") String phone
+			)throws UnsupportedEncodingException{
+		username = new String(username.getBytes("iso-8859-1"), "utf-8");
+		password = new String(password.getBytes("iso-8859-1"), "utf-8");
+		company = new String(company.getBytes("iso-8859-1"), "utf-8");
+		time = new String(time.getBytes("iso-8859-1"), "utf-8");
+		code = new String(code.getBytes("iso-8859-1"), "utf-8");
+		money = new String(money.getBytes("iso-8859-1"), "utf-8");
+		sort = new String(sort.getBytes("iso-8859-1"), "utf-8");
+		channel1 = new String(channel1.getBytes("iso-8859-1"), "utf-8");
+		channel2 = new String(channel2.getBytes("iso-8859-1"), "utf-8");
+		contact = new String(contact.getBytes("iso-8859-1"), "utf-8");
+		email = new String(email.getBytes("iso-8859-1"), "utf-8");
+		phone = new String(phone.getBytes("iso-8859-1"), "utf-8");
+		Enterprise enter=new Enterprise();
+		enter.setLoginName(username);
+		enter.setPassWord(password);
+		enter.setName(company);
+		enter.setRegistrationTime(time);
+		enter.setCompanyCode(code);
+		enter.setRegistrationMoney(money);
+		enter.setApplyType(sort);
+		enter.setChannel1(channel1);
+		enter.setChannel2(channel2);
+		enter.setContact(contact);
+		enter.setEmail(email);
+		enter.setMobilePhone(phone);
+		enterpriseInfoService.insertEnterInfo(enter);
+		return "login";
 	}
 }

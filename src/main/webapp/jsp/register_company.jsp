@@ -285,7 +285,7 @@ function checkForm()
 		return false;
 	}
 	else{
-		$("#info_form1").submit();
+		$("#register_Form").submit();
 	}
 }
 function checkcode(objid){
@@ -299,7 +299,7 @@ function usernameajax(objid)
 	$.ajax({
 		type: "POST",
 		async: false,
-		url: "",    
+		url: "<%=request.getContextPath()%>/manageEnterprise/loginNameIsExist",    
 		data: {username:txtval},   
 		dataType : "text",
 		success: function(msg){
@@ -314,13 +314,14 @@ function usernameajax(objid)
 			}     
 	}); 
 }
+
 function getEachScienceOffice(){
 	var txtval=$("#register_channel1").val();
 	if(txtval!=""){
 	$.ajax({
 		type: "POST",
 		async: false,
-		url: "<%=request.getContextPath()%>/channel2.do",    
+		url: "<%=request.getContextPath()%>/manageEnterprise/getchannel2List",    
 		data: {first:txtval},   
 		dataType : "text",
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -338,7 +339,7 @@ function getEachScienceOffice(){
 			objSelect.options.add(new Option("--请选择--", "0"));
 			$(result.msg).each(function (key) {
                 //第一种方法
-                var opt = new Option(result.msg[key].text, result.msg[key].value);
+                var opt = new Option(result.msg[key].part2, result.msg[key].channelid);
                 objSelect.options.add(opt);
 			});
 		}
@@ -368,7 +369,7 @@ function getEachScienceOffice(){
 	</div>
 	<div class="xline"></div>
 	<div class="info">
-		<form method="post" action="" id="register_Form" name="register_Form">
+		<form method="post" action="<%=request.getContextPath()%>/manageEnterprise/enterRegister" id="register_Form" name="register_Form">
 			<div class="label1">
 				<span>基本信息</span>
 			</div>
@@ -452,17 +453,17 @@ function getEachScienceOffice(){
 						<td><select id="register_channel1" name="register_channel1"
 							onchange="getEachScienceOffice()">
 								<option value="">--请选择--</option>
-								<option value="1">区市县科技局</option>
-								<option value="2">高校</option>
-								<option value="3">行业主管部门</option>
-								<option value="4">市科技局</option>
+								<option value="区市县科技局">区市县科技局</option>
+								<option value="高校">高校</option>
+								<option value="行业主管部门">行业主管部门</option>
+								<option value="市科技局">市科技局</option>
 						</select></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td><select id="register_channel2" name="register_channel2">
 						</select></td>
-						<td class="star">*</td>
+						
 					</tr>
 					<tr>
 						<td>联&nbsp;系&nbsp;人:</td>

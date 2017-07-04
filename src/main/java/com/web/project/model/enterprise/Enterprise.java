@@ -99,6 +99,7 @@ public class Enterprise {
 		this.loginName = loginName;
 	}
 
+
 	public String getPassWord() {
 		return passWord;
 	}

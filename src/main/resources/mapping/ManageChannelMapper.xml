@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.project.dao.ManageChannelDao">
+	<resultMap id="channelMap" type="com.web.project.model.BackManage.Channel">
+		<id column="channelid" property="channelid" jdbcType="INTEGER" />
+		<result column="part1" property="part1" jdbcType="VARCHAR" />
+		<result column="part2" property="part2" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getChannel" resultMap="channelMap">
+		select part2 from channel
+		<where>
+			part1=#{0}
+		</where>
+	</select>
+	
+</mapper>	 
